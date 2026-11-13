@@ -1,0 +1,25 @@
+region_id,region_code,region_name_en,snapshot_date,n_municipalities,population_weight_total,pct_households_ge_30mbit,pct_households_ge_100mbit,pct_households_ge_300mbit,pct_households_ge_1000mbit
+961,01,East Uusimaa wellbeing services county,2025-09-30,7,99201.0,68.4,67.5,64.1,62.3
+966,02,Central Uusimaa wellbeing services county,2025-09-30,6,206257.0,86.1,82.6,81.3,79.4
+969,03,West Uusimaa wellbeing services county,2025-09-30,10,498509.5,90.7,89.2,83.7,83.6
+977,04,Vantaa and Kerava wellbeing services county,2025-09-30,2,287692.0,96.1,92.9,89.1,88.3
+978,05,Southwest Finland wellbeing services county,2025-09-30,27,492802.5,84.3,84.3,80.7,80.7
+976,06,Satakunta wellbeing services county,2025-09-30,16,211500.5,83.3,83.3,83.3,83.3
+963,07,Kanta-Häme wellbeing services county,2025-09-30,11,169501.0,78.8,78.5,76.2,76.2
+970,08,Pirkanmaa wellbeing services county,2025-09-30,23,542357.5,87.8,86.5,80.9,80.9
+975,09,Päijät-Häme wellbeing services county,2025-09-30,10,204557.0,83.1,83.1,81.0,80.7
+967,10,Kymenlaakso wellbeing services county,2025-09-30,6,158050.0,87.1,86.2,80.0,80.0
+957,11,South Karelia wellbeing services county,2025-09-30,9,125122.5,77.0,77.0,74.2,74.2
+959,12,South Savo wellbeing services county,2025-09-30,11,129645.0,70.3,70.3,63.5,56.8
+974,13,North Savo wellbeing services county,2025-09-30,19,248502.5,72.9,72.9,72.2,62.6
+972,14,North Karelia wellbeing services county,2025-09-30,13,162206.0,73.4,73.3,68.0,67.1
+965,15,Central Finland wellbeing services county,2025-09-30,22,273691.5,77.4,76.8,75.1,75.1
+958,16,South Ostrobothnia wellbeing services county,2025-09-30,18,190234.0,78.6,77.9,77.8,77.8
+971,17,Ostrobothnia wellbeing services county,2025-09-30,14,178175.5,86.7,86.7,85.2,81.1
+964,18,Central Ostrobothnia wellbeing services county,2025-09-30,8,67729.5,72.1,70.1,69.7,69.0
+973,19,North Ostrobothnia wellbeing services county,2025-09-30,30,418268.0,93.6,93.1,92.6,92.6
+962,20,Kainuu wellbeing services county,2025-09-30,8,69901.5,78.7,78.7,78.4,37.9
+968,21,Lapland wellbeing services county,2025-09-30,21,176150.5,70.2,70.2,67.5,66.5
+658,358,Whole country,2025-09-30,308,,86.0,85.0,81.0,80.0
+960,90,City of Helsinki,2025-09-30,1,679259.0,98.0,96.0,89.0,89.0
+956,91,Åland,2025-09-30,16,30597.5,94.4,94.0,84.9,84.9

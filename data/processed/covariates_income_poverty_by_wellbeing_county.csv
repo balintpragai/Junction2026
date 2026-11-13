@@ -1,0 +1,24 @@
+region_code,region_name_en,year,dwelling_population,median_disposable_income_eur_per_consumption_unit,at_risk_of_poverty_rate_pct
+01,East Uusimaa wellbeing services county,2023,96987,32853.0,9.32
+02,Central Uusimaa wellbeing services county,2023,201772,32680.0,8.59
+03,West Uusimaa wellbeing services county,2023,484751,34688.0,10.23
+04,Vantaa and Kerava wellbeing services county,2023,278260,31016.0,11.83
+05,Southwest Finland wellbeing services county,2023,479132,29476.0,13.97
+06,Satakunta wellbeing services county,2023,207138,28796.0,14.13
+07,Kanta-Häme wellbeing services county,2023,166078,29711.0,12.5
+08,Pirkanmaa wellbeing services county,2023,528015,29511.0,13.77
+09,Päijät-Häme wellbeing services county,2023,200502,28216.0,15.22
+10,Kymenlaakso wellbeing services county,2023,154928,28728.0,15.25
+11,South Karelia wellbeing services county,2023,122884,28306.0,16.62
+12,South Savo wellbeing services county,2023,126692,27989.0,15.28
+13,North Savo wellbeing services county,2023,242781,28443.0,14.84
+14,North Karelia wellbeing services county,2023,158488,26812.0,18.29
+15,Central Finland wellbeing services county,2023,267834,28124.0,16.66
+16,South Ostrobothnia wellbeing services county,2023,187238,28443.0,13.37
+17,Ostrobothnia wellbeing services county,2023,174542,29463.0,12.49
+18,Central Ostrobothnia wellbeing services county,2023,66540,28471.0,12.2
+19,North Ostrobothnia wellbeing services county,2023,410803,28522.0,14.46
+20,Kainuu wellbeing services county,2023,68349,28093.0,15.31
+21,Lapland wellbeing services county,2023,170303,29022.0,13.44
+90,City of Helsinki,2023,654854,32766.0,12.9
+91,Åland,2023,29923,33194.0,9.49

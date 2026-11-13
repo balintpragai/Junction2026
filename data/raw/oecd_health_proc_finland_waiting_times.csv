@@ -1,0 +1,526 @@
+REF_AREA,Reference area,MEASURE,Measure,UNIT_MEASURE,Unit of measure,MEDICAL_PROCEDURE,Medical procedure,WAITING_TIME,Waiting time,TIME_PERIOD,Time period,OBS_VALUE
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2000,,79
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2001,,79.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2002,,78.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2003,,81.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2004,,76.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2005,,73.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2006,,59.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2007,,70
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2008,,77.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2009,,63.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2010,,59.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2011,,61
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2012,,62.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2013,,54
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2014,,65.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2015,,60.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2016,,51.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2017,,56
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2018,,59.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2019,,62.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2020,,58.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2021,,61.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2022,,67
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2023,,67.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2024,,71.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2000,,231.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2001,,244.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2002,,237.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2003,,251.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2004,,244.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2005,,214.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2006,,119.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2007,,128.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2008,,138.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2009,,111.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2010,,108
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2011,,101.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2012,,98.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2013,,93.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2014,,109.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2015,,103.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2016,,91
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2017,,103.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2018,,104.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2019,,113
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2020,,121
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2021,,111.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2022,,122
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2023,,134
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2024,,145.8
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2000,,189
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2001,,203
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2002,,191
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2003,,206
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2004,,196
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2005,,174
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2006,,103
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2007,,126
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2008,,134
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2009,,110
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2010,,100
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2011,,98
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2012,,102
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2013,,87
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2014,,114
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2015,,99
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2016,,85
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2017,,92
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2018,,97
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2019,,106
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2020,,103
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2021,,103
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2022,,122
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2023,,134
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM131_138,Cataract surgery,WTSP,Waiting times from specialist assessment to treatment,2024,,142
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2000,,7.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2001,,22.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2002,,33.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2003,,22.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2004,,11.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2005,,28.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2006,,17.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2007,,6.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2008,,11.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2009,,4.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2010,,14.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2011,,23.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2012,,19.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2013,,17.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2014,,8.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2015,,6.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2016,,6.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2017,,8.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2018,,9.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2019,,4.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2020,,11.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2021,,1.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2022,,7.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2023,,5.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2024,,4.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2000,,40.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2001,,53.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2002,,72.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2003,,60.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2004,,49.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2005,,62.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2006,,47
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2007,,33.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2008,,41
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2009,,26.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2010,,39.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2011,,56.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2012,,50.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2013,,41.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2014,,30.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2015,,26.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2016,,32.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2017,,32.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2018,,30.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2019,,25.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2020,,24.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2021,,21.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2022,,32.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2023,,31.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2024,,28.9
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2000,,34
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2001,,35
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2002,,58
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2003,,53
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2004,,39
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2005,,50
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2006,,33
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2007,,26
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2008,,33
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2009,,17
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2010,,22
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2011,,42
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2012,,34
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2013,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2014,,17
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2015,,9
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2016,,13
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2017,,22
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2018,,15
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2019,,16
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2020,,9
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2021,,14
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2022,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2023,,20
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM361,Coronary artery bypass graft,WTSP,Waiting times from specialist assessment to treatment,2024,,21
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2000,,3.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2001,,8.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2002,,8.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2003,,8.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2004,,10.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2005,,6.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2006,,6.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2007,,9.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2008,,3.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2009,,5.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2010,,8.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2011,,11.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2012,,9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2013,,10.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2014,,7.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2015,,8.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2016,,9.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2017,,6.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2018,,6.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2019,,7.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2020,,8.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2021,,8.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2022,,12.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2023,,13.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2024,,10.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2000,,26.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2001,,30.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2002,,28
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2003,,32.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2004,,35.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2005,,33.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2006,,35.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2007,,36.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2008,,23.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2009,,29.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2010,,32.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2011,,33.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2012,,32.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2013,,31.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2014,,29.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2015,,31.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2016,,38.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2017,,31.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2018,,33
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2019,,36.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2020,,32.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2021,,48.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2022,,49.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2023,,52.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2024,,46.6
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2000,,19
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2001,,18.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2002,,15
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2003,,20
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2004,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2005,,22
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2006,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2007,,20
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2008,,17
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2009,,20
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2010,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2011,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2012,,22
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2013,,17
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2014,,17
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2015,,20
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2016,,28
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2017,,22
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2018,,23
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2019,,29
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2020,,21
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2021,,34
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2022,,32
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2023,,34
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM36_TRS,Transluminal coronary angioplasty,WTSP,Waiting times from specialist assessment to treatment,2024,,31
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,22
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,26.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,24.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,25.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,24
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,24
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,14.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,18.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,25.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,23.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,27.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,26
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,24.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,21.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,21.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,22.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,20
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,19.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,21.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,27.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,24.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,29.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,31
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,39.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,36.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,74.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,86
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,91.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,84
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,82.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,76.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,52.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,56.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,69.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,65.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,71.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,69.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,65.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,57.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,59.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,58.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,54.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,56.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,59.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,70.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,84.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,81.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,105
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,123.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,115.3
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,36
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,40
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,40
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,42
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,39
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,40
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,35
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,35
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,44
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,43
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,47
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,48
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,45
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,39
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,37
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,39
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,35
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,41
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,39
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,43
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,36
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,48
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,52
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,63
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM603_606,Transurethral prostatectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,55
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,36.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,43
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,47.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,48
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,44.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,43.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,32.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,37.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,43.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,32.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,36.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,36.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,37.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,29.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,27.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,25.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,21.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,29.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,35.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,36.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,30.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,39.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,39.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,40.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,42.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,92.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,110.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,116.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,115.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,121.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,107.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,75
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,79.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,87.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,72.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,81.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,80
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,81.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,69.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,66.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,62.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,55.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,74.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,78.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,80.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,73
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,88.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,90.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,99
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,100.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2000,,64
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2001,,75
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2002,,84
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2003,,84.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2004,,75
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2005,,71
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2006,,57.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2007,,64
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2008,,76
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2009,,50
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2010,,59
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2011,,62
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2012,,62
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2013,,47
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2014,,46
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2015,,42
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2016,,36
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2017,,45
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2018,,55
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2019,,65
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2020,,33
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2021,,63
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2022,,59
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2023,,61
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM683_687_689,Hysterectomy,WTSP,Waiting times from specialist assessment to treatment,2024,,64
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2000,,66.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2001,,67.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2002,,69.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2003,,70.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2004,,68.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2005,,68.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2006,,63.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2007,,61
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2008,,54.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2009,,52.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2010,,54.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2011,,53.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2012,,56.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2013,,57.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2014,,51.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2015,,52.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2016,,50.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2017,,44.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2018,,42.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2019,,34.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2020,,30.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2021,,36.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2022,,52
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2023,,62.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2024,,66.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2000,,195.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2001,,195.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2002,,209.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2003,,202
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2004,,196.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2005,,190.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2006,,150.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2007,,130
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2008,,121.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2009,,112.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2010,,114.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2011,,112.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2012,,118.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2013,,115.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2014,,111.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2015,,108
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2016,,104
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2017,,99
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2018,,95.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2019,,83.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2020,,83.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2021,,97.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2022,,123.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2023,,160.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2024,,169.2
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2000,,138
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2001,,139.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2002,,148
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2003,,149
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2004,,147
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2005,,145
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2006,,120
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2007,,114
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2008,,99
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2009,,94
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2010,,97
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2011,,96
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2012,,102
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2013,,103
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2014,,91.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2015,,93.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2016,,90
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2017,,81
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2018,,77
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2019,,65
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2020,,51
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2021,,69
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2022,,93
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2023,,134
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8151_8153,"Hip replacement (total and partial, including the revision of hip replacement)",WTSP,Waiting times from specialist assessment to treatment,2024,,142
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2000,,77.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2001,,77.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2002,,79.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2003,,80.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2004,,79.1
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2005,,77.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2006,,72
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2007,,72.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2008,,65.7
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2009,,63.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2010,,63.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2011,,67.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2012,,67.8
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2013,,68.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2014,,61.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2015,,62.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2016,,59.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2017,,55.3
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2018,,55.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2019,,44.6
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2020,,39.2
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2021,,48.4
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2022,,59.9
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2023,,71.5
+FIN,Finland,WAIT,Waiting times,PT_PAT_WAIT_M_GT3,Percentage of patients waiting more than 3 months,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2024,,78.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2000,,262.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2001,,253.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2002,,281
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2003,,278.3
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2004,,269.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2005,,254.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2006,,188.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2007,,157.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2008,,145
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2009,,133.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2010,,131.1
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2011,,137.5
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2012,,139.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2013,,137.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2014,,130.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2015,,125.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2016,,119.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2017,,117.2
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2018,,115.8
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2019,,100.4
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2020,,100.9
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2021,,123
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2022,,148.6
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2023,,194.7
+FIN,Finland,WAIT_MEAN,Mean waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2024,,215.8
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2000,,195
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2001,,193
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2002,,203
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2003,,208
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2004,,203
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2005,,191.5
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2006,,151
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2007,,140
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2008,,125
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2009,,120
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2010,,115
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2011,,124
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2012,,128
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2013,,123
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2014,,110
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2015,,110
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2016,,106
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2017,,98
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2018,,99
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2019,,80
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2020,,66
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2021,,84
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2022,,111
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2023,,173
+FIN,Finland,WAIT_MEDIAN,Median waiting times,D,Days,CM8154,Knee replacement (including the revision of knee replacement),WTSP,Waiting times from specialist assessment to treatment,2024,,193

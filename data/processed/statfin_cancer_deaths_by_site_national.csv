@@ -1,0 +1,199 @@
+cause_code,cause_label,year,deaths
+04-21,04-21 Malignant neoplasms (C00-C97),2015,12168
+04-21,04-21 Malignant neoplasms (C00-C97),2016,12494
+04-21,04-21 Malignant neoplasms (C00-C97),2017,12573
+04-21,04-21 Malignant neoplasms (C00-C97),2018,12558
+04-21,04-21 Malignant neoplasms (C00-C97),2019,12899
+04-21,04-21 Malignant neoplasms (C00-C97),2020,12998
+04-21,04-21 Malignant neoplasms (C00-C97),2021,13159
+04-21,04-21 Malignant neoplasms (C00-C97),2022,13072
+04-21,04-21 Malignant neoplasms (C00-C97),2023,13472
+04-21,04-21 Malignant neoplasms (C00-C97),2024,13316
+04-21,04-21 Malignant neoplasms (C00-C97),2025,13424
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2015,232
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2016,212
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2017,183
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2018,198
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2019,219
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2020,225
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2021,210
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2022,224
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2023,256
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2024,264
+04,"04 Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",2025,279
+05,05 Malignant neoplasm of oesophagus (C15),2015,233
+05,05 Malignant neoplasm of oesophagus (C15),2016,290
+05,05 Malignant neoplasm of oesophagus (C15),2017,296
+05,05 Malignant neoplasm of oesophagus (C15),2018,317
+05,05 Malignant neoplasm of oesophagus (C15),2019,315
+05,05 Malignant neoplasm of oesophagus (C15),2020,356
+05,05 Malignant neoplasm of oesophagus (C15),2021,347
+05,05 Malignant neoplasm of oesophagus (C15),2022,355
+05,05 Malignant neoplasm of oesophagus (C15),2023,393
+05,05 Malignant neoplasm of oesophagus (C15),2024,379
+05,05 Malignant neoplasm of oesophagus (C15),2025,338
+06,06 Malignant neoplasm of stomach (C16),2015,441
+06,06 Malignant neoplasm of stomach (C16),2016,434
+06,06 Malignant neoplasm of stomach (C16),2017,440
+06,06 Malignant neoplasm of stomach (C16),2018,377
+06,06 Malignant neoplasm of stomach (C16),2019,416
+06,06 Malignant neoplasm of stomach (C16),2020,412
+06,06 Malignant neoplasm of stomach (C16),2021,378
+06,06 Malignant neoplasm of stomach (C16),2022,363
+06,06 Malignant neoplasm of stomach (C16),2023,392
+06,06 Malignant neoplasm of stomach (C16),2024,356
+06,06 Malignant neoplasm of stomach (C16),2025,314
+07,"07 Malignant neoplasm of colon (C18, C19)",2015,821
+07,"07 Malignant neoplasm of colon (C18, C19)",2016,884
+07,"07 Malignant neoplasm of colon (C18, C19)",2017,909
+07,"07 Malignant neoplasm of colon (C18, C19)",2018,869
+07,"07 Malignant neoplasm of colon (C18, C19)",2019,919
+07,"07 Malignant neoplasm of colon (C18, C19)",2020,897
+07,"07 Malignant neoplasm of colon (C18, C19)",2021,944
+07,"07 Malignant neoplasm of colon (C18, C19)",2022,923
+07,"07 Malignant neoplasm of colon (C18, C19)",2023,1004
+07,"07 Malignant neoplasm of colon (C18, C19)",2024,961
+07,"07 Malignant neoplasm of colon (C18, C19)",2025,986
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2015,390
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2016,425
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2017,459
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2018,425
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2019,453
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2020,378
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2021,415
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2022,474
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2023,552
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2024,456
+08,"08 Malignant neoplasm of rectum, anus and anal canal (C20-C21)",2025,541
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2015,509
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2016,527
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2017,543
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2018,533
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2019,572
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2020,563
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2021,627
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2022,596
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2023,623
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2024,644
+09,09 Primary malignant neoplasm of liver and intrahepatic bile ducts (C22),2025,596
+10,10 Malignant neoplasm of pancreas (C25),2015,1137
+10,10 Malignant neoplasm of pancreas (C25),2016,1191
+10,10 Malignant neoplasm of pancreas (C25),2017,1168
+10,10 Malignant neoplasm of pancreas (C25),2018,1298
+10,10 Malignant neoplasm of pancreas (C25),2019,1199
+10,10 Malignant neoplasm of pancreas (C25),2020,1312
+10,10 Malignant neoplasm of pancreas (C25),2021,1287
+10,10 Malignant neoplasm of pancreas (C25),2022,1272
+10,10 Malignant neoplasm of pancreas (C25),2023,1371
+10,10 Malignant neoplasm of pancreas (C25),2024,1337
+10,10 Malignant neoplasm of pancreas (C25),2025,1391
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2015,2275
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2016,2309
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2017,2310
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2018,2318
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2019,2383
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2020,2322
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2021,2400
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2022,2447
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2023,2256
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2024,2317
+11,"11 Malignant neoplasm of larynx, trachea, bronchus and lung (C32-C34)",2025,2302
+13,13 Malignant neoplasm of breast (C50),2015,823
+13,13 Malignant neoplasm of breast (C50),2016,881
+13,13 Malignant neoplasm of breast (C50),2017,913
+13,13 Malignant neoplasm of breast (C50),2018,859
+13,13 Malignant neoplasm of breast (C50),2019,881
+13,13 Malignant neoplasm of breast (C50),2020,951
+13,13 Malignant neoplasm of breast (C50),2021,900
+13,13 Malignant neoplasm of breast (C50),2022,866
+13,13 Malignant neoplasm of breast (C50),2023,844
+13,13 Malignant neoplasm of breast (C50),2024,899
+13,13 Malignant neoplasm of breast (C50),2025,907
+14,14 Malignant neoplasm of cervix uteri (C53),2015,63
+14,14 Malignant neoplasm of cervix uteri (C53),2016,61
+14,14 Malignant neoplasm of cervix uteri (C53),2017,55
+14,14 Malignant neoplasm of cervix uteri (C53),2018,55
+14,14 Malignant neoplasm of cervix uteri (C53),2019,45
+14,14 Malignant neoplasm of cervix uteri (C53),2020,47
+14,14 Malignant neoplasm of cervix uteri (C53),2021,58
+14,14 Malignant neoplasm of cervix uteri (C53),2022,55
+14,14 Malignant neoplasm of cervix uteri (C53),2023,46
+14,14 Malignant neoplasm of cervix uteri (C53),2024,45
+14,14 Malignant neoplasm of cervix uteri (C53),2025,40
+15,15 Malignant neoplasm of uterus (C54-C55),2015,194
+15,15 Malignant neoplasm of uterus (C54-C55),2016,202
+15,15 Malignant neoplasm of uterus (C54-C55),2017,202
+15,15 Malignant neoplasm of uterus (C54-C55),2018,216
+15,15 Malignant neoplasm of uterus (C54-C55),2019,221
+15,15 Malignant neoplasm of uterus (C54-C55),2020,215
+15,15 Malignant neoplasm of uterus (C54-C55),2021,218
+15,15 Malignant neoplasm of uterus (C54-C55),2022,219
+15,15 Malignant neoplasm of uterus (C54-C55),2023,220
+15,15 Malignant neoplasm of uterus (C54-C55),2024,212
+15,15 Malignant neoplasm of uterus (C54-C55),2025,238
+16,16 Malignant neoplasm of ovary (C56),2015,334
+16,16 Malignant neoplasm of ovary (C56),2016,367
+16,16 Malignant neoplasm of ovary (C56),2017,330
+16,16 Malignant neoplasm of ovary (C56),2018,310
+16,16 Malignant neoplasm of ovary (C56),2019,321
+16,16 Malignant neoplasm of ovary (C56),2020,277
+16,16 Malignant neoplasm of ovary (C56),2021,288
+16,16 Malignant neoplasm of ovary (C56),2022,312
+16,16 Malignant neoplasm of ovary (C56),2023,297
+16,16 Malignant neoplasm of ovary (C56),2024,262
+16,16 Malignant neoplasm of ovary (C56),2025,260
+17,17 Malignant neoplasm of prostate (C61),2015,898
+17,17 Malignant neoplasm of prostate (C61),2016,888
+17,17 Malignant neoplasm of prostate (C61),2017,898
+17,17 Malignant neoplasm of prostate (C61),2018,895
+17,17 Malignant neoplasm of prostate (C61),2019,922
+17,17 Malignant neoplasm of prostate (C61),2020,920
+17,17 Malignant neoplasm of prostate (C61),2021,963
+17,17 Malignant neoplasm of prostate (C61),2022,919
+17,17 Malignant neoplasm of prostate (C61),2023,1012
+17,17 Malignant neoplasm of prostate (C61),2024,957
+17,17 Malignant neoplasm of prostate (C61),2025,1017
+18,18 Malignant neoplasm of kidney (C64),2015,367
+18,18 Malignant neoplasm of kidney (C64),2016,399
+18,18 Malignant neoplasm of kidney (C64),2017,324
+18,18 Malignant neoplasm of kidney (C64),2018,353
+18,18 Malignant neoplasm of kidney (C64),2019,341
+18,18 Malignant neoplasm of kidney (C64),2020,353
+18,18 Malignant neoplasm of kidney (C64),2021,330
+18,18 Malignant neoplasm of kidney (C64),2022,349
+18,18 Malignant neoplasm of kidney (C64),2023,340
+18,18 Malignant neoplasm of kidney (C64),2024,317
+18,18 Malignant neoplasm of kidney (C64),2025,338
+19,19 Malignant neoplasm of bladder (C67),2015,261
+19,19 Malignant neoplasm of bladder (C67),2016,280
+19,19 Malignant neoplasm of bladder (C67),2017,277
+19,19 Malignant neoplasm of bladder (C67),2018,291
+19,19 Malignant neoplasm of bladder (C67),2019,317
+19,19 Malignant neoplasm of bladder (C67),2020,310
+19,19 Malignant neoplasm of bladder (C67),2021,313
+19,19 Malignant neoplasm of bladder (C67),2022,295
+19,19 Malignant neoplasm of bladder (C67),2023,310
+19,19 Malignant neoplasm of bladder (C67),2024,291
+19,19 Malignant neoplasm of bladder (C67),2025,299
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2015,1165
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2016,1111
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2017,1144
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2018,1119
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2019,1227
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2020,1184
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2021,1232
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2022,1170
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2023,1165
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2024,1258
+20,"20 Malignant neoplasm of lymphoid, haematopoietic and related tissue (C81-C96)",2025,1275
+21,21 Other malignant neoplasms,2015,1796
+21,21 Other malignant neoplasms,2016,1818
+21,21 Other malignant neoplasms,2017,1896
+21,21 Other malignant neoplasms,2018,1883
+21,21 Other malignant neoplasms,2019,1931
+21,21 Other malignant neoplasms,2020,2048
+21,21 Other malignant neoplasms,2021,2036
+21,21 Other malignant neoplasms,2022,2003
+21,21 Other malignant neoplasms,2023,2130
+21,21 Other malignant neoplasms,2024,2128
+21,21 Other malignant neoplasms,2025,2042

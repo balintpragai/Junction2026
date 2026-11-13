@@ -1,0 +1,2878 @@
+year,wellbeing_county_code,wellbeing_county_name,reimbursement_code,reimbursement_label,new_entitlements_started
+1986,00,Tuntematon,115,115 Rintasyöpä,2
+1986,00,Tuntematon,116,116 Eturauhassyöpä,0
+1986,01,Itä-Uusimaa,115,115 Rintasyöpä,16
+1986,01,Itä-Uusimaa,116,116 Eturauhassyöpä,7
+1986,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,18
+1986,02,Keski-Uusimaa,115,115 Rintasyöpä,24
+1986,02,Keski-Uusimaa,116,116 Eturauhassyöpä,8
+1986,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,15
+1986,03,Länsi-Uusimaa,115,115 Rintasyöpä,47
+1986,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,50
+1986,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,33
+1986,04,Vantaa ja Kerava,115,115 Rintasyöpä,31
+1986,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,8
+1986,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,18
+1986,05,Varsinais-Suomi,115,115 Rintasyöpä,94
+1986,05,Varsinais-Suomi,116,116 Eturauhassyöpä,40
+1986,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,42
+1986,06,Satakunta,115,115 Rintasyöpä,53
+1986,06,Satakunta,116,116 Eturauhassyöpä,26
+1986,06,Satakunta,130,130 Pahanlaatuinen kasvain,22
+1986,07,Kanta-Häme,115,115 Rintasyöpä,36
+1986,07,Kanta-Häme,116,116 Eturauhassyöpä,28
+1986,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,26
+1986,08,Pirkanmaa,115,115 Rintasyöpä,116
+1986,08,Pirkanmaa,116,116 Eturauhassyöpä,50
+1986,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,53
+1986,09,Päijät-Häme,115,115 Rintasyöpä,60
+1986,09,Päijät-Häme,116,116 Eturauhassyöpä,31
+1986,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,41
+1986,10,Kymenlaakso,115,115 Rintasyöpä,47
+1986,10,Kymenlaakso,116,116 Eturauhassyöpä,24
+1986,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,22
+1986,11,Etelä-Karjala,115,115 Rintasyöpä,20
+1986,11,Etelä-Karjala,116,116 Eturauhassyöpä,19
+1986,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,26
+1986,12,Etelä-Savo,115,115 Rintasyöpä,51
+1986,12,Etelä-Savo,116,116 Eturauhassyöpä,17
+1986,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,26
+1986,13,Pohjois-Savo,115,115 Rintasyöpä,59
+1986,13,Pohjois-Savo,116,116 Eturauhassyöpä,20
+1986,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,47
+1986,14,Pohjois-Karjala,115,115 Rintasyöpä,42
+1986,14,Pohjois-Karjala,116,116 Eturauhassyöpä,13
+1986,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,42
+1986,15,Keski-Suomi,115,115 Rintasyöpä,54
+1986,15,Keski-Suomi,116,116 Eturauhassyöpä,28
+1986,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,56
+1986,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,38
+1986,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,19
+1986,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,33
+1986,17,Pohjanmaa,115,115 Rintasyöpä,41
+1986,17,Pohjanmaa,116,116 Eturauhassyöpä,35
+1986,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,32
+1986,18,Keski-Pohjanmaa,115,115 Rintasyöpä,8
+1986,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,10
+1986,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,12
+1986,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,58
+1986,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,30
+1986,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,81
+1986,20,Kainuu,115,115 Rintasyöpä,14
+1986,20,Kainuu,116,116 Eturauhassyöpä,5
+1986,20,Kainuu,130,130 Pahanlaatuinen kasvain,24
+1986,21,Lappi,115,115 Rintasyöpä,26
+1986,21,Lappi,116,116 Eturauhassyöpä,21
+1986,21,Lappi,130,130 Pahanlaatuinen kasvain,46
+1986,90,Helsinki,115,115 Rintasyöpä,136
+1986,90,Helsinki,116,116 Eturauhassyöpä,60
+1986,90,Helsinki,130,130 Pahanlaatuinen kasvain,108
+1986,91,Ahvenanmaa,115,115 Rintasyöpä,5
+1986,91,Ahvenanmaa,116,116 Eturauhassyöpä,6
+1986,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,5
+1987,00,Tuntematon,115,115 Rintasyöpä,0
+1987,00,Tuntematon,116,116 Eturauhassyöpä,1
+1987,01,Itä-Uusimaa,115,115 Rintasyöpä,17
+1987,01,Itä-Uusimaa,116,116 Eturauhassyöpä,8
+1987,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,11
+1987,02,Keski-Uusimaa,115,115 Rintasyöpä,19
+1987,02,Keski-Uusimaa,116,116 Eturauhassyöpä,5
+1987,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,14
+1987,03,Länsi-Uusimaa,115,115 Rintasyöpä,52
+1987,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,27
+1987,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,30
+1987,04,Vantaa ja Kerava,115,115 Rintasyöpä,24
+1987,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,12
+1987,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,25
+1987,05,Varsinais-Suomi,115,115 Rintasyöpä,78
+1987,05,Varsinais-Suomi,116,116 Eturauhassyöpä,24
+1987,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,41
+1987,06,Satakunta,115,115 Rintasyöpä,44
+1987,06,Satakunta,116,116 Eturauhassyöpä,14
+1987,06,Satakunta,130,130 Pahanlaatuinen kasvain,10
+1987,07,Kanta-Häme,115,115 Rintasyöpä,31
+1987,07,Kanta-Häme,116,116 Eturauhassyöpä,32
+1987,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,20
+1987,08,Pirkanmaa,115,115 Rintasyöpä,107
+1987,08,Pirkanmaa,116,116 Eturauhassyöpä,45
+1987,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,39
+1987,09,Päijät-Häme,115,115 Rintasyöpä,49
+1987,09,Päijät-Häme,116,116 Eturauhassyöpä,24
+1987,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,33
+1987,10,Kymenlaakso,115,115 Rintasyöpä,54
+1987,10,Kymenlaakso,116,116 Eturauhassyöpä,16
+1987,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,21
+1987,11,Etelä-Karjala,115,115 Rintasyöpä,30
+1987,11,Etelä-Karjala,116,116 Eturauhassyöpä,16
+1987,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,40
+1987,12,Etelä-Savo,115,115 Rintasyöpä,43
+1987,12,Etelä-Savo,116,116 Eturauhassyöpä,18
+1987,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,34
+1987,13,Pohjois-Savo,115,115 Rintasyöpä,57
+1987,13,Pohjois-Savo,116,116 Eturauhassyöpä,14
+1987,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,47
+1987,14,Pohjois-Karjala,115,115 Rintasyöpä,41
+1987,14,Pohjois-Karjala,116,116 Eturauhassyöpä,15
+1987,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,39
+1987,15,Keski-Suomi,115,115 Rintasyöpä,64
+1987,15,Keski-Suomi,116,116 Eturauhassyöpä,39
+1987,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,48
+1987,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,35
+1987,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,11
+1987,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,24
+1987,17,Pohjanmaa,115,115 Rintasyöpä,51
+1987,17,Pohjanmaa,116,116 Eturauhassyöpä,21
+1987,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,24
+1987,18,Keski-Pohjanmaa,115,115 Rintasyöpä,9
+1987,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,7
+1987,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,12
+1987,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,65
+1987,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,32
+1987,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,47
+1987,20,Kainuu,115,115 Rintasyöpä,10
+1987,20,Kainuu,116,116 Eturauhassyöpä,9
+1987,20,Kainuu,130,130 Pahanlaatuinen kasvain,8
+1987,21,Lappi,115,115 Rintasyöpä,44
+1987,21,Lappi,116,116 Eturauhassyöpä,30
+1987,21,Lappi,130,130 Pahanlaatuinen kasvain,23
+1987,90,Helsinki,115,115 Rintasyöpä,115
+1987,90,Helsinki,116,116 Eturauhassyöpä,39
+1987,90,Helsinki,130,130 Pahanlaatuinen kasvain,83
+1987,91,Ahvenanmaa,115,115 Rintasyöpä,3
+1987,91,Ahvenanmaa,116,116 Eturauhassyöpä,5
+1987,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,2
+1988,00,Tuntematon,115,115 Rintasyöpä,0
+1988,00,Tuntematon,116,116 Eturauhassyöpä,0
+1988,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+1988,01,Itä-Uusimaa,115,115 Rintasyöpä,22
+1988,01,Itä-Uusimaa,116,116 Eturauhassyöpä,7
+1988,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,13
+1988,02,Keski-Uusimaa,115,115 Rintasyöpä,26
+1988,02,Keski-Uusimaa,116,116 Eturauhassyöpä,9
+1988,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,19
+1988,03,Länsi-Uusimaa,115,115 Rintasyöpä,64
+1988,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,33
+1988,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,50
+1988,04,Vantaa ja Kerava,115,115 Rintasyöpä,25
+1988,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,11
+1988,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,26
+1988,05,Varsinais-Suomi,115,115 Rintasyöpä,89
+1988,05,Varsinais-Suomi,116,116 Eturauhassyöpä,37
+1988,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,67
+1988,06,Satakunta,115,115 Rintasyöpä,38
+1988,06,Satakunta,116,116 Eturauhassyöpä,10
+1988,06,Satakunta,130,130 Pahanlaatuinen kasvain,19
+1988,07,Kanta-Häme,115,115 Rintasyöpä,28
+1988,07,Kanta-Häme,116,116 Eturauhassyöpä,22
+1988,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,25
+1988,08,Pirkanmaa,115,115 Rintasyöpä,104
+1988,08,Pirkanmaa,116,116 Eturauhassyöpä,37
+1988,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,35
+1988,09,Päijät-Häme,115,115 Rintasyöpä,75
+1988,09,Päijät-Häme,116,116 Eturauhassyöpä,36
+1988,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,38
+1988,10,Kymenlaakso,115,115 Rintasyöpä,57
+1988,10,Kymenlaakso,116,116 Eturauhassyöpä,17
+1988,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,20
+1988,11,Etelä-Karjala,115,115 Rintasyöpä,25
+1988,11,Etelä-Karjala,116,116 Eturauhassyöpä,45
+1988,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,18
+1988,12,Etelä-Savo,115,115 Rintasyöpä,47
+1988,12,Etelä-Savo,116,116 Eturauhassyöpä,5
+1988,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,28
+1988,13,Pohjois-Savo,115,115 Rintasyöpä,52
+1988,13,Pohjois-Savo,116,116 Eturauhassyöpä,26
+1988,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,31
+1988,14,Pohjois-Karjala,115,115 Rintasyöpä,42
+1988,14,Pohjois-Karjala,116,116 Eturauhassyöpä,21
+1988,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,23
+1988,15,Keski-Suomi,115,115 Rintasyöpä,71
+1988,15,Keski-Suomi,116,116 Eturauhassyöpä,18
+1988,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,56
+1988,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,32
+1988,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,16
+1988,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,30
+1988,17,Pohjanmaa,115,115 Rintasyöpä,65
+1988,17,Pohjanmaa,116,116 Eturauhassyöpä,24
+1988,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,19
+1988,18,Keski-Pohjanmaa,115,115 Rintasyöpä,9
+1988,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,8
+1988,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,12
+1988,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,50
+1988,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,62
+1988,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,52
+1988,20,Kainuu,115,115 Rintasyöpä,19
+1988,20,Kainuu,116,116 Eturauhassyöpä,20
+1988,20,Kainuu,130,130 Pahanlaatuinen kasvain,14
+1988,21,Lappi,115,115 Rintasyöpä,28
+1988,21,Lappi,116,116 Eturauhassyöpä,53
+1988,21,Lappi,130,130 Pahanlaatuinen kasvain,27
+1988,90,Helsinki,115,115 Rintasyöpä,155
+1988,90,Helsinki,116,116 Eturauhassyöpä,42
+1988,90,Helsinki,130,130 Pahanlaatuinen kasvain,89
+1988,91,Ahvenanmaa,115,115 Rintasyöpä,2
+1988,91,Ahvenanmaa,116,116 Eturauhassyöpä,8
+1988,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,10
+1989,00,Tuntematon,115,115 Rintasyöpä,1
+1989,00,Tuntematon,116,116 Eturauhassyöpä,0
+1989,01,Itä-Uusimaa,115,115 Rintasyöpä,19
+1989,01,Itä-Uusimaa,116,116 Eturauhassyöpä,7
+1989,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,8
+1989,02,Keski-Uusimaa,115,115 Rintasyöpä,36
+1989,02,Keski-Uusimaa,116,116 Eturauhassyöpä,11
+1989,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,18
+1989,03,Länsi-Uusimaa,115,115 Rintasyöpä,67
+1989,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,37
+1989,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,51
+1989,04,Vantaa ja Kerava,115,115 Rintasyöpä,36
+1989,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,9
+1989,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,17
+1989,05,Varsinais-Suomi,115,115 Rintasyöpä,101
+1989,05,Varsinais-Suomi,116,116 Eturauhassyöpä,47
+1989,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,55
+1989,06,Satakunta,115,115 Rintasyöpä,48
+1989,06,Satakunta,116,116 Eturauhassyöpä,31
+1989,06,Satakunta,130,130 Pahanlaatuinen kasvain,26
+1989,07,Kanta-Häme,115,115 Rintasyöpä,39
+1989,07,Kanta-Häme,116,116 Eturauhassyöpä,28
+1989,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,26
+1989,08,Pirkanmaa,115,115 Rintasyöpä,113
+1989,08,Pirkanmaa,116,116 Eturauhassyöpä,48
+1989,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,37
+1989,09,Päijät-Häme,115,115 Rintasyöpä,55
+1989,09,Päijät-Häme,116,116 Eturauhassyöpä,40
+1989,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,27
+1989,10,Kymenlaakso,115,115 Rintasyöpä,57
+1989,10,Kymenlaakso,116,116 Eturauhassyöpä,29
+1989,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,16
+1989,11,Etelä-Karjala,115,115 Rintasyöpä,24
+1989,11,Etelä-Karjala,116,116 Eturauhassyöpä,31
+1989,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,26
+1989,12,Etelä-Savo,115,115 Rintasyöpä,32
+1989,12,Etelä-Savo,116,116 Eturauhassyöpä,15
+1989,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,22
+1989,13,Pohjois-Savo,115,115 Rintasyöpä,57
+1989,13,Pohjois-Savo,116,116 Eturauhassyöpä,33
+1989,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,21
+1989,14,Pohjois-Karjala,115,115 Rintasyöpä,38
+1989,14,Pohjois-Karjala,116,116 Eturauhassyöpä,15
+1989,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,16
+1989,15,Keski-Suomi,115,115 Rintasyöpä,53
+1989,15,Keski-Suomi,116,116 Eturauhassyöpä,14
+1989,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,53
+1989,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,46
+1989,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,20
+1989,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,20
+1989,17,Pohjanmaa,115,115 Rintasyöpä,45
+1989,17,Pohjanmaa,116,116 Eturauhassyöpä,42
+1989,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,15
+1989,18,Keski-Pohjanmaa,115,115 Rintasyöpä,10
+1989,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,3
+1989,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,5
+1989,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,48
+1989,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,44
+1989,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,35
+1989,20,Kainuu,115,115 Rintasyöpä,5
+1989,20,Kainuu,116,116 Eturauhassyöpä,7
+1989,20,Kainuu,130,130 Pahanlaatuinen kasvain,9
+1989,21,Lappi,115,115 Rintasyöpä,31
+1989,21,Lappi,116,116 Eturauhassyöpä,27
+1989,21,Lappi,130,130 Pahanlaatuinen kasvain,25
+1989,90,Helsinki,115,115 Rintasyöpä,172
+1989,90,Helsinki,116,116 Eturauhassyöpä,63
+1989,90,Helsinki,130,130 Pahanlaatuinen kasvain,78
+1989,91,Ahvenanmaa,115,115 Rintasyöpä,8
+1989,91,Ahvenanmaa,116,116 Eturauhassyöpä,4
+1989,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,4
+1990,00,Tuntematon,115,115 Rintasyöpä,0
+1990,00,Tuntematon,116,116 Eturauhassyöpä,1
+1990,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+1990,01,Itä-Uusimaa,115,115 Rintasyöpä,20
+1990,01,Itä-Uusimaa,116,116 Eturauhassyöpä,13
+1990,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,13
+1990,02,Keski-Uusimaa,115,115 Rintasyöpä,26
+1990,02,Keski-Uusimaa,116,116 Eturauhassyöpä,10
+1990,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,17
+1990,03,Länsi-Uusimaa,115,115 Rintasyöpä,53
+1990,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,26
+1990,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,54
+1990,04,Vantaa ja Kerava,115,115 Rintasyöpä,29
+1990,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,10
+1990,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,28
+1990,05,Varsinais-Suomi,115,115 Rintasyöpä,98
+1990,05,Varsinais-Suomi,116,116 Eturauhassyöpä,46
+1990,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,61
+1990,06,Satakunta,115,115 Rintasyöpä,49
+1990,06,Satakunta,116,116 Eturauhassyöpä,33
+1990,06,Satakunta,130,130 Pahanlaatuinen kasvain,38
+1990,07,Kanta-Häme,115,115 Rintasyöpä,38
+1990,07,Kanta-Häme,116,116 Eturauhassyöpä,30
+1990,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,19
+1990,08,Pirkanmaa,115,115 Rintasyöpä,103
+1990,08,Pirkanmaa,116,116 Eturauhassyöpä,42
+1990,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,37
+1990,09,Päijät-Häme,115,115 Rintasyöpä,42
+1990,09,Päijät-Häme,116,116 Eturauhassyöpä,37
+1990,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,26
+1990,10,Kymenlaakso,115,115 Rintasyöpä,58
+1990,10,Kymenlaakso,116,116 Eturauhassyöpä,26
+1990,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,47
+1990,11,Etelä-Karjala,115,115 Rintasyöpä,30
+1990,11,Etelä-Karjala,116,116 Eturauhassyöpä,28
+1990,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,29
+1990,12,Etelä-Savo,115,115 Rintasyöpä,33
+1990,12,Etelä-Savo,116,116 Eturauhassyöpä,15
+1990,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,24
+1990,13,Pohjois-Savo,115,115 Rintasyöpä,40
+1990,13,Pohjois-Savo,116,116 Eturauhassyöpä,22
+1990,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,37
+1990,14,Pohjois-Karjala,115,115 Rintasyöpä,33
+1990,14,Pohjois-Karjala,116,116 Eturauhassyöpä,11
+1990,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,28
+1990,15,Keski-Suomi,115,115 Rintasyöpä,60
+1990,15,Keski-Suomi,116,116 Eturauhassyöpä,21
+1990,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,42
+1990,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,39
+1990,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,21
+1990,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,23
+1990,17,Pohjanmaa,115,115 Rintasyöpä,62
+1990,17,Pohjanmaa,116,116 Eturauhassyöpä,24
+1990,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,29
+1990,18,Keski-Pohjanmaa,115,115 Rintasyöpä,14
+1990,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,7
+1990,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,8
+1990,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,46
+1990,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,27
+1990,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,47
+1990,20,Kainuu,115,115 Rintasyöpä,8
+1990,20,Kainuu,116,116 Eturauhassyöpä,10
+1990,20,Kainuu,130,130 Pahanlaatuinen kasvain,9
+1990,21,Lappi,115,115 Rintasyöpä,30
+1990,21,Lappi,116,116 Eturauhassyöpä,25
+1990,21,Lappi,130,130 Pahanlaatuinen kasvain,20
+1990,90,Helsinki,115,115 Rintasyöpä,173
+1990,90,Helsinki,116,116 Eturauhassyöpä,49
+1990,90,Helsinki,130,130 Pahanlaatuinen kasvain,88
+1990,91,Ahvenanmaa,115,115 Rintasyöpä,4
+1990,91,Ahvenanmaa,116,116 Eturauhassyöpä,0
+1990,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,5
+1991,00,Tuntematon,115,115 Rintasyöpä,1
+1991,00,Tuntematon,116,116 Eturauhassyöpä,1
+1991,00,Tuntematon,130,130 Pahanlaatuinen kasvain,2
+1991,01,Itä-Uusimaa,115,115 Rintasyöpä,22
+1991,01,Itä-Uusimaa,116,116 Eturauhassyöpä,4
+1991,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,24
+1991,02,Keski-Uusimaa,115,115 Rintasyöpä,32
+1991,02,Keski-Uusimaa,116,116 Eturauhassyöpä,9
+1991,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,23
+1991,03,Länsi-Uusimaa,115,115 Rintasyöpä,103
+1991,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,47
+1991,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,64
+1991,04,Vantaa ja Kerava,115,115 Rintasyöpä,39
+1991,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,10
+1991,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,27
+1991,05,Varsinais-Suomi,115,115 Rintasyöpä,107
+1991,05,Varsinais-Suomi,116,116 Eturauhassyöpä,55
+1991,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,77
+1991,06,Satakunta,115,115 Rintasyöpä,54
+1991,06,Satakunta,116,116 Eturauhassyöpä,17
+1991,06,Satakunta,130,130 Pahanlaatuinen kasvain,30
+1991,07,Kanta-Häme,115,115 Rintasyöpä,36
+1991,07,Kanta-Häme,116,116 Eturauhassyöpä,41
+1991,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,11
+1991,08,Pirkanmaa,115,115 Rintasyöpä,116
+1991,08,Pirkanmaa,116,116 Eturauhassyöpä,63
+1991,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,60
+1991,09,Päijät-Häme,115,115 Rintasyöpä,52
+1991,09,Päijät-Häme,116,116 Eturauhassyöpä,39
+1991,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,32
+1991,10,Kymenlaakso,115,115 Rintasyöpä,61
+1991,10,Kymenlaakso,116,116 Eturauhassyöpä,48
+1991,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,59
+1991,11,Etelä-Karjala,115,115 Rintasyöpä,23
+1991,11,Etelä-Karjala,116,116 Eturauhassyöpä,23
+1991,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,26
+1991,12,Etelä-Savo,115,115 Rintasyöpä,25
+1991,12,Etelä-Savo,116,116 Eturauhassyöpä,20
+1991,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,30
+1991,13,Pohjois-Savo,115,115 Rintasyöpä,48
+1991,13,Pohjois-Savo,116,116 Eturauhassyöpä,30
+1991,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,41
+1991,14,Pohjois-Karjala,115,115 Rintasyöpä,33
+1991,14,Pohjois-Karjala,116,116 Eturauhassyöpä,7
+1991,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,18
+1991,15,Keski-Suomi,115,115 Rintasyöpä,68
+1991,15,Keski-Suomi,116,116 Eturauhassyöpä,23
+1991,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,46
+1991,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,59
+1991,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,22
+1991,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,21
+1991,17,Pohjanmaa,115,115 Rintasyöpä,75
+1991,17,Pohjanmaa,116,116 Eturauhassyöpä,38
+1991,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,21
+1991,18,Keski-Pohjanmaa,115,115 Rintasyöpä,5
+1991,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,9
+1991,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,21
+1991,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,52
+1991,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,45
+1991,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,47
+1991,20,Kainuu,115,115 Rintasyöpä,19
+1991,20,Kainuu,116,116 Eturauhassyöpä,12
+1991,20,Kainuu,130,130 Pahanlaatuinen kasvain,21
+1991,21,Lappi,115,115 Rintasyöpä,37
+1991,21,Lappi,116,116 Eturauhassyöpä,36
+1991,21,Lappi,130,130 Pahanlaatuinen kasvain,30
+1991,90,Helsinki,115,115 Rintasyöpä,176
+1991,90,Helsinki,116,116 Eturauhassyöpä,65
+1991,90,Helsinki,130,130 Pahanlaatuinen kasvain,111
+1991,91,Ahvenanmaa,115,115 Rintasyöpä,5
+1991,91,Ahvenanmaa,116,116 Eturauhassyöpä,1
+1991,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,5
+1992,00,Tuntematon,115,115 Rintasyöpä,2
+1992,00,Tuntematon,116,116 Eturauhassyöpä,0
+1992,00,Tuntematon,130,130 Pahanlaatuinen kasvain,0
+1992,01,Itä-Uusimaa,115,115 Rintasyöpä,17
+1992,01,Itä-Uusimaa,116,116 Eturauhassyöpä,4
+1992,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,18
+1992,02,Keski-Uusimaa,115,115 Rintasyöpä,37
+1992,02,Keski-Uusimaa,116,116 Eturauhassyöpä,4
+1992,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,26
+1992,03,Länsi-Uusimaa,115,115 Rintasyöpä,72
+1992,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,36
+1992,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,65
+1992,04,Vantaa ja Kerava,115,115 Rintasyöpä,37
+1992,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,7
+1992,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,28
+1992,05,Varsinais-Suomi,115,115 Rintasyöpä,93
+1992,05,Varsinais-Suomi,116,116 Eturauhassyöpä,64
+1992,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,66
+1992,06,Satakunta,115,115 Rintasyöpä,62
+1992,06,Satakunta,116,116 Eturauhassyöpä,43
+1992,06,Satakunta,130,130 Pahanlaatuinen kasvain,22
+1992,07,Kanta-Häme,115,115 Rintasyöpä,45
+1992,07,Kanta-Häme,116,116 Eturauhassyöpä,50
+1992,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,28
+1992,08,Pirkanmaa,115,115 Rintasyöpä,116
+1992,08,Pirkanmaa,116,116 Eturauhassyöpä,58
+1992,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,49
+1992,09,Päijät-Häme,115,115 Rintasyöpä,41
+1992,09,Päijät-Häme,116,116 Eturauhassyöpä,35
+1992,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,29
+1992,10,Kymenlaakso,115,115 Rintasyöpä,60
+1992,10,Kymenlaakso,116,116 Eturauhassyöpä,48
+1992,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,61
+1992,11,Etelä-Karjala,115,115 Rintasyöpä,31
+1992,11,Etelä-Karjala,116,116 Eturauhassyöpä,17
+1992,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,27
+1992,12,Etelä-Savo,115,115 Rintasyöpä,51
+1992,12,Etelä-Savo,116,116 Eturauhassyöpä,11
+1992,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,22
+1992,13,Pohjois-Savo,115,115 Rintasyöpä,66
+1992,13,Pohjois-Savo,116,116 Eturauhassyöpä,32
+1992,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,27
+1992,14,Pohjois-Karjala,115,115 Rintasyöpä,34
+1992,14,Pohjois-Karjala,116,116 Eturauhassyöpä,20
+1992,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,18
+1992,15,Keski-Suomi,115,115 Rintasyöpä,70
+1992,15,Keski-Suomi,116,116 Eturauhassyöpä,14
+1992,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,36
+1992,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,38
+1992,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,21
+1992,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,15
+1992,17,Pohjanmaa,115,115 Rintasyöpä,61
+1992,17,Pohjanmaa,116,116 Eturauhassyöpä,25
+1992,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,18
+1992,18,Keski-Pohjanmaa,115,115 Rintasyöpä,10
+1992,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,8
+1992,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,6
+1992,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,59
+1992,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,33
+1992,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,44
+1992,20,Kainuu,115,115 Rintasyöpä,16
+1992,20,Kainuu,116,116 Eturauhassyöpä,10
+1992,20,Kainuu,130,130 Pahanlaatuinen kasvain,19
+1992,21,Lappi,115,115 Rintasyöpä,36
+1992,21,Lappi,116,116 Eturauhassyöpä,24
+1992,21,Lappi,130,130 Pahanlaatuinen kasvain,12
+1992,90,Helsinki,115,115 Rintasyöpä,171
+1992,90,Helsinki,116,116 Eturauhassyöpä,73
+1992,90,Helsinki,130,130 Pahanlaatuinen kasvain,102
+1992,91,Ahvenanmaa,115,115 Rintasyöpä,6
+1992,91,Ahvenanmaa,116,116 Eturauhassyöpä,2
+1992,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,6
+1993,00,Tuntematon,115,115 Rintasyöpä,0
+1993,00,Tuntematon,116,116 Eturauhassyöpä,0
+1993,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+1993,01,Itä-Uusimaa,115,115 Rintasyöpä,21
+1993,01,Itä-Uusimaa,116,116 Eturauhassyöpä,4
+1993,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,20
+1993,02,Keski-Uusimaa,115,115 Rintasyöpä,37
+1993,02,Keski-Uusimaa,116,116 Eturauhassyöpä,17
+1993,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,27
+1993,03,Länsi-Uusimaa,115,115 Rintasyöpä,99
+1993,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,50
+1993,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,58
+1993,04,Vantaa ja Kerava,115,115 Rintasyöpä,37
+1993,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,6
+1993,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,45
+1993,05,Varsinais-Suomi,115,115 Rintasyöpä,100
+1993,05,Varsinais-Suomi,116,116 Eturauhassyöpä,57
+1993,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,55
+1993,06,Satakunta,115,115 Rintasyöpä,55
+1993,06,Satakunta,116,116 Eturauhassyöpä,37
+1993,06,Satakunta,130,130 Pahanlaatuinen kasvain,26
+1993,07,Kanta-Häme,115,115 Rintasyöpä,35
+1993,07,Kanta-Häme,116,116 Eturauhassyöpä,47
+1993,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,30
+1993,08,Pirkanmaa,115,115 Rintasyöpä,111
+1993,08,Pirkanmaa,116,116 Eturauhassyöpä,91
+1993,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,57
+1993,09,Päijät-Häme,115,115 Rintasyöpä,51
+1993,09,Päijät-Häme,116,116 Eturauhassyöpä,43
+1993,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,29
+1993,10,Kymenlaakso,115,115 Rintasyöpä,47
+1993,10,Kymenlaakso,116,116 Eturauhassyöpä,58
+1993,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,50
+1993,11,Etelä-Karjala,115,115 Rintasyöpä,32
+1993,11,Etelä-Karjala,116,116 Eturauhassyöpä,24
+1993,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,23
+1993,12,Etelä-Savo,115,115 Rintasyöpä,31
+1993,12,Etelä-Savo,116,116 Eturauhassyöpä,16
+1993,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,27
+1993,13,Pohjois-Savo,115,115 Rintasyöpä,68
+1993,13,Pohjois-Savo,116,116 Eturauhassyöpä,29
+1993,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,34
+1993,14,Pohjois-Karjala,115,115 Rintasyöpä,33
+1993,14,Pohjois-Karjala,116,116 Eturauhassyöpä,27
+1993,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,16
+1993,15,Keski-Suomi,115,115 Rintasyöpä,60
+1993,15,Keski-Suomi,116,116 Eturauhassyöpä,30
+1993,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,54
+1993,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,57
+1993,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,30
+1993,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,37
+1993,17,Pohjanmaa,115,115 Rintasyöpä,69
+1993,17,Pohjanmaa,116,116 Eturauhassyöpä,47
+1993,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,26
+1993,18,Keski-Pohjanmaa,115,115 Rintasyöpä,11
+1993,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,12
+1993,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,8
+1993,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,52
+1993,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,34
+1993,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,37
+1993,20,Kainuu,115,115 Rintasyöpä,11
+1993,20,Kainuu,116,116 Eturauhassyöpä,21
+1993,20,Kainuu,130,130 Pahanlaatuinen kasvain,15
+1993,21,Lappi,115,115 Rintasyöpä,26
+1993,21,Lappi,116,116 Eturauhassyöpä,30
+1993,21,Lappi,130,130 Pahanlaatuinen kasvain,17
+1993,90,Helsinki,115,115 Rintasyöpä,170
+1993,90,Helsinki,116,116 Eturauhassyöpä,84
+1993,90,Helsinki,130,130 Pahanlaatuinen kasvain,107
+1993,91,Ahvenanmaa,115,115 Rintasyöpä,4
+1993,91,Ahvenanmaa,116,116 Eturauhassyöpä,4
+1993,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,9
+1994,00,Tuntematon,115,115 Rintasyöpä,0
+1994,00,Tuntematon,116,116 Eturauhassyöpä,1
+1994,00,Tuntematon,130,130 Pahanlaatuinen kasvain,2
+1994,01,Itä-Uusimaa,115,115 Rintasyöpä,23
+1994,01,Itä-Uusimaa,116,116 Eturauhassyöpä,7
+1994,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,25
+1994,02,Keski-Uusimaa,115,115 Rintasyöpä,33
+1994,02,Keski-Uusimaa,116,116 Eturauhassyöpä,20
+1994,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,29
+1994,03,Länsi-Uusimaa,115,115 Rintasyöpä,100
+1994,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,49
+1994,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,84
+1994,04,Vantaa ja Kerava,115,115 Rintasyöpä,51
+1994,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,9
+1994,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,52
+1994,05,Varsinais-Suomi,115,115 Rintasyöpä,115
+1994,05,Varsinais-Suomi,116,116 Eturauhassyöpä,57
+1994,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,112
+1994,06,Satakunta,115,115 Rintasyöpä,55
+1994,06,Satakunta,116,116 Eturauhassyöpä,55
+1994,06,Satakunta,130,130 Pahanlaatuinen kasvain,56
+1994,07,Kanta-Häme,115,115 Rintasyöpä,51
+1994,07,Kanta-Häme,116,116 Eturauhassyöpä,58
+1994,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,44
+1994,08,Pirkanmaa,115,115 Rintasyöpä,143
+1994,08,Pirkanmaa,116,116 Eturauhassyöpä,96
+1994,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,105
+1994,09,Päijät-Häme,115,115 Rintasyöpä,46
+1994,09,Päijät-Häme,116,116 Eturauhassyöpä,28
+1994,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,55
+1994,10,Kymenlaakso,115,115 Rintasyöpä,66
+1994,10,Kymenlaakso,116,116 Eturauhassyöpä,55
+1994,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,72
+1994,11,Etelä-Karjala,115,115 Rintasyöpä,32
+1994,11,Etelä-Karjala,116,116 Eturauhassyöpä,45
+1994,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,32
+1994,12,Etelä-Savo,115,115 Rintasyöpä,36
+1994,12,Etelä-Savo,116,116 Eturauhassyöpä,27
+1994,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,42
+1994,13,Pohjois-Savo,115,115 Rintasyöpä,55
+1994,13,Pohjois-Savo,116,116 Eturauhassyöpä,44
+1994,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,106
+1994,14,Pohjois-Karjala,115,115 Rintasyöpä,44
+1994,14,Pohjois-Karjala,116,116 Eturauhassyöpä,26
+1994,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,42
+1994,15,Keski-Suomi,115,115 Rintasyöpä,48
+1994,15,Keski-Suomi,116,116 Eturauhassyöpä,24
+1994,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,89
+1994,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,45
+1994,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,43
+1994,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,35
+1994,17,Pohjanmaa,115,115 Rintasyöpä,57
+1994,17,Pohjanmaa,116,116 Eturauhassyöpä,43
+1994,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,51
+1994,18,Keski-Pohjanmaa,115,115 Rintasyöpä,7
+1994,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,27
+1994,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,15
+1994,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,54
+1994,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,65
+1994,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,74
+1994,20,Kainuu,115,115 Rintasyöpä,21
+1994,20,Kainuu,116,116 Eturauhassyöpä,29
+1994,20,Kainuu,130,130 Pahanlaatuinen kasvain,28
+1994,21,Lappi,115,115 Rintasyöpä,24
+1994,21,Lappi,116,116 Eturauhassyöpä,36
+1994,21,Lappi,130,130 Pahanlaatuinen kasvain,46
+1994,90,Helsinki,115,115 Rintasyöpä,213
+1994,90,Helsinki,116,116 Eturauhassyöpä,80
+1994,90,Helsinki,130,130 Pahanlaatuinen kasvain,155
+1994,91,Ahvenanmaa,115,115 Rintasyöpä,9
+1994,91,Ahvenanmaa,116,116 Eturauhassyöpä,7
+1994,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,11
+1995,00,Tuntematon,115,115 Rintasyöpä,0
+1995,00,Tuntematon,116,116 Eturauhassyöpä,0
+1995,00,Tuntematon,130,130 Pahanlaatuinen kasvain,0
+1995,01,Itä-Uusimaa,115,115 Rintasyöpä,21
+1995,01,Itä-Uusimaa,116,116 Eturauhassyöpä,18
+1995,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,36
+1995,02,Keski-Uusimaa,115,115 Rintasyöpä,39
+1995,02,Keski-Uusimaa,116,116 Eturauhassyöpä,18
+1995,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,37
+1995,03,Länsi-Uusimaa,115,115 Rintasyöpä,93
+1995,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,57
+1995,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,88
+1995,04,Vantaa ja Kerava,115,115 Rintasyöpä,53
+1995,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,24
+1995,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,52
+1995,05,Varsinais-Suomi,115,115 Rintasyöpä,106
+1995,05,Varsinais-Suomi,116,116 Eturauhassyöpä,66
+1995,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,138
+1995,06,Satakunta,115,115 Rintasyöpä,67
+1995,06,Satakunta,116,116 Eturauhassyöpä,48
+1995,06,Satakunta,130,130 Pahanlaatuinen kasvain,70
+1995,07,Kanta-Häme,115,115 Rintasyöpä,54
+1995,07,Kanta-Häme,116,116 Eturauhassyöpä,65
+1995,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,38
+1995,08,Pirkanmaa,115,115 Rintasyöpä,151
+1995,08,Pirkanmaa,116,116 Eturauhassyöpä,149
+1995,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,133
+1995,09,Päijät-Häme,115,115 Rintasyöpä,46
+1995,09,Päijät-Häme,116,116 Eturauhassyöpä,54
+1995,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,49
+1995,10,Kymenlaakso,115,115 Rintasyöpä,51
+1995,10,Kymenlaakso,116,116 Eturauhassyöpä,50
+1995,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,88
+1995,11,Etelä-Karjala,115,115 Rintasyöpä,39
+1995,11,Etelä-Karjala,116,116 Eturauhassyöpä,47
+1995,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,44
+1995,12,Etelä-Savo,115,115 Rintasyöpä,37
+1995,12,Etelä-Savo,116,116 Eturauhassyöpä,24
+1995,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,43
+1995,13,Pohjois-Savo,115,115 Rintasyöpä,70
+1995,13,Pohjois-Savo,116,116 Eturauhassyöpä,60
+1995,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,82
+1995,14,Pohjois-Karjala,115,115 Rintasyöpä,33
+1995,14,Pohjois-Karjala,116,116 Eturauhassyöpä,38
+1995,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,54
+1995,15,Keski-Suomi,115,115 Rintasyöpä,62
+1995,15,Keski-Suomi,116,116 Eturauhassyöpä,25
+1995,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,81
+1995,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,56
+1995,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,71
+1995,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,25
+1995,17,Pohjanmaa,115,115 Rintasyöpä,48
+1995,17,Pohjanmaa,116,116 Eturauhassyöpä,70
+1995,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,47
+1995,18,Keski-Pohjanmaa,115,115 Rintasyöpä,14
+1995,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,38
+1995,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,14
+1995,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,66
+1995,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,67
+1995,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,67
+1995,20,Kainuu,115,115 Rintasyöpä,14
+1995,20,Kainuu,116,116 Eturauhassyöpä,35
+1995,20,Kainuu,130,130 Pahanlaatuinen kasvain,19
+1995,21,Lappi,115,115 Rintasyöpä,43
+1995,21,Lappi,116,116 Eturauhassyöpä,57
+1995,21,Lappi,130,130 Pahanlaatuinen kasvain,41
+1995,90,Helsinki,115,115 Rintasyöpä,198
+1995,90,Helsinki,116,116 Eturauhassyöpä,103
+1995,90,Helsinki,130,130 Pahanlaatuinen kasvain,177
+1995,91,Ahvenanmaa,115,115 Rintasyöpä,5
+1995,91,Ahvenanmaa,116,116 Eturauhassyöpä,4
+1995,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,12
+1996,00,Tuntematon,115,115 Rintasyöpä,1
+1996,00,Tuntematon,116,116 Eturauhassyöpä,3
+1996,00,Tuntematon,130,130 Pahanlaatuinen kasvain,2
+1996,01,Itä-Uusimaa,115,115 Rintasyöpä,28
+1996,01,Itä-Uusimaa,116,116 Eturauhassyöpä,16
+1996,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,21
+1996,02,Keski-Uusimaa,115,115 Rintasyöpä,45
+1996,02,Keski-Uusimaa,116,116 Eturauhassyöpä,32
+1996,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,44
+1996,03,Länsi-Uusimaa,115,115 Rintasyöpä,118
+1996,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,72
+1996,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,111
+1996,04,Vantaa ja Kerava,115,115 Rintasyöpä,48
+1996,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,38
+1996,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,51
+1996,05,Varsinais-Suomi,115,115 Rintasyöpä,120
+1996,05,Varsinais-Suomi,116,116 Eturauhassyöpä,79
+1996,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,141
+1996,06,Satakunta,115,115 Rintasyöpä,70
+1996,06,Satakunta,116,116 Eturauhassyöpä,52
+1996,06,Satakunta,130,130 Pahanlaatuinen kasvain,97
+1996,07,Kanta-Häme,115,115 Rintasyöpä,55
+1996,07,Kanta-Häme,116,116 Eturauhassyöpä,56
+1996,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,54
+1996,08,Pirkanmaa,115,115 Rintasyöpä,132
+1996,08,Pirkanmaa,116,116 Eturauhassyöpä,164
+1996,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,148
+1996,09,Päijät-Häme,115,115 Rintasyöpä,51
+1996,09,Päijät-Häme,116,116 Eturauhassyöpä,50
+1996,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,56
+1996,10,Kymenlaakso,115,115 Rintasyöpä,56
+1996,10,Kymenlaakso,116,116 Eturauhassyöpä,70
+1996,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,96
+1996,11,Etelä-Karjala,115,115 Rintasyöpä,25
+1996,11,Etelä-Karjala,116,116 Eturauhassyöpä,55
+1996,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,40
+1996,12,Etelä-Savo,115,115 Rintasyöpä,53
+1996,12,Etelä-Savo,116,116 Eturauhassyöpä,22
+1996,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,36
+1996,13,Pohjois-Savo,115,115 Rintasyöpä,64
+1996,13,Pohjois-Savo,116,116 Eturauhassyöpä,58
+1996,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,93
+1996,14,Pohjois-Karjala,115,115 Rintasyöpä,40
+1996,14,Pohjois-Karjala,116,116 Eturauhassyöpä,25
+1996,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,50
+1996,15,Keski-Suomi,115,115 Rintasyöpä,64
+1996,15,Keski-Suomi,116,116 Eturauhassyöpä,35
+1996,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,102
+1996,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,54
+1996,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,78
+1996,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,36
+1996,17,Pohjanmaa,115,115 Rintasyöpä,52
+1996,17,Pohjanmaa,116,116 Eturauhassyöpä,79
+1996,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,50
+1996,18,Keski-Pohjanmaa,115,115 Rintasyöpä,5
+1996,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,32
+1996,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,13
+1996,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,55
+1996,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,105
+1996,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,99
+1996,20,Kainuu,115,115 Rintasyöpä,9
+1996,20,Kainuu,116,116 Eturauhassyöpä,31
+1996,20,Kainuu,130,130 Pahanlaatuinen kasvain,28
+1996,21,Lappi,115,115 Rintasyöpä,36
+1996,21,Lappi,116,116 Eturauhassyöpä,64
+1996,21,Lappi,130,130 Pahanlaatuinen kasvain,47
+1996,90,Helsinki,115,115 Rintasyöpä,203
+1996,90,Helsinki,116,116 Eturauhassyöpä,109
+1996,90,Helsinki,130,130 Pahanlaatuinen kasvain,157
+1996,91,Ahvenanmaa,115,115 Rintasyöpä,12
+1996,91,Ahvenanmaa,116,116 Eturauhassyöpä,11
+1996,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,9
+1997,00,Tuntematon,115,115 Rintasyöpä,5
+1997,00,Tuntematon,116,116 Eturauhassyöpä,2
+1997,00,Tuntematon,130,130 Pahanlaatuinen kasvain,2
+1997,01,Itä-Uusimaa,115,115 Rintasyöpä,22
+1997,01,Itä-Uusimaa,116,116 Eturauhassyöpä,16
+1997,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,28
+1997,02,Keski-Uusimaa,115,115 Rintasyöpä,28
+1997,02,Keski-Uusimaa,116,116 Eturauhassyöpä,23
+1997,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,41
+1997,03,Länsi-Uusimaa,115,115 Rintasyöpä,123
+1997,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,82
+1997,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,97
+1997,04,Vantaa ja Kerava,115,115 Rintasyöpä,63
+1997,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,22
+1997,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,70
+1997,05,Varsinais-Suomi,115,115 Rintasyöpä,99
+1997,05,Varsinais-Suomi,116,116 Eturauhassyöpä,89
+1997,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,226
+1997,06,Satakunta,115,115 Rintasyöpä,89
+1997,06,Satakunta,116,116 Eturauhassyöpä,43
+1997,06,Satakunta,130,130 Pahanlaatuinen kasvain,106
+1997,07,Kanta-Häme,115,115 Rintasyöpä,58
+1997,07,Kanta-Häme,116,116 Eturauhassyöpä,73
+1997,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,74
+1997,08,Pirkanmaa,115,115 Rintasyöpä,151
+1997,08,Pirkanmaa,116,116 Eturauhassyöpä,140
+1997,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,134
+1997,09,Päijät-Häme,115,115 Rintasyöpä,70
+1997,09,Päijät-Häme,116,116 Eturauhassyöpä,58
+1997,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,67
+1997,10,Kymenlaakso,115,115 Rintasyöpä,53
+1997,10,Kymenlaakso,116,116 Eturauhassyöpä,72
+1997,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,131
+1997,11,Etelä-Karjala,115,115 Rintasyöpä,37
+1997,11,Etelä-Karjala,116,116 Eturauhassyöpä,33
+1997,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,36
+1997,12,Etelä-Savo,115,115 Rintasyöpä,31
+1997,12,Etelä-Savo,116,116 Eturauhassyöpä,28
+1997,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,45
+1997,13,Pohjois-Savo,115,115 Rintasyöpä,66
+1997,13,Pohjois-Savo,116,116 Eturauhassyöpä,75
+1997,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,115
+1997,14,Pohjois-Karjala,115,115 Rintasyöpä,33
+1997,14,Pohjois-Karjala,116,116 Eturauhassyöpä,30
+1997,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,67
+1997,15,Keski-Suomi,115,115 Rintasyöpä,75
+1997,15,Keski-Suomi,116,116 Eturauhassyöpä,53
+1997,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,139
+1997,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,60
+1997,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,88
+1997,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,51
+1997,17,Pohjanmaa,115,115 Rintasyöpä,42
+1997,17,Pohjanmaa,116,116 Eturauhassyöpä,42
+1997,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,68
+1997,18,Keski-Pohjanmaa,115,115 Rintasyöpä,9
+1997,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,26
+1997,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,23
+1997,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,65
+1997,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,106
+1997,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,98
+1997,20,Kainuu,115,115 Rintasyöpä,23
+1997,20,Kainuu,116,116 Eturauhassyöpä,26
+1997,20,Kainuu,130,130 Pahanlaatuinen kasvain,28
+1997,21,Lappi,115,115 Rintasyöpä,36
+1997,21,Lappi,116,116 Eturauhassyöpä,66
+1997,21,Lappi,130,130 Pahanlaatuinen kasvain,46
+1997,90,Helsinki,115,115 Rintasyöpä,202
+1997,90,Helsinki,116,116 Eturauhassyöpä,119
+1997,90,Helsinki,130,130 Pahanlaatuinen kasvain,194
+1997,91,Ahvenanmaa,115,115 Rintasyöpä,5
+1997,91,Ahvenanmaa,116,116 Eturauhassyöpä,20
+1997,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,15
+1998,00,Tuntematon,115,115 Rintasyöpä,3
+1998,00,Tuntematon,116,116 Eturauhassyöpä,4
+1998,00,Tuntematon,130,130 Pahanlaatuinen kasvain,3
+1998,01,Itä-Uusimaa,115,115 Rintasyöpä,43
+1998,01,Itä-Uusimaa,116,116 Eturauhassyöpä,19
+1998,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,31
+1998,02,Keski-Uusimaa,115,115 Rintasyöpä,55
+1998,02,Keski-Uusimaa,116,116 Eturauhassyöpä,33
+1998,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,45
+1998,03,Länsi-Uusimaa,115,115 Rintasyöpä,99
+1998,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,94
+1998,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,115
+1998,04,Vantaa ja Kerava,115,115 Rintasyöpä,65
+1998,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,38
+1998,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,63
+1998,05,Varsinais-Suomi,115,115 Rintasyöpä,146
+1998,05,Varsinais-Suomi,116,116 Eturauhassyöpä,163
+1998,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,217
+1998,06,Satakunta,115,115 Rintasyöpä,75
+1998,06,Satakunta,116,116 Eturauhassyöpä,90
+1998,06,Satakunta,130,130 Pahanlaatuinen kasvain,137
+1998,07,Kanta-Häme,115,115 Rintasyöpä,65
+1998,07,Kanta-Häme,116,116 Eturauhassyöpä,51
+1998,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,72
+1998,08,Pirkanmaa,115,115 Rintasyöpä,167
+1998,08,Pirkanmaa,116,116 Eturauhassyöpä,144
+1998,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,176
+1998,09,Päijät-Häme,115,115 Rintasyöpä,62
+1998,09,Päijät-Häme,116,116 Eturauhassyöpä,58
+1998,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,70
+1998,10,Kymenlaakso,115,115 Rintasyöpä,63
+1998,10,Kymenlaakso,116,116 Eturauhassyöpä,97
+1998,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,108
+1998,11,Etelä-Karjala,115,115 Rintasyöpä,33
+1998,11,Etelä-Karjala,116,116 Eturauhassyöpä,30
+1998,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,51
+1998,12,Etelä-Savo,115,115 Rintasyöpä,39
+1998,12,Etelä-Savo,116,116 Eturauhassyöpä,39
+1998,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,86
+1998,13,Pohjois-Savo,115,115 Rintasyöpä,73
+1998,13,Pohjois-Savo,116,116 Eturauhassyöpä,107
+1998,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,142
+1998,14,Pohjois-Karjala,115,115 Rintasyöpä,41
+1998,14,Pohjois-Karjala,116,116 Eturauhassyöpä,35
+1998,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,73
+1998,15,Keski-Suomi,115,115 Rintasyöpä,48
+1998,15,Keski-Suomi,116,116 Eturauhassyöpä,63
+1998,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,134
+1998,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,57
+1998,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,93
+1998,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,93
+1998,17,Pohjanmaa,115,115 Rintasyöpä,47
+1998,17,Pohjanmaa,116,116 Eturauhassyöpä,37
+1998,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,68
+1998,18,Keski-Pohjanmaa,115,115 Rintasyöpä,24
+1998,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,30
+1998,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,37
+1998,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,53
+1998,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,114
+1998,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,106
+1998,20,Kainuu,115,115 Rintasyöpä,30
+1998,20,Kainuu,116,116 Eturauhassyöpä,25
+1998,20,Kainuu,130,130 Pahanlaatuinen kasvain,31
+1998,21,Lappi,115,115 Rintasyöpä,44
+1998,21,Lappi,116,116 Eturauhassyöpä,72
+1998,21,Lappi,130,130 Pahanlaatuinen kasvain,78
+1998,90,Helsinki,115,115 Rintasyöpä,224
+1998,90,Helsinki,116,116 Eturauhassyöpä,175
+1998,90,Helsinki,130,130 Pahanlaatuinen kasvain,228
+1998,91,Ahvenanmaa,115,115 Rintasyöpä,7
+1998,91,Ahvenanmaa,116,116 Eturauhassyöpä,10
+1998,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,13
+1999,00,Tuntematon,115,115 Rintasyöpä,1
+1999,00,Tuntematon,116,116 Eturauhassyöpä,3
+1999,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+1999,01,Itä-Uusimaa,115,115 Rintasyöpä,25
+1999,01,Itä-Uusimaa,116,116 Eturauhassyöpä,22
+1999,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,31
+1999,02,Keski-Uusimaa,115,115 Rintasyöpä,58
+1999,02,Keski-Uusimaa,116,116 Eturauhassyöpä,50
+1999,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,55
+1999,03,Länsi-Uusimaa,115,115 Rintasyöpä,123
+1999,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,124
+1999,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,134
+1999,04,Vantaa ja Kerava,115,115 Rintasyöpä,64
+1999,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,53
+1999,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,70
+1999,05,Varsinais-Suomi,115,115 Rintasyöpä,147
+1999,05,Varsinais-Suomi,116,116 Eturauhassyöpä,131
+1999,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,204
+1999,06,Satakunta,115,115 Rintasyöpä,87
+1999,06,Satakunta,116,116 Eturauhassyöpä,73
+1999,06,Satakunta,130,130 Pahanlaatuinen kasvain,137
+1999,07,Kanta-Häme,115,115 Rintasyöpä,57
+1999,07,Kanta-Häme,116,116 Eturauhassyöpä,79
+1999,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,59
+1999,08,Pirkanmaa,115,115 Rintasyöpä,149
+1999,08,Pirkanmaa,116,116 Eturauhassyöpä,178
+1999,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,170
+1999,09,Päijät-Häme,115,115 Rintasyöpä,59
+1999,09,Päijät-Häme,116,116 Eturauhassyöpä,69
+1999,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,98
+1999,10,Kymenlaakso,115,115 Rintasyöpä,64
+1999,10,Kymenlaakso,116,116 Eturauhassyöpä,89
+1999,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,135
+1999,11,Etelä-Karjala,115,115 Rintasyöpä,32
+1999,11,Etelä-Karjala,116,116 Eturauhassyöpä,56
+1999,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,49
+1999,12,Etelä-Savo,115,115 Rintasyöpä,44
+1999,12,Etelä-Savo,116,116 Eturauhassyöpä,47
+1999,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,86
+1999,13,Pohjois-Savo,115,115 Rintasyöpä,62
+1999,13,Pohjois-Savo,116,116 Eturauhassyöpä,98
+1999,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,138
+1999,14,Pohjois-Karjala,115,115 Rintasyöpä,37
+1999,14,Pohjois-Karjala,116,116 Eturauhassyöpä,43
+1999,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,90
+1999,15,Keski-Suomi,115,115 Rintasyöpä,74
+1999,15,Keski-Suomi,116,116 Eturauhassyöpä,70
+1999,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,149
+1999,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,52
+1999,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,121
+1999,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,79
+1999,17,Pohjanmaa,115,115 Rintasyöpä,41
+1999,17,Pohjanmaa,116,116 Eturauhassyöpä,79
+1999,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,42
+1999,18,Keski-Pohjanmaa,115,115 Rintasyöpä,15
+1999,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,27
+1999,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,21
+1999,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,66
+1999,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,124
+1999,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,126
+1999,20,Kainuu,115,115 Rintasyöpä,18
+1999,20,Kainuu,116,116 Eturauhassyöpä,21
+1999,20,Kainuu,130,130 Pahanlaatuinen kasvain,37
+1999,21,Lappi,115,115 Rintasyöpä,53
+1999,21,Lappi,116,116 Eturauhassyöpä,83
+1999,21,Lappi,130,130 Pahanlaatuinen kasvain,85
+1999,90,Helsinki,115,115 Rintasyöpä,197
+1999,90,Helsinki,116,116 Eturauhassyöpä,195
+1999,90,Helsinki,130,130 Pahanlaatuinen kasvain,227
+1999,91,Ahvenanmaa,115,115 Rintasyöpä,11
+1999,91,Ahvenanmaa,116,116 Eturauhassyöpä,17
+1999,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,18
+2000,00,Tuntematon,115,115 Rintasyöpä,2
+2000,00,Tuntematon,116,116 Eturauhassyöpä,3
+2000,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+2000,01,Itä-Uusimaa,115,115 Rintasyöpä,27
+2000,01,Itä-Uusimaa,116,116 Eturauhassyöpä,25
+2000,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,38
+2000,02,Keski-Uusimaa,115,115 Rintasyöpä,76
+2000,02,Keski-Uusimaa,116,116 Eturauhassyöpä,46
+2000,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,74
+2000,03,Länsi-Uusimaa,115,115 Rintasyöpä,173
+2000,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,132
+2000,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,123
+2000,04,Vantaa ja Kerava,115,115 Rintasyöpä,71
+2000,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,48
+2000,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,81
+2000,05,Varsinais-Suomi,115,115 Rintasyöpä,146
+2000,05,Varsinais-Suomi,116,116 Eturauhassyöpä,165
+2000,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,197
+2000,06,Satakunta,115,115 Rintasyöpä,114
+2000,06,Satakunta,116,116 Eturauhassyöpä,78
+2000,06,Satakunta,130,130 Pahanlaatuinen kasvain,140
+2000,07,Kanta-Häme,115,115 Rintasyöpä,65
+2000,07,Kanta-Häme,116,116 Eturauhassyöpä,86
+2000,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,73
+2000,08,Pirkanmaa,115,115 Rintasyöpä,150
+2000,08,Pirkanmaa,116,116 Eturauhassyöpä,221
+2000,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,193
+2000,09,Päijät-Häme,115,115 Rintasyöpä,60
+2000,09,Päijät-Häme,116,116 Eturauhassyöpä,76
+2000,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,83
+2000,10,Kymenlaakso,115,115 Rintasyöpä,75
+2000,10,Kymenlaakso,116,116 Eturauhassyöpä,116
+2000,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,150
+2000,11,Etelä-Karjala,115,115 Rintasyöpä,40
+2000,11,Etelä-Karjala,116,116 Eturauhassyöpä,61
+2000,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,51
+2000,12,Etelä-Savo,115,115 Rintasyöpä,56
+2000,12,Etelä-Savo,116,116 Eturauhassyöpä,60
+2000,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,99
+2000,13,Pohjois-Savo,115,115 Rintasyöpä,75
+2000,13,Pohjois-Savo,116,116 Eturauhassyöpä,99
+2000,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,126
+2000,14,Pohjois-Karjala,115,115 Rintasyöpä,36
+2000,14,Pohjois-Karjala,116,116 Eturauhassyöpä,31
+2000,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,72
+2000,15,Keski-Suomi,115,115 Rintasyöpä,102
+2000,15,Keski-Suomi,116,116 Eturauhassyöpä,107
+2000,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,152
+2000,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,81
+2000,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,125
+2000,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,83
+2000,17,Pohjanmaa,115,115 Rintasyöpä,35
+2000,17,Pohjanmaa,116,116 Eturauhassyöpä,90
+2000,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,66
+2000,18,Keski-Pohjanmaa,115,115 Rintasyöpä,16
+2000,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,37
+2000,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,21
+2000,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,89
+2000,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,130
+2000,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,95
+2000,20,Kainuu,115,115 Rintasyöpä,20
+2000,20,Kainuu,116,116 Eturauhassyöpä,26
+2000,20,Kainuu,130,130 Pahanlaatuinen kasvain,23
+2000,21,Lappi,115,115 Rintasyöpä,39
+2000,21,Lappi,116,116 Eturauhassyöpä,93
+2000,21,Lappi,130,130 Pahanlaatuinen kasvain,76
+2000,90,Helsinki,115,115 Rintasyöpä,300
+2000,90,Helsinki,116,116 Eturauhassyöpä,235
+2000,90,Helsinki,130,130 Pahanlaatuinen kasvain,238
+2000,91,Ahvenanmaa,115,115 Rintasyöpä,11
+2000,91,Ahvenanmaa,116,116 Eturauhassyöpä,21
+2000,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,9
+2001,00,Tuntematon,115,115 Rintasyöpä,5
+2001,00,Tuntematon,116,116 Eturauhassyöpä,11
+2001,00,Tuntematon,130,130 Pahanlaatuinen kasvain,3
+2001,01,Itä-Uusimaa,115,115 Rintasyöpä,44
+2001,01,Itä-Uusimaa,116,116 Eturauhassyöpä,40
+2001,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,31
+2001,02,Keski-Uusimaa,115,115 Rintasyöpä,48
+2001,02,Keski-Uusimaa,116,116 Eturauhassyöpä,55
+2001,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,87
+2001,03,Länsi-Uusimaa,115,115 Rintasyöpä,175
+2001,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,151
+2001,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,134
+2001,04,Vantaa ja Kerava,115,115 Rintasyöpä,94
+2001,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,50
+2001,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,86
+2001,05,Varsinais-Suomi,115,115 Rintasyöpä,169
+2001,05,Varsinais-Suomi,116,116 Eturauhassyöpä,190
+2001,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,253
+2001,06,Satakunta,115,115 Rintasyöpä,94
+2001,06,Satakunta,116,116 Eturauhassyöpä,112
+2001,06,Satakunta,130,130 Pahanlaatuinen kasvain,140
+2001,07,Kanta-Häme,115,115 Rintasyöpä,63
+2001,07,Kanta-Häme,116,116 Eturauhassyöpä,104
+2001,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,57
+2001,08,Pirkanmaa,115,115 Rintasyöpä,186
+2001,08,Pirkanmaa,116,116 Eturauhassyöpä,298
+2001,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,213
+2001,09,Päijät-Häme,115,115 Rintasyöpä,93
+2001,09,Päijät-Häme,116,116 Eturauhassyöpä,111
+2001,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,95
+2001,10,Kymenlaakso,115,115 Rintasyöpä,82
+2001,10,Kymenlaakso,116,116 Eturauhassyöpä,113
+2001,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,144
+2001,11,Etelä-Karjala,115,115 Rintasyöpä,41
+2001,11,Etelä-Karjala,116,116 Eturauhassyöpä,68
+2001,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,41
+2001,12,Etelä-Savo,115,115 Rintasyöpä,84
+2001,12,Etelä-Savo,116,116 Eturauhassyöpä,77
+2001,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,102
+2001,13,Pohjois-Savo,115,115 Rintasyöpä,92
+2001,13,Pohjois-Savo,116,116 Eturauhassyöpä,115
+2001,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,125
+2001,14,Pohjois-Karjala,115,115 Rintasyöpä,76
+2001,14,Pohjois-Karjala,116,116 Eturauhassyöpä,49
+2001,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,87
+2001,15,Keski-Suomi,115,115 Rintasyöpä,117
+2001,15,Keski-Suomi,116,116 Eturauhassyöpä,136
+2001,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,167
+2001,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,87
+2001,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,176
+2001,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,82
+2001,17,Pohjanmaa,115,115 Rintasyöpä,41
+2001,17,Pohjanmaa,116,116 Eturauhassyöpä,106
+2001,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,79
+2001,18,Keski-Pohjanmaa,115,115 Rintasyöpä,33
+2001,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,27
+2001,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,17
+2001,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,101
+2001,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,115
+2001,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,104
+2001,20,Kainuu,115,115 Rintasyöpä,22
+2001,20,Kainuu,116,116 Eturauhassyöpä,34
+2001,20,Kainuu,130,130 Pahanlaatuinen kasvain,40
+2001,21,Lappi,115,115 Rintasyöpä,74
+2001,21,Lappi,116,116 Eturauhassyöpä,78
+2001,21,Lappi,130,130 Pahanlaatuinen kasvain,88
+2001,90,Helsinki,115,115 Rintasyöpä,295
+2001,90,Helsinki,116,116 Eturauhassyöpä,229
+2001,90,Helsinki,130,130 Pahanlaatuinen kasvain,282
+2001,91,Ahvenanmaa,115,115 Rintasyöpä,14
+2001,91,Ahvenanmaa,116,116 Eturauhassyöpä,30
+2001,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,16
+2002,00,Tuntematon,115,115 Rintasyöpä,6
+2002,00,Tuntematon,116,116 Eturauhassyöpä,14
+2002,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+2002,01,Itä-Uusimaa,115,115 Rintasyöpä,50
+2002,01,Itä-Uusimaa,116,116 Eturauhassyöpä,37
+2002,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,36
+2002,02,Keski-Uusimaa,115,115 Rintasyöpä,71
+2002,02,Keski-Uusimaa,116,116 Eturauhassyöpä,62
+2002,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,83
+2002,03,Länsi-Uusimaa,115,115 Rintasyöpä,198
+2002,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,197
+2002,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,119
+2002,04,Vantaa ja Kerava,115,115 Rintasyöpä,110
+2002,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,74
+2002,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,67
+2002,05,Varsinais-Suomi,115,115 Rintasyöpä,185
+2002,05,Varsinais-Suomi,116,116 Eturauhassyöpä,148
+2002,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,256
+2002,06,Satakunta,115,115 Rintasyöpä,110
+2002,06,Satakunta,116,116 Eturauhassyöpä,132
+2002,06,Satakunta,130,130 Pahanlaatuinen kasvain,134
+2002,07,Kanta-Häme,115,115 Rintasyöpä,84
+2002,07,Kanta-Häme,116,116 Eturauhassyöpä,86
+2002,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,123
+2002,08,Pirkanmaa,115,115 Rintasyöpä,215
+2002,08,Pirkanmaa,116,116 Eturauhassyöpä,305
+2002,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,266
+2002,09,Päijät-Häme,115,115 Rintasyöpä,113
+2002,09,Päijät-Häme,116,116 Eturauhassyöpä,130
+2002,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,145
+2002,10,Kymenlaakso,115,115 Rintasyöpä,104
+2002,10,Kymenlaakso,116,116 Eturauhassyöpä,140
+2002,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,130
+2002,11,Etelä-Karjala,115,115 Rintasyöpä,41
+2002,11,Etelä-Karjala,116,116 Eturauhassyöpä,55
+2002,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,55
+2002,12,Etelä-Savo,115,115 Rintasyöpä,79
+2002,12,Etelä-Savo,116,116 Eturauhassyöpä,79
+2002,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,103
+2002,13,Pohjois-Savo,115,115 Rintasyöpä,103
+2002,13,Pohjois-Savo,116,116 Eturauhassyöpä,115
+2002,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,124
+2002,14,Pohjois-Karjala,115,115 Rintasyöpä,64
+2002,14,Pohjois-Karjala,116,116 Eturauhassyöpä,52
+2002,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,112
+2002,15,Keski-Suomi,115,115 Rintasyöpä,96
+2002,15,Keski-Suomi,116,116 Eturauhassyöpä,141
+2002,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,181
+2002,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,92
+2002,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,159
+2002,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,101
+2002,17,Pohjanmaa,115,115 Rintasyöpä,61
+2002,17,Pohjanmaa,116,116 Eturauhassyöpä,117
+2002,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,84
+2002,18,Keski-Pohjanmaa,115,115 Rintasyöpä,24
+2002,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,33
+2002,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,39
+2002,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,105
+2002,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,111
+2002,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,108
+2002,20,Kainuu,115,115 Rintasyöpä,30
+2002,20,Kainuu,116,116 Eturauhassyöpä,30
+2002,20,Kainuu,130,130 Pahanlaatuinen kasvain,41
+2002,21,Lappi,115,115 Rintasyöpä,67
+2002,21,Lappi,116,116 Eturauhassyöpä,101
+2002,21,Lappi,130,130 Pahanlaatuinen kasvain,77
+2002,90,Helsinki,115,115 Rintasyöpä,313
+2002,90,Helsinki,116,116 Eturauhassyöpä,246
+2002,90,Helsinki,130,130 Pahanlaatuinen kasvain,236
+2002,91,Ahvenanmaa,115,115 Rintasyöpä,18
+2002,91,Ahvenanmaa,116,116 Eturauhassyöpä,15
+2002,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,15
+2003,00,Tuntematon,115,115 Rintasyöpä,5
+2003,00,Tuntematon,116,116 Eturauhassyöpä,18
+2003,00,Tuntematon,130,130 Pahanlaatuinen kasvain,4
+2003,01,Itä-Uusimaa,115,115 Rintasyöpä,47
+2003,01,Itä-Uusimaa,116,116 Eturauhassyöpä,42
+2003,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,44
+2003,02,Keski-Uusimaa,115,115 Rintasyöpä,59
+2003,02,Keski-Uusimaa,116,116 Eturauhassyöpä,61
+2003,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,72
+2003,03,Länsi-Uusimaa,115,115 Rintasyöpä,179
+2003,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,158
+2003,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,147
+2003,04,Vantaa ja Kerava,115,115 Rintasyöpä,112
+2003,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,73
+2003,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,99
+2003,05,Varsinais-Suomi,115,115 Rintasyöpä,221
+2003,05,Varsinais-Suomi,116,116 Eturauhassyöpä,207
+2003,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,241
+2003,06,Satakunta,115,115 Rintasyöpä,117
+2003,06,Satakunta,116,116 Eturauhassyöpä,168
+2003,06,Satakunta,130,130 Pahanlaatuinen kasvain,135
+2003,07,Kanta-Häme,115,115 Rintasyöpä,94
+2003,07,Kanta-Häme,116,116 Eturauhassyöpä,112
+2003,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,124
+2003,08,Pirkanmaa,115,115 Rintasyöpä,226
+2003,08,Pirkanmaa,116,116 Eturauhassyöpä,297
+2003,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,279
+2003,09,Päijät-Häme,115,115 Rintasyöpä,141
+2003,09,Päijät-Häme,116,116 Eturauhassyöpä,134
+2003,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,124
+2003,10,Kymenlaakso,115,115 Rintasyöpä,116
+2003,10,Kymenlaakso,116,116 Eturauhassyöpä,123
+2003,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,167
+2003,11,Etelä-Karjala,115,115 Rintasyöpä,60
+2003,11,Etelä-Karjala,116,116 Eturauhassyöpä,54
+2003,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,89
+2003,12,Etelä-Savo,115,115 Rintasyöpä,63
+2003,12,Etelä-Savo,116,116 Eturauhassyöpä,72
+2003,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,98
+2003,13,Pohjois-Savo,115,115 Rintasyöpä,99
+2003,13,Pohjois-Savo,116,116 Eturauhassyöpä,84
+2003,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,123
+2003,14,Pohjois-Karjala,115,115 Rintasyöpä,58
+2003,14,Pohjois-Karjala,116,116 Eturauhassyöpä,46
+2003,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,74
+2003,15,Keski-Suomi,115,115 Rintasyöpä,104
+2003,15,Keski-Suomi,116,116 Eturauhassyöpä,131
+2003,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,180
+2003,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,101
+2003,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,193
+2003,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,109
+2003,17,Pohjanmaa,115,115 Rintasyöpä,59
+2003,17,Pohjanmaa,116,116 Eturauhassyöpä,105
+2003,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,89
+2003,18,Keski-Pohjanmaa,115,115 Rintasyöpä,31
+2003,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,31
+2003,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,22
+2003,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,89
+2003,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,154
+2003,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,111
+2003,20,Kainuu,115,115 Rintasyöpä,24
+2003,20,Kainuu,116,116 Eturauhassyöpä,51
+2003,20,Kainuu,130,130 Pahanlaatuinen kasvain,32
+2003,21,Lappi,115,115 Rintasyöpä,72
+2003,21,Lappi,116,116 Eturauhassyöpä,122
+2003,21,Lappi,130,130 Pahanlaatuinen kasvain,72
+2003,90,Helsinki,115,115 Rintasyöpä,335
+2003,90,Helsinki,116,116 Eturauhassyöpä,221
+2003,90,Helsinki,130,130 Pahanlaatuinen kasvain,274
+2003,91,Ahvenanmaa,115,115 Rintasyöpä,13
+2003,91,Ahvenanmaa,116,116 Eturauhassyöpä,24
+2003,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,13
+2004,00,Tuntematon,115,115 Rintasyöpä,7
+2004,00,Tuntematon,116,116 Eturauhassyöpä,23
+2004,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+2004,01,Itä-Uusimaa,115,115 Rintasyöpä,40
+2004,01,Itä-Uusimaa,116,116 Eturauhassyöpä,40
+2004,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,47
+2004,02,Keski-Uusimaa,115,115 Rintasyöpä,77
+2004,02,Keski-Uusimaa,116,116 Eturauhassyöpä,73
+2004,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,114
+2004,03,Länsi-Uusimaa,115,115 Rintasyöpä,217
+2004,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,173
+2004,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,234
+2004,04,Vantaa ja Kerava,115,115 Rintasyöpä,101
+2004,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,91
+2004,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,138
+2004,05,Varsinais-Suomi,115,115 Rintasyöpä,243
+2004,05,Varsinais-Suomi,116,116 Eturauhassyöpä,227
+2004,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,317
+2004,06,Satakunta,115,115 Rintasyöpä,131
+2004,06,Satakunta,116,116 Eturauhassyöpä,157
+2004,06,Satakunta,130,130 Pahanlaatuinen kasvain,150
+2004,07,Kanta-Häme,115,115 Rintasyöpä,95
+2004,07,Kanta-Häme,116,116 Eturauhassyöpä,108
+2004,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,124
+2004,08,Pirkanmaa,115,115 Rintasyöpä,291
+2004,08,Pirkanmaa,116,116 Eturauhassyöpä,326
+2004,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,294
+2004,09,Päijät-Häme,115,115 Rintasyöpä,144
+2004,09,Päijät-Häme,116,116 Eturauhassyöpä,111
+2004,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,155
+2004,10,Kymenlaakso,115,115 Rintasyöpä,94
+2004,10,Kymenlaakso,116,116 Eturauhassyöpä,158
+2004,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,193
+2004,11,Etelä-Karjala,115,115 Rintasyöpä,61
+2004,11,Etelä-Karjala,116,116 Eturauhassyöpä,60
+2004,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,76
+2004,12,Etelä-Savo,115,115 Rintasyöpä,77
+2004,12,Etelä-Savo,116,116 Eturauhassyöpä,89
+2004,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,128
+2004,13,Pohjois-Savo,115,115 Rintasyöpä,112
+2004,13,Pohjois-Savo,116,116 Eturauhassyöpä,141
+2004,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,158
+2004,14,Pohjois-Karjala,115,115 Rintasyöpä,94
+2004,14,Pohjois-Karjala,116,116 Eturauhassyöpä,56
+2004,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,85
+2004,15,Keski-Suomi,115,115 Rintasyöpä,125
+2004,15,Keski-Suomi,116,116 Eturauhassyöpä,159
+2004,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,190
+2004,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,98
+2004,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,220
+2004,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,136
+2004,17,Pohjanmaa,115,115 Rintasyöpä,66
+2004,17,Pohjanmaa,116,116 Eturauhassyöpä,148
+2004,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,98
+2004,18,Keski-Pohjanmaa,115,115 Rintasyöpä,26
+2004,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,49
+2004,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,27
+2004,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,116
+2004,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,164
+2004,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,152
+2004,20,Kainuu,115,115 Rintasyöpä,25
+2004,20,Kainuu,116,116 Eturauhassyöpä,64
+2004,20,Kainuu,130,130 Pahanlaatuinen kasvain,48
+2004,21,Lappi,115,115 Rintasyöpä,74
+2004,21,Lappi,116,116 Eturauhassyöpä,128
+2004,21,Lappi,130,130 Pahanlaatuinen kasvain,99
+2004,90,Helsinki,115,115 Rintasyöpä,332
+2004,90,Helsinki,116,116 Eturauhassyöpä,304
+2004,90,Helsinki,130,130 Pahanlaatuinen kasvain,353
+2004,91,Ahvenanmaa,115,115 Rintasyöpä,7
+2004,91,Ahvenanmaa,116,116 Eturauhassyöpä,35
+2004,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,13
+2005,00,Tuntematon,115,115 Rintasyöpä,4
+2005,00,Tuntematon,116,116 Eturauhassyöpä,17
+2005,00,Tuntematon,130,130 Pahanlaatuinen kasvain,1
+2005,01,Itä-Uusimaa,115,115 Rintasyöpä,66
+2005,01,Itä-Uusimaa,116,116 Eturauhassyöpä,49
+2005,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,73
+2005,02,Keski-Uusimaa,115,115 Rintasyöpä,76
+2005,02,Keski-Uusimaa,116,116 Eturauhassyöpä,94
+2005,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,139
+2005,03,Länsi-Uusimaa,115,115 Rintasyöpä,231
+2005,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,198
+2005,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,296
+2005,04,Vantaa ja Kerava,115,115 Rintasyöpä,121
+2005,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,92
+2005,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,145
+2005,05,Varsinais-Suomi,115,115 Rintasyöpä,268
+2005,05,Varsinais-Suomi,116,116 Eturauhassyöpä,270
+2005,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,390
+2005,06,Satakunta,115,115 Rintasyöpä,158
+2005,06,Satakunta,116,116 Eturauhassyöpä,169
+2005,06,Satakunta,130,130 Pahanlaatuinen kasvain,221
+2005,07,Kanta-Häme,115,115 Rintasyöpä,100
+2005,07,Kanta-Häme,116,116 Eturauhassyöpä,153
+2005,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,163
+2005,08,Pirkanmaa,115,115 Rintasyöpä,313
+2005,08,Pirkanmaa,116,116 Eturauhassyöpä,357
+2005,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,372
+2005,09,Päijät-Häme,115,115 Rintasyöpä,146
+2005,09,Päijät-Häme,116,116 Eturauhassyöpä,169
+2005,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,199
+2005,10,Kymenlaakso,115,115 Rintasyöpä,120
+2005,10,Kymenlaakso,116,116 Eturauhassyöpä,145
+2005,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,154
+2005,11,Etelä-Karjala,115,115 Rintasyöpä,68
+2005,11,Etelä-Karjala,116,116 Eturauhassyöpä,75
+2005,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,117
+2005,12,Etelä-Savo,115,115 Rintasyöpä,75
+2005,12,Etelä-Savo,116,116 Eturauhassyöpä,77
+2005,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,170
+2005,13,Pohjois-Savo,115,115 Rintasyöpä,126
+2005,13,Pohjois-Savo,116,116 Eturauhassyöpä,160
+2005,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,209
+2005,14,Pohjois-Karjala,115,115 Rintasyöpä,73
+2005,14,Pohjois-Karjala,116,116 Eturauhassyöpä,75
+2005,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,133
+2005,15,Keski-Suomi,115,115 Rintasyöpä,139
+2005,15,Keski-Suomi,116,116 Eturauhassyöpä,191
+2005,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,212
+2005,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,110
+2005,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,207
+2005,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,142
+2005,17,Pohjanmaa,115,115 Rintasyöpä,82
+2005,17,Pohjanmaa,116,116 Eturauhassyöpä,173
+2005,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,112
+2005,18,Keski-Pohjanmaa,115,115 Rintasyöpä,16
+2005,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,58
+2005,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,33
+2005,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,140
+2005,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,169
+2005,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,184
+2005,20,Kainuu,115,115 Rintasyöpä,49
+2005,20,Kainuu,116,116 Eturauhassyöpä,69
+2005,20,Kainuu,130,130 Pahanlaatuinen kasvain,54
+2005,21,Lappi,115,115 Rintasyöpä,64
+2005,21,Lappi,116,116 Eturauhassyöpä,101
+2005,21,Lappi,130,130 Pahanlaatuinen kasvain,145
+2005,90,Helsinki,115,115 Rintasyöpä,385
+2005,90,Helsinki,116,116 Eturauhassyöpä,320
+2005,90,Helsinki,130,130 Pahanlaatuinen kasvain,368
+2005,91,Ahvenanmaa,115,115 Rintasyöpä,18
+2005,91,Ahvenanmaa,116,116 Eturauhassyöpä,25
+2005,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,31
+2006,00,Tuntematon,115,115 Rintasyöpä,8
+2006,00,Tuntematon,116,116 Eturauhassyöpä,13
+2006,00,Tuntematon,130,130 Pahanlaatuinen kasvain,8
+2006,01,Itä-Uusimaa,115,115 Rintasyöpä,62
+2006,01,Itä-Uusimaa,116,116 Eturauhassyöpä,59
+2006,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,67
+2006,02,Keski-Uusimaa,115,115 Rintasyöpä,115
+2006,02,Keski-Uusimaa,116,116 Eturauhassyöpä,69
+2006,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,113
+2006,03,Länsi-Uusimaa,115,115 Rintasyöpä,261
+2006,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,166
+2006,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,273
+2006,04,Vantaa ja Kerava,115,115 Rintasyöpä,161
+2006,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,68
+2006,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,157
+2006,05,Varsinais-Suomi,115,115 Rintasyöpä,324
+2006,05,Varsinais-Suomi,116,116 Eturauhassyöpä,287
+2006,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,395
+2006,06,Satakunta,115,115 Rintasyöpä,134
+2006,06,Satakunta,116,116 Eturauhassyöpä,156
+2006,06,Satakunta,130,130 Pahanlaatuinen kasvain,207
+2006,07,Kanta-Häme,115,115 Rintasyöpä,104
+2006,07,Kanta-Häme,116,116 Eturauhassyöpä,115
+2006,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,166
+2006,08,Pirkanmaa,115,115 Rintasyöpä,306
+2006,08,Pirkanmaa,116,116 Eturauhassyöpä,290
+2006,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,411
+2006,09,Päijät-Häme,115,115 Rintasyöpä,162
+2006,09,Päijät-Häme,116,116 Eturauhassyöpä,154
+2006,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,219
+2006,10,Kymenlaakso,115,115 Rintasyöpä,147
+2006,10,Kymenlaakso,116,116 Eturauhassyöpä,124
+2006,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,203
+2006,11,Etelä-Karjala,115,115 Rintasyöpä,86
+2006,11,Etelä-Karjala,116,116 Eturauhassyöpä,72
+2006,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,114
+2006,12,Etelä-Savo,115,115 Rintasyöpä,97
+2006,12,Etelä-Savo,116,116 Eturauhassyöpä,70
+2006,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,113
+2006,13,Pohjois-Savo,115,115 Rintasyöpä,134
+2006,13,Pohjois-Savo,116,116 Eturauhassyöpä,108
+2006,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,186
+2006,14,Pohjois-Karjala,115,115 Rintasyöpä,95
+2006,14,Pohjois-Karjala,116,116 Eturauhassyöpä,74
+2006,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,135
+2006,15,Keski-Suomi,115,115 Rintasyöpä,138
+2006,15,Keski-Suomi,116,116 Eturauhassyöpä,133
+2006,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,205
+2006,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,130
+2006,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,134
+2006,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,205
+2006,17,Pohjanmaa,115,115 Rintasyöpä,69
+2006,17,Pohjanmaa,116,116 Eturauhassyöpä,129
+2006,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,110
+2006,18,Keski-Pohjanmaa,115,115 Rintasyöpä,35
+2006,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,36
+2006,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,53
+2006,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,154
+2006,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,171
+2006,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,208
+2006,20,Kainuu,115,115 Rintasyöpä,41
+2006,20,Kainuu,116,116 Eturauhassyöpä,50
+2006,20,Kainuu,130,130 Pahanlaatuinen kasvain,57
+2006,21,Lappi,115,115 Rintasyöpä,84
+2006,21,Lappi,116,116 Eturauhassyöpä,134
+2006,21,Lappi,130,130 Pahanlaatuinen kasvain,154
+2006,90,Helsinki,115,115 Rintasyöpä,415
+2006,90,Helsinki,116,116 Eturauhassyöpä,233
+2006,90,Helsinki,130,130 Pahanlaatuinen kasvain,460
+2006,91,Ahvenanmaa,115,115 Rintasyöpä,23
+2006,91,Ahvenanmaa,116,116 Eturauhassyöpä,19
+2006,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,24
+2007,00,Tuntematon,115,115 Rintasyöpä,9
+2007,00,Tuntematon,116,116 Eturauhassyöpä,11
+2007,00,Tuntematon,130,130 Pahanlaatuinen kasvain,2
+2007,01,Itä-Uusimaa,115,115 Rintasyöpä,65
+2007,01,Itä-Uusimaa,116,116 Eturauhassyöpä,58
+2007,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,87
+2007,02,Keski-Uusimaa,115,115 Rintasyöpä,110
+2007,02,Keski-Uusimaa,116,116 Eturauhassyöpä,73
+2007,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,137
+2007,03,Länsi-Uusimaa,115,115 Rintasyöpä,295
+2007,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,184
+2007,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,308
+2007,04,Vantaa ja Kerava,115,115 Rintasyöpä,109
+2007,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,63
+2007,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,174
+2007,05,Varsinais-Suomi,115,115 Rintasyöpä,284
+2007,05,Varsinais-Suomi,116,116 Eturauhassyöpä,232
+2007,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,453
+2007,06,Satakunta,115,115 Rintasyöpä,135
+2007,06,Satakunta,116,116 Eturauhassyöpä,152
+2007,06,Satakunta,130,130 Pahanlaatuinen kasvain,239
+2007,07,Kanta-Häme,115,115 Rintasyöpä,114
+2007,07,Kanta-Häme,116,116 Eturauhassyöpä,107
+2007,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,206
+2007,08,Pirkanmaa,115,115 Rintasyöpä,339
+2007,08,Pirkanmaa,116,116 Eturauhassyöpä,251
+2007,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,437
+2007,09,Päijät-Häme,115,115 Rintasyöpä,167
+2007,09,Päijät-Häme,116,116 Eturauhassyöpä,157
+2007,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,245
+2007,10,Kymenlaakso,115,115 Rintasyöpä,128
+2007,10,Kymenlaakso,116,116 Eturauhassyöpä,124
+2007,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,215
+2007,11,Etelä-Karjala,115,115 Rintasyöpä,63
+2007,11,Etelä-Karjala,116,116 Eturauhassyöpä,48
+2007,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,116
+2007,12,Etelä-Savo,115,115 Rintasyöpä,64
+2007,12,Etelä-Savo,116,116 Eturauhassyöpä,53
+2007,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,147
+2007,13,Pohjois-Savo,115,115 Rintasyöpä,138
+2007,13,Pohjois-Savo,116,116 Eturauhassyöpä,109
+2007,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,196
+2007,14,Pohjois-Karjala,115,115 Rintasyöpä,91
+2007,14,Pohjois-Karjala,116,116 Eturauhassyöpä,81
+2007,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,138
+2007,15,Keski-Suomi,115,115 Rintasyöpä,172
+2007,15,Keski-Suomi,116,116 Eturauhassyöpä,113
+2007,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,242
+2007,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,156
+2007,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,104
+2007,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,174
+2007,17,Pohjanmaa,115,115 Rintasyöpä,92
+2007,17,Pohjanmaa,116,116 Eturauhassyöpä,102
+2007,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,126
+2007,18,Keski-Pohjanmaa,115,115 Rintasyöpä,30
+2007,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,39
+2007,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,55
+2007,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,163
+2007,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,178
+2007,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,210
+2007,20,Kainuu,115,115 Rintasyöpä,58
+2007,20,Kainuu,116,116 Eturauhassyöpä,51
+2007,20,Kainuu,130,130 Pahanlaatuinen kasvain,64
+2007,21,Lappi,115,115 Rintasyöpä,109
+2007,21,Lappi,116,116 Eturauhassyöpä,117
+2007,21,Lappi,130,130 Pahanlaatuinen kasvain,167
+2007,90,Helsinki,115,115 Rintasyöpä,462
+2007,90,Helsinki,116,116 Eturauhassyöpä,171
+2007,90,Helsinki,130,130 Pahanlaatuinen kasvain,472
+2007,91,Ahvenanmaa,115,115 Rintasyöpä,16
+2007,91,Ahvenanmaa,116,116 Eturauhassyöpä,19
+2007,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,14
+2008,00,Tuntematon,115,115 Rintasyöpä,3
+2008,00,Tuntematon,116,116 Eturauhassyöpä,13
+2008,00,Tuntematon,130,130 Pahanlaatuinen kasvain,4
+2008,01,Itä-Uusimaa,115,115 Rintasyöpä,75
+2008,01,Itä-Uusimaa,116,116 Eturauhassyöpä,56
+2008,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,87
+2008,02,Keski-Uusimaa,115,115 Rintasyöpä,113
+2008,02,Keski-Uusimaa,116,116 Eturauhassyöpä,73
+2008,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,153
+2008,03,Länsi-Uusimaa,115,115 Rintasyöpä,281
+2008,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,169
+2008,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,339
+2008,04,Vantaa ja Kerava,115,115 Rintasyöpä,133
+2008,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,74
+2008,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,201
+2008,05,Varsinais-Suomi,115,115 Rintasyöpä,329
+2008,05,Varsinais-Suomi,116,116 Eturauhassyöpä,195
+2008,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,423
+2008,06,Satakunta,115,115 Rintasyöpä,141
+2008,06,Satakunta,116,116 Eturauhassyöpä,127
+2008,06,Satakunta,130,130 Pahanlaatuinen kasvain,225
+2008,07,Kanta-Häme,115,115 Rintasyöpä,117
+2008,07,Kanta-Häme,116,116 Eturauhassyöpä,96
+2008,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,208
+2008,08,Pirkanmaa,115,115 Rintasyöpä,308
+2008,08,Pirkanmaa,116,116 Eturauhassyöpä,222
+2008,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,485
+2008,09,Päijät-Häme,115,115 Rintasyöpä,149
+2008,09,Päijät-Häme,116,116 Eturauhassyöpä,138
+2008,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,277
+2008,10,Kymenlaakso,115,115 Rintasyöpä,153
+2008,10,Kymenlaakso,116,116 Eturauhassyöpä,116
+2008,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,254
+2008,11,Etelä-Karjala,115,115 Rintasyöpä,60
+2008,11,Etelä-Karjala,116,116 Eturauhassyöpä,72
+2008,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,124
+2008,12,Etelä-Savo,115,115 Rintasyöpä,113
+2008,12,Etelä-Savo,116,116 Eturauhassyöpä,63
+2008,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,146
+2008,13,Pohjois-Savo,115,115 Rintasyöpä,131
+2008,13,Pohjois-Savo,116,116 Eturauhassyöpä,107
+2008,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,205
+2008,14,Pohjois-Karjala,115,115 Rintasyöpä,86
+2008,14,Pohjois-Karjala,116,116 Eturauhassyöpä,71
+2008,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,153
+2008,15,Keski-Suomi,115,115 Rintasyöpä,184
+2008,15,Keski-Suomi,116,116 Eturauhassyöpä,104
+2008,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,265
+2008,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,145
+2008,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,123
+2008,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,156
+2008,17,Pohjanmaa,115,115 Rintasyöpä,111
+2008,17,Pohjanmaa,116,116 Eturauhassyöpä,116
+2008,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,151
+2008,18,Keski-Pohjanmaa,115,115 Rintasyöpä,35
+2008,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,54
+2008,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,72
+2008,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,180
+2008,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,184
+2008,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,246
+2008,20,Kainuu,115,115 Rintasyöpä,47
+2008,20,Kainuu,116,116 Eturauhassyöpä,36
+2008,20,Kainuu,130,130 Pahanlaatuinen kasvain,83
+2008,21,Lappi,115,115 Rintasyöpä,83
+2008,21,Lappi,116,116 Eturauhassyöpä,107
+2008,21,Lappi,130,130 Pahanlaatuinen kasvain,161
+2008,90,Helsinki,115,115 Rintasyöpä,485
+2008,90,Helsinki,116,116 Eturauhassyöpä,147
+2008,90,Helsinki,130,130 Pahanlaatuinen kasvain,536
+2008,91,Ahvenanmaa,115,115 Rintasyöpä,26
+2008,91,Ahvenanmaa,116,116 Eturauhassyöpä,13
+2008,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,31
+2009,00,Tuntematon,115,115 Rintasyöpä,4
+2009,00,Tuntematon,116,116 Eturauhassyöpä,10
+2009,00,Tuntematon,130,130 Pahanlaatuinen kasvain,9
+2009,01,Itä-Uusimaa,115,115 Rintasyöpä,61
+2009,01,Itä-Uusimaa,116,116 Eturauhassyöpä,81
+2009,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,102
+2009,02,Keski-Uusimaa,115,115 Rintasyöpä,123
+2009,02,Keski-Uusimaa,116,116 Eturauhassyöpä,80
+2009,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,174
+2009,03,Länsi-Uusimaa,115,115 Rintasyöpä,262
+2009,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,172
+2009,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,365
+2009,04,Vantaa ja Kerava,115,115 Rintasyöpä,134
+2009,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,80
+2009,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,190
+2009,05,Varsinais-Suomi,115,115 Rintasyöpä,295
+2009,05,Varsinais-Suomi,116,116 Eturauhassyöpä,201
+2009,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,443
+2009,06,Satakunta,115,115 Rintasyöpä,155
+2009,06,Satakunta,116,116 Eturauhassyöpä,168
+2009,06,Satakunta,130,130 Pahanlaatuinen kasvain,250
+2009,07,Kanta-Häme,115,115 Rintasyöpä,132
+2009,07,Kanta-Häme,116,116 Eturauhassyöpä,105
+2009,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,212
+2009,08,Pirkanmaa,115,115 Rintasyöpä,365
+2009,08,Pirkanmaa,116,116 Eturauhassyöpä,232
+2009,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,475
+2009,09,Päijät-Häme,115,115 Rintasyöpä,174
+2009,09,Päijät-Häme,116,116 Eturauhassyöpä,147
+2009,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,289
+2009,10,Kymenlaakso,115,115 Rintasyöpä,152
+2009,10,Kymenlaakso,116,116 Eturauhassyöpä,147
+2009,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,284
+2009,11,Etelä-Karjala,115,115 Rintasyöpä,87
+2009,11,Etelä-Karjala,116,116 Eturauhassyöpä,46
+2009,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,145
+2009,12,Etelä-Savo,115,115 Rintasyöpä,108
+2009,12,Etelä-Savo,116,116 Eturauhassyöpä,86
+2009,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,198
+2009,13,Pohjois-Savo,115,115 Rintasyöpä,159
+2009,13,Pohjois-Savo,116,116 Eturauhassyöpä,111
+2009,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,216
+2009,14,Pohjois-Karjala,115,115 Rintasyöpä,113
+2009,14,Pohjois-Karjala,116,116 Eturauhassyöpä,75
+2009,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,166
+2009,15,Keski-Suomi,115,115 Rintasyöpä,178
+2009,15,Keski-Suomi,116,116 Eturauhassyöpä,139
+2009,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,213
+2009,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,121
+2009,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,138
+2009,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,209
+2009,17,Pohjanmaa,115,115 Rintasyöpä,112
+2009,17,Pohjanmaa,116,116 Eturauhassyöpä,80
+2009,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,144
+2009,18,Keski-Pohjanmaa,115,115 Rintasyöpä,50
+2009,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,42
+2009,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,70
+2009,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,191
+2009,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,188
+2009,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,249
+2009,20,Kainuu,115,115 Rintasyöpä,62
+2009,20,Kainuu,116,116 Eturauhassyöpä,52
+2009,20,Kainuu,130,130 Pahanlaatuinen kasvain,80
+2009,21,Lappi,115,115 Rintasyöpä,133
+2009,21,Lappi,116,116 Eturauhassyöpä,122
+2009,21,Lappi,130,130 Pahanlaatuinen kasvain,181
+2009,90,Helsinki,115,115 Rintasyöpä,467
+2009,90,Helsinki,116,116 Eturauhassyöpä,196
+2009,90,Helsinki,130,130 Pahanlaatuinen kasvain,548
+2009,91,Ahvenanmaa,115,115 Rintasyöpä,18
+2009,91,Ahvenanmaa,116,116 Eturauhassyöpä,16
+2009,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,27
+2010,00,Tuntematon,115,115 Rintasyöpä,4
+2010,00,Tuntematon,116,116 Eturauhassyöpä,7
+2010,00,Tuntematon,130,130 Pahanlaatuinen kasvain,9
+2010,01,Itä-Uusimaa,115,115 Rintasyöpä,62
+2010,01,Itä-Uusimaa,116,116 Eturauhassyöpä,61
+2010,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,102
+2010,02,Keski-Uusimaa,115,115 Rintasyöpä,111
+2010,02,Keski-Uusimaa,116,116 Eturauhassyöpä,67
+2010,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,185
+2010,03,Länsi-Uusimaa,115,115 Rintasyöpä,322
+2010,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,161
+2010,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,426
+2010,04,Vantaa ja Kerava,115,115 Rintasyöpä,142
+2010,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,79
+2010,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,222
+2010,05,Varsinais-Suomi,115,115 Rintasyöpä,372
+2010,05,Varsinais-Suomi,116,116 Eturauhassyöpä,250
+2010,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,472
+2010,06,Satakunta,115,115 Rintasyöpä,199
+2010,06,Satakunta,116,116 Eturauhassyöpä,146
+2010,06,Satakunta,130,130 Pahanlaatuinen kasvain,236
+2010,07,Kanta-Häme,115,115 Rintasyöpä,145
+2010,07,Kanta-Häme,116,116 Eturauhassyöpä,111
+2010,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,225
+2010,08,Pirkanmaa,115,115 Rintasyöpä,379
+2010,08,Pirkanmaa,116,116 Eturauhassyöpä,258
+2010,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,476
+2010,09,Päijät-Häme,115,115 Rintasyöpä,200
+2010,09,Päijät-Häme,116,116 Eturauhassyöpä,134
+2010,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,293
+2010,10,Kymenlaakso,115,115 Rintasyöpä,137
+2010,10,Kymenlaakso,116,116 Eturauhassyöpä,127
+2010,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,262
+2010,11,Etelä-Karjala,115,115 Rintasyöpä,81
+2010,11,Etelä-Karjala,116,116 Eturauhassyöpä,77
+2010,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,122
+2010,12,Etelä-Savo,115,115 Rintasyöpä,121
+2010,12,Etelä-Savo,116,116 Eturauhassyöpä,81
+2010,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,158
+2010,13,Pohjois-Savo,115,115 Rintasyöpä,178
+2010,13,Pohjois-Savo,116,116 Eturauhassyöpä,135
+2010,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,234
+2010,14,Pohjois-Karjala,115,115 Rintasyöpä,120
+2010,14,Pohjois-Karjala,116,116 Eturauhassyöpä,65
+2010,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,125
+2010,15,Keski-Suomi,115,115 Rintasyöpä,185
+2010,15,Keski-Suomi,116,116 Eturauhassyöpä,129
+2010,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,232
+2010,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,163
+2010,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,108
+2010,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,210
+2010,17,Pohjanmaa,115,115 Rintasyöpä,116
+2010,17,Pohjanmaa,116,116 Eturauhassyöpä,136
+2010,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,145
+2010,18,Keski-Pohjanmaa,115,115 Rintasyöpä,48
+2010,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,45
+2010,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,85
+2010,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,244
+2010,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,201
+2010,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,276
+2010,20,Kainuu,115,115 Rintasyöpä,60
+2010,20,Kainuu,116,116 Eturauhassyöpä,46
+2010,20,Kainuu,130,130 Pahanlaatuinen kasvain,104
+2010,21,Lappi,115,115 Rintasyöpä,110
+2010,21,Lappi,116,116 Eturauhassyöpä,95
+2010,21,Lappi,130,130 Pahanlaatuinen kasvain,182
+2010,90,Helsinki,115,115 Rintasyöpä,509
+2010,90,Helsinki,116,116 Eturauhassyöpä,189
+2010,90,Helsinki,130,130 Pahanlaatuinen kasvain,581
+2010,91,Ahvenanmaa,115,115 Rintasyöpä,15
+2010,91,Ahvenanmaa,116,116 Eturauhassyöpä,13
+2010,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,25
+2011,00,Tuntematon,115,115 Rintasyöpä,4
+2011,00,Tuntematon,116,116 Eturauhassyöpä,3
+2011,00,Tuntematon,130,130 Pahanlaatuinen kasvain,4
+2011,01,Itä-Uusimaa,115,115 Rintasyöpä,85
+2011,01,Itä-Uusimaa,116,116 Eturauhassyöpä,39
+2011,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,102
+2011,02,Keski-Uusimaa,115,115 Rintasyöpä,106
+2011,02,Keski-Uusimaa,116,116 Eturauhassyöpä,73
+2011,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,191
+2011,03,Länsi-Uusimaa,115,115 Rintasyöpä,321
+2011,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,171
+2011,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,431
+2011,04,Vantaa ja Kerava,115,115 Rintasyöpä,166
+2011,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,51
+2011,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,254
+2011,05,Varsinais-Suomi,115,115 Rintasyöpä,374
+2011,05,Varsinais-Suomi,116,116 Eturauhassyöpä,233
+2011,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,480
+2011,06,Satakunta,115,115 Rintasyöpä,188
+2011,06,Satakunta,116,116 Eturauhassyöpä,144
+2011,06,Satakunta,130,130 Pahanlaatuinen kasvain,258
+2011,07,Kanta-Häme,115,115 Rintasyöpä,133
+2011,07,Kanta-Häme,116,116 Eturauhassyöpä,119
+2011,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,212
+2011,08,Pirkanmaa,115,115 Rintasyöpä,386
+2011,08,Pirkanmaa,116,116 Eturauhassyöpä,244
+2011,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,559
+2011,09,Päijät-Häme,115,115 Rintasyöpä,218
+2011,09,Päijät-Häme,116,116 Eturauhassyöpä,112
+2011,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,259
+2011,10,Kymenlaakso,115,115 Rintasyöpä,179
+2011,10,Kymenlaakso,116,116 Eturauhassyöpä,160
+2011,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,301
+2011,11,Etelä-Karjala,115,115 Rintasyöpä,80
+2011,11,Etelä-Karjala,116,116 Eturauhassyöpä,87
+2011,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,131
+2011,12,Etelä-Savo,115,115 Rintasyöpä,115
+2011,12,Etelä-Savo,116,116 Eturauhassyöpä,105
+2011,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,167
+2011,13,Pohjois-Savo,115,115 Rintasyöpä,186
+2011,13,Pohjois-Savo,116,116 Eturauhassyöpä,153
+2011,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,247
+2011,14,Pohjois-Karjala,115,115 Rintasyöpä,103
+2011,14,Pohjois-Karjala,116,116 Eturauhassyöpä,80
+2011,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,157
+2011,15,Keski-Suomi,115,115 Rintasyöpä,214
+2011,15,Keski-Suomi,116,116 Eturauhassyöpä,188
+2011,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,241
+2011,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,186
+2011,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,109
+2011,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,192
+2011,17,Pohjanmaa,115,115 Rintasyöpä,115
+2011,17,Pohjanmaa,116,116 Eturauhassyöpä,159
+2011,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,206
+2011,18,Keski-Pohjanmaa,115,115 Rintasyöpä,56
+2011,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,40
+2011,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,55
+2011,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,247
+2011,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,196
+2011,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,308
+2011,20,Kainuu,115,115 Rintasyöpä,54
+2011,20,Kainuu,116,116 Eturauhassyöpä,44
+2011,20,Kainuu,130,130 Pahanlaatuinen kasvain,79
+2011,21,Lappi,115,115 Rintasyöpä,133
+2011,21,Lappi,116,116 Eturauhassyöpä,106
+2011,21,Lappi,130,130 Pahanlaatuinen kasvain,197
+2011,90,Helsinki,115,115 Rintasyöpä,536
+2011,90,Helsinki,116,116 Eturauhassyöpä,188
+2011,90,Helsinki,130,130 Pahanlaatuinen kasvain,622
+2011,91,Ahvenanmaa,115,115 Rintasyöpä,22
+2011,91,Ahvenanmaa,116,116 Eturauhassyöpä,21
+2011,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,29
+2012,00,Tuntematon,115,115 Rintasyöpä,4
+2012,00,Tuntematon,116,116 Eturauhassyöpä,6
+2012,00,Tuntematon,130,130 Pahanlaatuinen kasvain,7
+2012,01,Itä-Uusimaa,115,115 Rintasyöpä,65
+2012,01,Itä-Uusimaa,116,116 Eturauhassyöpä,30
+2012,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,99
+2012,02,Keski-Uusimaa,115,115 Rintasyöpä,136
+2012,02,Keski-Uusimaa,116,116 Eturauhassyöpä,54
+2012,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,190
+2012,03,Länsi-Uusimaa,115,115 Rintasyöpä,354
+2012,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,157
+2012,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,438
+2012,04,Vantaa ja Kerava,115,115 Rintasyöpä,168
+2012,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,64
+2012,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,236
+2012,05,Varsinais-Suomi,115,115 Rintasyöpä,393
+2012,05,Varsinais-Suomi,116,116 Eturauhassyöpä,227
+2012,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,506
+2012,06,Satakunta,115,115 Rintasyöpä,165
+2012,06,Satakunta,116,116 Eturauhassyöpä,173
+2012,06,Satakunta,130,130 Pahanlaatuinen kasvain,269
+2012,07,Kanta-Häme,115,115 Rintasyöpä,105
+2012,07,Kanta-Häme,116,116 Eturauhassyöpä,139
+2012,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,236
+2012,08,Pirkanmaa,115,115 Rintasyöpä,391
+2012,08,Pirkanmaa,116,116 Eturauhassyöpä,283
+2012,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,556
+2012,09,Päijät-Häme,115,115 Rintasyöpä,178
+2012,09,Päijät-Häme,116,116 Eturauhassyöpä,109
+2012,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,302
+2012,10,Kymenlaakso,115,115 Rintasyöpä,173
+2012,10,Kymenlaakso,116,116 Eturauhassyöpä,140
+2012,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,301
+2012,11,Etelä-Karjala,115,115 Rintasyöpä,78
+2012,11,Etelä-Karjala,116,116 Eturauhassyöpä,82
+2012,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,131
+2012,12,Etelä-Savo,115,115 Rintasyöpä,101
+2012,12,Etelä-Savo,116,116 Eturauhassyöpä,71
+2012,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,176
+2012,13,Pohjois-Savo,115,115 Rintasyöpä,179
+2012,13,Pohjois-Savo,116,116 Eturauhassyöpä,138
+2012,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,251
+2012,14,Pohjois-Karjala,115,115 Rintasyöpä,106
+2012,14,Pohjois-Karjala,116,116 Eturauhassyöpä,97
+2012,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,163
+2012,15,Keski-Suomi,115,115 Rintasyöpä,175
+2012,15,Keski-Suomi,116,116 Eturauhassyöpä,177
+2012,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,276
+2012,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,179
+2012,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,124
+2012,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,219
+2012,17,Pohjanmaa,115,115 Rintasyöpä,129
+2012,17,Pohjanmaa,116,116 Eturauhassyöpä,134
+2012,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,216
+2012,18,Keski-Pohjanmaa,115,115 Rintasyöpä,43
+2012,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,41
+2012,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,78
+2012,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,281
+2012,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,174
+2012,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,261
+2012,20,Kainuu,115,115 Rintasyöpä,56
+2012,20,Kainuu,116,116 Eturauhassyöpä,55
+2012,20,Kainuu,130,130 Pahanlaatuinen kasvain,72
+2012,21,Lappi,115,115 Rintasyöpä,145
+2012,21,Lappi,116,116 Eturauhassyöpä,109
+2012,21,Lappi,130,130 Pahanlaatuinen kasvain,212
+2012,90,Helsinki,115,115 Rintasyöpä,501
+2012,90,Helsinki,116,116 Eturauhassyöpä,170
+2012,90,Helsinki,130,130 Pahanlaatuinen kasvain,630
+2012,91,Ahvenanmaa,115,115 Rintasyöpä,14
+2012,91,Ahvenanmaa,116,116 Eturauhassyöpä,18
+2012,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,31
+2013,00,Tuntematon,115,115 Rintasyöpä,1
+2013,00,Tuntematon,116,116 Eturauhassyöpä,2
+2013,00,Tuntematon,130,130 Pahanlaatuinen kasvain,9
+2013,01,Itä-Uusimaa,115,115 Rintasyöpä,65
+2013,01,Itä-Uusimaa,116,116 Eturauhassyöpä,36
+2013,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,122
+2013,02,Keski-Uusimaa,115,115 Rintasyöpä,135
+2013,02,Keski-Uusimaa,116,116 Eturauhassyöpä,77
+2013,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,216
+2013,03,Länsi-Uusimaa,115,115 Rintasyöpä,310
+2013,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,173
+2013,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,452
+2013,04,Vantaa ja Kerava,115,115 Rintasyöpä,176
+2013,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,81
+2013,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,256
+2013,05,Varsinais-Suomi,115,115 Rintasyöpä,402
+2013,05,Varsinais-Suomi,116,116 Eturauhassyöpä,215
+2013,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,569
+2013,06,Satakunta,115,115 Rintasyöpä,146
+2013,06,Satakunta,116,116 Eturauhassyöpä,151
+2013,06,Satakunta,130,130 Pahanlaatuinen kasvain,267
+2013,07,Kanta-Häme,115,115 Rintasyöpä,135
+2013,07,Kanta-Häme,116,116 Eturauhassyöpä,126
+2013,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,236
+2013,08,Pirkanmaa,115,115 Rintasyöpä,397
+2013,08,Pirkanmaa,116,116 Eturauhassyöpä,301
+2013,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,571
+2013,09,Päijät-Häme,115,115 Rintasyöpä,177
+2013,09,Päijät-Häme,116,116 Eturauhassyöpä,111
+2013,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,305
+2013,10,Kymenlaakso,115,115 Rintasyöpä,168
+2013,10,Kymenlaakso,116,116 Eturauhassyöpä,137
+2013,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,264
+2013,11,Etelä-Karjala,115,115 Rintasyöpä,105
+2013,11,Etelä-Karjala,116,116 Eturauhassyöpä,94
+2013,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,142
+2013,12,Etelä-Savo,115,115 Rintasyöpä,134
+2013,12,Etelä-Savo,116,116 Eturauhassyöpä,96
+2013,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,190
+2013,13,Pohjois-Savo,115,115 Rintasyöpä,188
+2013,13,Pohjois-Savo,116,116 Eturauhassyöpä,139
+2013,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,267
+2013,14,Pohjois-Karjala,115,115 Rintasyöpä,110
+2013,14,Pohjois-Karjala,116,116 Eturauhassyöpä,87
+2013,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,203
+2013,15,Keski-Suomi,115,115 Rintasyöpä,205
+2013,15,Keski-Suomi,116,116 Eturauhassyöpä,179
+2013,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,295
+2013,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,164
+2013,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,123
+2013,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,224
+2013,17,Pohjanmaa,115,115 Rintasyöpä,132
+2013,17,Pohjanmaa,116,116 Eturauhassyöpä,121
+2013,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,202
+2013,18,Keski-Pohjanmaa,115,115 Rintasyöpä,41
+2013,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,51
+2013,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,81
+2013,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,237
+2013,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,196
+2013,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,334
+2013,20,Kainuu,115,115 Rintasyöpä,63
+2013,20,Kainuu,116,116 Eturauhassyöpä,64
+2013,20,Kainuu,130,130 Pahanlaatuinen kasvain,91
+2013,21,Lappi,115,115 Rintasyöpä,126
+2013,21,Lappi,116,116 Eturauhassyöpä,105
+2013,21,Lappi,130,130 Pahanlaatuinen kasvain,224
+2013,90,Helsinki,115,115 Rintasyöpä,507
+2013,90,Helsinki,116,116 Eturauhassyöpä,250
+2013,90,Helsinki,130,130 Pahanlaatuinen kasvain,645
+2013,91,Ahvenanmaa,115,115 Rintasyöpä,17
+2013,91,Ahvenanmaa,116,116 Eturauhassyöpä,15
+2013,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,36
+2014,00,Tuntematon,115,115 Rintasyöpä,5
+2014,00,Tuntematon,116,116 Eturauhassyöpä,5
+2014,00,Tuntematon,130,130 Pahanlaatuinen kasvain,5
+2014,01,Itä-Uusimaa,115,115 Rintasyöpä,64
+2014,01,Itä-Uusimaa,116,116 Eturauhassyöpä,48
+2014,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,139
+2014,02,Keski-Uusimaa,115,115 Rintasyöpä,145
+2014,02,Keski-Uusimaa,116,116 Eturauhassyöpä,62
+2014,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,223
+2014,03,Länsi-Uusimaa,115,115 Rintasyöpä,392
+2014,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,208
+2014,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,499
+2014,04,Vantaa ja Kerava,115,115 Rintasyöpä,174
+2014,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,78
+2014,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,255
+2014,05,Varsinais-Suomi,115,115 Rintasyöpä,402
+2014,05,Varsinais-Suomi,116,116 Eturauhassyöpä,287
+2014,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,591
+2014,06,Satakunta,115,115 Rintasyöpä,160
+2014,06,Satakunta,116,116 Eturauhassyöpä,170
+2014,06,Satakunta,130,130 Pahanlaatuinen kasvain,308
+2014,07,Kanta-Häme,115,115 Rintasyöpä,162
+2014,07,Kanta-Häme,116,116 Eturauhassyöpä,104
+2014,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,251
+2014,08,Pirkanmaa,115,115 Rintasyöpä,433
+2014,08,Pirkanmaa,116,116 Eturauhassyöpä,261
+2014,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,650
+2014,09,Päijät-Häme,115,115 Rintasyöpä,200
+2014,09,Päijät-Häme,116,116 Eturauhassyöpä,104
+2014,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,281
+2014,10,Kymenlaakso,115,115 Rintasyöpä,178
+2014,10,Kymenlaakso,116,116 Eturauhassyöpä,123
+2014,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,320
+2014,11,Etelä-Karjala,115,115 Rintasyöpä,104
+2014,11,Etelä-Karjala,116,116 Eturauhassyöpä,88
+2014,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,166
+2014,12,Etelä-Savo,115,115 Rintasyöpä,148
+2014,12,Etelä-Savo,116,116 Eturauhassyöpä,121
+2014,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,197
+2014,13,Pohjois-Savo,115,115 Rintasyöpä,181
+2014,13,Pohjois-Savo,116,116 Eturauhassyöpä,132
+2014,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,320
+2014,14,Pohjois-Karjala,115,115 Rintasyöpä,121
+2014,14,Pohjois-Karjala,116,116 Eturauhassyöpä,80
+2014,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,185
+2014,15,Keski-Suomi,115,115 Rintasyöpä,213
+2014,15,Keski-Suomi,116,116 Eturauhassyöpä,147
+2014,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,309
+2014,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,175
+2014,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,139
+2014,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,230
+2014,17,Pohjanmaa,115,115 Rintasyöpä,112
+2014,17,Pohjanmaa,116,116 Eturauhassyöpä,139
+2014,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,235
+2014,18,Keski-Pohjanmaa,115,115 Rintasyöpä,69
+2014,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,49
+2014,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,84
+2014,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,249
+2014,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,173
+2014,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,364
+2014,20,Kainuu,115,115 Rintasyöpä,61
+2014,20,Kainuu,116,116 Eturauhassyöpä,44
+2014,20,Kainuu,130,130 Pahanlaatuinen kasvain,92
+2014,21,Lappi,115,115 Rintasyöpä,147
+2014,21,Lappi,116,116 Eturauhassyöpä,121
+2014,21,Lappi,130,130 Pahanlaatuinen kasvain,219
+2014,90,Helsinki,115,115 Rintasyöpä,585
+2014,90,Helsinki,116,116 Eturauhassyöpä,234
+2014,90,Helsinki,130,130 Pahanlaatuinen kasvain,724
+2014,91,Ahvenanmaa,115,115 Rintasyöpä,24
+2014,91,Ahvenanmaa,116,116 Eturauhassyöpä,17
+2014,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,50
+2015,00,Tuntematon,115,115 Rintasyöpä,2
+2015,00,Tuntematon,116,116 Eturauhassyöpä,2
+2015,00,Tuntematon,130,130 Pahanlaatuinen kasvain,11
+2015,01,Itä-Uusimaa,115,115 Rintasyöpä,110
+2015,01,Itä-Uusimaa,116,116 Eturauhassyöpä,60
+2015,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,127
+2015,02,Keski-Uusimaa,115,115 Rintasyöpä,157
+2015,02,Keski-Uusimaa,116,116 Eturauhassyöpä,77
+2015,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,241
+2015,03,Länsi-Uusimaa,115,115 Rintasyöpä,343
+2015,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,233
+2015,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,567
+2015,04,Vantaa ja Kerava,115,115 Rintasyöpä,208
+2015,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,80
+2015,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,295
+2015,05,Varsinais-Suomi,115,115 Rintasyöpä,403
+2015,05,Varsinais-Suomi,116,116 Eturauhassyöpä,268
+2015,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,607
+2015,06,Satakunta,115,115 Rintasyöpä,167
+2015,06,Satakunta,116,116 Eturauhassyöpä,143
+2015,06,Satakunta,130,130 Pahanlaatuinen kasvain,357
+2015,07,Kanta-Häme,115,115 Rintasyöpä,146
+2015,07,Kanta-Häme,116,116 Eturauhassyöpä,139
+2015,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,283
+2015,08,Pirkanmaa,115,115 Rintasyöpä,467
+2015,08,Pirkanmaa,116,116 Eturauhassyöpä,296
+2015,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,680
+2015,09,Päijät-Häme,115,115 Rintasyöpä,219
+2015,09,Päijät-Häme,116,116 Eturauhassyöpä,126
+2015,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,304
+2015,10,Kymenlaakso,115,115 Rintasyöpä,227
+2015,10,Kymenlaakso,116,116 Eturauhassyöpä,128
+2015,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,300
+2015,11,Etelä-Karjala,115,115 Rintasyöpä,123
+2015,11,Etelä-Karjala,116,116 Eturauhassyöpä,65
+2015,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,192
+2015,12,Etelä-Savo,115,115 Rintasyöpä,171
+2015,12,Etelä-Savo,116,116 Eturauhassyöpä,116
+2015,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,209
+2015,13,Pohjois-Savo,115,115 Rintasyöpä,232
+2015,13,Pohjois-Savo,116,116 Eturauhassyöpä,166
+2015,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,306
+2015,14,Pohjois-Karjala,115,115 Rintasyöpä,133
+2015,14,Pohjois-Karjala,116,116 Eturauhassyöpä,82
+2015,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,221
+2015,15,Keski-Suomi,115,115 Rintasyöpä,212
+2015,15,Keski-Suomi,116,116 Eturauhassyöpä,147
+2015,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,298
+2015,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,190
+2015,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,142
+2015,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,265
+2015,17,Pohjanmaa,115,115 Rintasyöpä,152
+2015,17,Pohjanmaa,116,116 Eturauhassyöpä,133
+2015,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,258
+2015,18,Keski-Pohjanmaa,115,115 Rintasyöpä,58
+2015,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,43
+2015,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,89
+2015,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,275
+2015,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,181
+2015,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,382
+2015,20,Kainuu,115,115 Rintasyöpä,85
+2015,20,Kainuu,116,116 Eturauhassyöpä,77
+2015,20,Kainuu,130,130 Pahanlaatuinen kasvain,89
+2015,21,Lappi,115,115 Rintasyöpä,147
+2015,21,Lappi,116,116 Eturauhassyöpä,121
+2015,21,Lappi,130,130 Pahanlaatuinen kasvain,230
+2015,90,Helsinki,115,115 Rintasyöpä,575
+2015,90,Helsinki,116,116 Eturauhassyöpä,240
+2015,90,Helsinki,130,130 Pahanlaatuinen kasvain,818
+2015,91,Ahvenanmaa,115,115 Rintasyöpä,19
+2015,91,Ahvenanmaa,116,116 Eturauhassyöpä,20
+2015,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,43
+2016,00,Tuntematon,115,115 Rintasyöpä,5
+2016,00,Tuntematon,116,116 Eturauhassyöpä,6
+2016,00,Tuntematon,130,130 Pahanlaatuinen kasvain,14
+2016,01,Itä-Uusimaa,115,115 Rintasyöpä,82
+2016,01,Itä-Uusimaa,116,116 Eturauhassyöpä,68
+2016,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,125
+2016,02,Keski-Uusimaa,115,115 Rintasyöpä,146
+2016,02,Keski-Uusimaa,116,116 Eturauhassyöpä,88
+2016,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,231
+2016,03,Länsi-Uusimaa,115,115 Rintasyöpä,388
+2016,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,182
+2016,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,576
+2016,04,Vantaa ja Kerava,115,115 Rintasyöpä,187
+2016,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,72
+2016,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,284
+2016,05,Varsinais-Suomi,115,115 Rintasyöpä,411
+2016,05,Varsinais-Suomi,116,116 Eturauhassyöpä,253
+2016,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,682
+2016,06,Satakunta,115,115 Rintasyöpä,197
+2016,06,Satakunta,116,116 Eturauhassyöpä,146
+2016,06,Satakunta,130,130 Pahanlaatuinen kasvain,329
+2016,07,Kanta-Häme,115,115 Rintasyöpä,148
+2016,07,Kanta-Häme,116,116 Eturauhassyöpä,119
+2016,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,238
+2016,08,Pirkanmaa,115,115 Rintasyöpä,428
+2016,08,Pirkanmaa,116,116 Eturauhassyöpä,257
+2016,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,704
+2016,09,Päijät-Häme,115,115 Rintasyöpä,188
+2016,09,Päijät-Häme,116,116 Eturauhassyöpä,125
+2016,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,334
+2016,10,Kymenlaakso,115,115 Rintasyöpä,160
+2016,10,Kymenlaakso,116,116 Eturauhassyöpä,135
+2016,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,289
+2016,11,Etelä-Karjala,115,115 Rintasyöpä,102
+2016,11,Etelä-Karjala,116,116 Eturauhassyöpä,84
+2016,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,173
+2016,12,Etelä-Savo,115,115 Rintasyöpä,159
+2016,12,Etelä-Savo,116,116 Eturauhassyöpä,103
+2016,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,188
+2016,13,Pohjois-Savo,115,115 Rintasyöpä,254
+2016,13,Pohjois-Savo,116,116 Eturauhassyöpä,165
+2016,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,362
+2016,14,Pohjois-Karjala,115,115 Rintasyöpä,149
+2016,14,Pohjois-Karjala,116,116 Eturauhassyöpä,106
+2016,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,210
+2016,15,Keski-Suomi,115,115 Rintasyöpä,245
+2016,15,Keski-Suomi,116,116 Eturauhassyöpä,178
+2016,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,323
+2016,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,175
+2016,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,143
+2016,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,298
+2016,17,Pohjanmaa,115,115 Rintasyöpä,153
+2016,17,Pohjanmaa,116,116 Eturauhassyöpä,154
+2016,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,252
+2016,18,Keski-Pohjanmaa,115,115 Rintasyöpä,53
+2016,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,34
+2016,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,81
+2016,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,306
+2016,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,191
+2016,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,394
+2016,20,Kainuu,115,115 Rintasyöpä,49
+2016,20,Kainuu,116,116 Eturauhassyöpä,39
+2016,20,Kainuu,130,130 Pahanlaatuinen kasvain,104
+2016,21,Lappi,115,115 Rintasyöpä,160
+2016,21,Lappi,116,116 Eturauhassyöpä,83
+2016,21,Lappi,130,130 Pahanlaatuinen kasvain,256
+2016,90,Helsinki,115,115 Rintasyöpä,543
+2016,90,Helsinki,116,116 Eturauhassyöpä,239
+2016,90,Helsinki,130,130 Pahanlaatuinen kasvain,760
+2016,91,Ahvenanmaa,115,115 Rintasyöpä,26
+2016,91,Ahvenanmaa,116,116 Eturauhassyöpä,18
+2016,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,38
+2017,00,Tuntematon,115,115 Rintasyöpä,2
+2017,00,Tuntematon,116,116 Eturauhassyöpä,7
+2017,00,Tuntematon,130,130 Pahanlaatuinen kasvain,8
+2017,01,Itä-Uusimaa,115,115 Rintasyöpä,74
+2017,01,Itä-Uusimaa,116,116 Eturauhassyöpä,40
+2017,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,127
+2017,02,Keski-Uusimaa,115,115 Rintasyöpä,129
+2017,02,Keski-Uusimaa,116,116 Eturauhassyöpä,98
+2017,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,266
+2017,03,Länsi-Uusimaa,115,115 Rintasyöpä,332
+2017,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,228
+2017,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,558
+2017,04,Vantaa ja Kerava,115,115 Rintasyöpä,179
+2017,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,99
+2017,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,294
+2017,05,Varsinais-Suomi,115,115 Rintasyöpä,354
+2017,05,Varsinais-Suomi,116,116 Eturauhassyöpä,288
+2017,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,718
+2017,06,Satakunta,115,115 Rintasyöpä,223
+2017,06,Satakunta,116,116 Eturauhassyöpä,155
+2017,06,Satakunta,130,130 Pahanlaatuinen kasvain,333
+2017,07,Kanta-Häme,115,115 Rintasyöpä,164
+2017,07,Kanta-Häme,116,116 Eturauhassyöpä,113
+2017,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,267
+2017,08,Pirkanmaa,115,115 Rintasyöpä,416
+2017,08,Pirkanmaa,116,116 Eturauhassyöpä,285
+2017,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,696
+2017,09,Päijät-Häme,115,115 Rintasyöpä,178
+2017,09,Päijät-Häme,116,116 Eturauhassyöpä,152
+2017,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,307
+2017,10,Kymenlaakso,115,115 Rintasyöpä,188
+2017,10,Kymenlaakso,116,116 Eturauhassyöpä,146
+2017,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,304
+2017,11,Etelä-Karjala,115,115 Rintasyöpä,138
+2017,11,Etelä-Karjala,116,116 Eturauhassyöpä,99
+2017,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,189
+2017,12,Etelä-Savo,115,115 Rintasyöpä,139
+2017,12,Etelä-Savo,116,116 Eturauhassyöpä,98
+2017,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,238
+2017,13,Pohjois-Savo,115,115 Rintasyöpä,233
+2017,13,Pohjois-Savo,116,116 Eturauhassyöpä,167
+2017,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,373
+2017,14,Pohjois-Karjala,115,115 Rintasyöpä,148
+2017,14,Pohjois-Karjala,116,116 Eturauhassyöpä,120
+2017,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,246
+2017,15,Keski-Suomi,115,115 Rintasyöpä,256
+2017,15,Keski-Suomi,116,116 Eturauhassyöpä,171
+2017,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,400
+2017,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,185
+2017,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,138
+2017,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,282
+2017,17,Pohjanmaa,115,115 Rintasyöpä,178
+2017,17,Pohjanmaa,116,116 Eturauhassyöpä,154
+2017,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,299
+2017,18,Keski-Pohjanmaa,115,115 Rintasyöpä,64
+2017,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,55
+2017,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,101
+2017,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,297
+2017,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,292
+2017,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,421
+2017,20,Kainuu,115,115 Rintasyöpä,65
+2017,20,Kainuu,116,116 Eturauhassyöpä,50
+2017,20,Kainuu,130,130 Pahanlaatuinen kasvain,106
+2017,21,Lappi,115,115 Rintasyöpä,152
+2017,21,Lappi,116,116 Eturauhassyöpä,117
+2017,21,Lappi,130,130 Pahanlaatuinen kasvain,291
+2017,90,Helsinki,115,115 Rintasyöpä,500
+2017,90,Helsinki,116,116 Eturauhassyöpä,248
+2017,90,Helsinki,130,130 Pahanlaatuinen kasvain,750
+2017,91,Ahvenanmaa,115,115 Rintasyöpä,21
+2017,91,Ahvenanmaa,116,116 Eturauhassyöpä,23
+2017,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,37
+2018,00,Tuntematon,115,115 Rintasyöpä,4
+2018,00,Tuntematon,116,116 Eturauhassyöpä,5
+2018,00,Tuntematon,130,130 Pahanlaatuinen kasvain,8
+2018,01,Itä-Uusimaa,115,115 Rintasyöpä,82
+2018,01,Itä-Uusimaa,116,116 Eturauhassyöpä,62
+2018,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,129
+2018,02,Keski-Uusimaa,115,115 Rintasyöpä,144
+2018,02,Keski-Uusimaa,116,116 Eturauhassyöpä,89
+2018,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,281
+2018,03,Länsi-Uusimaa,115,115 Rintasyöpä,412
+2018,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,227
+2018,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,566
+2018,04,Vantaa ja Kerava,115,115 Rintasyöpä,201
+2018,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,117
+2018,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,327
+2018,05,Varsinais-Suomi,115,115 Rintasyöpä,429
+2018,05,Varsinais-Suomi,116,116 Eturauhassyöpä,309
+2018,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,753
+2018,06,Satakunta,115,115 Rintasyöpä,214
+2018,06,Satakunta,116,116 Eturauhassyöpä,172
+2018,06,Satakunta,130,130 Pahanlaatuinen kasvain,376
+2018,07,Kanta-Häme,115,115 Rintasyöpä,144
+2018,07,Kanta-Häme,116,116 Eturauhassyöpä,84
+2018,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,281
+2018,08,Pirkanmaa,115,115 Rintasyöpä,412
+2018,08,Pirkanmaa,116,116 Eturauhassyöpä,288
+2018,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,687
+2018,09,Päijät-Häme,115,115 Rintasyöpä,208
+2018,09,Päijät-Häme,116,116 Eturauhassyöpä,140
+2018,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,287
+2018,10,Kymenlaakso,115,115 Rintasyöpä,173
+2018,10,Kymenlaakso,116,116 Eturauhassyöpä,160
+2018,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,307
+2018,11,Etelä-Karjala,115,115 Rintasyöpä,112
+2018,11,Etelä-Karjala,116,116 Eturauhassyöpä,95
+2018,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,224
+2018,12,Etelä-Savo,115,115 Rintasyöpä,143
+2018,12,Etelä-Savo,116,116 Eturauhassyöpä,91
+2018,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,218
+2018,13,Pohjois-Savo,115,115 Rintasyöpä,227
+2018,13,Pohjois-Savo,116,116 Eturauhassyöpä,167
+2018,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,393
+2018,14,Pohjois-Karjala,115,115 Rintasyöpä,149
+2018,14,Pohjois-Karjala,116,116 Eturauhassyöpä,127
+2018,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,222
+2018,15,Keski-Suomi,115,115 Rintasyöpä,250
+2018,15,Keski-Suomi,116,116 Eturauhassyöpä,203
+2018,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,350
+2018,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,181
+2018,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,157
+2018,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,285
+2018,17,Pohjanmaa,115,115 Rintasyöpä,139
+2018,17,Pohjanmaa,116,116 Eturauhassyöpä,147
+2018,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,286
+2018,18,Keski-Pohjanmaa,115,115 Rintasyöpä,58
+2018,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,45
+2018,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,104
+2018,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,261
+2018,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,234
+2018,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,457
+2018,20,Kainuu,115,115 Rintasyöpä,49
+2018,20,Kainuu,116,116 Eturauhassyöpä,47
+2018,20,Kainuu,130,130 Pahanlaatuinen kasvain,100
+2018,21,Lappi,115,115 Rintasyöpä,146
+2018,21,Lappi,116,116 Eturauhassyöpä,158
+2018,21,Lappi,130,130 Pahanlaatuinen kasvain,253
+2018,90,Helsinki,115,115 Rintasyöpä,507
+2018,90,Helsinki,116,116 Eturauhassyöpä,219
+2018,90,Helsinki,130,130 Pahanlaatuinen kasvain,747
+2018,91,Ahvenanmaa,115,115 Rintasyöpä,19
+2018,91,Ahvenanmaa,116,116 Eturauhassyöpä,24
+2018,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,37
+2019,00,Tuntematon,115,115 Rintasyöpä,4
+2019,00,Tuntematon,116,116 Eturauhassyöpä,6
+2019,00,Tuntematon,130,130 Pahanlaatuinen kasvain,12
+2019,01,Itä-Uusimaa,115,115 Rintasyöpä,99
+2019,01,Itä-Uusimaa,116,116 Eturauhassyöpä,58
+2019,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,117
+2019,02,Keski-Uusimaa,115,115 Rintasyöpä,172
+2019,02,Keski-Uusimaa,116,116 Eturauhassyöpä,68
+2019,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,209
+2019,03,Länsi-Uusimaa,115,115 Rintasyöpä,364
+2019,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,225
+2019,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,584
+2019,04,Vantaa ja Kerava,115,115 Rintasyöpä,205
+2019,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,93
+2019,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,287
+2019,05,Varsinais-Suomi,115,115 Rintasyöpä,452
+2019,05,Varsinais-Suomi,116,116 Eturauhassyöpä,341
+2019,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,774
+2019,06,Satakunta,115,115 Rintasyöpä,239
+2019,06,Satakunta,116,116 Eturauhassyöpä,213
+2019,06,Satakunta,130,130 Pahanlaatuinen kasvain,395
+2019,07,Kanta-Häme,115,115 Rintasyöpä,159
+2019,07,Kanta-Häme,116,116 Eturauhassyöpä,92
+2019,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,280
+2019,08,Pirkanmaa,115,115 Rintasyöpä,438
+2019,08,Pirkanmaa,116,116 Eturauhassyöpä,369
+2019,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,700
+2019,09,Päijät-Häme,115,115 Rintasyöpä,223
+2019,09,Päijät-Häme,116,116 Eturauhassyöpä,182
+2019,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,354
+2019,10,Kymenlaakso,115,115 Rintasyöpä,162
+2019,10,Kymenlaakso,116,116 Eturauhassyöpä,151
+2019,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,346
+2019,11,Etelä-Karjala,115,115 Rintasyöpä,128
+2019,11,Etelä-Karjala,116,116 Eturauhassyöpä,114
+2019,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,187
+2019,12,Etelä-Savo,115,115 Rintasyöpä,140
+2019,12,Etelä-Savo,116,116 Eturauhassyöpä,125
+2019,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,236
+2019,13,Pohjois-Savo,115,115 Rintasyöpä,270
+2019,13,Pohjois-Savo,116,116 Eturauhassyöpä,187
+2019,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,383
+2019,14,Pohjois-Karjala,115,115 Rintasyöpä,163
+2019,14,Pohjois-Karjala,116,116 Eturauhassyöpä,125
+2019,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,250
+2019,15,Keski-Suomi,115,115 Rintasyöpä,260
+2019,15,Keski-Suomi,116,116 Eturauhassyöpä,253
+2019,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,364
+2019,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,187
+2019,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,157
+2019,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,319
+2019,17,Pohjanmaa,115,115 Rintasyöpä,146
+2019,17,Pohjanmaa,116,116 Eturauhassyöpä,147
+2019,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,276
+2019,18,Keski-Pohjanmaa,115,115 Rintasyöpä,70
+2019,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,57
+2019,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,85
+2019,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,267
+2019,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,260
+2019,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,449
+2019,20,Kainuu,115,115 Rintasyöpä,51
+2019,20,Kainuu,116,116 Eturauhassyöpä,56
+2019,20,Kainuu,130,130 Pahanlaatuinen kasvain,114
+2019,21,Lappi,115,115 Rintasyöpä,173
+2019,21,Lappi,116,116 Eturauhassyöpä,185
+2019,21,Lappi,130,130 Pahanlaatuinen kasvain,304
+2019,90,Helsinki,115,115 Rintasyöpä,527
+2019,90,Helsinki,116,116 Eturauhassyöpä,218
+2019,90,Helsinki,130,130 Pahanlaatuinen kasvain,744
+2019,91,Ahvenanmaa,115,115 Rintasyöpä,21
+2019,91,Ahvenanmaa,116,116 Eturauhassyöpä,24
+2019,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,27
+2020,00,Tuntematon,115,115 Rintasyöpä,2
+2020,00,Tuntematon,116,116 Eturauhassyöpä,6
+2020,00,Tuntematon,130,130 Pahanlaatuinen kasvain,13
+2020,01,Itä-Uusimaa,115,115 Rintasyöpä,79
+2020,01,Itä-Uusimaa,116,116 Eturauhassyöpä,50
+2020,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,135
+2020,02,Keski-Uusimaa,115,115 Rintasyöpä,189
+2020,02,Keski-Uusimaa,116,116 Eturauhassyöpä,64
+2020,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,256
+2020,03,Länsi-Uusimaa,115,115 Rintasyöpä,387
+2020,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,193
+2020,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,559
+2020,04,Vantaa ja Kerava,115,115 Rintasyöpä,201
+2020,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,72
+2020,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,319
+2020,05,Varsinais-Suomi,115,115 Rintasyöpä,443
+2020,05,Varsinais-Suomi,116,116 Eturauhassyöpä,339
+2020,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,787
+2020,06,Satakunta,115,115 Rintasyöpä,247
+2020,06,Satakunta,116,116 Eturauhassyöpä,174
+2020,06,Satakunta,130,130 Pahanlaatuinen kasvain,368
+2020,07,Kanta-Häme,115,115 Rintasyöpä,144
+2020,07,Kanta-Häme,116,116 Eturauhassyöpä,107
+2020,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,325
+2020,08,Pirkanmaa,115,115 Rintasyöpä,449
+2020,08,Pirkanmaa,116,116 Eturauhassyöpä,336
+2020,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,779
+2020,09,Päijät-Häme,115,115 Rintasyöpä,254
+2020,09,Päijät-Häme,116,116 Eturauhassyöpä,187
+2020,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,346
+2020,10,Kymenlaakso,115,115 Rintasyöpä,152
+2020,10,Kymenlaakso,116,116 Eturauhassyöpä,179
+2020,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,324
+2020,11,Etelä-Karjala,115,115 Rintasyöpä,140
+2020,11,Etelä-Karjala,116,116 Eturauhassyöpä,123
+2020,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,251
+2020,12,Etelä-Savo,115,115 Rintasyöpä,122
+2020,12,Etelä-Savo,116,116 Eturauhassyöpä,118
+2020,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,216
+2020,13,Pohjois-Savo,115,115 Rintasyöpä,231
+2020,13,Pohjois-Savo,116,116 Eturauhassyöpä,188
+2020,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,416
+2020,14,Pohjois-Karjala,115,115 Rintasyöpä,136
+2020,14,Pohjois-Karjala,116,116 Eturauhassyöpä,151
+2020,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,257
+2020,15,Keski-Suomi,115,115 Rintasyöpä,248
+2020,15,Keski-Suomi,116,116 Eturauhassyöpä,201
+2020,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,383
+2020,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,191
+2020,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,161
+2020,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,315
+2020,17,Pohjanmaa,115,115 Rintasyöpä,145
+2020,17,Pohjanmaa,116,116 Eturauhassyöpä,165
+2020,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,284
+2020,18,Keski-Pohjanmaa,115,115 Rintasyöpä,56
+2020,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,61
+2020,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,96
+2020,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,273
+2020,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,276
+2020,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,493
+2020,20,Kainuu,115,115 Rintasyöpä,64
+2020,20,Kainuu,116,116 Eturauhassyöpä,65
+2020,20,Kainuu,130,130 Pahanlaatuinen kasvain,132
+2020,21,Lappi,115,115 Rintasyöpä,157
+2020,21,Lappi,116,116 Eturauhassyöpä,198
+2020,21,Lappi,130,130 Pahanlaatuinen kasvain,269
+2020,90,Helsinki,115,115 Rintasyöpä,586
+2020,90,Helsinki,116,116 Eturauhassyöpä,242
+2020,90,Helsinki,130,130 Pahanlaatuinen kasvain,715
+2020,91,Ahvenanmaa,115,115 Rintasyöpä,24
+2020,91,Ahvenanmaa,116,116 Eturauhassyöpä,18
+2020,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,39
+2021,00,Tuntematon,115,115 Rintasyöpä,4
+2021,00,Tuntematon,116,116 Eturauhassyöpä,6
+2021,00,Tuntematon,130,130 Pahanlaatuinen kasvain,11
+2021,01,Itä-Uusimaa,115,115 Rintasyöpä,66
+2021,01,Itä-Uusimaa,116,116 Eturauhassyöpä,78
+2021,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,154
+2021,02,Keski-Uusimaa,115,115 Rintasyöpä,173
+2021,02,Keski-Uusimaa,116,116 Eturauhassyöpä,76
+2021,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,240
+2021,03,Länsi-Uusimaa,115,115 Rintasyöpä,375
+2021,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,249
+2021,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,566
+2021,04,Vantaa ja Kerava,115,115 Rintasyöpä,183
+2021,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,105
+2021,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,290
+2021,05,Varsinais-Suomi,115,115 Rintasyöpä,474
+2021,05,Varsinais-Suomi,116,116 Eturauhassyöpä,333
+2021,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,765
+2021,06,Satakunta,115,115 Rintasyöpä,232
+2021,06,Satakunta,116,116 Eturauhassyöpä,152
+2021,06,Satakunta,130,130 Pahanlaatuinen kasvain,396
+2021,07,Kanta-Häme,115,115 Rintasyöpä,141
+2021,07,Kanta-Häme,116,116 Eturauhassyöpä,161
+2021,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,292
+2021,08,Pirkanmaa,115,115 Rintasyöpä,483
+2021,08,Pirkanmaa,116,116 Eturauhassyöpä,301
+2021,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,826
+2021,09,Päijät-Häme,115,115 Rintasyöpä,223
+2021,09,Päijät-Häme,116,116 Eturauhassyöpä,229
+2021,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,396
+2021,10,Kymenlaakso,115,115 Rintasyöpä,191
+2021,10,Kymenlaakso,116,116 Eturauhassyöpä,173
+2021,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,368
+2021,11,Etelä-Karjala,115,115 Rintasyöpä,118
+2021,11,Etelä-Karjala,116,116 Eturauhassyöpä,124
+2021,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,219
+2021,12,Etelä-Savo,115,115 Rintasyöpä,144
+2021,12,Etelä-Savo,116,116 Eturauhassyöpä,138
+2021,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,267
+2021,13,Pohjois-Savo,115,115 Rintasyöpä,245
+2021,13,Pohjois-Savo,116,116 Eturauhassyöpä,263
+2021,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,387
+2021,14,Pohjois-Karjala,115,115 Rintasyöpä,159
+2021,14,Pohjois-Karjala,116,116 Eturauhassyöpä,166
+2021,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,236
+2021,15,Keski-Suomi,115,115 Rintasyöpä,236
+2021,15,Keski-Suomi,116,116 Eturauhassyöpä,224
+2021,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,386
+2021,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,200
+2021,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,223
+2021,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,318
+2021,17,Pohjanmaa,115,115 Rintasyöpä,124
+2021,17,Pohjanmaa,116,116 Eturauhassyöpä,168
+2021,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,269
+2021,18,Keski-Pohjanmaa,115,115 Rintasyöpä,54
+2021,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,66
+2021,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,101
+2021,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,287
+2021,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,280
+2021,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,492
+2021,20,Kainuu,115,115 Rintasyöpä,66
+2021,20,Kainuu,116,116 Eturauhassyöpä,79
+2021,20,Kainuu,130,130 Pahanlaatuinen kasvain,121
+2021,21,Lappi,115,115 Rintasyöpä,154
+2021,21,Lappi,116,116 Eturauhassyöpä,181
+2021,21,Lappi,130,130 Pahanlaatuinen kasvain,277
+2021,90,Helsinki,115,115 Rintasyöpä,514
+2021,90,Helsinki,116,116 Eturauhassyöpä,278
+2021,90,Helsinki,130,130 Pahanlaatuinen kasvain,679
+2021,91,Ahvenanmaa,115,115 Rintasyöpä,26
+2021,91,Ahvenanmaa,116,116 Eturauhassyöpä,24
+2021,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,34
+2022,00,Tuntematon,115,115 Rintasyöpä,1
+2022,00,Tuntematon,116,116 Eturauhassyöpä,3
+2022,00,Tuntematon,130,130 Pahanlaatuinen kasvain,9
+2022,01,Itä-Uusimaa,115,115 Rintasyöpä,90
+2022,01,Itä-Uusimaa,116,116 Eturauhassyöpä,49
+2022,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,153
+2022,02,Keski-Uusimaa,115,115 Rintasyöpä,178
+2022,02,Keski-Uusimaa,116,116 Eturauhassyöpä,90
+2022,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,278
+2022,03,Länsi-Uusimaa,115,115 Rintasyöpä,395
+2022,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,295
+2022,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,563
+2022,04,Vantaa ja Kerava,115,115 Rintasyöpä,202
+2022,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,130
+2022,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,322
+2022,05,Varsinais-Suomi,115,115 Rintasyöpä,481
+2022,05,Varsinais-Suomi,116,116 Eturauhassyöpä,325
+2022,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,719
+2022,06,Satakunta,115,115 Rintasyöpä,204
+2022,06,Satakunta,116,116 Eturauhassyöpä,208
+2022,06,Satakunta,130,130 Pahanlaatuinen kasvain,395
+2022,07,Kanta-Häme,115,115 Rintasyöpä,150
+2022,07,Kanta-Häme,116,116 Eturauhassyöpä,191
+2022,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,301
+2022,08,Pirkanmaa,115,115 Rintasyöpä,423
+2022,08,Pirkanmaa,116,116 Eturauhassyöpä,357
+2022,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,755
+2022,09,Päijät-Häme,115,115 Rintasyöpä,192
+2022,09,Päijät-Häme,116,116 Eturauhassyöpä,212
+2022,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,391
+2022,10,Kymenlaakso,115,115 Rintasyöpä,128
+2022,10,Kymenlaakso,116,116 Eturauhassyöpä,153
+2022,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,343
+2022,11,Etelä-Karjala,115,115 Rintasyöpä,131
+2022,11,Etelä-Karjala,116,116 Eturauhassyöpä,117
+2022,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,230
+2022,12,Etelä-Savo,115,115 Rintasyöpä,135
+2022,12,Etelä-Savo,116,116 Eturauhassyöpä,132
+2022,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,243
+2022,13,Pohjois-Savo,115,115 Rintasyöpä,235
+2022,13,Pohjois-Savo,116,116 Eturauhassyöpä,210
+2022,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,393
+2022,14,Pohjois-Karjala,115,115 Rintasyöpä,140
+2022,14,Pohjois-Karjala,116,116 Eturauhassyöpä,188
+2022,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,254
+2022,15,Keski-Suomi,115,115 Rintasyöpä,268
+2022,15,Keski-Suomi,116,116 Eturauhassyöpä,217
+2022,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,388
+2022,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,203
+2022,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,208
+2022,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,284
+2022,17,Pohjanmaa,115,115 Rintasyöpä,135
+2022,17,Pohjanmaa,116,116 Eturauhassyöpä,190
+2022,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,230
+2022,18,Keski-Pohjanmaa,115,115 Rintasyöpä,52
+2022,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,66
+2022,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,92
+2022,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,241
+2022,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,261
+2022,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,440
+2022,20,Kainuu,115,115 Rintasyöpä,69
+2022,20,Kainuu,116,116 Eturauhassyöpä,71
+2022,20,Kainuu,130,130 Pahanlaatuinen kasvain,92
+2022,21,Lappi,115,115 Rintasyöpä,153
+2022,21,Lappi,116,116 Eturauhassyöpä,167
+2022,21,Lappi,130,130 Pahanlaatuinen kasvain,260
+2022,90,Helsinki,115,115 Rintasyöpä,557
+2022,90,Helsinki,116,116 Eturauhassyöpä,290
+2022,90,Helsinki,130,130 Pahanlaatuinen kasvain,693
+2022,91,Ahvenanmaa,115,115 Rintasyöpä,23
+2022,91,Ahvenanmaa,116,116 Eturauhassyöpä,30
+2022,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,40
+2023,00,Tuntematon,115,115 Rintasyöpä,7
+2023,00,Tuntematon,116,116 Eturauhassyöpä,4
+2023,00,Tuntematon,130,130 Pahanlaatuinen kasvain,14
+2023,01,Itä-Uusimaa,115,115 Rintasyöpä,92
+2023,01,Itä-Uusimaa,116,116 Eturauhassyöpä,89
+2023,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,142
+2023,02,Keski-Uusimaa,115,115 Rintasyöpä,175
+2023,02,Keski-Uusimaa,116,116 Eturauhassyöpä,93
+2023,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,291
+2023,03,Länsi-Uusimaa,115,115 Rintasyöpä,431
+2023,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,281
+2023,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,609
+2023,04,Vantaa ja Kerava,115,115 Rintasyöpä,252
+2023,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,100
+2023,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,304
+2023,05,Varsinais-Suomi,115,115 Rintasyöpä,463
+2023,05,Varsinais-Suomi,116,116 Eturauhassyöpä,324
+2023,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,752
+2023,06,Satakunta,115,115 Rintasyöpä,211
+2023,06,Satakunta,116,116 Eturauhassyöpä,180
+2023,06,Satakunta,130,130 Pahanlaatuinen kasvain,349
+2023,07,Kanta-Häme,115,115 Rintasyöpä,144
+2023,07,Kanta-Häme,116,116 Eturauhassyöpä,177
+2023,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,343
+2023,08,Pirkanmaa,115,115 Rintasyöpä,454
+2023,08,Pirkanmaa,116,116 Eturauhassyöpä,402
+2023,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,810
+2023,09,Päijät-Häme,115,115 Rintasyöpä,209
+2023,09,Päijät-Häme,116,116 Eturauhassyöpä,245
+2023,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,338
+2023,10,Kymenlaakso,115,115 Rintasyöpä,173
+2023,10,Kymenlaakso,116,116 Eturauhassyöpä,145
+2023,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,397
+2023,11,Etelä-Karjala,115,115 Rintasyöpä,143
+2023,11,Etelä-Karjala,116,116 Eturauhassyöpä,115
+2023,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,224
+2023,12,Etelä-Savo,115,115 Rintasyöpä,159
+2023,12,Etelä-Savo,116,116 Eturauhassyöpä,168
+2023,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,215
+2023,13,Pohjois-Savo,115,115 Rintasyöpä,225
+2023,13,Pohjois-Savo,116,116 Eturauhassyöpä,226
+2023,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,355
+2023,14,Pohjois-Karjala,115,115 Rintasyöpä,127
+2023,14,Pohjois-Karjala,116,116 Eturauhassyöpä,158
+2023,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,281
+2023,15,Keski-Suomi,115,115 Rintasyöpä,241
+2023,15,Keski-Suomi,116,116 Eturauhassyöpä,222
+2023,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,396
+2023,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,195
+2023,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,177
+2023,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,317
+2023,17,Pohjanmaa,115,115 Rintasyöpä,136
+2023,17,Pohjanmaa,116,116 Eturauhassyöpä,181
+2023,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,255
+2023,18,Keski-Pohjanmaa,115,115 Rintasyöpä,58
+2023,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,74
+2023,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,112
+2023,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,277
+2023,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,262
+2023,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,452
+2023,20,Kainuu,115,115 Rintasyöpä,56
+2023,20,Kainuu,116,116 Eturauhassyöpä,66
+2023,20,Kainuu,130,130 Pahanlaatuinen kasvain,107
+2023,21,Lappi,115,115 Rintasyöpä,165
+2023,21,Lappi,116,116 Eturauhassyöpä,150
+2023,21,Lappi,130,130 Pahanlaatuinen kasvain,291
+2023,90,Helsinki,115,115 Rintasyöpä,561
+2023,90,Helsinki,116,116 Eturauhassyöpä,315
+2023,90,Helsinki,130,130 Pahanlaatuinen kasvain,753
+2023,91,Ahvenanmaa,115,115 Rintasyöpä,20
+2023,91,Ahvenanmaa,116,116 Eturauhassyöpä,21
+2023,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,29
+2024,00,Tuntematon,115,115 Rintasyöpä,7
+2024,00,Tuntematon,116,116 Eturauhassyöpä,5
+2024,00,Tuntematon,130,130 Pahanlaatuinen kasvain,5
+2024,01,Itä-Uusimaa,115,115 Rintasyöpä,71
+2024,01,Itä-Uusimaa,116,116 Eturauhassyöpä,82
+2024,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,152
+2024,02,Keski-Uusimaa,115,115 Rintasyöpä,185
+2024,02,Keski-Uusimaa,116,116 Eturauhassyöpä,93
+2024,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,294
+2024,03,Länsi-Uusimaa,115,115 Rintasyöpä,471
+2024,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,287
+2024,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,600
+2024,04,Vantaa ja Kerava,115,115 Rintasyöpä,238
+2024,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,149
+2024,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,339
+2024,05,Varsinais-Suomi,115,115 Rintasyöpä,437
+2024,05,Varsinais-Suomi,116,116 Eturauhassyöpä,267
+2024,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,739
+2024,06,Satakunta,115,115 Rintasyöpä,220
+2024,06,Satakunta,116,116 Eturauhassyöpä,192
+2024,06,Satakunta,130,130 Pahanlaatuinen kasvain,375
+2024,07,Kanta-Häme,115,115 Rintasyöpä,184
+2024,07,Kanta-Häme,116,116 Eturauhassyöpä,145
+2024,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,301
+2024,08,Pirkanmaa,115,115 Rintasyöpä,505
+2024,08,Pirkanmaa,116,116 Eturauhassyöpä,345
+2024,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,707
+2024,09,Päijät-Häme,115,115 Rintasyöpä,216
+2024,09,Päijät-Häme,116,116 Eturauhassyöpä,205
+2024,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,328
+2024,10,Kymenlaakso,115,115 Rintasyöpä,163
+2024,10,Kymenlaakso,116,116 Eturauhassyöpä,126
+2024,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,338
+2024,11,Etelä-Karjala,115,115 Rintasyöpä,126
+2024,11,Etelä-Karjala,116,116 Eturauhassyöpä,103
+2024,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,240
+2024,12,Etelä-Savo,115,115 Rintasyöpä,120
+2024,12,Etelä-Savo,116,116 Eturauhassyöpä,146
+2024,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,238
+2024,13,Pohjois-Savo,115,115 Rintasyöpä,222
+2024,13,Pohjois-Savo,116,116 Eturauhassyöpä,187
+2024,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,371
+2024,14,Pohjois-Karjala,115,115 Rintasyöpä,141
+2024,14,Pohjois-Karjala,116,116 Eturauhassyöpä,187
+2024,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,237
+2024,15,Keski-Suomi,115,115 Rintasyöpä,246
+2024,15,Keski-Suomi,116,116 Eturauhassyöpä,229
+2024,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,308
+2024,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,153
+2024,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,163
+2024,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,330
+2024,17,Pohjanmaa,115,115 Rintasyöpä,154
+2024,17,Pohjanmaa,116,116 Eturauhassyöpä,181
+2024,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,300
+2024,18,Keski-Pohjanmaa,115,115 Rintasyöpä,66
+2024,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,60
+2024,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,87
+2024,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,296
+2024,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,260
+2024,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,437
+2024,20,Kainuu,115,115 Rintasyöpä,78
+2024,20,Kainuu,116,116 Eturauhassyöpä,79
+2024,20,Kainuu,130,130 Pahanlaatuinen kasvain,78
+2024,21,Lappi,115,115 Rintasyöpä,134
+2024,21,Lappi,116,116 Eturauhassyöpä,109
+2024,21,Lappi,130,130 Pahanlaatuinen kasvain,282
+2024,90,Helsinki,115,115 Rintasyöpä,573
+2024,90,Helsinki,116,116 Eturauhassyöpä,302
+2024,90,Helsinki,130,130 Pahanlaatuinen kasvain,796
+2024,91,Ahvenanmaa,115,115 Rintasyöpä,20
+2024,91,Ahvenanmaa,116,116 Eturauhassyöpä,18
+2024,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,30
+2025,00,Tuntematon,115,115 Rintasyöpä,6
+2025,00,Tuntematon,116,116 Eturauhassyöpä,5
+2025,00,Tuntematon,130,130 Pahanlaatuinen kasvain,13
+2025,01,Itä-Uusimaa,115,115 Rintasyöpä,99
+2025,01,Itä-Uusimaa,116,116 Eturauhassyöpä,78
+2025,01,Itä-Uusimaa,130,130 Pahanlaatuinen kasvain,146
+2025,02,Keski-Uusimaa,115,115 Rintasyöpä,203
+2025,02,Keski-Uusimaa,116,116 Eturauhassyöpä,97
+2025,02,Keski-Uusimaa,130,130 Pahanlaatuinen kasvain,294
+2025,03,Länsi-Uusimaa,115,115 Rintasyöpä,421
+2025,03,Länsi-Uusimaa,116,116 Eturauhassyöpä,290
+2025,03,Länsi-Uusimaa,130,130 Pahanlaatuinen kasvain,608
+2025,04,Vantaa ja Kerava,115,115 Rintasyöpä,221
+2025,04,Vantaa ja Kerava,116,116 Eturauhassyöpä,140
+2025,04,Vantaa ja Kerava,130,130 Pahanlaatuinen kasvain,312
+2025,05,Varsinais-Suomi,115,115 Rintasyöpä,527
+2025,05,Varsinais-Suomi,116,116 Eturauhassyöpä,321
+2025,05,Varsinais-Suomi,130,130 Pahanlaatuinen kasvain,768
+2025,06,Satakunta,115,115 Rintasyöpä,212
+2025,06,Satakunta,116,116 Eturauhassyöpä,141
+2025,06,Satakunta,130,130 Pahanlaatuinen kasvain,366
+2025,07,Kanta-Häme,115,115 Rintasyöpä,184
+2025,07,Kanta-Häme,116,116 Eturauhassyöpä,135
+2025,07,Kanta-Häme,130,130 Pahanlaatuinen kasvain,278
+2025,08,Pirkanmaa,115,115 Rintasyöpä,520
+2025,08,Pirkanmaa,116,116 Eturauhassyöpä,408
+2025,08,Pirkanmaa,130,130 Pahanlaatuinen kasvain,734
+2025,09,Päijät-Häme,115,115 Rintasyöpä,208
+2025,09,Päijät-Häme,116,116 Eturauhassyöpä,233
+2025,09,Päijät-Häme,130,130 Pahanlaatuinen kasvain,352
+2025,10,Kymenlaakso,115,115 Rintasyöpä,183
+2025,10,Kymenlaakso,116,116 Eturauhassyöpä,183
+2025,10,Kymenlaakso,130,130 Pahanlaatuinen kasvain,373
+2025,11,Etelä-Karjala,115,115 Rintasyöpä,138
+2025,11,Etelä-Karjala,116,116 Eturauhassyöpä,106
+2025,11,Etelä-Karjala,130,130 Pahanlaatuinen kasvain,209
+2025,12,Etelä-Savo,115,115 Rintasyöpä,147
+2025,12,Etelä-Savo,116,116 Eturauhassyöpä,142
+2025,12,Etelä-Savo,130,130 Pahanlaatuinen kasvain,222
+2025,13,Pohjois-Savo,115,115 Rintasyöpä,237
+2025,13,Pohjois-Savo,116,116 Eturauhassyöpä,215
+2025,13,Pohjois-Savo,130,130 Pahanlaatuinen kasvain,408
+2025,14,Pohjois-Karjala,115,115 Rintasyöpä,139
+2025,14,Pohjois-Karjala,116,116 Eturauhassyöpä,176
+2025,14,Pohjois-Karjala,130,130 Pahanlaatuinen kasvain,243
+2025,15,Keski-Suomi,115,115 Rintasyöpä,244
+2025,15,Keski-Suomi,116,116 Eturauhassyöpä,249
+2025,15,Keski-Suomi,130,130 Pahanlaatuinen kasvain,356
+2025,16,Etelä-Pohjanmaa,115,115 Rintasyöpä,205
+2025,16,Etelä-Pohjanmaa,116,116 Eturauhassyöpä,187
+2025,16,Etelä-Pohjanmaa,130,130 Pahanlaatuinen kasvain,313
+2025,17,Pohjanmaa,115,115 Rintasyöpä,157
+2025,17,Pohjanmaa,116,116 Eturauhassyöpä,178
+2025,17,Pohjanmaa,130,130 Pahanlaatuinen kasvain,231
+2025,18,Keski-Pohjanmaa,115,115 Rintasyöpä,50
+2025,18,Keski-Pohjanmaa,116,116 Eturauhassyöpä,62
+2025,18,Keski-Pohjanmaa,130,130 Pahanlaatuinen kasvain,90
+2025,19,Pohjois-Pohjanmaa,115,115 Rintasyöpä,287
+2025,19,Pohjois-Pohjanmaa,116,116 Eturauhassyöpä,266
+2025,19,Pohjois-Pohjanmaa,130,130 Pahanlaatuinen kasvain,446
+2025,20,Kainuu,115,115 Rintasyöpä,56
+2025,20,Kainuu,116,116 Eturauhassyöpä,83
+2025,20,Kainuu,130,130 Pahanlaatuinen kasvain,88
+2025,21,Lappi,115,115 Rintasyöpä,160
+2025,21,Lappi,116,116 Eturauhassyöpä,184
+2025,21,Lappi,130,130 Pahanlaatuinen kasvain,250
+2025,90,Helsinki,115,115 Rintasyöpä,621
+2025,90,Helsinki,116,116 Eturauhassyöpä,327
+2025,90,Helsinki,130,130 Pahanlaatuinen kasvain,775
+2025,91,Ahvenanmaa,115,115 Rintasyöpä,29
+2025,91,Ahvenanmaa,116,116 Eturauhassyöpä,27
+2025,91,Ahvenanmaa,130,130 Pahanlaatuinen kasvain,30

@@ -1,0 +1,3150 @@
+--- PAGE 1 ---
+Together against cancer
+– People-centered cancer 
+prevention and treatment
+National Cancer Strategy 2026–2035
+Translated from Finnish to English - www.onlinedoctranslator.com
+--- PAGE 2 ---
+National Cancer Strategy 2026–2035
+Content
+Summary
+Strategic goals
+3
+5
+Current status and operating environment
+Cancer in Finland
+The operating environment for cancer prevention, treatment and research 
+The European operating environment
+Equality in cancer strategy
+6
+6
+8
+10
+11
+Sub-goals and measures 13
+14Strengthening inclusion and developing people-oriented services
+1.1 Customers, patients and loved ones participate in the development of cancer prevention, treatment 
+and services 15
+1.2 A respectful, humane and individual encounter supports the patient to actively 
+participate in their own care 17
+1.3 Clear and accessible health communication and support for health literacy promote cancer 
+prevention, early detection and the effectiveness of treatment 19
+21Reducing the burden of cancer through prevention and early detection
+2.1 Cancer risk factors are reduced and protective factors are strengthened 
+through socio-political means 22
+242.2 Cancer is prevented in welfare areas and local services
+2.3 European recommendations and national structures are the basis for the 
+design and implementation of effective cancer screening programmes 26
+2.4 Legislation and registry data enable high-quality, cost-effective and risk-based 
+screening 28
+302.5 Cancers are detected early throughout healthcare
+Ensuring equal and effective cancer treatment 32
+3.1 National treatment recommendations and care chains guide equal, prompt and 
+effective treatment 33
+3.2 A national cancer care quality register, systematic review of results and peer 
+review support the development of effective care 35
+3.3 Rehabilitation, psychosocial support, health social work and palliative care are an 
+established part of the cancer patient's care chain and are equally available 37
+39
+41
+3.4 Functional capacity information guides the diagnostics and treatment of elderly cancer patients
+3.5 Sufficient and competent personnel ensure effective and people-oriented cancer treatment
+On the crest of a wave in a changing operating environment 43
+4.1 National health data repository and advanced analytics support cancer research and data 
+utilization 44
+46
+48
+50
+4.2 Strengthening clinical cancer research is an integral part of every patient's care
+4.3 Finland is a pioneer in personalized medicine
+4.4 Reducing the burden of cancer through multidisciplinary research
+4.5 The evaluation and introduction of new cancer drugs and other treatments is 
+effective, timely and consistent, regardless of the evaluation body. 52
+Implementation and monitoring
+Costs
+54
+54
+Abbreviations
+Appendix 1. Parties involved
+56
+--- PAGE 3 ---
+National Cancer Strategy 2026–2035
+Summary
+The cancer burden among Finns will increase 
+significantly over the next ten years. As the population 
+ages, the need for cancer treatment will also increase 
+significantly. Cancer affects almost all Finns in some 
+way, and more and more people are living with or 
+recovering from cancer. Cancer and cancer treatments 
+have a significant impact on the quality of life and 
+functional capacity of those affected.
+The aim of the National Cancer Strategy is to 
+improve equality and quality of life for patients, 
+taking into account their loved ones. Cancer 
+prevention and reducing cancer deaths are also key 
+objectives.
+The Cancer Strategy creates a strong foundation 
+for Finland to respond to the growing cancer burden 
+and become an international pioneer in cancer 
+prevention, treatment and research.
+Cancer is not a single disease, but a group of 
+hundreds of different types of diseases. Their diagnostics, 
+treatment and rehabilitation touch almost all areas of 
+healthcare, from primary healthcare to various fields of 
+specialized medical care. Therefore, cancer treatment, 
+rehabilitation and individual psychosocial support require 
+an increasingly multidisciplinary approach as well as 
+more individual molecular diagnostics and treatment 
+based on it. These services must be available equally and 
+without delay throughout the country.
+The first national cancer strategy Together against 
+cancer – People-centered cancer prevention and 
+treatmentidentifies the key challenges of the next ten 
+years and presents solutions to them. The steering group 
+for the strategy work has included the client, the Ministry 
+of Social Affairs and Health (STM), the Finnish National 
+Cancer Institute (FICAN), which was responsible for 
+implementing the work, as well as cancer organisations 
+and the Finnish Institute for Health and Welfare (THL).
+The strategy includes four main objectives:
+1.Strengthening inclusion and developing people-
+oriented services
+2.Reducing the burden of cancer through prevention 
+and early detection
+3.Ensuring equal and effective cancer treatment
+4.On the crest of a wave in a changing operating 
+environment
+In addition, equality has been raised as a cross-cutting 
+theme across all goals, taking into account the 
+diagnostics and treatment of elderly cancer patients in 
+particular, but also other population, age and disease 
+groups. The key values   that influenced the selection of 
+goals have been the reduction of inequality, quality of 
+life, the effectiveness of treatment and the importance of 
+research.
+The strategy is based on extensive working group work, 
+in which concrete and comprehensive proposals for 
+measures were defined for national goals under the 
+leadership of FICAN. The working groups included more than 
+200 experts from healthcare, research and education 
+organizations, and NGOs. In addition, the strategy and its 
+goals were discussed in a national expert network, which also 
+included a wide range of business representatives. The 
+parties involved in the strategy work are described in 
+Appendix 1. The strategy was finalized during autumn 2025 
+based on feedback collected in the Ota kantaa service.
+The strategy describes the measures and 
+responsibilities that will guide the achievement of the 
+goals over a five-year period. Clear indicators and 
+quantitative targets have been defined for monitoring 
+(Figure 1), which are to be achieved in stages by 2035.
+3
+--- PAGE 4 ---
+National Cancer Strategy 2026–2035
+The integration of primary and specialized 
+healthcare in welfare areas creates new opportunities 
+to detect cancers at an earlier stage. It also helps to 
+systematically collect cancer data to support effective 
+treatment, giving Finland a strong position at the 
+forefront of research, development and innovation 
+(RDI) using health data.
+The implementation of the strategy will be launched under 
+the coordination of the National Cancer Centre, FICAN. A 
+roadmap supporting the implementation of the strategy is 
+already being prepared and will be published during 2026. The 
+necessary and sufficient mandate for the long-term 
+implementation of the cancer strategy must be ensured
+It is important that the state and the welfare regions 
+are strongly committed to implementing the 
+strategy.
+All cancer stakeholders will participate in the 
+implementation and cooperation in this will be promoted 
+by the Cancer Mission Hub Finland, which will be 
+established in 2026. This national actor is part of a 
+European network that aims to promote the EU's cancer 
+mission and the cancer control plan at the national level. 
+In Finland, these goals are in line with the cancer 
+strategy: to ensure the best possible quality of life for 
+those affected, to promote equal access to cost-effective 
+treatments and to harmonise national recommendations 
+for cancer treatment.
+4
+--- PAGE 5 ---
+National Cancer Strategy 2026–2035
+Strategic goals
+The strategy is guided by four main objectives set for it. 
+The values   that guided the selection of the objectives 
+were reducing inequality, quality of life, the effectiveness of 
+care and the importance of research. The strategy
+The cross-cutting theme of the objectives is equality. 
+Indicators defined for monitoring (Figure 1)
+is to be achieved in stages by 2035.
+Strengthening inclusion and developing people-oriented services
+• Experience of care (Net Promoter Score, NPS), quality of life and well-being 
+(Patient Reported Outcome Measures, PROM) are measured and reported 
+systematically.
+• NPS in units treating cancer patients has over 80
+Reducing the burden of cancer through prevention and early detection
+• Preventable cancers decrease by 1,000 cases per year*
+• All cancer screening programs achieve an 80% participation rate in each wellness 
+area
+• At least 70% of cancers are diagnosed in stage III
+Ensuring equal and effective cancer treatment
+• 5-year survival rates for poor-prognosis cancers reach Nordic levels**
+• Cancer mortality will decrease by 10% (currently 13,300 people per year)
+• Patients receive treatment within target times***
+On the crest of a wave in a changing operating environment
+• The number of new clinical cancer trials and registry studies is increasing by 10% 
+per year****
+• The proportion of patients recruited into interventional studies is over 10% of cancer patients
+• Drugs used in cancer treatment are evaluated in a single channel
+Parity
+• Regional and socioeconomic differences in cancer incidence, treatment and cancer 
+mortality are available in service activities and are used to guide activities
+* The total number of preventable cancers is currently estimated at 10,000
+* * The five-year relative survival rate will increase from the 2023 level presented in Nordcantilasto by more than 14 percentage points in lung 
+cancer, 6 percentage points in pancreatic cancer and 14 percentage points in liver cancer. At the Nordic level, reference is made to the average of 
+Sweden and Norway.
+* * * THL (Guideline 21/2016). Monitoring access to treatment in cancer treatment.
+* * * * The annual number of new clinical cancer trials will increase to approximately 200 studies by 2035.
+Figure 1.Strategy monitoring indicators based on strategic goals.
+5
+--- PAGE 6 ---
+National Cancer Strategy 2026–2035
+Current status and operating environment
+Cancer in Finland
+Based on international comparisons, cancer 
+prevention and treatment in Finland are currently at 
+an excellent level overall. At the same time, however, 
+we have lagged behind other Nordic countries in 
+terms of survival rates for some cancers, and new 
+challenges lie ahead over the next ten years. The 
+expected number of cancer cases in Finland is 
+growing particularly rapidly as the population ages. 
+Cancer prevention, diagnostics and treatment are 
+developing rapidly, which offers opportunities for 
+more targeted treatments, but causes cost pressure. 
+In this situation, it has been considered that Finland 
+needs a strategy specifically for cancer that takes into 
+account other national development projects.
+The number of new cancer cases is predicted to 
+increase by about 20% in just over ten years without 
+additional measures. This means an increase in the 
+number of cases from the current slightly less than 
+38,000 to almost 45,000 cancer cases in 2035. About 
+a third of those diagnosed with cancer are of working 
+age. Early diagnosis, ambitious treatment and 
+rehabilitation of this patient group back to working 
+life are also important from the perspective of 
+society's dependency ratio.
+More and more people with cancer are living 
+longer. In 2035, it is expected that there will be as 
+many as 480,000 people living with or surviving 
+cancer in Finland, which represents a 35% increase 
+from 2022.
+16000
+14000
+12000
+0-64
+65-74
+75-84
+85+
+10000
+8000
+6000
+4000
+2000
+0
+1955 1965 1975 1985 1995 2005 2015 2025 2035
+Figure 2.Actual and projected (2023–2035) numbers of new cancer cases in different age groups. Source: 
+Cancer Registry.
+6
+Number of new cases
+--- PAGE 7 ---
+National Cancer Strategy 2026–2035
++ 74% 2.5
++ 41%
+150%
+Healthcare costs
+Cancer treatment costs 2.0
+100% 1.5
+1.0
+50%
+Realization Prognosis
+Figure 3.Actual (2014–2023) and projected (2024–2035) growth in cancer care costs relative to actual and 
+projected growth in healthcare expenditure. The bars show the percentage change for both compared to 2023. 
+For cancer care, the growth in costs is also described in billions of euros. The sources for cancer are Cancer Costs 
+in Finland online report1and the Cancer Registry's forecast of the incidence of cancer cases in different cancer 
+groups and the development of costs (€/patient) in these groups. The forecast for healthcare expenditure is 
+based on the THL register 2014–2022.2
+The increase in cancers is particularly concentrated in 
+older people, and more and more cancer patients are 
+over 75 years old – often with multiple diseases and 
+frailty. Cancer treatments for people over 75 years old 
+need to be carefully planned due to aging and many 
+other diseases, so symptomatic treatment will be 
+needed more than at present.
+Cancer prevention is the most effective way to 
+reduce suffering and costs. It also holds significant 
+potential, as a significant proportion of new cancers 
+are linked to preventable risk factors. In Finland, 
+overweight is currently the most prominent risk 
+factor, but smoking and alcohol consumption are 
+also significant risk factors. This strategy presents 
+concrete measures that can be used to
+to address risk factors and prevent cancers also among 
+the working-age population.
+Detecting cancer at an earlier stage is another 
+highly effective way to improve the prognosis and 
+burden of cancer for individual cancer patients. The 
+strategy takes into account evolving methods of early 
+detection and support for primary health care, which 
+promote the ability of health care to identify cancers.
+Reducing the workload of healthcare personnel is 
+essential, as the increase in the need for care and the 
+retirement of professionals in the field are already 
+reflected in increased staff dissatisfaction and a staff 
+shortage in healthcare.
+Cancer treatment costs are expected to increase 
+by up to 74% from the 2023 level (1.5 billion)
+1
+2
+www.syopasaatio.fi
+https://thl.fi/tilastotjadata/tilastotaiheittain/sosiaalijaterveydenhuollonresurssit/terveydenhuollonspenotarahoitus
+7
+Change compared to 2023 (%)
+Cost of cancer treatment (billion euros)
+2035
+2034
+2033
+2032
+2031
+2030
+2029
+2028
+2027
+2026
+2025
+2024
+2023
+2022
+2021
+2020
+2019
+2018
+2017
+2016
+2015
+2014
+--- PAGE 8 ---
+National Cancer Strategy 2026–2035
+(2.6 billion) by 2035 based on the last five years' 
+performance (Figure 3) without any specific 
+measures. This growth is significantly faster than the 
+growth of other social and health expenditure. It 
+creates a significant challenge for the carrying 
+capacity of healthcare unless corrective measures are 
+taken. Therefore, this strategy aims for effective 
+measures: personalized care at the right time.
+Although the situation with cancer treatment in Finland 
+is generally good, there are shortcomings, especially in 
+cancer prevention and equal, early detection. Tightening of 
+social security funding threatens immediate access to 
+treatment, even though cancer treatment is
+costs have remained moderate in Finland by 
+international comparison (OECD, 20233). Finland has 
+lagged behind other Nordic countries in treatment 
+outcomes for lung cancer and myeloma, for example.
+4.
+Cancer is also associated with both regional and 
+socioeconomic differences. Socioeconomic differences 
+are visible in both cancer incidence and cancer 
+mortality. The less educated and less affluent 
+population falls ill and dies from cancer more often 
+than the educated and affluent. The strategy 
+emphasizes equality and thus seeks to respond to this 
+challenge as well.
+The operating environment for cancer prevention, treatment and research
+Key cancer stakeholders divided into five 
+sectors according to their main role. 
+Many of the stakeholders have multiple 
+roles and work closely together.Specialist- associations Parliament
+Healthcare guidance and evaluation: 
+Service control, evaluation, statistics, 
+drug control, reimbursement system, 
+pricing.
+Other organizations &
+foundations Fimea Ministry of Education
+Duodecim Patient organizations Government
+Lattice
+CoilHotus Finland
+Cancer Society
+Implementation and development of prevention 
+and treatment:Implementation and development 
+of cancer prevention, treatment, rehabilitation and 
+monitoring, including national activities.
+Pod
+Municipalities
+Ministry of Education and Culture
+Companies Welfare-
+regions and HUS
+Research and education:New solutions, 
+experts, research funding, EU cooperation.
+Business
+Finland CC and CCC centers Companies and innovation: 
+Technologies, medicines, services, a 
+society that supports innovation.
+Universities
+Cancer-
+institute
+FICAN
+EU programs
+Cancer registry THL Civil society and expert actors:Treatment 
+recommendations, patient advocacy, 
+informational and peer support, health 
+promotion, cancer prevention.
+Professional-
+higher education institutions
+Cancer Foundation
+Other
+foundations
+Finland
+Academy
+Ministry of Education
+Figure 4.Key cancer players.
+3
+4
+OECD (2023), Cancer Profiles: Finland 2023, OECD Publishing, Paris, https://doi.org/10.1787/a0e415cdfi 
+Nordcan: https://nordcan.iarc.fr/en
+8
+k
+ta
+oh
+ij
+you
+m
+l
+I
+you
+oh
+t
+t
+you
+a
+s
+jItofyoutofaIsaajatofyouksIetBysIalasofaK
+atofImIohtohItaavohofofIajteskytIrY sytIBekaj syoutyouetoht ofohdIohB aj
+ofysIehkBE
+ItofIohIvraajsyouajBohofohllohyouBofe
+Tyou
+d
+t
+y
+k
+e
+I
+vr
+m
+e
+you
+T
+s ja
+--- PAGE 9 ---
+National Cancer Strategy 2026–2035
+In Finland, the operating environment for cancer 
+treatment and research is a broad and multi-level 
+entity, divided into healthcare guidance and 
+evaluation, prevention and treatment 
+implementation, research and education, innovation 
+and business activities, and the activities of citizens 
+and organizations (Figure 4). The environment is 
+multi-channel and decentralized, which has caused 
+challenges, especially for guidance, resource 
+allocation and the introduction of innovations.
+Responsibilities and resources for the implementation of 
+cancer prevention, screening, treatment, rehabilitation and 
+research are currently divided among several actors. In the 
+activities of ministries, the Finnish Institute for Health and 
+Welfare, welfare regions and universities, cancer-related 
+activities are linked to broader entities and strategies. In the 
+management of the cancer care system, the division of labor, 
+responsibilities and resourcing are not entirely clear.
+Figure 4 illustrates the key actors and areas in 
+the national cancer treatment and research 
+environment.
+The national actors focusing on cancer operating on a 
+statutory basis are the Cancer Registry and the National 
+Cancer Centre. The Cancer Registry is a research institute 
+focusing on cancer epidemiology operating in connection 
+with the Finnish Cancer Society and is also a national 
+registry operating under the responsibility of THL. The 
+National Cancer Centre FICAN is a joint centre established 
+by the Ministry of Health, Welfare and Sport for welfare 
+regions and medical universities, with the aim of 
+strengthening national cooperation and coordination to 
+harmonise cancer prevention, diagnostics and treatment, 
+to strengthen research and to ensure the availability, 
+quality and equality of treatment throughout the country. 
+FICAN's five regional centres work closely with university 
+hospitals and their CC and CCC accredited (Cancer Center 
+or Comprehensive Cancer Center according to the OECI 
+classification).
+In preparing and implementing the cancer 
+strategy, strong consideration will also be given to 
+existing national programs, projects and studies that 
+cut across cancer prevention, treatment and research 
+(Table 1).
+Table 1.The strategy and its implementation take into account national programs, projects and studies.
+Program, project or study
+Good Work Program – Attraction and support for the social welfare sector (STM)
+Substance abuse and addiction strategy. Common guidelines to 2030 (STM)
+Action plan for preventive substance abuse work (THL, 20212025)
+Finland on the Move program (OKM, 20232025)
+For Health – National Health and Well-being Programme (STM, 20252027)
+Research, development and innovation programme to accelerate growth and renewal in the health and wellbeing sector 
+(abbreviated as Health and Wellbeing Growth Programme, 2024–2027)
+Promoting well-being, health and safety 2030: Government decision-in-principle
+Medicines and pharmacy economy project (Ministry of Health, 20242027)
+Health data survey related to the Health and Wellbeing Sector Growth Programme of the Ministry of Social Affairs and Health and SITRA (2025)
+SITRA's Trial Nation Finland report (2025)
+Research project to investigate the establishment of a cancer quality registry (2024–2027)
+9
+--- PAGE 10 ---
+National Cancer Strategy 2026–2035
+European operating environment
+Finnish cancer prevention, treatment and research are 
+not only developed through national cooperation, but 
+our activities are influenced by both European and 
+global regulations, programs, recommendations, 
+guidelines and cooperation networks. The field of 
+cancer treatment and research in Europe has developed 
+significantly in recent years through European Union 
+initiatives, such as the EU's Action Plan on Cancer and 
+the EU Mission on Cancer.
+The EU's Action Plan against Cancer is a broad 
+strategy that sets policy objectives for cancer 
+prevention, early detection, quality care and support 
+for survivors. The EU Cancer Mission supports the 
+achievement of these objectives through research and 
+innovation. The National Cancer Strategy supports the 
+implementation of the EU's Action Plan against Cancer 
+and the Cancer Mission in Finland (Table 2).
+Table 2.The main themes of the EU's Action Plan on Cancer and their consideration in the cancer strategy.
+Main themes of the EU's Beating Cancer Plan How is this taken into account in the cancer strategy?
+Sustainable cancer prevention saves lives
+• Creating a smoke-free generation: by 2040, less than 5% of 
+the population will use tobacco
+• Reduce harmful alcohol use in line with the UN 
+Sustainable Development Goals and reduce young 
+people's exposure to alcohol marketing
+• Reduce environmental pollution by aligning EU air quality 
+standards with World Health Organization guidelines and 
+reduce exposure to carcinogens and radiation
+• Improve health knowledge and thus promote healthier 
+lifestyles.
+In sub-goals2.1 Cancer risk factors are reduced 
+through socio-political measures,2.2 Cancer 
+prevention in well-being areas and local 
+servicesand1.3 Clear and accessible health 
+communication and support for health literacy 
+promote cancer prevention, early detection 
+and the effectiveness of treatment
+Improving early cancer diagnosis
+• Targeted cancer screening is being considered for 
+expansion beyond breast cancer, colorectal cancer, and 
+cervical cancer to other cancers, such as prostate, lung, 
+and stomach cancer.
+In the sub-goal2.4 European recommendations 
+and national structures guide the design and 
+implementation of effective cancer screening 
+programmes
+Preventing cancer through vaccinations
+• The aim is to eliminate cervical cancer and other cancers 
+caused by human papillomaviruses (HPV). The aim is to 
+vaccinate at least 90% of girls in the EU and to significantly 
+increase the vaccination rate of boys by 2030.
+In the sub-goal2.2 Cancer prevention is 
+carried out in welfare areas and local 
+services, with the aim of eradicating cancers 
+caused by HPV
+Equal access to cancer research and treatment
+• The goal is for 90 percent of patients to have access to 
+CCC centers by 2030.
+Access to CC (Cancer Center according to OECI 
+classification) or CCC (Comprehensive Cancer 
+Center according to OECI classification) centers is 
+included in the measures of sub-objective 3.1, 
+which are specified in the roadmap.
+10
+--- PAGE 11 ---
+National Cancer Strategy 2026–2035
+Main themes of the EU's Beating Cancer Plan How is this taken into account in the cancer strategy?
+Improving the quality of life of cancer patients and cancer survivors
+• Launching a better life for cancer patients initiative
+• Consider equal opportunities for cancer survivors to access 
+financial services (including insurance) by developing 
+codes of conduct and considering long-term solutions
+In the sub-goal3.3 Rehabilitation, psychosocial 
+support, health social work and palliative care are 
+an established part of the cancer patient's care 
+chain and are equally availableas part of the 
+procedureIn connection with the social security 
+reform, the special livelihood challenges and 
+necessary measures for people with cancer will 
+be investigated, as well as the need for legislative 
+changes related to cancer patients' access to 
+loans and insurance in Finland.
+Equality in cancer strategy
+In the Finnish healthcare system, the central goal of 
+health policy is to provide citizens with equal access 
+to preventive healthcare services and fast, high-
+quality healthcare.
+However, Finnish long-term studies have shown 
+that the risk of developing cancer and cancer 
+mortality vary in different population groups. These 
+differences are strongly linked to cultural and social 
+factors underlying health, such as ethnicity, mother 
+tongue, level of education, age and health literacy. 
+Inequality also occurs based on place of residence 
+and economic situation. The current service system 
+based on parallel primary health care services can 
+also create and maintain differences in well-being 
+and health. Finland is among the top countries in 
+Europe in terms of the financial burden of cancer 
+patients.5
+Equality is a fundamental right enshrined in the 
+Finnish Constitution. Formal equality means that all 
+people are always treated in the same way and that 
+everyone is offered the same services. However, it 
+does not yet
+guarantees the realization of equality. De facto equality 
+(which can also be referred to as the need principle) 
+means comprehensive and fair consideration of 
+individual life situations, information about available 
+support services and cooperation between different 
+professionals so that every patient has the opportunity 
+to achieve the same treatment outcome. In this strategy, 
+the concepts of equality are based on the definitions of 
+the Finnish Institute for Health and Welfare6.
+Achieving equity requires action. It strengthens 
+the ability of health services and systems to identify 
+and respond to the social and cultural factors that 
+are linked to inequalities in care outcomes. Not 
+everything for everyone, but to each person 
+according to their individual needs.
+The cross-cutting theme of the National Cancer 
+Strategy is equality, which has been applied to all of 
+the strategy's main objectives, ensuring that the 
+strategy identifies the healthcare needs of all Finns – 
+regardless of who they are or where they live.
+5 Vancoppenolle J, Franzen N, Azarang L, et al. Financial toxicity and socioeconomic impact of cancer in Europe. ESMO Open. 2025 
+Jun;10(6):105293. doi: 10.1016/j.esmoop.2025.105293.
+THL. Concepts of equality. https://thl.fi/aiheet/sotepalveluenjohtaminen/kehittyvapalveluejarstelma/yhdenvertaisetpalve lut/
+yhdenvertaisuudenkasiteet
+6
+11
+--- PAGE 12 ---
+National Cancer Strategy 2026–2035
+Equality is examined through six key cross-cutting 
+themes (Figure 5). Poor-prognosis cancers, rare 
+cancers, childhood and adolescent cancers, 
+socioeconomic factors, regional disparities and the 
+elderly are examined as appropriate in different sub-
+objectives, and the perspectives related to them in the 
+strategy's proposed measures are specified in the 
+implementation roadmap.
+Equality themes have guided the definition of the 
+strategy's sub-objectives, and several sub-objectives 
+cover many perspectives. The aim is that the sub-
+objectives support the promotion of equality across 
+different population and patient groups, and that 
+equality is woven into the strategy's practical 
+measures.
+PARITY
+Socioeconomic factors
+Children and young people
+Rare cancers and cancer susceptibility syndromes
+Regional inequality
+Elderly
+Cancers with poor prognosis
+Figure 5.The cross-cutting themes of the strategy and their icons to indicate their consideration in 
+the sub-goals.
+12
+--- PAGE 13 ---
+National Cancer Strategy 2026–2035
+Sub-goals and measures
+The strategy is guided by four main objectives and the 
+sub-objectives defined for them (Figure 6).
+The theme that cuts across the strategy's goals 
+is equality.
+Strengthening inclusion and developing people-oriented services
+1.1Customers, patients and loved ones participate in the development of cancer prevention, treatment 
+and services
+1.2A respectful, humane and individual encounter supports the patient to actively 
+participate in their own care.
+1.3Clear and accessible health communication and support for health literacy 
+promote cancer prevention, early detection and the effectiveness of treatment.
+Reducing the burden of cancer through prevention and early detection
+2.1Cancer risk factors are reduced and protective factors are strengthened through socio-
+political means
+2.2Cancer prevention in wellness areas and local services
+2.3European recommendations and national structures are the basis for the design and 
+implementation of effective cancer screening programs
+2.4Legislation and registry data enable high-quality, cost-effective and risk-based 
+screening
+2.5Cancers are detected early across healthcare
+Ensuring equal and effective cancer treatment
+3.1National treatment recommendations and care chains guide equal, prompt and 
+effective care.
+3.2A national cancer care quality registry, systematic review of results, and peer 
+review support the development of effective care
+3.3Rehabilitation, psychosocial support, health social work and palliative care are an 
+established part of the cancer patient's care chain and are equally available.
+3.4Functional capacity information guides the diagnostics and treatment of elderly cancer patients
+3.5Sufficient and competent personnel ensure effective and people-oriented cancer 
+treatment
+On the crest of a wave in a changing operating environment
+4.1National health data repository and advanced analytics support cancer 
+research and data utilization
+4.2Strengthening clinical cancer research is an integral part of every patient's care
+4.3Finland is a pioneer in personalized medicine
+4.4Reducing the burden of cancer through multidisciplinary research
+4.5The evaluation and implementation of new cancer drugs and other treatments is 
+effective, timely and consistent, regardless of the evaluation body.
+Figure 6.The main objectives of the strategy and the sub-objectives defined for them
+13
+--- PAGE 14 ---
+National Cancer Strategy 2026–2035
+Strengthening inclusion and 
+developing people-oriented services
+Sub-goals:
+1.1Customers, patients and loved ones participate in the development of cancer 
+prevention, treatment and services
+1.2A respectful, humane and individual encounter supports the patient 
+to actively participate in their own care.
+1.3Clear and accessible health communication and support for health literacy 
+promote cancer prevention, early detection and the effectiveness of treatment.
+Customer participation refers to the participation of 
+service users in and influence on the service they 
+receive or that of their loved ones. More broadly, it 
+also refers to participation in and influence on the 
+ideation, planning, development, implementation and 
+evaluation of services, service chains and service 
+entities, as well as health policy. The Act on the Well-
+being Area emphasizes the participation of residents 
+and service users7promoting opportunities for 
+participation and influence.
+Customers, patients and loved ones can be 
+involved in the development of people-centered 
+cancer care, for example as members of customer, 
+patient or research committees, volunteers or 
+experience actors, and as representatives of service 
+users in welfare institutions.
+Involving clients, patients and their loved ones in 
+the development of services and their own care can 
+improve the quality of services, adherence to 
+treatment and the experience of cancer care. The 
+perspectives of patients and loved ones are also 
+valuable from the perspective of developing 
+healthcare recommendations, planning research and 
+developing health policy.
+In addition to structures that promote inclusion 
+and the interpersonal and interaction skills of social 
+and healthcare professionals, participation requires 
+sufficient health literacy among citizens.
+7 The Act on the Welfare Area (https://www.finlex.fi/fi/lainsaadanto/2021/611) uses the terms residents and service users. Here
+The strategy uses the terms customer, patient and loved one to refer to users of both cancer prevention and treatment and 
+rehabilitation services.
+14
+--- PAGE 15 ---
+National Cancer Strategy 2026–2035
+PARITY
+1.1 Customers, patients and loved ones 
+participate in the development of cancer 
+prevention, treatment and services
+The involvement of customers, patients and loved 
+ones in the development of healthcare and social care 
+has been strengthened in recent years. Promoting 
+participation is required in both international 
+guidelines and domestic legislation. Through 
+participation, preventive services and cancer 
+treatment can be developed to be more people-
+oriented and better meet the needs of customers and 
+patients.
+The participation of customers, patients and loved ones 
+in the development of cancer care services is currently not 
+implemented systematically, and there are regional and 
+organizational differences in the opportunities for 
+participation.
+By taking into account the perspectives of service 
+users, cancer prevention, screening and treatment 
+pathways can be developed and citizens' participation 
+in preventive services can be supported.
+Target state
+• In the future, customers, patients and loved ones will have an even stronger role in the 
+development of preventive services and cancer treatment.
+• Service organizers and providers actively share information about participation opportunities, and 
+promoting inclusion is part of the operating culture.
+• Patient representatives are more widely involved in the development of healthcare recommendations.
+• The clients, patients and loved ones involved in the development activities represent a 
+comprehensively diverse society. Members are recruited to the activities who represent different 
+age groups, genders, ethnic groups, socio-economic statuses and geographical areas.
+The achievement of the goal is measured as follows:
+• Active customer, patient and research committees focused on the development of cancer treatment 
+(customer, patient and research committees will be established in areas where they do not yet exist).
+• Patient representatives involved in working groups or reference groups preparing recommendations 
+(percentage of recommendations or working groups with customer or patient representatives).
+• Lay members involved in the development of cancer screening and cancer prevention 
+vaccination programs and representing a diverse society (number and proportion of lay 
+representatives involved).
+15
+--- PAGE 16 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. Strengthen the inclusion and participation opportunities of residents, customers, patients 
+and relatives in the development of screenings, vaccination programs and other preventive 
+services aimed at the population.
+2. Strengthen the participation of patient representatives in the development of cancer-specific treatment and other 
+recommendations, as well as treatment pathways.
+3. Cancer treatment units describe inclusion and participation opportunities in organizational 
+structures, action plans, and care and service processes, and are committed to utilizing the 
+information generated by inclusion and various participation channels in the development of 
+operations and services.
+4. Welfare areas, HUS and organizations will cooperate more closely than before.
+Responsibility
+• Ministry of Health, Welfare and Sport, welfare regions and HUS, municipalities, organizations
+16
+--- PAGE 17 ---
+National Cancer Strategy 2026–2035
+PARITY
+1.2 A respectful, humane and 
+individual encounter supports the 
+patient to actively participate in 
+their own care
+A basic human need is to be seen, heard and met. The 
+majority of cancer patients feel that they receive good 
+care, and patient satisfaction in cancer treatment 
+units is often high. However, patients may feel that 
+the hospital or clinic forgets the patient's holistic need 
+to be treated as an individual and whole person.
+Many patients need support and information to be able 
+to participate in the planning and implementation of their 
+own care and to support their own well-being.
+In addition to recommendations and treatment 
+practices based on research, treatment decisions 
+should be based on individual consideration of the 
+patient's resources, level of knowledge, and life 
+situation. This requires that the treating physician and 
+the patient have sufficient information about 
+treatment options, their potential benefits and harms, 
+and the patient's values   and views.
+There are currently no common national guidelines 
+available on taking shared decision-making into account 
+in cancer care.
+Target state
+• A person with cancer is an active participant in their own care to the extent that is appropriate for 
+them.
+• Shared decision-making is the starting point for treatment decisions.
+• Shared decision-making guidelines are integrated into treatment recommendations. Treatment recommendations are public 
+and patient versions are created.
+• Every person with cancer has a designated person responsible for coordinating their cancer 
+care, who has a clear role in the patient's care pathway. The person responsible for 
+coordination can be a doctor, nurse or other healthcare professional who is appropriately 
+trained in the task.
+• The designated employee identifies the patient's individual support needs (needs for rehabilitation, 
+psychosocial support, health social work, palliative care, and nutrition and exercise counseling) both 
+during treatment and rehabilitation and coordinates their implementation as well as self-care support.
+17
+--- PAGE 18 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Patients' experience of care (Net Promoter Score or NPS, Nursing Patient Feedback or HoPP) in 
+cancer treatment units (experiences are collected and reported in all units, NPS score over 80 
+and HoPP scores over 4.7).
+• A section on shared decision-making will be added to treatment recommendations (percentage of treatment 
+recommendations for cancer treatment that include a section on shared decision-making).
+• Treatment recommendations are public (percentage of cancer treatment recommendations 
+that are public).
+• Use of a designated employee model responsible for cancer care coordination in well-being 
+areas and HUS.
+Proposals for action
+1. A section supporting shared decision-making will be added to treatment recommendations.
+2. Implement existing metrics that measure the patient's experience of participating in 
+their own care.
+3. An operating model and guidelines will be created for a designated worker responsible for coordinating 
+cancer care.
+Responsibility:
+• FICAN, welfare areas and HUS
+18
+--- PAGE 19 ---
+National Cancer Strategy 2026–2035
+PARITY
+1.3 Clear and accessible 
+health communication and
+Supporting health literacy promotes 
+cancer prevention, early detection and 
+the effectiveness of treatment
+Recognizing cancer symptoms and making treatment 
+decisions are often complex and pose challenges for 
+health literacy. This is particularly evident in 
+recognizing symptoms, participating in screenings 
+and vaccinations, and understanding treatment 
+options, including palliative care. Poor health literacy 
+can prevent timely treatment, hinder treatment 
+decisions, and limit patients’ ability to influence their 
+own care. Strengthening health literacy in the 
+population promotes cancer prevention, early 
+diagnosis, and the effectiveness of treatment. Special 
+attention should be paid to population groups, such 
+as immigrants, whose participation in health care is 
+weaker than others.
+Health literacy can be strengthened through clear, 
+multi-channel, multilingual and culturally sensitive 
+communication. In addition, the population can be 
+supported through interventions developed and 
+implemented together with people from diverse 
+backgrounds and their representative organizations 
+that increase awareness and inclusion in health 
+services.
+Health literacy will also be strengthened by 
+increasing information about the care provided by 
+society, especially among immigrants. In addition, 
+trust in authorities and healthcare will be 
+strengthened. Promoting health literacy will only help 
+early detection if access to care is provided without 
+delay (sub-goal 2.5).
+Target state
+• Targeted and clear health communication has become an established part of promoting cancer screening and 
+treatment, especially among minority language groups and population groups whose voices are not clearly 
+heard in society.
+• Multilingual and culturally sensitive materials are widely used, reaching different language 
+groups and improving participation in screening and seeking treatment.
+• Citizens are more aware of the possible symptoms of various cancers and seek 
+treatment as early as possible.
+• The awareness of palliative care has improved significantly, and its benefits are known to 
+citizens and professionals.
+19
+--- PAGE 20 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Improving the participation rate in screenings so that the participation rate of the population whose mother 
+tongue is languages   other than Finnish and Swedish reaches the level of the Finnish and Swedish-speaking 
+population.
+• Improving HPV vaccination coverage so that the vaccination coverage target (90% among primary 
+school graduates) is achieved in every welfare region and in Helsinki.
+Measures:
+1. Improve the participation of populations belonging to different language groups in vaccinations and 
+screenings through targeted and community-based communication.
+2. Promote early treatment with a national communication plan that focuses on raising 
+awareness of cancer symptoms.
+3. Strengthen awareness and a positive attitude towards palliative care through clear and 
+consistent communication.
+Responsibility:
+• FICAN, welfare areas, City of Helsinki and HUS, organizations
+20
+--- PAGE 21 ---
+National Cancer Strategy 2026–2035
+Reducing the burden of cancer through 
+prevention and early detection
+Sub-goals:
+2.1Cancer risk factors are reduced and protective factors are strengthened 
+through socio-political means
+2.2Cancer prevention in wellness areas and local services
+2.3European recommendations and national structures are the basis for the 
+design and implementation of effective cancer screening programs
+2.4Legislation and registry data enable high-quality, cost-
+effective and risk-based screening
+2.5Cancers are detected early across healthcare
+Up to 30–40% of new cancer cases could be avoided if 
+living environments and lifestyles were health-
+promoting and cancer-preventive. Cancers take years 
+to develop, and the impact of cancer prevention 
+measures only becomes visible in the longer term. 
+Cancer risk factors must be influenced broadly by 
+making health-promoting decisions at all levels of 
+government and policy sectors. Preventive measures 
+should be seen as a necessary investment in public 
+health, as influencing the same risk and protective 
+factors also reduces the burden of other major 
+diseases, such as cardiovascular diseases and 
+diabetes.
+In the health and social care sector, it is essential to 
+increase access to primary health care, especially 
+preventive services and lifestyle guidance on nutrition,
+regarding exercise, alcohol consumption and 
+smoking. Eliminating cancers caused by human 
+papillomaviruses (HPV) requires improving HPV 
+vaccination coverage.
+In addition to cancer prevention, it is of paramount 
+importance that cancers are detected at a pre- or early 
+stage, which can reduce both the occurrence of new 
+cancers and cancer mortality.
+The aim of the cancer strategy is to develop the 
+guidance of national screening programmes and reform 
+legislation so that it supports the implementation of 
+screening programmes that are appropriate and cost-
+effective from the perspective of the population's health 
+benefits, the launch of new screening programmes, and 
+to strengthen early diagnosis of cancers in primary health 
+care.
+21
+--- PAGE 22 ---
+National Cancer Strategy 2026–2035
+PARITY
+2.1 Cancer risk factors are reduced and 
+protective factors are strengthened 
+through socio-political means
+Cancer prevention policy tools include legislation, 
+budgeting, strategies, other guidelines and 
+government action. Properly targeted policy tools can 
+reduce socioeconomic health disparities. The impacts 
+of initiatives from different sectors on health and 
+health disparities, as well as cancer prevention, are 
+currently poorly considered.
+Measures are needed because, although smoking has 
+decreased, the use of other tobacco and nicotine products is 
+increasing. Alcohol consumption and the increasing prevalence 
+of overweight (body mass index of at least 25 kg/m²) and obesity 
+(body mass index of at least 30 kg/m²) are increasing the cancer 
+burden, especially in Finland.
+Early childhood education, educational institutions 
+and youth work play a key role in shaping young people's 
+lifestyles.
+Target state
+• The use of tobacco, nicotine products and alcohol will decrease. Compliance with nutrition and exercise 
+recommendations will become more widespread. The increase in obesity will be halted. The changes will reduce 
+socio-economic health disparities.
+• Cancer prevention, health promotion and reducing health inequalities are taken into account in 
+socio-political decisions and budgeting.
+• Updated national tobacco, alcohol, nutrition and physical activity programs outline cancer 
+prevention measures.
+• Taxation guides both industry, trade and consumers towards healthier choices.
+• Walking and cycling paths, local services, yards that encourage movement, and connections to nearby nature are 
+secured.
+• Construction and zoning guidelines take into account protection from UV radiation and 
+reducing radon exposure.
+• Combating occupational cancer is part of the national occupational safety and health strategy.
+• The environments of children and young people, including educational institutions, youth work and close adults, 
+support the formation of healthy lifestyles.
+22
+--- PAGE 23 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Overweight and obesity are no longer becoming more common in the population.
+• Annual increase in taxes on tobacco, nicotine and alcohol products, the use of tobacco and 
+nicotine products will end in accordance with the goal set in the legislation.
+• Total alcohol consumption continues to decline by 2.5% per year, with alcoholic beverage labels now stating 
+the calorie count and warning about the risk of cancer associated with alcohol.
+• Number of employees registered in the ASA register (register of those exposed to substances 
+and methods that pose a risk of cancer in their work).
+Measures:
+1. Include a comprehensive health and health inequality impact assessment that supports cancer prevention 
+in legislative and budget proposals, land use and transportation plans.
+2. Expand health-based taxation.
+3. Plan and implement a national nutrition and physical activity action plan in collaboration with key 
+stakeholders. As part of the planning, the achievements and implementation challenges of the 
+national obesity program (2012–2018) will be assessed.
+4. A tobacco and nicotine policy development working group will be established each term of government to strengthen 
+the regulation of tobacco and nicotine products.
+5. Ensure that social and health policy aspects are taken into account in alcohol policy. 
+Regulations are made on the labelling of alcohol products.
+6. Improve protection from UV radiation by providing shade in public courtyards, walking and cycling 
+paths and other outdoor spaces. Avoidance of radon exposure is taken into account in construction.
+7. The fight against occupational cancer will be included in the national occupational safety and health strategy.
+8. Ensure that key actors (municipalities, organizations) have the opportunity to develop and support operating models 
+that promote the health of children's and young people's living environments.
+Responsibility:
+• Ministry of Social Affairs, Ministry of Education, Ministry of Health, Ministry of Sports (National Sports Council), Ministry of Employment and the Economy, THL, 
+STUK, welfare areas, City of Helsinki and HUS, municipalities, public health and youth organizations
+23
+--- PAGE 24 ---
+National Cancer Strategy 2026–2035
+PARITY
+2.2 Cancer is prevented
+in welfare areas and
+in local services
+Both social and health services and municipalities 
+have tasks related to health promotion and cancer 
+prevention. Cancer prevention advice, mini-
+interventions and service guidance are provided in 
+both preventive and medical care services. One of the 
+key goals of the social and health services reform has 
+been to strengthen and develop preventive work, but 
+this goal is under threat.
+Shifting the focus of the service system more 
+strongly towards prevention requires financial and 
+structural support from both welfare regions and the 
+central government. It is essential for residents to 
+have access to the preventive services they need. It is 
+particularly essential to ensure the availability, quality 
+and affordability or free of charge of preventive 
+services in public
+services, because public services are used by sicker and 
+less well-off groups of people. Occupational health care 
+reaches the working population, and its important role 
+in cancer prevention must be taken into account in the 
+development of occupational health services.
+The current financing law does not guide this shift in 
+focus sufficiently. Service availability problems and 
+patient fees make comprehensive preventive work 
+difficult. The regional availability and quality of 
+preventive services vary. Tobacco and nicotine 
+cessation, substance abuse rehabilitation, and nutrition 
+and exercise counseling should be available to those 
+who need them. HPV vaccination coverage, especially 
+among primary school children, should be improved.
+Target state:
+• The funding model for welfare areas encourages preventive work more strongly in line with 
+national and municipal goals.
+• Effective preventive operating models for social services have been defined nationally and 
+integrated into regional lifestyle guidance care and service chains and medical care.
+• Nutrition and exercise advice, tobacco and nicotine withdrawal, and substance abuse services are 
+available to all who need them, and the services utilize national operating models.
+• Cancers caused by HPV have been eliminated as vaccination coverage has improved.
+24
+--- PAGE 25 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Financing of preventive services in welfare areas.
+• Availability and free access to preventive services.
+• Availability of tobacco and nicotine cessation services, substance abuse rehabilitation services, and 
+nutrition and exercise counseling.
+• Proportion of smokers and substance abusers by region.
+• HPV vaccination coverage: at least 90% of primary school graduates nationwide.
+Proposals for action:
+1. Further increasing the emphasis on prevention in the financing of welfare areas will be 
+investigated.
+2. Ensure the use of national cancer prevention policies, including those on drugs, nutrition 
+and exercise.
+3. Increase HPV vaccination coverage in primary schools through coordinated cooperation and 
+communication, and ensure active provision and supplementation of vaccinations also in middle school 
+and secondary school.
+Responsibility:
+• Ministry of Health, Social Affairs, welfare areas, City of Helsinki and HUS, municipalities, occupational healthcare
+25
+--- PAGE 26 ---
+National Cancer Strategy 2026–2035
+PARITY
+2.3 European recommendations and 
+national structures are the basis for the 
+design and implementation of effective 
+cancer screening programmes
+For decades, the Finnish Cancer Registry has been 
+responsible for planning, developing and monitoring Finnish 
+cancer screening programmes, which receive state funding 
+for the development and maintenance of screening registers. 
+In accordance with the Health Care Act, the welfare regions 
+and the City of Helsinki are responsible for organising 
+screening programmes.
+The National Steering Group for Cancer Screening is 
+an expert body for cancer screening that assists the 
+Ministry of Social Affairs and Health in the preparation 
+of laws and regulations. Five expert groups for cancer 
+screening operate under the steering group, which 
+provide statements on the development of screening 
+programs and the launch of new programs.
+Both the steering group and the expert groups have 
+operated for years without a permanent structure, clear 
+definition of tasks, and funding.
+A screening evaluation division (screening division) 
+has been established within the Health Care Service 
+Selection Council (Palko), with the task of issuing 
+statements and recommendations for the inclusion of 
+screening in the national screening programme. The 
+screening division is a new actor in the overall process of 
+screening guidance, and this should be taken into 
+account when considering the definition of the tasks of 
+the screening steering group.
+Target state:
+• Strategic planning, effectiveness assessments and development of cancer screening will be carried out in the future on 
+a long-term basis, and a clearly defined entity will be responsible for the whole process.
+• Clear processes have been defined for launching new screening programmes and modifying 
+existing programmes. Decisions are based on EU recommendations and a comprehensive 
+national assessment, which covers not only effectiveness and cost-effectiveness, but also 
+aspects related to the organisation of screening.
+• The expansion of screening programs has been piloted in accordance with EU recommendations for prostate cancer and 
+lung cancer in long-term smokers, and the target age group for breast cancer screening has been expanded to 46–74 
+years of age.
+The achievement of the goal is measured as follows:
+• The structure of screening management has been defined and the processes have been publicly documented.
+• The national criteria for decision-making related to screening programmes published in 2006 have been updated, 
+and they are being adhered to in decision-making.
+• Screenings that are considered effective and cost-effective have been included in the national 
+screening program.
+26
+--- PAGE 27 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. The division of labor and responsibilities between the national cancer screening steering group, screening 
+program-specific expert groups, and the Palko Screening Division are clarified.
+2. The criteria for decision-making in cancer screening programs will be updated.
+3. The breast cancer screening program will be expanded to include people aged 46–74.
+4. New national screening programs will be established and existing programs will be modified based on 
+research data and EU recommendations.
+Responsibility:
+• STM, Palko, FICAN, National Steering Group for Cancer Screening or new defined steering 
+structure, Finnish Cancer Registry, welfare areas, City of Helsinki and HUS
+27
+--- PAGE 28 ---
+National Cancer Strategy 2026–2035
+PARITY
+2.4 Legislation and register 
+information enable high-quality, 
+cost-effective and
+risk-based screening
+The implementation of screening programmes is regulated 
+in the Health Care Act and the Screening Decree, which 
+define the target population and screening interval for 
+each cancer screening programme. In addition, the THL Act 
+(668/2008) provides general provisions on the national 
+registration of healthcare activities. The Finnish Cancer 
+Registry is responsible for maintaining national cancer 
+screening registers and evaluating screening programmes 
+on behalf of the THL.
+Finland has high-quality registry data by international 
+standards, which could be used to implement screening 
+on an increasing basis on a risk basis. The balance of 
+benefits and harms of screening could be improved by 
+currently utilizing the data in defining the target 
+population for screening.
+In addition to age and gender, for example, results from 
+previous screening rounds or HPV vaccination history are 
+used.
+Current legislation does not allow for the direct 
+use of data collected in screening registers or other 
+healthcare registers in the practical implementation 
+of screening. Moving to risk-based screening would 
+also place higher demands on the quality and 
+comprehensiveness of register data.
+In order to implement equal and cost-effective 
+cancer screening, it is important that screening is 
+organized in accordance with best practices across 
+Finland.
+Target state:
+• Screening programs are implemented throughout Finland with high quality and in accordance with best 
+practices. Up-to-date quality manuals guide the organization of screening and the actors implementing it.
+• Targeting screening based on statistically assessed risk is legally possible.
+• All screening activities outside the national screening program (for example, mammography 
+imaging of asymptomatic individuals or cervical smears) will in future be subject to screening 
+program evaluation. By eliminating duplicate testing, costs can be saved and harms can be 
+reduced. The implementation of screening programs is monitored from a national registry, 
+where data is automatically transferred through information system integrations.
+• Research related to screening methods is being actively conducted, and changes that improve screening 
+programs, such as the use of artificial intelligence, are being integrated into screening programs without delay.
+28
+--- PAGE 29 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Legislation related to screening is in line with the target state.
+• Coverage of screening tests in the screening register (the goal is that 100% of tests outside the 
+screening programme are registered).
+• Participation rate in screenings (target of at least 80% participation rate in various 
+programs in all welfare areas and in the city of Helsinki).
+• Number of pilot studies integrated into the screening program.
+Proposals for action:
+1. We will comprehensively implement screening program quality manuals in the procurement and management of 
+services.
+2. Legislation will be reformed to enable cost-effective and risk-based screening.
+3. Screening is targeted based on the statistically assessed risk of the target population, whereby some of those 
+screened can be invited for screening less frequently or more frequently.
+4. Secure funding for pilot studies within the framework of the screening program.
+5. Operating models are defined to utilize the information in screening registers in the 
+development of the screening program together with the welfare areas.
+Responsibility:
+• Ministry of Health, FICAN, National Steering Group for Cancer Screening or new defined steering 
+structure, Finnish Cancer Registry, welfare regions, City of Helsinki and HUS
+29
+--- PAGE 30 ---
+National Cancer Strategy 2026–2035
+PARITY
+2.5 Cancers are detected early 
+everywhere
+in healthcare
+In cancer treatment, it is of paramount importance 
+that cancer is detected as early as possible. Then the 
+treatment is more likely to be curative, the side effects 
+are fewer, the implementation is cheaper and cancer 
+death is often preventable. The measures presented 
+in the strategy (sub-objective 1.3) promote cancer 
+awareness among citizens, which improves treatment 
+seeking.
+Early detection is hampered by problems in 
+welfare areas, especially challenges in access to 
+primary health care and early diagnosis. These are 
+due, among other things, to a shortage of healthcare 
+personnel and congestion in care chains.
+Early detection is crucial, especially in many rare 
+cancers and cancers with poor prognosis, such as 
+lung cancer.
+Reliable and comprehensive data from recorded 
+initial symptoms to diagnosis are a prerequisite for 
+earlier cancer detection. However, this data is not 
+collected systematically. In addition, clinical cancer 
+registry notifications at the time of diagnosis, which 
+include cancer prevalence data, only cover 
+approximately 40% of all cancer cases.
+Target state:
+• Access to primary healthcare is easy, and healthcare professionals have sufficient expertise 
+to identify symptoms suggestive of cancer and refer patients for further testing. This 
+prevents unnecessary delays in cancer diagnosis.
+• Recommendations and operating models in use nationwide support the identification of cancer risk 
+groups and the enhancement of cancer prevention and early diagnosis using genetic information.
+• Healthcare information systems and artificial intelligence-based solutions are utilized to support 
+early detection.
+• In healthcare, information is collected from initial symptoms to diagnosis in order to identify and eliminate 
+delays.
+The achievement of the goal is measured as follows:
+• At least 70% of cancers will be diagnosed in prevalence classes I–II by 2035.
+• Guidelines (referral criteria and operating models) have been incorporated into all national care 
+chains.
+30
+--- PAGE 31 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. Improve access to care by increasing physician resources in primary health care, for example by 
+expanding the private physician model nationwide.
+2. Support a smooth transition to specialized medical care by defining standardized referral criteria as 
+part of national care chains, which, when met, will quickly direct patients suffering from possible 
+cancer symptoms to the necessary diagnostic tests.
+3. Action models will be created to identify cancer risk groups and improve early diagnostics 
+using genetic information.
+Responsibility:
+• FICAN, welfare areas, City of Helsinki and HUS, occupational healthcare
+31
+--- PAGE 32 ---
+National Cancer Strategy 2026–2035
+Ensuring equal and effective 
+cancer treatment
+Sub-goals:
+3.1National treatment recommendations and care chains guide equal, 
+prompt and effective care.
+3.2A national cancer care quality registry, systematic review of results, and peer 
+review support the development of effective care
+3.3Rehabilitation, psychosocial support, health social work and palliative care are an 
+established part of the cancer patient's care chain and are equally available.
+3.4Functional capacity information guides the diagnostics and treatment of elderly cancer 
+patients
+3.5Sufficient and competent personnel ensure effective and people-oriented cancer 
+treatment
+In Finland, cancer survival rates are internationally 
+comparable, but there is still significant need for 
+development in the organization of care. Regional 
+differences in the availability of resources and 
+services, treatment practices and support services 
+weaken equality for patients. In addition, the costs of 
+cancer treatment have continued to grow rapidly, 
+especially with new drug treatments. In the future, 
+cost management requires the precise targeting of 
+effective treatments to patients who will benefit most 
+from them. The rapid increase in cancers, especially in 
+the elderly, highlights the special need to take into 
+account the special characteristics of the care of 
+elderly patients in the care system.
+National treatment recommendations and well-
+coordinated care chains, where multidisciplinary 
+cooperation works seamlessly and access to care is 
+without delay, guarantee patients efficient, equal care.
+adequate and timely treatments. Monitoring and 
+managing care chains also requires sufficient and 
+target-based quality indicators and the prerequisites 
+for their systematic monitoring. Effective and equal 
+care also requires sufficient and competent personnel, 
+whose training and availability must be invested in 
+nationwide.
+The aim of the Cancer Strategy is to ensure that 
+Finland has coherent and effective care chains and 
+sufficient and competent personnel, which together 
+guarantee equal and high-quality care and support 
+services for all patients regardless of their place of 
+residence. Rehabilitation, psychosocial, social and 
+financial support, and palliative care based on the 
+individual needs of cancer patients are seamlessly 
+integrated into care chains, and their availability and 
+quality are consistent throughout the country.
+32
+--- PAGE 33 ---
+National Cancer Strategy 2026–2035
+PARITY
+3.1 National treatment recommendations 
+and care chains guide equal, prompt and 
+effective treatment
+National treatment recommendations, treatment chains 
+and systematic monitoring of treatment outcomes based 
+on up-to-date evidence are a key prerequisite for equal, 
+high-quality and effective cancer treatment. Together, 
+they ensure that the patient receives the right kind of 
+treatment at the right time, in the right place. In 
+accordance with the Centralization Decree, the objective 
+of the National Cancer Center is to promote the planning 
+and implementation of uniform treatment practices and 
+to monitor the equality of access to treatment and 
+treatment outcomes. However, so far, sufficient 
+resources or funding have not been allocated to the 
+implementation of this task.
+Finland does not have a unified national system that 
+would guide the development of cancer-specific treatment 
+recommendations and the implementation and monitoring 
+of the treatment chains based on them (quality and 
+effectiveness targets/indicators, including access to 
+treatment and cancer-specific and generic PROMs). The 
+existing treatment recommendations and chains, as well as 
+the targets and indicators to be monitored, are not 
+coordinated at the national level. This maintains regional 
+inequalities in the availability and effectiveness of cancer 
+treatment. In addition, it slows down the systematic 
+assessment of the quality of care and its effectiveness-based 
+development.
+Target state:
+• The National Cancer Center maintains a national system that coordinates the preparation, updating and 
+implementation of cancer-specific treatment recommendations and chains.
+• National treatment recommendations are based on up-to-date evidence and are prepared in 
+accordance with a uniform agile process, utilizing international methods, taking into account the 
+principles and feasibility of the service range.
+• National policies on taking into account costs and other societal impacts support the 
+consistency of treatment recommendations and ensure their feasibility as part of healthcare 
+structures.
+• Care chains guide patient care in a regionally adapted manner and ensure timely, effective 
+and equal care throughout the country.
+• Nationally defined quality and effectiveness targets enable the evaluation of care chains. They 
+provide comparable information to support care development and decision-making.
+The achievement of the goal is measured as follows:
+• The availability of up-to-date national treatment recommendations and treatment chains is at the 
+Nordic level (proportion of treatment recommendations in relation to Nordic references, %).
+• Patients can access treatment within target times.
+• National and unified objectives and key effectiveness monitoring indicators defined for 
+agreed cancers.
+33
+--- PAGE 34 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. A national mechanism and permanent funding will be created to maintain cancer-specific treatment 
+recommendations.
+2. Cancer-specific care chain descriptions will be prepared, and regional care chains applied based on them, as well 
+as a mechanism for their maintenance and management.
+3. Nationally consistent policies will be created for taking costs and other social impacts 
+into account in treatment choices.
+4. National quality and effectiveness goals and monitoring indicators are defined to enable 
+monitoring of care chains.
+Responsibility:
+• FICAN, National Multidisciplinary Cancer Groups, Duodecim, STM, Palko
+34
+--- PAGE 35 ---
+National Cancer Strategy 2026–2035
+PARITY
+3.2 A national cancer care quality 
+register, systematic review of results 
+and peer review support the 
+development of effective care
+National quality registers are key tools in developing the 
+quality and effectiveness of care. THL is responsible for 
+maintaining nine national quality registers. A cancer care 
+quality register has not yet been established in Finland, 
+but its establishment is currently being investigated in a 
+joint research project between the Cancer Registry, 
+FICAN and THL. Currently, the Cancer Registry is the 
+most important source of information for national joint 
+development. The Cancer Registry annually publishes the 
+effectiveness of cancer care for all cancer patients, 
+measuring the prognosis (survival rate) and cancer 
+mortality nationally and regionally. The timeliness of the 
+Cancer Registry data has been improved, but it is still 
+challenged by the inadequate registration of clinical 
+cancer data. Research is being conducted outside the 
+Cancer Registry
+monitoring of the quality and effectiveness of cancer 
+care, but it is spotty and fragmented, and based on 
+individual research projects and programs.
+Comparisons of treatment implementation between 
+regions are made sporadically, and are based on crude 
+and fragmented indicators, if comparisons are made at 
+all. According to the explanatory memorandum to the 
+centralization decree, monitoring access to treatment 
+and equality of treatment outcomes is a key task of the 
+National Cancer Center.
+The model for the development of a national quality register for 
+cancer care should be taken from the quality registers maintained by 
+the Finnish Institute for Health and Welfare and the peer 
+development activities that have developed around them, which have 
+helped to develop operations and improve treatment outcomes 
+elsewhere.
+Target state:
+• The National Cancer Care Quality Register helps to assess how patient care, treatment recommendations and 
+chains are implemented, and produces up-to-date quality and effectiveness information for their development 
+and guidance.
+• The development of cancer care is based on reliable, up-to-date and consistent 
+information, which can help identify potential gaps and regional differences in the 
+quality of care and take the necessary measures to correct them.
+• Regions and care units receive up-to-date and comparable information on their own performance 
+relative to the national level through national peer development and guidance and management 
+mechanisms. Support and guidance are provided to address gaps, ensuring the sharing of best 
+practices and the continuous improvement of care.
+35
+--- PAGE 36 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Recording cancer-specific data in the quality register, peer development activities in use 
+(number of cancer types for which data is available in quality registers).
+• The quality register's database (including prevalence information) enables reliable assessment and 
+comparison of quality and effectiveness (database coverage 90%).
+• Reliable information is available on regional differences in cancer diagnostics and treatment practices, 
+which can help narrow differences in treatment outcomes.
+• Number of clinical cancer notifications (target 90% of cases automated by 2030).
+Proposals for action:
+1. A legislative basis will be created for the cancer care quality register to be established in connection with the Cancer Registry of the Finnish Institute 
+for Health and Welfare.
+2. Define and launch peer development processes that systematically compare and review the 
+information produced by quality registers.
+3. Define and launch steering and management mechanisms to respond to the results 
+of the peer review and any shortcomings.
+4. The roles and responsibilities of the actors participating in the cancer care quality registry activities will be clarified, a 
+contractual basis will be drawn up, and permanent funding for the quality registry activities will be ensured.
+Responsibility:
+• FICAN, Cancer Registry, THL, welfare areas, City of Helsinki and HUS
+36
+--- PAGE 37 ---
+National Cancer Strategy 2026–2035
+PARITY
+3.3 Rehabilitation, psychosocial support, 
+health social work and palliative care are 
+an established part of
+cancer patient care chain and 
+equally accessible
+Support services for cancer patients and their loved 
+ones cover comprehensive psychosocial and 
+rehabilitation support (including nutritional care and 
+physical rehabilitation), social and financial support, 
+and palliative care. The aim of the support services is 
+to promote work and functional capacity, as well as 
+coping with the associated and late symptoms related 
+to the disease and treatments in the cancer patient's 
+own everyday life. Support services are also essential 
+for people with incurable cancer and their loved ones.
+Currently, these services are fragmented and there 
+are significant regional differences in their availability, 
+making it difficult to provide timely and appropriate 
+support to patients and their families.
+Services are not adequately resourced, their integration 
+into the care chain is inadequate, and cooperation 
+between different actors is not systematic.
+The effectiveness of support services must be improved 
+with nationally uniform operating models and clear 
+guidelines. In addition, sufficient resources must be 
+ensured for support services so that support is targeted to 
+those who need it most.
+Systematic assessment of the patient's symptoms, 
+quality of life and functional capacity is essential to 
+ensure timely treatment, support and rehabilitation and 
+to monitor effectiveness. The special needs of children, 
+young people and families must be taken into account 
+in the design of individual support and national 
+guidelines and operating models.
+Target state:
+• Information on symptoms, quality of life and functional capacity of cancer patients is available, and it supports the 
+provision of support based on individual needs in a timely manner.
+• The various actors in the welfare area (healthcare, social services, municipalities, organizations and 
+parishes) work in close cooperation, and the service structures are clear and sufficiently resourced.
+• Psychosocial support, health social work, rehabilitation and palliative care based on individual 
+needs are an established, seamless and equally accessible part of the patient's 
+comprehensive care. They are integrated into patient care at an early stage, if necessary, and 
+they also take into account the needs of loved ones.
+• Financial support needs are identified and met through renewed social security and health social 
+work, and the need for legislative changes related to cancer patients' access to loans and 
+insurance has been clarified.
+37
+--- PAGE 38 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Proportion of cancer patients for whom symptom, quality of life and functional capacity data are available (%).
+• Proportion of units with psychosocial, social, mental/spiritual and rehabilitation services 
+available (%).
+• Proportion of cancer patients for whom an individual plan has been drawn up to support rehabilitation (%).
+• Proportion of patients with advanced cancer who have a proactive end-of-life care plan (%).
+• Proportion of patients with advanced cancer who have already started palliative care alongside 
+treatment of the disease (%).
+• Number of palliative care guidelines among patients who died of cancer (%) and the timing of 
+palliative care guidelines in relation to death (days).
+• Proportion of cancer patients who received cancer-specific treatment during the last month of 
+life (%).
+Proposals for action:
+1. Nationally consistent practices and metrics will be developed to assess the symptoms, quality of 
+life, functional capacity and individual support needs of cancer patients.
+2. A national range of support services for cancer patients (including third sector services) and 
+recommendations on staffing levels for support services will be determined, and seamless service 
+chains for support services will be ensured in accordance with the recommendations.
+3. National guidelines and effective operating models will be developed and implemented to 
+ensure the work and functional capacity of people with cancer, as well as timely palliative 
+care, in all age groups.
+4. In connection with the social security reform, the special challenges and necessary measures for people 
+with cancer to make a living will be investigated, as well as the need for legislative changes related to 
+cancer patients' access to loans and insurance in Finland (Right to be forgotten legislation).
+Responsibility:
+• FICAN, Cancer Organizations, Palko, welfare areas, City of Helsinki and HUS
+38
+--- PAGE 39 ---
+National Cancer Strategy 2026–2035
+PARITY
+3.4 Functional capacity information 
+guides the diagnostics and treatment 
+of elderly cancer patients
+The number of elderly cancer patients over 75 years of 
+age is increasing rapidly, but assessment of the 
+functional capacity of elderly patients and their 
+participation in treatment decision-making are often 
+inadequate. Elderly people are also underrepresented in 
+clinical trials of cancer drugs, which is why scientific 
+evidence on the tolerability and efficacy of drugs in 
+elderly patients is insufficient.
+Chronological age is not a reason to limit treatment. 
+Functional capacity information assessed with a standardized 
+measure should guide the cancer treatment plan.
+Functional capacity refers to a person's physical, 
+psychological, cognitive and social conditions to cope 
+with meaningful everyday activities in their environment. 
+Frail patients with impaired functional capacity should be 
+identified through screening tests. Those with abnormal 
+results are referred to a geriatric assessment, based on 
+which an individual treatment and rehabilitation plan is 
+drawn up. The aim of this is to maintain/improve 
+functional capacity and possibly create the conditions for 
+implementing cancer treatments.
+Target state:
+• Treatment decisions for the elderly are based on a comprehensive individual assessment of functional capacity. 
+The patient participates in decision-making.
+• The treatment and rehabilitation plan takes into account the treatment of the patient's other 
+illnesses and geriatric syndromes, and the patient is referred to a nutritionist, physiotherapist or 
+social worker if necessary.
+• Diagnostic tests for functionally fit elderly patients are performed in the same way as for 
+younger patients. Treatment decisions are based on a comprehensive assessment of 
+functional capacity. In the case of frail patients, the benefit of invasive diagnostic tests is 
+assessed in relation to the suffering they cause.
+The achievement of the goal is measured as follows:
+• The proportion of welfare areas where all eligible elderly cancer patients undergo 
+geriatric oncological assessment (%).
+• The proportion of welfare areas where primary health care has the opportunity to consult a 
+geriatric oncology team already at the cancer diagnostic stage (%).
+• Number of cancer treatment units in Finland that implement geriatric screening and 
+assessment of elderly patients (%).
+• Utilization of the G8 screen and/or the presence of a geriatrician in multidisciplinary care teams, monitoring 
+the use of the G8 screen in different areas of cancer care.
+39
+--- PAGE 40 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. Comprehensive assessment of the functional capacity of geriatric oncology patients will be increased at different 
+stages of the care chain.
+2. The G8 screen will be introduced in all units treating elderly cancer patients.
+3. Functional capacity information is already collected in primary health care and is recorded in the referral.
+Responsibility:
+• Welfare areas, City of Helsinki and HUS
+40
+--- PAGE 41 ---
+National Cancer Strategy 2026–2035
+PARITY
+3.5 Sufficient and competent 
+personnel ensure effective and
+human-based cancer treatment
+Cancer prevention, screening, diagnostics and treatment 
+require extensive and specialized expertise. Many areas of 
+cancer care are currently suffering from staff shortages, and 
+the need for staff is expected to increase as the population 
+ages and the number of cases increases. There are regional 
+differences in the availability of staff, and the situation is 
+most difficult in sparsely populated areas.
+At the same time, the development of the division of 
+labor, new technologies and forms of treatment place special 
+demands on expertise. This requires the staff to continuously 
+update their skills and have the opportunity to specialize.
+Digital solutions – such as care pathways, remote 
+appointments, monitoring tools, smooth data transfer
+and validated AI-based solutions – support both the 
+efficient allocation of resources and patient 
+participation in care. Palliative care, psychosocial 
+support, rehabilitation, and geriatric oncology 
+expertise should be strengthened throughout the 
+country.
+In order to ensure the quality and equality of cancer care, 
+human resources, training structure and competence 
+development must be planned systematically and nationwide. 
+This work has already been undertaken, for example, in the 
+Good Work Programme of the Ministry of Health, Welfare and 
+Sport, which aims to ensure the adequacy and availability of 
+personnel in the social welfare and emergency services sectors 
+in the coming years.
+Target state:
+• There are sufficient professional groups involved in all stages of cancer prevention, screening, diagnostics 
+and treatment throughout Finland, and their expertise is developing rapidly in line with the rapidly 
+changing field.
+• New training programs and career models enable deepening of expertise in various areas of 
+cancer treatment, as well as palliative care, geriatric oncology and molecular diagnostics.
+• Professionals' training paths, competence requirements and division of labor are clear and uniform across 
+different welfare areas.
+• Digital solutions are an integral part of care, enabling effective use of resources and an active 
+role for the patient. By utilizing digital solutions, it is possible to effectively allocate professional 
+expertise and resources across organizational boundaries.
+41
+--- PAGE 42 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Regional distribution of professionals, sick leave and job satisfaction surveys.
+• Number of graduates and those completing specialization training annually.
+• Inclusion of geriatric oncology in geriatric specialist training.
+• Specialist training in palliative medicine established.
+• The use of digital care pathways in cancer treatment units.
+Proposals for action:
+1. Sustainable strategies will be created to ensure the adequacy of personnel involved in cancer care and the 
+implementation plan of the Ministry of Health, Welfare and Sport's Good Work Programme will be promoted in order 
+to support the attraction and retention of professionals in cancer care.
+2. Develop and increase the continuous education and specialization opportunities of 
+professionals involved in cancer care, and define national uniform professional and job 
+titles.
+3. Promote the introduction and development of digital tools and innovations in cancer 
+treatment.
+4. Strengthening expertise in psychosocial support, rehabilitation, geriatric oncology and 
+palliative care at all stages of cancer treatment.
+5. Specialist training in palliative medicine will be launched.
+Responsibility:
+• Ministry of Social Affairs and Health, Ministry of Education, Universities, Polytechnics, Vocational Schools, FICAN, Welfare Areas and HUS
+42
+--- PAGE 43 ---
+National Cancer Strategy 2026–2035
+On the crest of a wave in a 
+changing operating environment
+Sub-goals:
+4.1National health data repository and advanced analytics support 
+cancer research and data utilization
+4.2Strengthening clinical cancer research is an integral part of every patient's care
+4.3Finland is a pioneer in personalized medicine
+4.4Reducing the burden of cancer through multidisciplinary research
+4.5The evaluation and implementation of new cancer drugs and other 
+treatments is effective, timely and consistent, regardless of the 
+evaluation body.
+All advances in cancer prevention and treatment are 
+based on long-term research. The closer integration of 
+research into cancer prevention, treatment and 
+monitoring promotes effective action and motivates 
+personnel. Finland has excellent conditions for strong 
+and extensive cancer research, which promotes the 
+development of new treatments and creates 
+opportunities for RDI (research, development, 
+innovation) activities and knowledge-based 
+leadership. However, the personalized cancer 
+medicine program requires strategic actions that 
+increase the utilization of cancer knowledge and 
+support clinical trials. Research must be utilized in a 
+broad and multidisciplinary manner, both in 
+prevention and throughout the patient's entire 
+treatment path. It is also essential to
+Utilizing the knowledge and expertise acquired in 
+these projects.
+In addition to developing research activities, it is 
+important to ensure that new, effective diagnostic 
+methods and cancer drug and other treatments are 
+introduced in Finland as part of routine healthcare 
+activities. This will allow Finnish patients to access 
+treatments in accordance with international treatment 
+recommendations as quickly as possible. At the same 
+time, however, the cost-effectiveness of treatments 
+must also be ensured. This requires reforming the 
+current multi-channel evaluation system and revising 
+the decision-making processes and criteria related to 
+the introduction of medicines, so that they are similar 
+regardless of the dosage form and distribution 
+channel of the medicine.
+43
+--- PAGE 44 ---
+National Cancer Strategy 2026–2035
+PARITY
+4.1 National health data repository and 
+advanced analytics support cancer 
+research and knowledge
+utilization
+Healthcare data sources in Finland hold enormous 
+potential for the development of new treatments and 
+RDI activities. However, in their current form, they 
+cannot be fully utilized in research and decision-
+making, as the data resources are siloed and their 
+information content is inconsistent. Up-to-date 
+analysis of individual health data at the national level 
+is challenging, and the utilization of data in 
+international cooperation is often impossible due to 
+current legislation and its interpretation.
+In addition, there are challenges in keeping current registries 
+up to date and recording dynamically developing and enriching 
+cancer information (including the molecular biology of cancer, 
+prevalence, treatments given and treatment responses, and 
+information generated by patients themselves).
+Real-world data (RWD) collected during treatment 
+is only occasionally used to guide and evaluate 
+treatments, and the opportunities created by 
+artificial intelligence are not yet being used very 
+much. Patient participation in the production and 
+use of health data is also limited so far.
+Target state:
+• All clinical information required for the implementation and development of cancer treatment is 
+collected in an automated and up-to-date, structurally harmonized national data repository. 
+Cancer data is recorded uniformly, comprehensively and effortlessly using systems that utilize 
+artificial intelligence. The data repository also collects cancer data from biobanks, research 
+institutes and projects, and all information is also available in an internationally compatible 
+format (e.g. FHIR, OMOP).8).
+• The database produces reliable prediction models (the right medicine for the right patient at the right time, 
+effective, individualized treatment). In addition, up-to-date information supports the management and 
+development work of cancer treatment units. The structured information generated in the database can also be 
+utilized, if necessary, to produce the information content required by the Cancer Registry and the Cancer Quality 
+Registry.
+• The database is used to implement significant national and international research projects and 
+to support authorities and RDI activities. Cancer information is easily and in real time to be 
+found and accessed, in a compatible format and in a secure environment (FAIR principle).
+• The data repository is maintained with long-term public funding, which can be partly supported by 
+corporate funding for collaborative projects. All the information accumulated can also be utilized in patient 
+care.
+8 FHIR (Fast Healthcare Interoperability Resources), OMOP (Observational Medical Outcomes Partnership)
+44
+--- PAGE 45 ---
+National Cancer Strategy 2026–2035
+• The implementation of the cancer data repository will be investigated and coordinated with ongoing 
+national data architecture plans (including the National Institute for Health and Welfare's hytesote 
+project) and will utilize existing health information production systems (well-being area data pools, 
+private healthcare data sources, Kanta, Hilmo, the drug data repository, other official registers). The 
+implementation of the repository will also be guided by future legislation (especially the European 
+Health Data Space or EHDS).
+The achievement of the goal is measured as follows:
+• A national, structurally uniform registration template is in use (30% after 2 years, 60% after 5 
+years, 100% after 10 years of cancers). The goal is that registration will be carried out mainly 
+programmatically without manual input (30% after 2 years, 60% after 5 years, 80% after 10 
+years).
+• The proportion of patients in specialized medical care recorded uniformly and with 
+comprehensive data (50% after 2 years, 100% of cancer cases after 5 years).
+• Proportion of patients in the centralized national cancer database (target 70% in 5 years, 
+100% in 10 years) and registration delay (target < 1 month).
+• Legislative changes made, especially changes to secondary legislation and the implementation 
+of the European Health Data Area (EHDS).
+Proposals for action:
+1. The operation of the service system will be developed to enable uniform structural recording and 
+harmonization of cancer information and other health information.
+2. The long-term operation of the cancer data repository as part of the national health data repository is enabled by 
+legislation and in terms of resourcing, for which several projects and studies are underway (including THL's hytesote 
+data repository, the development of the Patient Data Repository of the National Health Service and the data pools of 
+welfare areas, and the health data study related to the RDI growth program of the Ministry of Health, Social Affairs 
+and Health and SITRA in the Health and Welfare sector).
+3. Produce reliable evidence using a cancer data repository to strengthen RDI activities, the effectiveness 
+of treatments, and direct knowledge management.
+4. When creating a cancer data repository, it is ensured that the information can also be utilized, if necessary, to 
+produce the information content required by the Cancer Registry and the Cancer Quality Registry.
+Responsibility:
+• Welfare areas and HUS, private healthcare, ministries, FICAN, universities, authorities such 
+as THL and Kela.
+45
+--- PAGE 46 ---
+National Cancer Strategy 2026–2035
+PARITY
+4.2 Strengthening clinical 
+cancer research is an integral 
+part of every patient's care
+Clinical research activities (including drugs, surgery, 
+radiotherapy, medical devices and other forms of 
+treatment) in Finland are of high quality and effective, but 
+the number of patients in individual hospitals is small and 
+research collaboration is limited. The structures and 
+resources supporting research are also significantly 
+smaller than in comparison countries. As a result, for 
+example, launching researcher-driven research and 
+translating laboratory findings into drug trials have been 
+challenging. As part of the national Health and Wellbeing 
+Growth Programme, SITRA is investigating the possibility 
+of establishing a national clinical drug trials coordination 
+body on behalf of the Ministry of Health, Welfare and 
+Sport.
+unit (FinTrials), which would be one concrete step 
+forward.
+One third of all clinical trials in Finland are cancer 
+trials, and in early-stage trials, cancer trials account for 
+over 50%. It is important to develop national activities 
+in close cooperation and take into account national 
+projects on cancer. In addition, it is necessary to 
+strengthen the conditions for cancer research units 
+and ensure Finland's attractiveness for conducting 
+international cancer trials.
+Clinical cancer research is particularly important 
+for patients with rare and poor-prognosis cancers, as 
+well as for children and adolescents, who have only 
+limited established treatment options.
+Target state:
+• Clinical research is becoming more closely integrated into the diagnostics and treatment of cancer patients.
+• Clinical trials are supported nationally. Hospitals treating cancer patients have a network of 
+clinical trial units (CTUs) that coordinate and implement studies initiated by researchers and 
+commissioned by pharmaceutical companies.
+• Availability services and feasibility data are available at the national level, enabling rapid responses 
+to inquiries from companies and academic researchers. This can be done by utilizing the national 
+cancer database, which has the most comprehensive and up-to-date information.
+• Clinical research is recognized as a strength in the areas of well-being. A clinical research career 
+is perceived as attractive among both doctors and nurses, and working conditions support 
+research.
+• A functional and well-supported process has been developed for the translation of research findings. Biobank 
+operations are supported and samples are collected from willing cancer patients at different stages of the disease.
+• Patients are involved in the design of studies as part of the research team and by commenting on 
+research plans as members of the research committee.
+46
+--- PAGE 47 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• At least 10% of all cancer patients participate in clinical intervention trials (target for 2035) and 
+participation in trials has increased significantly in all cancers (including rare cancers and 
+childhood cancers).
+• A national clinical research support coordination unit has been established.
+• Total number of clinical cancer trials, distribution by phase and cancer type, as well as 
+investigator-driven and company-commissioned trials.
+• Percentage of studies (%) in which patient representatives are involved in the design of the study as 
+members of the research team or panel.
+Proposals for action:
+1. Strengthening coordination and cooperation in national clinical cancer research.
+2. Strengthen and support the activities of research units.
+3. Familiarization with, training in, and participation in clinical research (at least 10% of working time) will be 
+included in the specialization training and job description of specialists.
+Responsibility:
+• Universities and university hospitals, welfare areas, FICAN, Ministry of Health, Social Affairs and Health, funders (Academy of Finland, 
+foundations), universities of applied sciences
+47
+--- PAGE 48 ---
+National Cancer Strategy 2026–2035
+PARITY
+4.3 Finland is a pioneer in personalized 
+medicine
+Cancer prevention, diagnostics and treatment are 
+changing as individual patient characteristics
+– for example, the risk of disease or the benefit of 
+targeted treatments – can be taken into account 
+better than ever. Personalized medicine utilizes 
+genetic or other analyzable changes in the genome or 
+cancer as the basis for individual solutions.
+The importance of personalized medicine is rapidly 
+growing in all areas of healthcare, from prevention to 
+treatment, and the growth is particularly strong in
+in cancer. Therefore, it is a significant area of   RDI 
+activity and investment target.
+Finland has several strengths in this area: 
+internationally accredited hospitals, high-quality 
+health data, advanced legislation, biobanks and other 
+research infrastructure, and national centers of 
+expertise in the areas of cancer (FICAN) and 
+neuroscience (National Neurocenter).
+Finland also has a strong research tradition and 
+extensive national biobank research projects in 
+personalized medicine, which have significant 
+potential.
+Target state:
+• Finland is an internationally recognized pioneer in personalized medicine, attracting partners 
+and international experts to research and RDI activities. The personalized medicine program is 
+a key part of the national cancer RDI activities. It promotes the competitiveness of Finnish 
+cancer research and treatment globally.
+• The Cancer Research Hub Finland is a joint research and data center for personalized cancer 
+medicine, which is a joint research and data center of FICAN, welfare regions, HUS, medical 
+universities, participating foundations, the Finnish Cancer Registry and biobanks. The 
+formation of Cancer Research Hub Finland utilizes the national infrastructure and expertise 
+created by the iCAN flagship project.
+The achievement of the goal is measured as follows:
+• Impact of Cancer Research Hub Finland: number of publications, innovations, startups, 
+partnerships and investments.
+• National distribution and proportion of molecularly profiled cancer patients, broken down by 
+diagnosis and research, annually.
+• Proportion of patients who received targeted therapy based on molecular alterations and their 
+experiences with the treatment received (Patient Reported Outcome Measures, PROM).
+• The number of samples accumulating in biobanks that support personalized cancer medicine and the usability 
+of the omics data obtained from the samples in cancer prevention and treatment.
+48
+--- PAGE 49 ---
+National Cancer Strategy 2026–2035
+Proposals for action:
+1. A national research and R&D center for personalized cancer medicine, Cancer Research Hub Finland, will 
+be established by utilizing the national platform created by iCAN, the flagship of digital personalized 
+cancer medicine. In terms of financing, implementation requires, in addition to the commitments of the 
+shareholders, an investment from multi-year R&D funding.
+2. National recommendations on the scope and methods of molecular diagnostic testing will be 
+established to ensure that testing is equitable for all patients and based on uniform criteria. 
+These recommendations will be part of regularly updated national treatment guidelines.
+3. New, demanding studies will be concentrated in laboratories with sufficient resources (personnel, 
+equipment, electronic referral response traffic).
+4. Develop and resource the activities of molecular tumor groups (MTB) in national cooperation 
+and by utilizing the biobank and drug trials.
+5. Biobanking will be developed to support the needs of personalized medicine, taking into account 
+the national health data repository (4.1).
+Responsibility:
+• Universities and university hospitals, welfare areas, FICAN, Ministry of Health, Social Affairs and Health, funders (Academy of Finland, 
+foundations), universities of applied sciences, Cancer Registry, THL, biobanks
+49
+--- PAGE 50 ---
+National Cancer Strategy 2026–2035
+PARITY
+4.4 Reducing the burden of cancer 
+through multidisciplinary research
+Multidisciplinary cancer research has a long tradition 
+in Finland. It includes epidemiological research, which 
+makes particular use of the Cancer Registry and THL 
+data, basic and translational research conducted at 
+universities, supported by centers of excellence and 
+flagships, and clinical research carried out in 
+healthcare units. The basis for everything is basic 
+research, which aims to understand the biological and 
+molecular mechanisms of cancer. Cancer research is 
+currently supported in a fragmented manner by 
+various forms of public funding, as well as by 
+foundations and companies.
+As more and more Finns develop cancer and live 
+longer, the importance of factors other than 
+immediate medical care in the life course of a cancer 
+patient is becoming more apparent.
+Cancer prevention, treatment and extensive 
+research into the service system require 
+multidisciplinary and population-wide information. 
+Cancer prevention and early detection research is 
+based on information about cancer risk factors and 
+service use in healthy Finns. Cancer affects the 
+psychological, cognitive, social and economic 
+situation of those affected and their loved ones.
+Multidisciplinary psychosocial, palliative and 
+rehabilitation-related cancer research, as well as 
+nursing and service system research, are key to 
+improving the quality of life and care of patients and 
+their loved ones. Multidisciplinary cancer research 
+examines not only the benefits of diagnostics and 
+treatment, but also their disadvantages.
+Target state:
+• Multidisciplinary research related to cancer will be supported in a broad and comprehensive manner. 
+Strong basic biomedical research creates opportunities for the development of cancer diagnostics and 
+treatment.
+• High-quality, population-based and up-to-date information on the harms caused by cancer and its treatments, as well as on 
+cancer-related inequalities, is available from the registers maintained by the Finnish Cancer Registry, the Finnish Institute for 
+Health and Welfare, and other actors.
+• Finland has good conditions for comprehensive and multidisciplinary cancer registry research. 
+The research will take into account equality and the priorities of the strategy period, including 
+geriatric oncology, childhood and adolescent cancers, rare and poor-prognosis cancers, 
+palliative care, and registry research related to cancer prevention and screening.
+• Cancer diagnostics and the effectiveness of treatment methods are systematically studied.
+50
+--- PAGE 51 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• The results and impact of cancer research as a whole (for example, the number of publications and 
+citations to publications) and their distribution across the strategy's priority areas.
+• The growth in overall funding for cancer research and its distribution along the cancer 
+prevention and patient pathway.
+• Incidence and mortality differences between educational levels decrease, and parity 
+increases.
+Proposals for action:
+1. The body implementing the cancer strategy collects and maintains information on cancer research 
+funding and makes proposals on its allocation needs.
+2. Strengthen the awareness of broad-based, multidisciplinary cancer research and its importance in 
+developing treatment and improving the quality of life of those affected.
+3. Promote cooperation between different cancer-related sub-areas, professional and patient groups, and 
+researchers in implementing multidisciplinary research as part of the activities of Cancer Mission Hub Finland.
+Responsibility:
+• Universities and university hospitals, welfare areas, FICAN, Ministry of Health, Social Affairs and Health, funders (Academy of Finland, 
+foundations), universities of applied sciences
+51
+--- PAGE 52 ---
+National Cancer Strategy 2026–2035
+PARITY
+4.5 The evaluation and introduction 
+of new cancer drugs and other 
+treatments is effective, timely and 
+consistent
+regardless of the assessment body
+The introduction of innovations in cancer treatment in a 
+multi-channel evaluation, decision-making and financing 
+model does not necessarily take place equally from the 
+patient's or innovation's perspective. Currently, Finland 
+does not have a unified application procedure and 
+criteria for the process within which the national 
+evaluation and introduction of a new hospital drug is 
+carried out. In addition to systematic evaluation, patient-
+specific decisions are made in the welfare areas. The 
+decentralized structure causes many challenges, and the 
+processing of all new drugs and extensions of the 
+indication is not systematic. One identified problem is 
+the evaluation of combination treatments of outpatient 
+and hospital drugs, for which the current system does 
+not have
+a unified assessment model. These themes are discussed in the Medicines and 
+Pharmacy Economy project led by the Ministry of Health and Social Affairs.
+- project (2024–2027) and the reform of pharmaceutical 
+affairs spanning across government terms.
+In addition to drugs, new imaging and treatment 
+technologies play a significant role in cancer 
+diagnostics and treatment. However, there are no 
+nationally agreed practices for the introduction of 
+new devices, such as robotic surgery or radiotherapy 
+equipment. Equal, effective and cost-effective 
+treatment requires uniform national assessments and 
+plans, also in equipment procurement, and here 
+lessons can be learned from the experience gained in 
+the evaluation of cancer drugs.
+Target state:
+• Finland aims to be a pioneer in cancer treatment, and the prompt and scientifically high-quality evaluation 
+and introduction of new, effective cancer treatment methods are a key part of this goal. The national 
+phase and introduction of the evaluation of all new cancer drugs and significant extensions of indication 
+will be carried out in a coordinated manner. Cooperation between evaluation bodies is seamless or the 
+number of evaluation bodies has been reduced so that the introduction of the drug and extension of 
+indication are applied for and the evaluation is organised through a single channel. Nordic and EU-level 
+cooperation will be used more strongly than before to ensure the rational use and efficiency of evaluation 
+resources.
+• A national price negotiation mechanism and conditional introduction can achieve better and more 
+predictable control of pharmaceutical costs. At the same time, risk-sharing models must be 
+developed and national decision-making must be aligned with the current EU HTA (i.e. the 
+assessment of healthcare methods) and the reformed pharmaceutical legislation.
+• Effectiveness data is collected systematically and risk allocation models have been developed 
+based on both cost and medical effectiveness.
+• In addition to medicines, significant equipment and method investments are also assessed 
+nationally using HTA methods.
+52
+--- PAGE 53 ---
+National Cancer Strategy 2026–2035
+The achievement of the goal is measured as follows:
+• Legislative changes and the transition to single-channel assessment and decision-making.
+• Use and introduction time of new pharmaceutical innovations compared to other European countries.
+• Share of nationally HTA-assessed/decided new cancer drugs (target: 100%) and indication 
+extensions among products with marketing authorization.
+• Share of nationally negotiated price cancer drugs in pharmaceutical procurement.
+• The time required for national HTA assessment and decision-making from the granting of a marketing authorisation for an anticancer drug 
+or from the submission of an application submitted by a pharmaceutical company.
+Proposals for action:
+1. Ensure that problems related to the introduction of cancer drugs, including combination therapies, are 
+resolved, and that national application procedures and decision-making are single-channel, cost-effective and 
+non-discriminatory as part of the pharmaceutical reform coordinated by the Ministry of Health, Social Affairs 
+and Health.
+2. A single national drug evaluation system will be created to serve as a basis for decision-making and 
+to ensure sufficient evaluation resources. Evaluation activities will ensure broad clinical expertise 
+and consult patient representatives.
+3. Enable the use of real-life impact data in the development of risk allocation models and 
+impact assessment.
+4. Medically justified individual treatment solutions are made possible for rare cancers and 
+cancer types.
+5. National cooperation in significant equipment and method procurements will be strengthened.
+Responsibility:
+• STM, THL, assessment authorities, welfare regions and HUS
+53
+--- PAGE 54 ---
+National Cancer Strategy 2026–2035
+Implementation and monitoring
+The achievement of the objectives of the Cancer Strategy requires sufficient 
+resourcing (a preliminary estimate of the costs is presented in the next chapter) 
+and a steering mandate, as well as diverse commitment at the national level, 
+including the Parliament, the Government, the Ministry of Health, the Ministry of 
+Social Affairs, the Ministry of Education, the Ministry of Employment and the 
+Health and Welfare, the Finnish Institute of Health and Welfare, the Finnish 
+Institute of Social Affairs and Employment, the Finnish Institute of Labour and 
+Social Affairs, the Finnish Research Council for Research and Innovation, 
+foundations, patient organizations, and regionally (welfare regions, universities, 
+regional associations). This strategy forms a strong foundation for practical 
+implementation and guides the preparation of the implementation roadmap to 
+be completed in 2026. The roadmap describes the responsible party(ies), 
+resources, and monitoring for the implementation and monitoring of the 
+strategy. In addition, the roadmap describes in more detail the implementation of 
+the measures, the schedule, and the responsibility for the financing and 
+implementation of each measure. National steering of the implementation of the 
+strategy requires a strong mandate.
+The goal is that all cancer stakeholders will participate in the 
+implementation of the cancer strategy as part of the Cancer Mission 
+Hub Finlandia to be established in 2026, including parties involved in 
+cancer prevention, treatment and research and relevant ministries 
+(Ministry of Health, Ministry of Education, Ministry of Employment and 
+the Economy, Ministry of the Interior), authorities
+(THL, Fimea, Palko), welfare areas and HUS, universities, 
+polytechnics, FICAN, OECI-accredited CC/CCC centers, 
+medical and nursing associations, Cancer organizations, 
+Cancer Registry, patient organizations, foundations 
+supporting cancer research and companies in the field.
+The aim is to make greater use of FICAN regional 
+centres and CC/CCC centres and the cooperation 
+between them in five areas of cooperation. Division of 
+labour, care chains and their knowledge-based 
+management, training, securing competence, 
+research networks and clinical trials are examples of 
+tasks and responsibilities that can be developed more 
+strongly in cooperation.
+The implementation of the strategy also takes into 
+account existing national programs, projects and 
+studies that cut across cancer prevention, treatment 
+and research (Table 1). The strategy also dynamically 
+takes into account relevant initiatives, such as the lung 
+cancer program being prepared under the leadership 
+of Filha, to the extent that the goals and measures are 
+consistent with the goals and measures of the cancer 
+strategy.
+Costs
+The achievement of the strategy’s ambitious goals over 
+the ten-year strategy period requires strong national 
+commitment and sufficient funding for the proposed 
+measures during the first five years. In order to assess 
+the funding needs, an assessment was made when 
+formulating the strategy of the funding required for the 
+measures and the savings they would generate, as well 
+as private sector investments over the entire ten-year 
+strategy period (with the exception of measures 
+promoting prevention).
+measures, the cost savings of which will come with a delay). 
+Based on the estimate, the implementation of the measures 
+requires a total investment of 156 million euros (M€) over a five-
+year period, or 5.5 € /person/year. For comparison, it should be 
+noted that the Danish 2025 Cancer Strategy9funding is 13 €/
+person/year and in the draft Swedish Cancer Strategy10€4/
+person/year). The funding needs are divided by objective as 
+follows: strategic objective 1 (ST1) €6 million; ST2 €37 million; ST3 
+€51 million; ST4 €56 million and strategy implementation and 
+monitoring €6 million.
+9
+10
+https://www.ism.dk/publikationersundhed/2025/maj/etbedfrelivmedogefterkraeft https://www.regeringen.se/informationsmaterial/
+2024/11/battretillsammansforslagtillenuppdateradnationellcancerstrategi/
+54
+--- PAGE 55 ---
+National Cancer Strategy 2026–2035
+Cost savings are expected to total €305 million over the 
+strategy period (ST1 €2 million; ST2 €164 million; ST3 €19 
+million; ST4 €120 million). In addition, the implementation of 
+the strategy is expected to increase international 
+investments by a total of €121 million (ST4), thus bringing 
+significant growth. Overall, the anticipated savings and 
+investments from the implementation of the strategy are 
+significantly greater than the costs.
+Regarding the timing of costs, the Aallonharja goal 
+in a changing operating environment includes
+measures for which funding should be available as 
+soon as possible, at the latest by the beginning of 
+2027. An initial investment from multi-year RDI 
+funding is proposed for them, and this investment is 
+expected to create significant growth in the coming 
+years. Investments in welfare areas are mainly 
+required after the necessary legislative changes and 
+from 2028 onwards (Figure 7). The preliminary cost 
+estimate will be refined in further work.
+2027–2030
+Cancer Strategy Social and Health Care Measures
+launched in cooperation 
+with welfare areas2026 2035–
+Cancer strategy
+implementation
+the roadmap is being completed,
+R&D activities
+are starting
+Legislative preparation 
+continues: Legislation enabling 
+risk-based screening,
+The right to be forgotten
+legislation
+Cancer strategy
+effects visible
+early
+in establishing and
+in treatment outcomes
+2025 2026–2027 2030–2035
+National
+cancer strategy
+is completed
+Legislative preparation:
+The centralization regulation,
+screening regulation and
+quality register regulation
+changes
+Comprehensive knowledge base
+enables more
+more impressive and
+higher quality
+cancer treatment
+Implementation of the National Cancer Strategy
+Figure 7.National Cancer Strategy and its implementation schedule.
+55
+--- PAGE 56 ---
+National Cancer Strategy 2026–2035
+Abbreviations
+Abbreviation Organization
+Register of persons exposed to substances and methods that pose a risk of cancer in their 
+professionASA register
+CCcenter OECI-rated Cancer Center
+OECI-rated Comprehensive Cancer Center
+European Health Data Space, European Health Data Space
+Fast Healthcare Interoperability Resources, FHIR standard
+Screening for frailty in elderly cancer patients
+National social and healthcare data collection and reporting system
+Nursing patient feedback
+Human papillomavirus
+Health technology assessment, evaluation of healthcare methods
+National Pension Service
+Molecular Tumor Group
+Net Promoter Score
+Organization of European Cancer Institutes
+Ministry of Education and Culture
+Ministry of Justice
+Observational Medical Outcomes Partnership, OMOP data model
+Healthcare Service Selection Council
+Patient Reported Outcome Measures
+Real-world data
+Ministry of Social Affairs and Health
+Radiation and Nuclear Safety Authority
+Ministry of Employment and the Economy
+Department of Health and Welfare
+Research, development and innovation
+Treasury
+CCC Center
+EHDS
+FHIR
+G8sieve
+Hilmo
+HoPP
+HPV
+HTA
+Coil
+MTB
+NPS
+OECI
+Ministry of Education
+OM
+OMOP
+Pod
+PROM
+RWD
+Ministry of Education
+STUK
+Ministry of Education and Culture
+THL
+RDI
+World Cup
+56
+--- PAGE 57 ---
+National Cancer Strategy 2026–2035
+Appendix 1. Parties involved
+Steering group members
+Full member / alternate member
+• Markku Mäkijärvi (chairman) / Maarit Bärlund (FICAN)
+• Tuula Helander / Julia Kinnunen (STM)
+• Juha Pekka Turunen / Janne Pitkäniemi (Cancer Organizations)
+• Markku Peltonen / Satu Männistö (THL)
+Secretariat
+• Tomi Mäkelä (Secretary General), FICAN
+• Mirjami Tran Minh, FICAN
+• Outi Nikunen, FICAN
+• Timo Nykopp, FICAN
+• Sarianne Hartonen, Cancer Organizations
+• Veli-Matti Partanen, Cancer Organizations
+• Sanna Heikkinen, Cancer Organizations
+• Tiina Vesterinen, Finnish Cancer Institute Foundation
+• Riikka-Leena Leskelä, NHG Oy1
+• Paula Pennanen, NHG Ltd.
+Working groups and their chairs
+1. Strengthening inclusion and developing people-oriented services
+• Patient participation and people-centered services
+(chaired by Jenni Tamminen-Sirkiä, Executive Director, Finnish Cancer Patients Association)
+2. Reduce the burden of cancer through prevention and early detection
+• Prevention (chaired by Eeva Ollila, Chief Physician, Cancer Organizations)
+• Early detection and screening (chaired by Annika Auranen, Director, Inner Finland Cancer Centre 
+and Tytti Sarkeala, Head of Screening, Cancer Registry)
+3. Ensuring equal and effective cancer treatment
+• Diagnostics, treatment and monitoring (chaired by Mika Matikainen, Director of Division, HUS)
+• Rehabilitation and psychosocial support
+(chaired by Marika Skyttä, Director of Health, Cancer Organizations)
+• Palliative care (chaired by Tiina Saarto, Chief Physician, Professor, HUS and University of Helsinki)
+4. On the crest of a wave in a changing operating environment
+• Research and data (chaired by Kimmo Porkka, professor, University of Helsinki and HUS)
+• New methods (chaired by Olli Tenhunen, Chief Physician, OYS)
+5. Effectiveness and operational models for implementing the cancer strategy
+• Chaired by Sirkku Jyrkkiö, Head of Performance Group, TYKS & Paulus Torkki, Associate Professor, 
+University of Helsinki
+1 Expert services were purchased from NGH Oy for the preparation of the strategy.
+--- PAGE 58 ---
+National Cancer Strategy 2026–2035
+Working group members2
+Last name First name Organization
+Aaltonen
+Ahlroth
+Aittomäki
+Akrén
+Your area
+Alsio
+Alve
+Andersen
+Anderson
+Anttila
+Steppes
+Steppes
+Arola
+Arponen
+Opens
+Auranen
+Auvinen
+Auvinen
+Boman
+Bostrom
+Barlund
+Farkkila
+Hallikainen
+Hammarsten
+Ridge
+Training
+Hartikainen
+Disastrous
+Heikkilä
+Heikkinen
+Heininen
+Hay danger
+Helenius
+Hernberg
+Himberg
+Huhtanen
+April
+Benefit
+Hanninen
+Hock
+Ivannainen
+IlvesaroMaijala
+Ivaska
+Jaakkola
+Jekunen
+Rita
+KaisaLeena
+Christina
+Strange
+Erika
+Heini
+Mirja
+Heidi
+Emma
+The Maaris
+Marika
+Mia
+Johanna
+Otso
+Paulina
+Annika
+Day
+Anssi
+Eve
+Peter
+The Maaris
+Martin
+Elizabeth
+Heidi
+Eve
+Tero
+Jana
+Hannah
+Day
+Sanna
+Anne
+Shard
+Merja
+Micaela
+Marianne
+Tina
+Leena
+Berry
+Annuncia
+Minna
+Sanna
+Joanna
+Johanna
+Fuck
+Antti
+Early
+Breast Cancer Association Europa Donna Finland 
+University of Helsinki
+HUS Palliative Care Centre and University of Turku 
+University of Turku / Department of Biomedicine
+Vilja Linnea Sarcoma Foundation 
+Ostrobothnia Welfare Area Finnish Cancer 
+Patients Association Northern Savo 
+Welfare Area / KYS SYLVA
+Filha
+University of Helsinki
+Pirahã
+Central Finland Welfare Area 
+FICAN Mid
+North Savo Wellbeing Area, KYS Cancer Center, 
+University of Tampere
+Pirha / TAYS
+Early
+Pirha / TAYS
+University of Helsinki and HUS Stomach Center 
+SYLVA
+Breast Cancer Association Europa Donna Finland 
+Pirha and Taperee University
+Pirha, open services
+University of Eastern Finland
+PIrkanmaa nursing home
+University of Helsinki
+Cancer organizations
+Pirahã
+Cancer organizations
+FICAN Mid / TUNI 
+HUS Cancer Centre
+Early, Tyks
+Breast Cancer Association Europa Donna Finland 
+FimLab
+Lapland HVA
+DIAK
+Reflection
+Fimlab Laboratories Ltd.
+University of Turku
+University of Turku
+University of Turku
+2 Those who registered for the working groups themselves or through their organization
+--- PAGE 59 ---
+National Cancer Strategy 2026–2035
+Last name First name Organization
+Swan
+Jukkola
+Jääskeläinen
+Curved skin
+Kairenius
+Rock area
+Rock
+BearEnckell
+Karihtala
+Karelian
+Juniper
+Shop
+Merchant
+Merchant
+KellokumpuLehtinen
+Fieldman
+Kerminen3
+Corpuscle
+Central Nisula
+Ketola
+Kholova
+Kinnunen
+Northeast
+Birch tree
+Kokkola
+Control
+Koponen
+Korhonen
+Kortesniemi
+The rapids man
+Koskensalo
+River stream
+KotaniemiTalonen
+Receipt
+Fiber
+Gold
+Kuusela
+Kvist
+Kasma
+Lahtinen
+Wave
+Jenny
+Arya
+Minna
+Rita
+Anne
+Ilkka
+Heini
+Ulla
+Peter
+Antti
+Sprout
+Lisa
+Jonas
+Saber
+PirkkoLiisa
+Anu
+Hannah
+Mike
+Hannah
+Soil frost
+Ivan
+Kate
+Hannele
+Jussi
+Arto
+Mia
+Leena
+Laura
+What
+Sari
+Elder
+Laura
+Laura
+Strange
+Hanne
+Miriam
+Minna
+Tarja
+Ilkka
+Laura
+Fairy tale
+Lapland HVA
+University of Tampere
+LKS Oncology Clinic and Palliative Care Centre 
+Pohde and University of Oulu
+FICAN South
+University of Helsinki and HUS 
+University of Tampere
+Pirahã
+HUS
+SYLVIE
+Vivid
+University of Helsinki
+Reflection
+Reflection
+Pirha, University of Tampere
+HUS, Diagnostic Center, Radiology, Meilahti Hospital, 
+University of Tampere and Pirha
+HUS Cancer Center
+Pirahã
+University of Eastern Finland, Biomedicine University of Tampere 
+and Fimlab Laboratories Ltd. North Savo Welfare Area/
+Assessment Chief Physician Network TYKS, VARHA, Clinical 
+Genetics
+Reflection
+HUS Surgical Services, Abdominal Center 
+HUS Cancer Center
+Savonia University of Applied Sciences
+Early
+HUS
+Skin and Allergy Hospital, HUS Inflammation Center HUS 
+Gastroenterology Center, Jorvi Hospital
+HUS Abdominal Center, Gastrosurgery Department 
+Pirha
+North Savo Wellbeing Area, University of Eastern Finland 
+Pohde
+MIST
+Pirahã
+University of Eastern Finland
+Good
+Good
+Palliative Center and Home Hospital, TYKS, 
+Southwest Finland Welfare Region
+Wave
+Lamminmäki
+LaplandBlanco
+Song
+Latonen
+Strange
+Annamarija
+Eliza
+Summer
+Leena
+Pirahã
+Pohde, North Savo welfare 
+area
+Population Union
+University of Eastern Finland
+3 Corrected missing name on December 17, 2025.
+--- PAGE 60 ---
+National Cancer Strategy 2026–2035
+Last name First name Organization
+The runner
+Leaflet
+Leaflet
+Grove
+Grove
+Johanna
+Checkmate
+Whereby
+Juho
+HannaRiikka
+Pirahã
+University of Tampere
+Cancer organizations
+University of Tampere and the Pirkanmaa welfare region
+Palliative center and home hospital, 
+Western Uusimaa welfare region
+Lehtomäki
+Leino
+Lepisto
+Alder
+Rest house
+LevonenHarju
+Liedes
+Glue-like
+Linen
+Lindfors
+Quarry
+Promise
+Lähteenmäki
+Länsman
+LöflundKuusela
+Mike
+Mainland
+Mainland
+MartinkauppiVanninen
+Mattson
+Sea waves
+Sea cliff
+MetsoLintula
+Metsälä
+Forest island
+Thoughtful
+Victuals
+Murtola
+Black River
+Mustonen
+Muttilainen
+Makela
+Pine Ridge
+Nevala
+Nevala
+Nevaean
+Peninsula
+Southern
+Niinikoski
+Nikkilä
+Ringed seal
+Campfire
+Grassy
+Kaisa
+Thuja
+Give
+Shard
+Aino
+AnnaLiisa
+OutiMaria
+Summer
+Johanna
+Anne
+Johanna
+Caroline
+Day
+Tanya
+Heidi
+Pot
+Reed
+Arto
+Kaisa
+Johanna
+Thomas
+Mia
+Pot
+Heidi
+Day
+Susanna
+Tuire
+Teemu
+Fairy tale
+What
+Marika
+Chip
+Pekka
+Riikka
+Apple
+Fairy tale
+Anu
+Berries
+Laura
+Tuula
+Give
+Mary
+Wind
+Pirahã
+THL
+HUS
+University of Helsinki, HUS HUS Cancer 
+Center, hematology University of 
+Eastern Finland
+Pirahã
+Reflection
+Pirkanmaa Cancer Society University of 
+Helsinki, Faculty of Medicine Pirha
+FICAN West
+Lapland HVA
+Cancer organizations
+Lapland HVA
+City of Helsinki
+University of Eastern Finland
+Breast Cancer Association Europa Donna Finland 
+HUS Cancer Center
+HUS Cancer Center
+SYLVA, Permission to Childhood Association 
+South Karelia Welfare Area EKHV Hyvaks
+Duodecim
+HUS Cancer Center
+Cancer organizations
+University of Tampere and TAYS Cancer Center, Urology 
+University of Helsinki, HUS
+FICAN South
+Pirahã
+HUS Cancer Center
+University of Eastern Finland
+HUS Cancer Center
+Cancer organizations
+PäijätHäme Welfare Area, PHKS Breast Cancer 
+Association Europa Donna Finland ry Pirha, 
+FICAN Mid
+Cancer organizations
+Finnish Cancer Patients 
+Association Tays, dentistry
+University of Turku and Tyks, geriatrics area of   responsibility 
+Pirha
+--- PAGE 61 ---
+National Cancer Strategy 2026–2035
+Last name First name Organization
+Fist
+Straw rope
+Ollila
+Orell
+Paananen
+Pankakoski
+Parking lot
+Beard
+Mattress
+Pentikäinen
+Hidden
+Pitkäniemi
+BoySaxela
+Pork
+Polish
+Puran
+Wood rune
+Pylkas
+Pöllanen
+Puffy
+Curd
+Rainesalo
+Rocket
+Rekunen
+Cross dagger
+Cross Hill
+Rasanen
+Blockade
+Sails
+Salmenniemi
+Salminen
+Salminen
+Salo
+Salonen
+Sarkeala
+Sauna
+Blacksmith
+Seppälä
+Seppälä
+Blacksmith
+Siekkinen
+Sihvo
+Sipila
+Sipila
+Sipola
+Scythian
+Scythian
+Agree
+Staff
+Jenny
+Helena
+Eve
+Helena
+Jana
+Mayju
+AnnaKaisa
+BrotherMatti
+Christina
+Virve
+Heidi
+Tendon
+Snare
+Elastic
+Paul
+Taija
+Johanna
+Katrina
+Kaisa
+Minna
+Eve
+Shard
+Tero
+Maijastiina
+Tina
+Ari
+Ina
+Tina
+Lisa
+Catkin
+Pirjo
+Annuncia
+Heini
+Joanna
+Girl
+Rita
+Curry
+Tony
+Jan
+Hannah
+Mervi
+Eero
+Ray
+Karl
+Slender sprig
+Marika
+Tanya
+Day
+Synovate
+North Savo Welfare Area, FICAN East HUS, 
+Children and Youth
+Finnish Cancer Society
+HUS, Clinical Nutrition Therapy Unit, Lapland University 
+Hospital
+Cancer organizations
+Pirahã
+Cancer organizations
+University of Helsinki
+HUS Children and Adolescents Breast Cancer Association 
+Europa Donna Finland Cancer organizations
+University of Helsinki, HUS University of 
+Helsinki, HUS SKY / HUS and University 
+of Helsinki Cancer organizations
+Kainuu HVA
+Reflection
+Sylva (Kympini palaset, Southern Finland Cancer Society) 
+HUS, University of Helsinki and Finnish Cancer Society 
+Pohde
+Pirahã
+Reflection
+Early, FICAN West, Tyks 
+Itla
+University of Helsinki
+Nova Hospital, Radiation Therapy Unit, Oncogeriatrics 
+University of Helsinki, HUS
+Sion War
+HUS Cancer Center
+Hyvaks Palliative Center 
+Pirha
+THL
+THL, quality registers
+Cancer organizations
+University of Tampere, Occupational Health Care and Occupational Medicine 
+Cancer organizations
+University of Tampere, Pirha 
+North Savo University
+HUS
+Early, FICAN West
+Good
+Duodecim, Current treatment
+Pirahã
+Evangelical Lutheran Church of Finland, Church Board Cancer 
+organizations
+Pirahã
+Lapland HVA
+Pirahã
+--- PAGE 62 ---
+National Cancer Strategy 2026–2035
+Last name First name Organization
+Stenberg
+Stromsholm
+Ståhls
+Sundvall
+Trout
+Tainio
+OakCricket
+Taskinen
+Tenhunen
+Tenhunen
+Tar horn
+Tit
+Tikkinen
+Timonen
+Tork
+Importing
+Turtiainen
+PeacefulKorhonen
+Spike
+Misty forest
+Utriainen
+Utriainen
+Left-handed
+The villain
+Western
+Scroll
+Vihine
+Viitala
+JanHenry
+EvaMaria
+Anders
+Mary
+Pekka
+Marjukka
+Jenny
+Mervi
+Ollie
+Mike
+Ulpu
+Fairy tale
+Kari AO
+Katya
+Paul
+Leena
+Sarah
+Christina
+Katya
+Anu
+Sea
+Tapio
+Tuula
+Sanna
+Tina
+Tuula
+Pia
+Anu
+HUS psychiatry
+Finnish Gynecological Cancer Patients 
+Association HUS, Diagnostic Center, 
+Pathology UTU
+MIST
+Pirha, TAYS
+Finnish Cancer Patients 
+Association HUS, Children and 
+Youth Pohde
+HUS Cancer Center
+Lapland Air Force, LKS
+North Savo Wellbeing Area, FICAN East 
+University of Helsinki
+North Savo Wellbeing Area, KYS Palliative Outpatient Clinic 
+University of Helsinki
+HUS Cancer Center
+Pirahã
+PäijätHäme Welfare Area, Palliative Center Cancer 
+Organizations
+Lapland University Hospital, LKS Palliative Care Center 
+HUS
+HUS
+Filha and University of 
+Turku TYKS Cancer Clinic
+Finnish Cancer Institute Foundation 
+Pirha
+FICAN West/TYKS
+Pirkanmaa Wellbeing Area Research Services, 
+Finnish Cancer Nurses Association
+Viitala
+Virtanen
+Glass
+Volmonen
+Year
+Hannah
+Heli
+Hanging branch
+Soil frost
+Saul
+Pirahã
+MIST
+North Savo HVA
+HUS
+Central Finland Welfare Region, Nova Hospital, 
+University of Jyväskylä
+Valimäki
+Vanni
+Left-handed
+Vanttinen
+Väyrynen
+Wahlfors
+WartiovaaraKautto
+Lake Yksjärvi
+Ohberg
+Osterlund
+Maritta
+Katya
+Simopekka
+Soil frost
+Juha
+Jarmo
+Ulla
+Shard
+Father
+Pia
+University of Helsinki
+Good
+THL
+North Savo wellness area, KYS Cancer Center 
+Pohde
+Cancer organizations
+HUS Cancer Center, University of Helsinki
+Finnish Cancer Patients Association, Central Finland Cancer Society 
+Turku University of Applied Sciences, Health and Wellbeing
+Pirahã
+--- PAGE 63 ---
+National Cancer Strategy 2026–2035
+The background organizations of the people involved in the national 
+expert network, according to the registration information:
+Organizations:
+• Southern Finland Cancer Society
+• Central Finland Cancer Society
+• Southwestern Finland Cancer Society
+• Permission for Childhood Association
+• Finnish Pharmaceutical Industry Association
+• Kataja Relationship Center Association
+• Pirkanmaa Cancer Association
+• Ostrobothnia Cancer Society
+• Breast Cancer Association - Europa Donna Finland ry
+• Finnish Gynecological Cancer Patients Association
+• Finnish Gynecological Association
+• Finnish Association of Specialists in Exercise 
+and Sports Medicine
+• Finnish Lymphatic Association
+• Finnish Cancer Patients Association
+• Finnish Association of Oncology Nurses
+• Finnish Cancer Society
+• Sylva association
+• Cancer organizations
+Universities/universities of applied sciences:
+• Diakonia University of Applied Sciences
+• University of Helsinki
+• University of Eastern Finland
+• University of Jyväskylä
+• Laurea University of Applied Sciences
+• University of Oulu
+• Savonia
+• University of Tampere
+• Turku University of Applied Sciences
+• University of Turku
+Public organizations/healthcare
+• Auria Biobank
+• Southern Cancer Center (FICAN South)
+• South Ostrobothnia welfare region
+• South Savo welfare area
+• Helsinki Biobank
+• HUS
+• Eastern Cancer Center (FICAN East)
+• Kainuu welfare area
+• Central Ostrobothnia welfare region
+• Central Finland Biobank
+• Central Finland welfare region
+• Kuopio University Hospital
+• Lapland welfare area
+• Western Cancer Center (FICAN West)
+• Pirkanmaa welfare area
+• Ostrobothnia welfare region
+• North Karelia Welfare Region
+• North Ostrobothnia welfare region
+• North Savo welfare area
+• Päijät-Häme welfare area
+• Inner Finland Cancer Center (FICAN Mid)
+• Radiation and Nuclear Safety Authority
+• Turku University Central Hospital
+• Southwest Finland Welfare Region
+Foundations:
+• Itla
+• Cancer Patients' Nursing Home Foundation
+• Vilja Linnean Sarcoma Fund
+Companies:
+• AbbVie Ltd.
+• Accord Healthcare
+• Amgen Finland
+• Astellas Pharma
+• AstraZeneca Ltd.
+• Bayer Ltd.
+• Bristol Myers Squibb
+• Fimlab Laboratories Ltd.
+• GlaxoSmithKline Ltd.
+• Illumina
+• Johnson & Johnson
+• Merck Ltd.
+• MSD Finland
+• Novartis Finland
+• Pfizer Ltd.
+• Roche Ltd.
+• Siemens Healthcare Ltd.
+• Takeda Ltd.
+Other:
+• Hemp Party Association
+• Myy Agency Ltd.
+• Productivity Leap
+• Evangelical Lutheran Church of Finland
+--- PAGE 64 ---
+© Ministry of Social Affairs and Health 2025
+Together against cancer – People-centered cancer prevention and 
+treatment National Cancer Strategy 2026–2035
+Layout: Grano Oy
