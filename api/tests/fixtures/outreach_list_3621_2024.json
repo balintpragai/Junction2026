@@ -30,7 +30,16 @@
       "severity": "act",
       "rank": 1,
       "covariates": {
-        "immigrant_background_share_pct": 14.0
+        "immigrant_background_share_pct": 14.0,
+        "values": [
+          {
+            "code": "foreign_background_pct",
+            "name": "People with a foreign background",
+            "unit": "% of population",
+            "value": 14.0,
+            "year": 2024
+          }
+        ]
       }
     },
     {
@@ -44,7 +53,16 @@
       "severity": "act",
       "rank": 2,
       "covariates": {
-        "immigrant_background_share_pct": 24.0
+        "immigrant_background_share_pct": 24.0,
+        "values": [
+          {
+            "code": "foreign_background_pct",
+            "name": "People with a foreign background",
+            "unit": "% of population",
+            "value": 24.0,
+            "year": 2024
+          }
+        ]
       }
     },
     {
@@ -58,7 +76,16 @@
       "severity": "act",
       "rank": 3,
       "covariates": {
-        "immigrant_background_share_pct": 19.0
+        "immigrant_background_share_pct": 19.0,
+        "values": [
+          {
+            "code": "foreign_background_pct",
+            "name": "People with a foreign background",
+            "unit": "% of population",
+            "value": 19.0,
+            "year": 2024
+          }
+        ]
       }
     },
     {
@@ -72,7 +99,16 @@
       "severity": "watch",
       "rank": 4,
       "covariates": {
-        "immigrant_background_share_pct": 3.0
+        "immigrant_background_share_pct": 3.0,
+        "values": [
+          {
+            "code": "foreign_background_pct",
+            "name": "People with a foreign background",
+            "unit": "% of population",
+            "value": 3.0,
+            "year": 2024
+          }
+        ]
       }
     }
   ]

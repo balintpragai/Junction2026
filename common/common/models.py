@@ -139,9 +139,28 @@ class GapSummary(ContractModel):
 # --- Outreach list ----------------------------------------------------------
 
 
+class CovariateValue(ContractModel):
+    """One structural covariate for one Region. Describes the Region, not individuals."""
+
+    code: str = Field(description="Indicator id of the covariate, e.g. 'foreign_background_pct'.")
+    name: str
+    unit: str
+    value: float
+    year: int = Field(description="Year of the value: the latest year at or before the outreach list's year.")
+
+
 class OutreachCovariates(ContractModel):
     immigrant_background_share_pct: float | None = Field(
-        description="Share of the Region's population with an immigrant background, %."
+        description=(
+            "Share of the Region's population with a foreign background (Statistics Finland), %. "
+            "The same value as the 'foreign_background_pct' entry in `values`; null if not loaded."
+        )
+    )
+    values: list[CovariateValue] = Field(
+        description=(
+            "Every loaded covariate that has a value for this Region at or before the year, sorted by code. "
+            "Region-level only: see the list's ecological_fallacy_note before reading any of them as a cause."
+        )
     )
 
 
@@ -150,12 +169,13 @@ class OutreachRow(ContractModel):
     value: float
     deviation: float
     severity: Severity
-    rank: int = Field(ge=1, description="1 = largest Gap below the reference.")
+    rank: int = Field(ge=1, description="1 = largest Gap on the wrong side of the Target.")
     covariates: OutreachCovariates
 
 
 class OutreachList(ContractModel):
-    """Regions below the reference, ranked by Gap, joined with covariates."""
+    """Regions on the wrong side of the indicator's Target (below it, or above it when lower is
+    better), ranked by Gap, joined with covariates. Only indicators with a Target have one."""
 
     indicator: Indicator
     year: int
@@ -193,6 +213,13 @@ class NarrativeRequest(ContractModel):
         if self.language == "fi" and not self.indicator_name_fi:
             raise ValueError("indicator_name_fi is required when language is 'fi'")
         return self
+
+
+class NarrativeConfig(ContractModel):
+    """What `narrative` would use right now. `engine` keys the Narrative cache on it."""
+
+    prompt_version: str
+    model: str = Field(description="The configured LLM model, or '' when no LLM is configured (Template sentences only).")
 
 
 class NarrativeResult(ContractModel):
@@ -239,6 +266,20 @@ class RescoreJob(ContractModel):
         default_factory=list, description="Indicators skipped this run; each keeps its previous Gaps."
     )
     error: str | None = None
+    narratives_generated: int | None = Field(
+        default=None, description="Narratives requested from `narrative` this run (new or changed inputs)."
+    )
+    narratives_kept: int | None = Field(default=None, description="Cached Narratives whose inputs were unchanged.")
+    narratives_failed: int | None = Field(
+        default=None, description="Narratives that could not be generated; each keeps its previous cache row, if any."
+    )
+    narratives_removed: int | None = Field(default=None, description="Cache rows deleted because their Gap is no longer a latest-year Gap.")
+    narrative_sources: dict[str, int] = Field(
+        default_factory=dict, description="Cached latest-year Narratives by source after this run, e.g. {'template': 276}."
+    )
+    narrative_error: str | None = Field(
+        default=None, description="Set when the Narrative step could not run at all (e.g. `narrative` unreachable). Gaps are still scored."
+    )
 
     @property
     def done(self) -> bool:

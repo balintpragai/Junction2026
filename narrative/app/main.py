@@ -11,12 +11,13 @@ from typing import Annotated
 
 from fastapi import Depends, FastAPI
 
-from common.models import Health, NarrativeRequest, NarrativeResult
+from common.models import Health, NarrativeConfig, NarrativeRequest, NarrativeResult
+from common.settings import Settings
 
 from . import prompt
 from .llm import ChatClient, client_from_env
 from .numbers import allowed_numbers, unverified_numbers
-from .template import template_sentence
+from common.template import template_sentence
 
 log = logging.getLogger("narrative")
 
@@ -26,6 +27,14 @@ app = FastAPI(title="Reach Loop narrative", version="0.1.0")
 @app.get("/health", response_model=Health)
 def health() -> Health:
     return Health(status="ok")
+
+
+@app.get("/config", response_model=NarrativeConfig)
+def config() -> NarrativeConfig:
+    """The prompt version and model a request would use now. `engine` keys its cache on these."""
+    s = Settings.from_env()
+    model = s.llm_model if (s.llm_base_url and s.llm_model) else ""
+    return NarrativeConfig(prompt_version=prompt.PROMPT_VERSION, model=model)
 
 
 def get_llm() -> ChatClient | None:

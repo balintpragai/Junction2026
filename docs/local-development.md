@@ -2,6 +2,8 @@
 
 This is the reference for running the Reach Loop services locally, testing them, and building `web` against them. Keep it up to date when a service, route or command changes.
 
+Every endpoint, with inputs, outputs, errors and real examples, is described in [api.md](api.md).
+
 ## Quick start: Docker only
 
 To just run the stack you need only Docker with the compose plugin (Docker Desktop on Windows and macOS). No Python, Node or `.env` is required. From the repo root:
@@ -17,19 +19,23 @@ The Python setup below is only needed to run the tests, or to run a service outs
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)); `web` is a stub that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads every data route from Postgres: Regions, indicators and Gaps (#14), and the outreach list (#16). `web` is a stub that later tickets fill in.
 
-| Route | Response type | Fixture coverage |
+| Route | Response type | Source |
 |---|---|---|
-| `GET /health` | `Health` | always `{"status":"ok"}` |
-| `GET /regions` | `RegionList` | all 23 Regions |
-| `GET /indicators` | `IndicatorList` | 4 indicators; only `3621` has a Target (80%) |
-| `GET /regions/{code}/gap-summary?indicator=&year=` | `GapSummary` | only `helsinki`, `3621`, `2024` |
-| `GET /outreach-list?indicator=&year=` | `OutreachList` | only `3621`, `2024` |
+| `GET /health` | `Health` | always `{"status":"ok"}` (no database call) |
+| `GET /regions` | `RegionList` | `dim_region`: the 23 Regions, sorted by name |
+| `GET /indicators` | `IndicatorList` | `dim_indicator` without covariates; `years` = years that have Gaps |
+| `GET /regions/{code}/gap-summary?indicator=&year=` | `GapSummary` | `fact_gap_score` + trend from `fact_indicator_value` + the top-ranked strategy action |
+| `GET /outreach-list?indicator=&year=` | `OutreachList` | `fact_gap_score` Regions on the wrong side of the Target, ranked by Gap, + every covariate from `fact_indicator_value`. Only indicators with a Target (the three screening indicators: 3620, 3621, 6103) |
 
-Any other region, indicator or year returns **404** with a JSON `detail` message. Both query parameters are required. Leaving one out returns **422**.
+**Region codes are Sotkanet codes** from `dim_region.code` (not the `helsinki`-style slugs of the old fixtures). Get them from `/regions`. An unknown Region or indicator, a covariate, or a year without a Gap returns **404** with a JSON `detail` message. Both query parameters are required; leaving one out returns **422**. If Postgres is unreachable, data routes return **503**.
 
-> **Fixture numbers are placeholders.** Only Helsinki's 2024 breast-screening value (74.3% against the 80% Target, deviation −5.7, Severity `act`) comes from the brief. Peer values, trend, covariates and the strategy action text are invented so the UI has something to render. Never quote them as real figures. The gap-summary response carries a `fixture_data` note in `data_quality_notes` that says so.
+In a gap-summary:
+- `gap.peer_values` holds the other Regions in the same parent area (curated peer group), not all 23.
+- `trend` is the Region's values up to the requested year, without years that have no value.
+- `action` is the linked National Cancer Strategy action with the lowest rank that has text, or `null`.
+- `narrative` is the Narrative `engine` cached for this Gap after the last rescore (#17), with its `source`: `llm` (LLM text that passed the number-check) or `template` (a Template sentence). Only latest-year Gaps are cached; for any other year `api` builds the Template sentence itself. `api` never calls an LLM.
 
 ## Prerequisites
 
@@ -84,12 +90,13 @@ cd api
 - Interactive docs (Swagger UI): http://localhost:8000/docs
 - OpenAPI spec: http://localhost:8000/openapi.json
 
-The app checks every fixture against its model at startup. If a fixture no longer matches the contract, the server won't start, and the error names the bad field.
+The data routes need Postgres: set `DATABASE_URL` (for example to a database the compose stack seeded, or any Postgres with `db/*.sql` applied and data loaded). Without it they fail; `/health` still answers.
 
 ### Environment variables
 
 | Variable | Default | Purpose |
 |---|---|---|
+| `DATABASE_URL` | none (required for data routes) | Postgres to read from, e.g. `postgresql://reachloop:reachloop@localhost:5432/reachloop` |
 | `WEB_ORIGIN` | `http://localhost:3000` | Allowed CORS origins, comma-separated. Set it if `web` runs on another port. |
 
 Example: `WEB_ORIGIN=http://localhost:3000,http://localhost:5173 ../.venv/bin/uvicorn app.main:app --reload`
@@ -106,11 +113,13 @@ With the server running:
 curl -s localhost:8000/health
 curl -s localhost:8000/regions
 curl -s localhost:8000/indicators
-curl -s 'localhost:8000/regions/helsinki/gap-summary?indicator=3621&year=2024'
+HKI=$(curl -s localhost:8000/regions | python3 -c 'import json,sys; print(next(r["code"] for r in json.load(sys.stdin)["regions"] if r["name"] == "Helsinki"))')
+curl -s "localhost:8000/regions/$HKI/gap-summary?indicator=3621&year=2024"
 curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
 
-# Expected 404 (no fixture for this combination)
-curl -s -w '\n%{http_code}\n' 'localhost:8000/regions/lappi/gap-summary?indicator=3621&year=2024'
+# Expected 404s
+curl -s -w '\n%{http_code}\n' 'localhost:8000/regions/nowhere/gap-summary?indicator=3621&year=2024'
+curl -s -w '\n%{http_code}\n' "localhost:8000/regions/$HKI/gap-summary?indicator=nope&year=2024"
 ```
 
 Pipe through `jq` (or `python3 -m json.tool`) for readable output.
@@ -122,7 +131,7 @@ cd api
 ../.venv/bin/python -m pytest
 ```
 
-The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) checks that:
+The route tests run against an in-memory repository built from `api/tests/fixtures/` (contract-shaped examples, placeholder numbers), so they need no database. The suite (`test_contract.py`, `test_openapi_drift.py`) checks that:
 
 - every route returns 200 and its body validates against its Pydantic model
 - `/openapi.json` points each route at its typed schema
@@ -130,11 +139,20 @@ The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) chec
 - the Gap fixture is internally consistent: deviation, rank, peer count, trend and Narrative all agree
 - the outreach list can't validate without a non-empty `ecological_fallacy_note`
 - outreach rows are below target and ranked by Gap
-- unknown combinations return 404
+- (Postgres tests) outreach lists only Regions on the wrong side of the Target (above it when lower is better), ranks by Gap size, takes each covariate's latest value at or before the year, and returns 404 for indicators without a Target
+- an unknown Region, an unknown indicator, or a year without a Gap returns 404, and a database outage returns 503 without leaking details
 - `Cache-Control` is set
 - the committed `web/openapi.json` matches what the app generates. If it fails, the message shows the diff and tells you to run `scripts/gen-api-types.sh`.
 
 Run the tests after any change to `common/common/models.py` or to the fixtures.
+
+**The SQL** (`api/app/repository.py`) is tested against a real Postgres with the real schema in `test_repository_postgres.py`. It's skipped unless `TEST_DATABASE_URL` is set. It creates and drops its own temporary schema and uses synthetic rows, so any scratch Postgres works:
+
+```sh
+docker run --rm -d --name rl-test-db -p 55432:5432 -e POSTGRES_PASSWORD=test postgres:16
+cd api && TEST_DATABASE_URL=postgresql://postgres:test@localhost:55432/postgres ../.venv/bin/python -m pytest
+docker stop rl-test-db
+```
 
 ## Run the whole stack (docker compose)
 
@@ -152,7 +170,7 @@ docker compose down              # stop; add -v to also delete the database volu
 | `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
 | `engine` | Scoring and the rescore job: `POST /jobs/rescore`, `GET /jobs/{id}` | none |
 | `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, runs a rescore and waits for it (a rescore problem is a warning), exits 0 | none |
-| `api` | The fixture API | `8000` (`API_PORT`) |
+| `api` | Reads Regions, indicators, Gaps and outreach lists from Postgres | `8000` (`API_PORT`) |
 | `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
 Startup order: `db` → `narrative` → `engine` → `seed` (must exit 0) → `api` → `web`. Each step waits for the one before it to be healthy.
@@ -189,7 +207,7 @@ cd seed && ../.venv/bin/python -m pytest
 
 A rescore scores every Region × indicator × year that has a value (covariates are never scored) with `score()` from `engine/app/scoring.py`, then upserts `fact_gap_score` in one transaction. Every row gets the same `scored_at` and the `engine_version`. Rows whose value has gone from the data are deleted. Åland is scored as usual, with empty `peer_values` and a `no_peers` note.
 
-`seed` triggers one after every load, so `docker compose up` ends fully scored and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
+After scoring, the same job **fills the Narrative cache** (see below). `seed` triggers one after every load, so `docker compose up` ends fully scored, with a Narrative for every latest-year Gap, and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
 
 ```sh
 docker compose exec engine python -m app.rescore_now   # prints the job's final status as JSON
@@ -208,6 +226,21 @@ docker compose exec engine python -m app.rescore_now   # prints the job's final 
 
 Only a failed **load** makes `seed` exit non-zero and stop `api` from starting, because then the data itself is inconsistent. On a brand-new database a failed rescore means `api` starts with no Gaps. After fixing the cause, run `rescore_now`. `docker compose logs engine` has the full traceback for every failed indicator.
 
+**The Narrative cache** (`engine/app/narratives.py`, `narrative_cache` table). For each indicator's latest scored year, every Region's Gap gets one English Narrative (about 275 rows). For each Gap, `engine` builds a `NarrativeRequest` with the Gap, the Region and indicator names, the matched strategy action (the same one gap-summary shows) and the data-quality notes, then:
+
+- computes `input_hash` = SHA-256 of that request plus the LLM model `narrative` reports at `GET /config`;
+- **keeps** the cached row if its `input_hash` and `prompt_version` both match, so a rescore with unchanged inputs makes no `narrative` or LLM calls;
+- otherwise asks `POST /narrative` (8 at a time) and replaces the row, storing `model` (`''` for a Template sentence), `prompt_version`, `source`, `numbers_checked` and `input_hash`;
+- deletes rows whose Gap is no longer a latest-year Gap, and the outdated row of any Narrative that failed to generate, so gap-summary never shows text built from old numbers. It falls back to the Template sentence instead.
+
+With no `LLM_*` variables every row is a Template sentence. A Narrative problem never fails the job: the job reports `narratives_generated`, `narratives_kept`, `narratives_failed`, `narratives_removed` and `narrative_sources` (counts by `source` after the run), or `narrative_error` if `narrative` was unreachable. `seed` prints one line with these counts. To refresh Narratives after changing the `LLM_*` settings, restart `narrative` with the new env, then run `rescore_now`: the model is part of the hash, so every row is regenerated.
+
+Counts by source, from the database:
+
+```sh
+docker compose exec db psql -U reachloop -d reachloop -c "SELECT source, model, count(*) FROM narrative_cache GROUP BY 1, 2"
+```
+
 `engine_version` is `ENGINE_VERSION` from `engine/app/rescore.py` plus a hash of the thresholds, so a threshold change shows up in every row. Bump `ENGINE_VERSION` when scoring logic changes.
 
 Run the engine's tests without Docker:
@@ -216,6 +249,8 @@ Run the engine's tests without Docker:
 .venv/bin/pip install -r engine/requirements-dev.txt     # from the repo root
 cd engine && ../.venv/bin/python -m pytest
 ```
+
+The Narrative-cache tests in `engine/tests/test_narratives.py` also need a scratch Postgres (`TEST_DATABASE_URL`, see [Run the tests](#run-the-tests)); without it they're skipped.
 
 ### Configuration
 
@@ -246,7 +281,7 @@ docker run --rm -p 8000:8000 reach-loop-api
 
 ## `narrative` service
 
-Internal only: `engine` calls it, and it publishes no port. `POST /narrative` takes a `NarrativeRequest` (one Gap plus Region and indicator names, unit, optional action text and data-quality note, and `language`). It returns a `NarrativeResult`: `text`, `source` (`llm` | `template`), `language`, `numbers_checked`, `prompt_version` and `rejected_numbers`. Both models are in `common/common/models.py`.
+Internal only: `engine` calls it, and it publishes no port. `POST /narrative` takes a `NarrativeRequest` (one Gap plus Region and indicator names, unit, optional action text and data-quality note, and `language`). It returns a `NarrativeResult`: `text`, `source` (`llm` | `template`), `language`, `numbers_checked`, `prompt_version` and `rejected_numbers`. Both models are in `common/common/models.py`. `GET /config` returns the `prompt_version` and the configured LLM `model` (`''` without an LLM); `engine` keys its Narrative cache on both. The Template sentence code lives in `common/common/template.py`, shared with `api`.
 
 How it decides:
 1. If an LLM is configured (`LLM_BASE_URL` and `LLM_MODEL`; `LLM_API_KEY` is optional) and `language` is `en`, it calls `{LLM_BASE_URL}/chat/completions` at temperature 0 with the strict prompt in `narrative/app/prompt.py`.
@@ -308,6 +343,7 @@ const summary: GapSummary = await res.json();
 ### Rules for the UI
 
 - **Show `ecological_fallacy_note`** wherever the outreach list appears. It is required in the contract, so the UI can't drop it without anyone noticing.
+- **Covariates describe Regions, not people.** Each row's `covariates.values` lists every loaded covariate with its own `year` (the latest at or before the list's year; series end in different years). `immigrant_background_share_pct` repeats the `foreign_background_pct` value for convenience. Per `research/covariate_correlation_analysis.md`, foreign background is the covariate that holds at both Region and individual level; don't present income or poverty as a targeting variable.
 - **Show `narrative.text` as given.** `narrative.source` is `llm` or `template` (a Template sentence). Use it for a badge if you like. Don't rewrite the text.
 - `gap.reference_kind` is `target` when the indicator has a Target and `peer_median` when it doesn't. Label the reference accordingly.
 - `indicator.target` is `null` for most indicators.
@@ -348,7 +384,7 @@ Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run a
 ## Changing the contract: checklist
 
 1. Edit the models in `common/common/models.py`.
-2. Update the matching fixture in `api/app/fixtures/`.
+2. Update the matching test fixture in `api/tests/fixtures/` and, if the query changes, `api/app/repository.py`.
 3. `cd api && ../.venv/bin/python -m pytest`
 4. `scripts/gen-api-types.sh`
 5. Commit the models, fixtures, `web/openapi.json` and `web/src/lib/api-types.ts` together.
@@ -360,7 +396,7 @@ Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run a
 | `../common is not a valid editable requirement` (or `./common`) | Run the pip install from the **repo root**. pip resolves the `-e ./common` path against the current directory. |
 | `ModuleNotFoundError: No module named 'common'` | Run `.venv/bin/pip install -r api/requirements-dev.txt` again from the repo root. |
 | `ModuleNotFoundError: No module named 'app'` | Run uvicorn and pytest from inside `api/`. |
-| Server fails at startup with a `ValidationError` | A fixture doesn't match its model. The error names the file's field. |
+| A route returns 500 with a `ValidationError` in the `api` logs | A database row doesn't fit the contract model (for example an unexpected `kind`). The error names the field. |
 | Browser blocks requests (CORS) | Add the `web` origin to `WEB_ORIGIN`. |
 | `docker build`: `lstat .../api/api: no such file or directory` | Run `docker build -f api/Dockerfile -t reach-loop-api .` from the **repo root**, not from `api/`. |
 | `docker: unknown command: docker compose` | Install the compose plugin: Docker Desktop includes it on Windows and macOS; on Arch, `sudo pacman -S docker-compose`. |
@@ -373,4 +409,5 @@ Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run a
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. A `SeedInputError` names the input file, line and column that is malformed; nothing is written until every file reads cleanly. |
 | `seed: WARNING: rescore ...` in `docker compose logs seed`, or Gaps look stale | The stack started on the previous Gaps. The warning names what failed; `docker compose logs engine` has the traceback. Fix it, then `docker compose exec engine python -m app.rescore_now`. See [`engine`: the rescore job](#engine-the-rescore-job). |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
-| 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
+| 404 from gap-summary | Check the Region code (Sotkanet code from `/regions`, not a slug), the indicator (not a covariate), and that `/indicators` lists that year. Outreach list: only indicators with a Target have one (3620, 3621, 6103); other indicators return 404 with that reason. |
+| 503 from a data route | `api` can't reach Postgres: check `DATABASE_URL` and `docker compose ps db`. |

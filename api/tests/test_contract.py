@@ -82,11 +82,30 @@ def test_outreach_rows_are_below_target_and_ranked_by_gap():
 
 
 @pytest.mark.parametrize("path", [
-    "/regions/nowhere/gap-summary?indicator=3621&year=2024",
+    "/regions/nowhere/gap-summary?indicator=3621&year=2024",       # unknown Region
+    "/regions/helsinki/gap-summary?indicator=9999&year=2024",      # unknown indicator
+    "/regions/helsinki/gap-summary?indicator=3621&year=1990",      # no Gap that year
     "/outreach-list?indicator=9999&year=2024",
 ])
 def test_unknown_combination_is_404(path):
-    assert client.get(path).status_code == 404
+    r = client.get(path)
+    assert r.status_code == 404
+    assert r.json()["detail"]
+
+
+def test_database_down_is_503_not_500():
+    import psycopg
+
+    from app.main import get_repository
+
+    class DownRepository:
+        def list_regions(self):
+            raise psycopg.OperationalError("connection refused")
+
+    app.dependency_overrides[get_repository] = DownRepository
+    r = client.get("/regions")
+    assert r.status_code == 503
+    assert "connection refused" not in r.text  # no internals leak to the client
 
 
 def test_cache_control_header():

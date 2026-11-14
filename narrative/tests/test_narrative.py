@@ -2,7 +2,7 @@ import httpx
 
 from app import prompt
 from app.main import get_llm
-from app.template import template_sentence
+from common.template import template_sentence
 
 EN_TEMPLATE = "Helsinki is 5.7 pp below the 80% target for breast cancer screening attendance in 2024, ranking 21 of 23."
 FI_TEMPLATE = (
@@ -132,6 +132,17 @@ def test_template_sentences_pass_their_own_number_check(helsinki_request):
         assert unverified_numbers(template_sentence(req), allowed_numbers(prompt.facts(req))) == []
 
 
+def test_percent_units_with_a_description_use_pp(helsinki_request):
+    # The seeded unit for 3621 is "% of invited", not "%".
+    req = helsinki_request.model_copy(update={"unit": "% of invited", "region_name": "City of Helsinki"})
+    assert template_sentence(req) == (
+        "City of Helsinki is 5.7 pp below the 80% target for breast cancer screening attendance in 2024, ranking 21 of 23."
+    )
+    fi = req.model_copy(update={"language": "fi"})
+    assert "5,7 prosenttiyksikköä alle tavoitteen (80 %)" in template_sentence(fi)
+    assert prompt.facts(req)["gap_unit"] == "percentage points"
+
+
 def test_peer_median_and_at_reference_wording(helsinki_request):
     gap = helsinki_request.gap.model_copy(update={"reference_kind": "peer_median", "reference_value": 84.3, "deviation": -10.0})
     req = helsinki_request.model_copy(update={"gap": gap})
@@ -140,3 +151,17 @@ def test_peer_median_and_at_reference_wording(helsinki_request):
     )
     at = helsinki_request.gap.model_copy(update={"value": 80.0, "deviation": 0.0, "direction": "at"})
     assert template_sentence(helsinki_request.model_copy(update={"gap": at})).startswith("Helsinki is at the 80% target")
+
+
+# --- /config (engine keys its Narrative cache on it) -----------------------------
+
+
+def test_config_without_llm_has_empty_model(client, no_llm_env):
+    body = client.get("/config").json()
+    assert body == {"prompt_version": prompt.PROMPT_VERSION, "model": ""}
+
+
+def test_config_with_llm_reports_the_model(client, monkeypatch):
+    monkeypatch.setenv("LLM_BASE_URL", "http://llm.local/v1")
+    monkeypatch.setenv("LLM_MODEL", "some-model")
+    assert client.get("/config").json() == {"prompt_version": prompt.PROMPT_VERSION, "model": "some-model"}
