@@ -1,0 +1,79 @@
+{
+  "indicator": {
+    "code": "3621",
+    "name": "Breast cancer screening attendance",
+    "unit": "%",
+    "higher_is_better": true,
+    "target": 80.0,
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "year": 2024,
+  "reference_kind": "target",
+  "reference_value": 80.0,
+  "ecological_fallacy_note": "These figures describe Regions, not people. A Region with a larger immigrant-background share and lower participation does not show that immigrant-background residents participate less; check individual-level data before targeting outreach at a group.",
+  "rows": [
+    {
+      "region": {
+        "code": "aland",
+        "name": "Åland",
+        "kind": "aland"
+      },
+      "value": 70.8,
+      "deviation": -9.2,
+      "severity": "act",
+      "rank": 1,
+      "covariates": {
+        "immigrant_background_share_pct": 14.0
+      }
+    },
+    {
+      "region": {
+        "code": "vantaa-kerava",
+        "name": "Vantaa-Kerava",
+        "kind": "wellbeing_services_county"
+      },
+      "value": 73.2,
+      "deviation": -6.8,
+      "severity": "act",
+      "rank": 2,
+      "covariates": {
+        "immigrant_background_share_pct": 24.0
+      }
+    },
+    {
+      "region": {
+        "code": "helsinki",
+        "name": "Helsinki",
+        "kind": "city_of_helsinki"
+      },
+      "value": 74.3,
+      "deviation": -5.7,
+      "severity": "act",
+      "rank": 3,
+      "covariates": {
+        "immigrant_background_share_pct": 19.0
+      }
+    },
+    {
+      "region": {
+        "code": "lappi",
+        "name": "Lappi",
+        "kind": "wellbeing_services_county"
+      },
+      "value": 79.4,
+      "deviation": -0.6,
+      "severity": "watch",
+      "rank": 4,
+      "covariates": {
+        "immigrant_background_share_pct": 3.0
+      }
+    }
+  ]
+}

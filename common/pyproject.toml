@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reach-loop-common"
+version = "0.1.0"
+description = "Shared Pydantic models (and later DB session and settings) for Reach Loop services"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.7,<3", "psycopg[binary]>=3.2,<4"]
+
+[tool.setuptools]
+packages = ["common"]
