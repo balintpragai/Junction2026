@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: "Reach Loop",
   description: "Where Finnish cancer care falls short of national targets, Region by Region.",
