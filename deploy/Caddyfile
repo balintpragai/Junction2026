@@ -1,0 +1,13 @@
+# Demo host reverse proxy. Caddy gets and renews Let's Encrypt certificates
+# for both names automatically; DNS for each must point at this VM and ports
+# 80 and 443 must be open before the first start.
+
+{$WEB_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:3000
+}
+
+{$API_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy api:8000
+}
