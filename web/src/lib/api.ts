@@ -94,3 +94,15 @@ export function loadOverview(): Promise<{ year: number; rows: OverviewRow[] } | 
 export function loadRegionProfile(code: string): Promise<RegionProfile | null> {
   return getJson(`/regions/${code}/profile`);
 }
+
+/** Every Region's profile, fetched in parallel -- small n (23), and `api`
+ *  caches each response, so this is cheap and makes clicking through
+ *  Regions on the map instant (no per-click round trip). */
+export async function loadAllRegionProfiles(regions: Region[]): Promise<Map<string, RegionProfile>> {
+  const results = await Promise.all(regions.map(async (r) => [r.code, await loadRegionProfile(r.code)] as const));
+  const map = new Map<string, RegionProfile>();
+  for (const [code, profile] of results) {
+    if (profile) map.set(code, profile);
+  }
+  return map;
+}

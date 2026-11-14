@@ -1,12 +1,12 @@
-import { loadOverview, loadRegions } from "@/lib/api";
-import { OverviewMap } from "@/components/OverviewMap";
+import { loadAllRegionProfiles, loadRegions } from "@/lib/api";
+import { Explorer } from "@/components/Explorer";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [regionList, overview] = await Promise.all([loadRegions(), loadOverview()]);
+  const regionList = await loadRegions();
   const regions = regionList?.regions ?? [];
-  const rows = overview?.rows ?? [];
+  const profiles = regions.length ? await loadAllRegionProfiles(regions) : new Map();
 
   return (
     <div>
@@ -17,12 +17,12 @@ export default async function Home() {
         <h1 style={{ fontSize: "clamp(1.8rem, 3vw, 2.3rem)", marginTop: 8 }}>Where cancer care falls short of target</h1>
       </header>
 
-      {regions.length === 0 || rows.length === 0 ? (
+      {regions.length === 0 || profiles.size === 0 ? (
         <p style={{ color: "var(--act)" }}>
           Could not reach the API. Check that the backend is running and <code>API_URL</code> is set.
         </p>
       ) : (
-        <OverviewMap regions={regions} rows={rows} />
+        <Explorer regions={regions} profiles={profiles} />
       )}
     </div>
   );

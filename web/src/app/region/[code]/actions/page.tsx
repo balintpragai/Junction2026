@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadRegionProfile } from "@/lib/api";
-import { ActionPlanner } from "@/components/ActionPlanner";
+import { WorkflowCanvas } from "@/components/WorkflowCanvas";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +28,7 @@ export default async function ActionsPage({ params }: { params: Promise<{ code: 
         </p>
       </header>
 
-      <ActionPlanner region={profile.region} actions={profile.candidate_actions} />
+      <WorkflowCanvas region={profile.region} actions={profile.candidate_actions} />
     </div>
   );
 }
