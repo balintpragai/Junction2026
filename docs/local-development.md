@@ -21,8 +21,8 @@ Any other region, indicator or year returns **404** with a JSON `detail` message
 ## Prerequisites
 
 - Python 3.12 or newer
-- Node.js with `npm`/`npx` (only to regenerate the TypeScript types and run `web`)
-- Docker (optional, only to run the container)
+- Node.js with `npm` (only to run `web` outside Docker)
+- Docker (to run the stack, and to regenerate the TypeScript types)
 
 ## One-time setup
 
@@ -33,7 +33,9 @@ python3 -m venv .venv
 .venv/bin/pip install -r api/requirements-dev.txt
 ```
 
-`requirements-dev.txt` installs FastAPI, Uvicorn, pytest, and the shared `common/` package in editable mode, so model changes take effect without reinstalling.
+`requirements-dev.txt` installs FastAPI, Uvicorn, pytest, and the shared `common/` package in editable mode, so model changes take effect without reinstalling. It installs the same pinned versions as the api image (`api/constraints.txt`), so the tests see the same OpenAPI spec the image produces.
+
+On Windows the venv's Python is `.venv\Scripts\python` instead of `.venv/bin/python`.
 
 ## Run the API
 
@@ -84,7 +86,7 @@ cd api
 ../.venv/bin/python -m pytest
 ```
 
-The suite (`api/tests/test_contract.py`) checks that:
+The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) checks that:
 
 - every route returns 200 and its body validates against its Pydantic model
 - `/openapi.json` points each route at its typed schema
@@ -94,6 +96,7 @@ The suite (`api/tests/test_contract.py`) checks that:
 - outreach rows are below target and ranked by Gap
 - unknown combinations return 404
 - `Cache-Control` is set
+- the committed `web/openapi.json` matches what the app generates. If it fails, the message shows the diff and tells you to run `scripts/gen-api-types.sh`.
 
 Run the tests after any change to `common/common/models.py` or to the fixtures.
 
@@ -224,7 +227,32 @@ Whenever `common/common/models.py` changes:
 scripts/gen-api-types.sh
 ```
 
-This dumps the spec straight from the app, so no running server is needed. It then runs `openapi-typescript` (pinned to 7.4.4) through `npx`. Commit both `web/openapi.json` and `web/src/lib/api-types.ts` in the same PR as the model change. To use a Python other than `.venv/bin/python`, set `PYTHON=/path/to/python`.
+It needs only Docker, and works the same on Linux, macOS and Windows (Git Bash). Both steps run in containers:
+
+1. It builds the api image, which installs the pinned versions from `api/constraints.txt`, and dumps `app.openapi()` to `web/openapi.json` (UTF-8, LF line endings).
+2. It runs `openapi-typescript@7.4.4` in `node:24-slim` to write `web/src/lib/api-types.ts`.
+
+It ends by printing `git diff --stat` for the two files. On an unchanged contract that diff is empty. Commit both files in the same PR as the model change. The drift test fails until you do.
+
+On Linux and macOS the files are written as your user, not root. On Windows the script converts the mount path for Docker Desktop (`pwd -W`, `MSYS_NO_PATHCONV=1`), so run it from Git Bash, not PowerShell.
+
+### Bump the pinned versions
+
+`api/constraints.txt` pins every Python package in the api image, so the same commit always produces the same spec. `api/requirements.txt` and `common/pyproject.toml` keep the allowed ranges. To move to newer versions:
+
+```sh
+# 1. Resolve the newest versions inside the ranges, for the image's Python and platform
+#    (Windows Git Bash: prefix with MSYS_NO_PATHCONV=1 and use "$(pwd -W)" instead of "$PWD")
+docker run --rm --platform linux/amd64 -v "$PWD:/src:ro" python:3.12-slim \
+  sh -c 'cp -r /src/common /src/api /tmp/ && cd /tmp && pip install -q ./common -r api/requirements.txt && pip freeze --exclude reach-loop-common' > /tmp/pins.txt
+# 2. Replace the pin lines in api/constraints.txt with /tmp/pins.txt (keep the header comment)
+# 3. Regenerate and test
+scripts/gen-api-types.sh
+.venv/bin/pip install -r api/requirements-dev.txt
+cd api && ../.venv/bin/python -m pytest
+```
+
+If the spec changes, check the `git diff web/` is only the library's doing, then commit `api/constraints.txt` and `web/` together. To bump a single package, edit its line in `api/constraints.txt` and run steps 3 onwards.
 
 ## Changing the contract: checklist
 
@@ -248,5 +276,7 @@ This dumps the spec straight from the app, so no running server is needed. It th
 | `permission denied ... /var/run/docker.sock` | `sudo usermod -aG docker $USER`, then log out and back in. |
 | `Bind for 0.0.0.0:8000 failed: port is already allocated` | Something else (often an old `docker run` of `api`) holds the port. Stop it, or set `API_PORT` / `WEB_PORT`. |
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
-| `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
+| `test_committed_openapi_matches_app` fails | A model changed without regenerating. Run `scripts/gen-api-types.sh` and commit `web/`. If you didn't change a model, reinstall the dev env so it has the pinned versions: `.venv/bin/pip install -r api/requirements-dev.txt`. |
+| `gen-api-types.sh` on Windows: `invalid mount config` or files land in a strange path | Run it from Git Bash. The script handles the path conversion there. |
+| `web/` files owned by root after regenerating | You ran an old copy of the script. Fix with `sudo chown -R $USER web/` and pull the latest script. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
