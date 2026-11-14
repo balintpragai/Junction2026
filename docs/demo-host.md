@@ -1,6 +1,14 @@
 # Demo host runbook (issue #12)
 
-One Linux VM runs the same `compose.yaml` as everyone's laptop, with Caddy in front for HTTPS. **Target: live by 16:00 Saturday.** This runbook is for the person setting it up (allow about 45 minutes) and for whoever redeploys later. Every endpoint is described, with examples, in [api.md](api.md).
+The demo runs on **Arch Linux**. One Arch VM runs the same `compose.yaml` as everyone's laptop, with Caddy in front for HTTPS. **Target: live by 16:00 Saturday.** This runbook is for the person setting it up (allow about 45 minutes) and for whoever redeploys later. Every endpoint is described, with examples, in [api.md](api.md).
+
+There are two ways to run it:
+
+| | Main: Arch VM, public HTTPS (steps 0–8) | Fallback: presenter's Arch laptop, local only ([section below](#fallback-the-presenters-arch-laptop-local-only)) |
+|---|---|---|
+| Who can open it | Anyone, at `https://<WEB_DOMAIN>` | Only the laptop's screen, at `http://localhost:3000` |
+| Caddy, DNS, certificates | Yes | No |
+| Meets #12 | Yes | No (no HTTPS URL to share). Use it if the VM or the venue network fails. |
 
 ```text
                  Internet (80, 443 only)
@@ -31,7 +39,8 @@ The repo side is ready. The VM, the DNS, the LLM key and sharing the URLs need a
 
 | Decision | Recommendation | Why |
 |---|---|---|
-| VM | Ubuntu 24.04 LTS, **x86_64 (amd64)**, at least 2 vCPU, 4 GB RAM, 30 GB disk | The images target `linux/amd64`. An ARM VM would emulate or fail. Building Next.js needs about 2 GB of RAM. |
+| VM | **Arch Linux, x86_64 (amd64)**, at least 2 vCPU, 4 GB RAM, 30 GB disk | The images target `linux/amd64`. An ARM VM would emulate or fail (and Arch Linux ARM is a separate distribution). Building Next.js needs about 2 GB of RAM. |
+| Arch image | The provider's Arch image if it has one. Otherwise upload the official cloud image (`Arch-Linux-x86_64-cloudimg-*.qcow2` from `https://geo.mirror.pkgbuild.com/images/latest/`) as a custom image | The official image uses cloud-init, so the provider's SSH key works. Its login user is `arch`. |
 | Domain | Your own domain if the team has one. Otherwise **sslip.io**, which needs no DNS setup | sslip.io maps `anything.203-0-113-10.sslip.io` to `203.0.113.10`, and Let's Encrypt can issue for it. |
 | Hostnames | `WEB_DOMAIN=reachloop.<base>`, `API_DOMAIN=api.reachloop.<base>` | Two names, two certificates, one Caddyfile. |
 | LLM | Whichever OpenAI-compatible provider the team has credits for | `narrative` only needs `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY`. |
@@ -48,24 +57,36 @@ Common `LLM_BASE_URL` values (check your provider's docs for the current model n
 
 In the cloud console, create the VM and allow inbound **22, 80 and 443** (TCP, plus UDP 443 for HTTP/3). Note its public IPv4, written `<IP>` below.
 
-On the VM (`ssh <user>@<IP>`):
+On the VM (`ssh arch@<IP>`, or your provider's user):
 
 ```sh
-sudo apt-get update && sudo apt-get upgrade -y
-# If ufw is on, Docker-published ports bypass it, but Caddy's 80/443 still need opening:
-sudo ufw allow OpenSSH && sudo ufw allow 80,443/tcp && sudo ufw allow 443/udp
+sudo pacman -Syu          # full upgrade first; Arch doesn't support partial upgrades
+sudo reboot               # if the upgrade included the `linux` kernel package (see the note below)
 ```
+
+Arch has no firewall enabled by default, so the cloud firewall is the one that matters. If you do enable `ufw` on the VM, open the same ports:
+
+```sh
+sudo pacman -S --needed ufw && sudo systemctl enable --now ufw
+sudo ufw allow 22/tcp && sudo ufw allow 80,443/tcp && sudo ufw allow 443/udp && sudo ufw enable
+```
+
+**Kernel upgrades and Docker.** After `pacman -Syu` installs a new kernel, the running kernel can't load its modules any more (they were replaced on disk). Docker then fails to create its networks, with errors mentioning `modprobe`, `bridge`, `overlay` or `iptables`. Reboot after every upgrade that includes `linux`, **before** starting the stack.
 
 ## 2. Install Docker Engine and Compose
 
+The Docker convenience script doesn't support Arch. Use the Arch packages: `docker-compose` provides the `docker compose` plugin, and `docker-buildx` is required by `docker compose … --build`.
+
 ```sh
-curl -fsSL https://get.docker.com | sudo sh
+sudo pacman -S --needed docker docker-compose docker-buildx git openssh nano jq bind
+sudo systemctl enable --now docker.service
 sudo usermod -aG docker $USER
-sudo systemctl enable --now docker
 exit   # log out and back in so the docker group applies
 ```
 
-Check: `docker compose version` prints a version, and `docker ps` works without `sudo`.
+`jq` is for the [walk-through](#show-it-the-endpoint-walk-through), and `bind` provides `dig` (step 3). `deploy/check.sh` itself only needs `bash`, `curl`, `git`, `sed`, `awk` and `docker`, which the base system plus the line above cover.
+
+Check: `docker compose version` and `docker buildx version` both print a version, and `docker ps` works without `sudo`.
 
 ## 3. DNS
 
@@ -176,6 +197,8 @@ git pull && docker compose up -d --build
 
 Compose rebuilds only the images whose code changed and restarts only those containers, so downtime is a few seconds per changed service. Run `deploy/check.sh` afterwards.
 
+A redeploy doesn't touch Arch packages. Don't combine it with `pacman -Syu` on the day (see [Things to know](#things-to-know-for-the-demo)).
+
 ## Operations
 
 | Task | Command |
@@ -198,7 +221,7 @@ On the day, these calls tell the story end to end. Set the domain once, then run
 API=https://<API_DOMAIN>
 ```
 
-The filters need `jq` (`brew install jq`, `sudo apt install jq`, or `winget install jqlang.jq`). Without it, pipe to `python3 -m json.tool` to read the whole response.
+The filters need `jq` (`sudo pacman -S jq` on Arch, `brew install jq`, `sudo apt install jq`, or `winget install jqlang.jq`). Without it, pipe to `python3 -m json.tool` to read the whole response.
 
 | Step | Call | What it shows |
 |---|---|---|
@@ -227,6 +250,7 @@ Good things to point out while showing it:
 - **After a VM reboot** everything comes back by itself (`RESTART_POLICY=unless-stopped` plus the Docker service being enabled). `seed` doesn't need to run again.
 - **Browser-side API calls:** today `web` reaches `api` server-side over the internal network (`API_URL=http://api:8000`). If #10 or #18 adds calls from the browser, they must use `https://<API_DOMAIN>`, and CORS already allows `WEB_ORIGIN`. Next.js bakes `NEXT_PUBLIC_*` variables in at build time, so such a URL must be set before `--build`.
 - **Cold start before judging:** after the last redeploy, open both URLs once so the first real visitor doesn't wait on a cold start. Rehearsal is #22.
+- **Freeze Arch updates after the rehearsal.** Arch is a rolling release: a `pacman -Syu` on the day can bring a new kernel (Docker networking breaks until a reboot) or a new Docker or Compose version. Upgrade and reboot once, well before the rehearsal, then don't run `pacman` on the VM or on the fallback laptop until the demo is over. Redeploying with `git pull && docker compose up -d --build` is still fine.
 
 ## Troubleshooting
 
@@ -239,6 +263,42 @@ Good things to point out while showing it:
 | `api`/`engine`/`seed` can't connect to `db` (password authentication failed) | `DATABASE_URL` and `POSTGRES_PASSWORD` differ, or the password changed after the volume was created. Fix `.env`. If the data is disposable: `docker compose down && docker volume rm reach-loop_db-data && docker compose up -d`. |
 | Check says narrative fell back to the Template sentence | Wrong `LLM_*` value, no credits, or the provider is unreachable from the VM. Check `docker compose logs narrative`, which logs the reason. |
 | Check WARNs that the LLM invented a number | The key works, but the model broke the number rule. Try a stronger model. Template sentences cover it either way. |
-| Build fails with `Killed` / out of memory | The VM is too small for the Next.js build. Add swap (`sudo fallocate -l 4G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile`) or resize. |
+| Build fails with `Killed` / out of memory | The VM is too small for the Next.js build. Add swap or resize. Check the root filesystem first with `findmnt -no FSTYPE /`. On ext4: `sudo fallocate -l 4G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile`. On btrfs (`fallocate` swap files don't work there): `sudo btrfs filesystem mkswapfile --size 4g /swapfile && sudo swapon /swapfile`. |
 | `exec format error` | The VM is ARM. Use an x86_64 VM. |
 | `git pull` asks for a password | The deploy key isn't used. Check `~/.ssh/config` and that the key is added to the repo. |
+| `docker compose` errors with `failed to create network`, or mentions `modprobe`, `bridge`, `overlay` or `iptables` | A kernel upgrade without a reboot. Check with `uname -r` against `pacman -Q linux`. If they differ, `sudo reboot`, then `docker compose up -d`. |
+| `docker: 'compose' is not a docker command` | Install `docker-compose` (`sudo pacman -S docker-compose`). It provides the `docker compose` plugin on Arch. |
+| `compose build requires buildx` | Install `docker-buildx` (`sudo pacman -S docker-buildx`). |
+| `permission denied … /var/run/docker.sock` | You're not in the `docker` group yet. Run `sudo usermod -aG docker $USER`, then log out and back in. Check with `groups`. |
+| `Cannot connect to the Docker daemon` | The service isn't running. Run `sudo systemctl enable --now docker.service`. |
+
+## Fallback: the presenter's Arch laptop (local only)
+
+Use this if the VM, DNS or the venue network fails. The stack runs on the laptop that's connected to the projector, and the demo is shown in that laptop's browser. Nothing is reachable from other devices, and there's no HTTPS, so this doesn't meet #12. It's a backup, not a replacement.
+
+Set it up **the day before, while online**, so the images are built and the Narrative cache is filled with LLM Narratives:
+
+```sh
+sudo pacman -Syu && sudo reboot      # then freeze updates until the demo (see Things to know)
+sudo pacman -S --needed docker docker-compose docker-buildx git jq
+sudo systemctl enable --now docker.service
+sudo usermod -aG docker $USER        # log out and back in
+
+git clone git@github.com:balintpragai/Junction2026.git ~/reach-loop && cd ~/reach-loop   # or use your existing checkout, on an up-to-date main
+cp .env.example .env && chmod 600 .env
+```
+
+In `.env`, set only the three `LLM_*` values. Leave `COMPOSE_PROFILES`, `WEB_DOMAIN`, `API_DOMAIN` and `WEB_ORIGIN` at their defaults: no Caddy, and CORS stays on `http://localhost:3000`. `BIND_ADDRESS=127.0.0.1` keeps both ports off the venue Wi-Fi.
+
+```sh
+docker compose up -d --build
+```
+
+Then open `http://localhost:3000` and `http://localhost:8000/docs`. Run the [walk-through](#show-it-the-endpoint-walk-through) with `API=http://localhost:8000`, and check the cache's sources with the `psql` query in [7. Verify](#7-verify).
+
+`deploy/check.sh` is written for the VM. On the laptop, its **Configuration**, **caddy** and **HTTPS** checks fail by design. Its **Containers** checks (except caddy), its secrets checks and its **LLM** check still apply.
+
+On the day:
+- **Offline works.** With the images built and the cache filled, `docker compose up -d` needs no network. `seed` rescores from the local data and keeps every unchanged Narrative, so nothing calls the LLM. If the LLM can't be reached, the cards fall back to Template sentences.
+- **Don't run `docker compose up --build`, `pacman` or `git pull` on the venue network** unless you have to. A build needs the internet to pull base images and packages.
+- Turn off sleep and the screen lock for the session, and plug in power. Docker keeps running, but a suspended laptop stops the stack.
