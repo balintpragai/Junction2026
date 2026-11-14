@@ -2127,12 +2127,13 @@ Implementation and monitoring
 The achievement of the objectives of the Cancer Strategy requires sufficient 
 resourcing (a preliminary estimate of the costs is presented in the next chapter) 
 and a steering mandate, as well as diverse commitment at the national level, 
-including the Parliament, the Government, the Ministry of Health, the Ministry of 
-Social Affairs, the Ministry of Education, the Ministry of Employment and the 
-Health and Welfare, the Finnish Institute of Health and Welfare, the Finnish 
-Institute of Social Affairs and Employment, the Finnish Institute of Labour and 
-Social Affairs, the Finnish Research Council for Research and Innovation, 
-foundations, patient organizations, and regionally (welfare regions, universities, 
+including Parliament, the Government, the Ministry of Finance (VM), the Ministry of
+Social Affairs and Health (STM), the Ministry of Education and Culture (OKM), the
+Ministry of Economic Affairs and Employment (TEM), THL, Fimea, Palko, the Research
+and Innovation Council, foundations, patient organizations, [corrected: the machine
+translation garbled this list and dropped VM, Fimea and Palko; retranslated from the
+Finnish: "eduskunta, valtioneuvosto, VM, STM, OKM, TEM, THL, Fimea, Palko, Tutkimus-
+ja innovaationeuvosto, säätiöt, potilasjärjestöt"] and regionally (welfare regions, universities, 
 regional associations). This strategy forms a strong foundation for practical 
 implementation and guides the preparation of the implementation roadmap to 
 be completed in 2026. The roadmap describes the responsible party(ies), 
@@ -2298,7 +2299,7 @@ OECI
 Ministry of Education
 OM
 OMOP
-Pod
+Palko [corrected: machine translation said "Pod"; Finnish: "Palko"]
 PROM
 RWD
 Ministry of Education
