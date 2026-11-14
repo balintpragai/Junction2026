@@ -11,15 +11,12 @@ import re
 from collections.abc import Iterable
 from typing import Any
 
+from common.template import format_number  # noqa: F401  (re-exported for callers and tests)
+
 # A number is digits, optionally followed by one decimal separator (. or ,) and
 # more digits. "21, 23" is two numbers; "2024." ends a sentence.
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 
-
-def format_number(x: float, language: str = "en") -> str:
-    """At most two decimals, no trailing zeros; decimal comma in Finnish."""
-    s = f"{abs(x) if x == 0 else x:.2f}".rstrip("0").rstrip(".")
-    return s.replace(".", ",") if language == "fi" else s
 
 
 def extract_numbers(text: str) -> list[str]:

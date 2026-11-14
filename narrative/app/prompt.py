@@ -6,7 +6,8 @@ from typing import Any
 
 from common.models import NarrativeRequest
 
-from . import template
+from common import template
+from common.template import is_percent
 
 MAX_WORDS = 60
 
@@ -39,7 +40,7 @@ def facts(req: NarrativeRequest) -> dict[str, Any]:
         "reference": "national target" if gap.reference_kind == "target" else "median of all Regions",
         "reference_value": gap.reference_value,
         "gap_size": abs(gap.deviation),
-        "gap_unit": "percentage points" if req.unit.strip() == "%" else req.unit,
+        "gap_unit": "percentage points" if is_percent(req.unit) else req.unit,
         "direction": gap.direction,
         "rank": gap.rank,
         "rank_meaning": "1 = best performing",
