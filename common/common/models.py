@@ -90,7 +90,12 @@ class Gap(ContractModel):
     severity: Severity
     rank: int = Field(ge=1, description="Position among n_regions; 1 = best performing.")
     n_regions: int = Field(ge=1)
-    peer_values: list[PeerValue] = Field(description="Every Region's value for the same indicator and year.")
+    peer_values: list[PeerValue] = Field(
+        description=(
+            "Values of the other Regions in the same parent area, for the same indicator and year. "
+            "Regions without a value that year are left out; empty when there are no peers (e.g. Åland)."
+        )
+    )
     trend_5y: float | None = Field(
         description="Change in value over the last five years, in the indicator's unit; null if too little history."
     )
