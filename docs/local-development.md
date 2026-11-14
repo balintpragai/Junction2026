@@ -4,7 +4,7 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` and `web` are stubs that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)); `web` is a stub that later tickets fill in.
 
 | Route | Response type | Fixture coverage |
 |---|---|---|
@@ -114,8 +114,8 @@ docker compose down              # stop; add -v to also delete the database volu
 |---|---|---|
 | `db` | Postgres 16, data in the `db-data` volume | none |
 | `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
-| `engine` | FastAPI stub, `/health` only | none |
-| `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, checks `engine`, exits 0 | none |
+| `engine` | Scoring and the rescore job: `POST /jobs/rescore`, `GET /jobs/{id}` | none |
+| `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, runs a rescore and waits for it, exits 0 | none |
 | `api` | The fixture API | `8000` (`API_PORT`) |
 | `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
@@ -145,6 +145,27 @@ Run the loader's tests without Docker:
 ```sh
 .venv/bin/pip install -r seed/requirements-dev.txt     # from the repo root
 cd seed && ../.venv/bin/python -m pytest
+```
+
+### `engine`: the rescore job
+
+A rescore scores every Region × indicator × year that has a value (covariates are never scored) with `score()` from `engine/app/scoring.py`, then upserts `fact_gap_score` in one transaction. Every row gets the same `scored_at` and the `engine_version`. Rows whose value has gone from the data are deleted. Åland is scored as usual, with empty `peer_values` and a `no_peers` note.
+
+`seed` triggers one after every load, so `docker compose up` ends fully scored and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
+
+```sh
+docker compose exec engine python -m app.rescore_now   # prints the job's final status as JSON
+```
+
+`POST /jobs/rescore` returns `202` with a `RescoreJob` (`common/common/models.py`). Poll `GET /jobs/{id}` until `status` is `succeeded` or `failed`; a finished job reports `gaps_written`, `gaps_removed` and `engine_version`, and a failed one reports `error`. Jobs run one at a time. Job history is in memory and is lost when `engine` restarts.
+
+`engine_version` is `ENGINE_VERSION` from `engine/app/rescore.py` plus a hash of the thresholds, so a threshold change shows up in every row. Bump `ENGINE_VERSION` when scoring logic changes.
+
+Run the engine's tests without Docker:
+
+```sh
+.venv/bin/pip install -r engine/requirements-dev.txt     # from the repo root
+cd engine && ../.venv/bin/python -m pytest
 ```
 
 ### Configuration

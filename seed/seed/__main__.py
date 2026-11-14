@@ -5,16 +5,17 @@
 2. In one transaction: applies pending `db/*.sql` files, then loads the 23
    Regions, the indicator registry, every value, and the curated strategy
    actions when present.
-3. Prints counts only (never data rows), then checks `engine` is up.
-   Triggering the rescore comes in #13.
+3. Prints counts only (never data rows).
+4. Asks `engine` to rescore and waits, so `fact_gap_score` is filled before
+   `api` starts. Exits non-zero if the rescore fails.
 
 Run with `python -m seed`. Paths resolve from the repo root (or /srv in the image).
 """
 
 import sys
-import urllib.request
 from pathlib import Path
 
+from common import engine_client
 from common.db import connect
 from common.settings import Settings
 
@@ -80,8 +81,15 @@ def main() -> int:
     for table, n in counts.items():
         print(f"  {table:<26} {n:>6}")
 
-    with urllib.request.urlopen(f"{settings.engine_url}/health", timeout=5) as r:
-        print(f"seed: engine /health -> {r.status}")
+    # --- Score: a fresh `docker compose up` ends fully scored ---------------
+    print("seed: rescore: started, waiting for engine")
+    try:
+        job = engine_client.rescore_and_wait(settings.engine_url)  # type: ignore[arg-type]
+    except engine_client.RescoreFailed as e:
+        print(f"seed: rescore: FAILED\n{e.job.model_dump_json(indent=2)}", file=sys.stderr)
+        return 1
+    print(f"seed: rescore: {job.status}, {job.gaps_written} Gaps written, {job.gaps_removed} stale removed")
+    print(job.model_dump_json(indent=2))
     return 0
 
 
