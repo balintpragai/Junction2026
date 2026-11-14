@@ -1,0 +1,60 @@
+{
+  "indicators": [
+    {
+      "code": "3621",
+      "name": "Breast cancer screening attendance",
+      "unit": "%",
+      "higher_is_better": true,
+      "target": 80.0,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ]
+    },
+    {
+      "code": "3620",
+      "name": "Cervical cancer screening attendance",
+      "unit": "%",
+      "higher_is_better": true,
+      "target": null,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ]
+    },
+    {
+      "code": "6103",
+      "name": "Colorectal cancer screening attendance",
+      "unit": "%",
+      "higher_is_better": true,
+      "target": null,
+      "years": [
+        2022,
+        2023,
+        2024
+      ]
+    },
+    {
+      "code": "3627",
+      "name": "Bowel cancer 5-year relative survival",
+      "unit": "%",
+      "higher_is_better": true,
+      "target": null,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    }
+  ]
+}
