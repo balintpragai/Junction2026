@@ -1,6 +1,8 @@
 # Reach Loop: the whole stack.  `docker compose up --build`
 # Config comes only from env vars (see .env.example); every value has a default.
-# Only api and web publish ports; the rest stay on the internal network.
+# Only api and web publish ports, and only on 127.0.0.1 by default; the rest
+# stay on the internal network. On the demo host, COMPOSE_PROFILES=demo adds
+# Caddy in front of them with HTTPS (see docs/demo-host.md).
 
 name: reach-loop
 
@@ -11,12 +13,15 @@ x-python-healthcheck: &python-healthcheck
   retries: 10
   start_period: 5s
 
+x-restart: &restart ${RESTART_POLICY:-no}
+
 x-database-url: &database-url ${DATABASE_URL:-postgresql://reachloop:reachloop@db:5432/reachloop}
 
 services:
   db:
     image: postgres:16
     platform: linux/amd64
+    restart: *restart
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-reachloop}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-reachloop}
@@ -32,6 +37,7 @@ services:
   narrative:
     build: { context: ., dockerfile: narrative/Dockerfile }
     platform: linux/amd64
+    restart: *restart
     environment:
       LLM_BASE_URL: ${LLM_BASE_URL:-}
       LLM_MODEL: ${LLM_MODEL:-}
@@ -41,6 +47,7 @@ services:
   engine:
     build: { context: ., dockerfile: engine/Dockerfile }
     platform: linux/amd64
+    restart: *restart
     environment:
       DATABASE_URL: *database-url
       NARRATIVE_URL: ${NARRATIVE_URL:-http://narrative:8000}
@@ -63,11 +70,12 @@ services:
   api:
     build: { context: ., dockerfile: api/Dockerfile }
     platform: linux/amd64
+    restart: *restart
     environment:
       DATABASE_URL: *database-url
       WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:3000}
     ports:
-      - "${API_PORT:-8000}:8000"
+      - "${BIND_ADDRESS:-127.0.0.1}:${API_PORT:-8000}:8000"
     depends_on:
       db: { condition: service_healthy }
       seed: { condition: service_completed_successfully }
@@ -76,10 +84,11 @@ services:
   web:
     build: { context: ., dockerfile: web/Dockerfile }
     platform: linux/amd64
+    restart: *restart
     environment:
       API_URL: http://api:8000
     ports:
-      - "${WEB_PORT:-3000}:3000"
+      - "${BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-3000}:3000"
     depends_on:
       api: { condition: service_healthy }
     healthcheck:
@@ -89,5 +98,29 @@ services:
       retries: 10
       start_period: 5s
 
+  # Demo host only (COMPOSE_PROFILES=demo): HTTPS reverse proxy with automatic
+  # Let's Encrypt certificates for WEB_DOMAIN and API_DOMAIN.
+  caddy:
+    image: caddy:2
+    platform: linux/amd64
+    profiles: [demo]
+    restart: *restart
+    environment:
+      WEB_DOMAIN: ${WEB_DOMAIN:-}
+      API_DOMAIN: ${API_DOMAIN:-}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      api: { condition: service_healthy }
+      web: { condition: service_healthy }
+
 volumes:
   db-data:
+  caddy-data:
+  caddy-config:

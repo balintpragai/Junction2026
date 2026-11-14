@@ -133,6 +133,8 @@ Everything comes from environment variables. `.env.example` lists them all. Each
 | `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` | `narrative` | empty (Template sentences only) |
 | `WEB_ORIGIN` | `api` (CORS) | `http://localhost:3000` |
 | `API_PORT`, `WEB_PORT` | published ports | `8000`, `3000` |
+| `BIND_ADDRESS` | which host address `api` and `web` publish on | `127.0.0.1` (this machine only; `0.0.0.0` exposes them to your network) |
+| `COMPOSE_PROFILES`, `RESTART_POLICY`, `WEB_DOMAIN`, `API_DOMAIN` | demo host only, see [demo-host.md](demo-host.md) | empty / `no` |
 
 Python services read these through `common.settings.Settings`. A service that needs a variable calls `.require(...)` at startup and stops with the names of any missing ones.
 

@@ -23,6 +23,21 @@ An AI-powered gap-finder for equitable cancer care in Finland — built for the 
 
 Both are mockups with real data wired into static JS — `BUILD.md` is the plan for turning Reach Loop into the real, running system.
 
+## Demo host
+
+The running system, served over HTTPS by Caddy on one Linux VM with the same `compose.yaml`:
+
+- **Web:** _not live yet (#12)_
+- **API:** _not live yet (#12)_ (interactive docs at `/docs`)
+
+**Redeploy** (on the VM, from the repo checkout):
+
+```sh
+git pull && docker compose up -d --build
+```
+
+Then run `deploy/check.sh` to confirm everything is healthy. Setup, verification, rollback and troubleshooting: [`docs/demo-host.md`](docs/demo-host.md). Running the stack on your own machine: [`docs/local-development.md`](docs/local-development.md).
+
 ## Tickets
 
 All work, for people and agents alike, is tracked as [GitHub Issues](https://github.com/balintpragai/Junction2026/issues). **The issues are the source of truth.** The graph below is a snapshot from when the backlog was created, so if it disagrees with an issue's "Blocked by" panel, the issue wins.
