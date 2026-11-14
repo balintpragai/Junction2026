@@ -234,17 +234,18 @@ class PostgresRepository:
                 (indicator_code, year, wrong_side),
             ).fetchall()
 
-            # Latest covariate value at or before the year (covariate series end in different years).
+            # Covariates from the list's own year only. No fallback to an earlier (or later)
+            # year: a covariate whose series has no value that year is left out, rather than
+            # shown with another year's figure next to this year's Gaps.
             covariates = conn.execute(
                 """
-                SELECT DISTINCT ON (r.code, i.indicator_id)
-                       r.code AS region_code, i.indicator_id, i.name, i.unit, v.year, v.value
+                SELECT r.code AS region_code, i.indicator_id, i.name, i.unit, v.year, v.value
                 FROM fact_indicator_value v
                 JOIN dim_indicator i USING (indicator_id)
                 JOIN dim_region r USING (region_id)
                 WHERE i.pathway_stage = 'covariate' AND v.value IS NOT NULL
-                  AND v.year <= %s AND r.code = ANY(%s)
-                ORDER BY r.code, i.indicator_id, v.year DESC
+                  AND v.year = %s AND r.code = ANY(%s)
+                ORDER BY r.code, i.indicator_id
                 """,
                 (year, [r["code"] for r in rows]),
             ).fetchall()

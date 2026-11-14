@@ -146,19 +146,20 @@ class CovariateValue(ContractModel):
     name: str
     unit: str
     value: float
-    year: int = Field(description="Year of the value: the latest year at or before the outreach list's year.")
+    year: int = Field(description="Year of the value: always the outreach list's year (no fallback to other years).")
 
 
 class OutreachCovariates(ContractModel):
     immigrant_background_share_pct: float | None = Field(
         description=(
             "Share of the Region's population with a foreign background (Statistics Finland), %. "
-            "The same value as the 'foreign_background_pct' entry in `values`; null if not loaded."
+            "The same value as the 'foreign_background_pct' entry in `values`; null when there is no value in the list's year."
         )
     )
     values: list[CovariateValue] = Field(
         description=(
-            "Every loaded covariate that has a value for this Region at or before the year, sorted by code. "
+            "Every loaded covariate that has a value for this Region in the list's year, sorted by code. "
+            "A covariate with no value that year is left out (no fallback to an earlier or later year). "
             "Region-level only: see the list's ecological_fallacy_note before reading any of them as a cause."
         )
     )
