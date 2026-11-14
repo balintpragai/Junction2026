@@ -3,8 +3,8 @@ FROM python:3.12-slim
 
 WORKDIR /srv
 COPY common/ ./common/
-COPY api/requirements.txt ./api/requirements.txt
-RUN pip install --no-cache-dir ./common -r api/requirements.txt
+COPY api/requirements.txt api/constraints.txt ./api/
+RUN pip install --no-cache-dir -c api/constraints.txt ./common -r api/requirements.txt
 
 COPY api/app/ ./api/app/
 WORKDIR /srv/api
