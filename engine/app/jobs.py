@@ -75,6 +75,15 @@ class JobRegistry:
             job_id, status, result.gaps_written, result.gaps_removed, result.indicators_scored,
             [f.code for f in result.failures] or "none", result.engine_version,
         )
+        narrative_fields = {}
+        if result.narratives is not None:
+            n = result.narratives
+            narrative_fields = dict(
+                narratives_generated=n.generated, narratives_kept=n.kept, narratives_failed=n.failed,
+                narratives_removed=n.removed, narrative_sources=n.sources,
+            )
+        if result.narrative_error:
+            log.warning("rescore job %s: narrative step failed: %s", job_id, result.narrative_error)
         self._update(
             job_id,
             status=status,
@@ -85,4 +94,6 @@ class JobRegistry:
             indicators_scored=result.indicators_scored,
             failed_indicators=result.failures,
             error=error,
+            narrative_error=result.narrative_error,
+            **narrative_fields,
         )

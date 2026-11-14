@@ -103,6 +103,13 @@ def rescore(engine_url: str) -> None:
         _warn(f"rescore did not finish ({type(e).__name__}: {e}); previous Gaps kept")
         return
     print(f"seed: rescore: {job.status}, {job.gaps_written} Gaps written, {job.gaps_removed} stale removed")
+    if job.narrative_error:
+        _warn(f"narrative step failed ({job.narrative_error}); gap-summary shows Template sentences built on request")
+    elif job.narratives_generated is not None:
+        print(
+            f"seed: narratives: {job.narratives_generated} generated, {job.narratives_kept} kept, "
+            f"{job.narratives_failed} failed; cached by source: {job.narrative_sources}"
+        )
     if job.status == "partial":
         _warn(f"rescore partial: {len(job.failed_indicators)} indicator(s) kept their previous Gaps")
     print(job.model_dump_json(indent=2))

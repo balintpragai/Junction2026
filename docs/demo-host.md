@@ -1,6 +1,6 @@
 # Demo host runbook (issue #12)
 
-One Linux VM runs the same `compose.yaml` as everyone's laptop, with Caddy in front for HTTPS. **Target: live by 16:00 Saturday.** This runbook is for the person setting it up (allow about 45 minutes) and for whoever redeploys later.
+One Linux VM runs the same `compose.yaml` as everyone's laptop, with Caddy in front for HTTPS. **Target: live by 16:00 Saturday.** This runbook is for the person setting it up (allow about 45 minutes) and for whoever redeploys later. Every endpoint is described, with examples, in [api.md](api.md).
 
 ```text
                  Internet (80, 443 only)
@@ -145,6 +145,21 @@ Then open both URLs in a browser on your laptop:
 - `https://<WEB_DOMAIN>` should say "API reachable: 23 Regions loaded."
 - `https://<API_DOMAIN>/docs` shows the API docs.
 
+**Check that the Narratives on screen come from the LLM.** `deploy/check.sh` proves the LLM answers. The cards show what `engine` cached at the last rescore, so check the cache too:
+
+```sh
+docker compose exec db psql -U reachloop -d reachloop -c \
+  "SELECT source, model, count(*) FROM narrative_cache GROUP BY 1, 2 ORDER BY 1"
+```
+
+Expected with an LLM: mostly `llm | <your model>`. A few `template` rows are fine: those are replies the number-check rejected. If everything is `template | ''`, the stack first started without the `LLM_*` values. Rescore once to regenerate every row with the LLM. This takes about 256 LLM calls, 8 at a time, about a minute:
+
+```sh
+docker compose exec engine python -m app.rescore_now    # check "narrative_sources" in the output
+```
+
+(Use the user and database from `.env` if you changed `POSTGRES_USER` or `POSTGRES_DB`.)
+
 ## 8. Share and close
 
 1. Post both URLs in the team channel.
@@ -175,13 +190,40 @@ Compose rebuilds only the images whose code changed and restarts only those cont
 
 **Never run `docker compose down -v` on the demo host.** It deletes the database *and* Caddy's certificates. Getting certificates again on every restart can hit Let's Encrypt rate limits right before the demo.
 
+## Show it: the endpoint walk-through
+
+On the day, these calls tell the story end to end. Set the domain once, then run them from any laptop. Every call is public, read-only and cached for 5 minutes; none of them calls the LLM. Full field-by-field descriptions are in [api.md](api.md).
+
+```sh
+API=https://<API_DOMAIN>
+```
+
+The filters need `jq` (`brew install jq`, `sudo apt install jq`, or `winget install jqlang.jq`). Without it, pipe to `python3 -m json.tool` to read the whole response.
+
+| Step | Call | What it shows |
+|---|---|---|
+| 1. Coverage | `curl -s $API/regions \| jq '.regions \| length'` → `23` | Every Region THL reports on, including Helsinki and Åland |
+| 2. What we measure | `curl -s $API/indicators \| jq -r '.indicators[] \| "\(.code)  \(.target // "-")  \(.name)"'` | 12 indicators; only the 3 screening ones have a National Cancer Strategy Target (80%) |
+| 3. One Gap | `curl -s "$API/regions/90/gap-summary?indicator=3621&year=2024" \| jq '{gap: .gap \| {value, reference_value, deviation, severity, rank, n_regions}, narrative}'` | City of Helsinki, breast screening 2024: 74.3 against 80, −5.7, `act`, last of 22, with its Narrative |
+| 4. Why, and what to do | `... \| jq '{action, data_quality_notes, trend: [.trend[] \| .value]}'` (same URL) | The matched strategy action (with page), the data-quality notes and the 2016–2024 series behind the sparkline |
+| 5. Where to reach out | `curl -s "$API/outreach-list?indicator=3621&year=2024" \| jq '.rows[] \| {rank, region: .region.name, deviation, foreign_background: .covariates.immigrant_background_share_pct}'` | The 4 Regions below 80%, largest Gap first, with their foreign-background share |
+| 6. The caveat | `... \| jq -r .ecological_fallacy_note` (same URL) | Region-level figures don't describe individuals. This must be on screen with step 5 |
+| 7. Honest errors | `curl -s "$API/outreach-list?indicator=13&year=2024"` | `404`: indicators without a Target have no outreach list, and the API says why |
+
+Good things to point out while showing it:
+
+- **Every number in a Narrative is checked.** An LLM reply with a number that isn't in the Gap is thrown away and replaced by a Template sentence (`source: "template"`). The `source` field says which one you're looking at.
+- **Nothing on screen waits for the LLM.** Narratives are generated after each rescore and cached. If the LLM or the network fails during judging, the cards still show the last good Narratives, or Template sentences.
+- **Gaps, not bottlenecks** ([ADR 0001](adr/0001-gaps-not-bottlenecks.md)): every figure is a published indicator compared with a Target or with peer Regions.
+- **Don't** present income or poverty covariates as targeting variables. The foreign-background share is the one that holds at both Region and individual level (`research/covariate_correlation_analysis.md`).
+
 ## Things to know for the demo
 
-- **What the demo shows today:** `web` is still the placeholder page. It loads the 23 Regions from `api`, which serves **fixtures** (only Helsinki's 74.3% is a real figure). The real tabs arrive with #10, #11 and #18, and real data with #7, #13 and #14. Each one lands with the redeploy command, with no host changes.
-- **The LLM isn't in the UI yet.** `narrative` works and `deploy/check.sh` proves the key, model and number-check work from the VM. But nothing calls `narrative` until `engine` fills the Narrative cache (#17). Until then, "LLM configured" means "verified by the check", not "visible on screen".
-- **If the LLM or the network fails during judging, the demo still works.** `narrative` falls back to Template sentences. Once #17 lands, the cache is filled ahead of time, so judging never waits on an LLM call.
-- **LLM credits:** each rescore will ask for about 275 Narratives (#17), which is roughly 275 LLM calls. Budget for a few rescores, not hundreds.
-- **`seed` runs again on every `up`.** It's a stub now. #7 must keep it safe to run twice (idempotent), or redeploys will duplicate data.
+- **What the demo shows today:** `api` serves real data from `data/processed/` (#7, #13, #14, #16) with Narratives from the cache (#17). `web` is still the placeholder page until #10, #11 and #18 land. Each one arrives with the redeploy command, with no host changes. Until then, show the API itself: the [walk-through](#show-it-the-endpoint-walk-through) above, or `https://<API_DOMAIN>/docs`.
+- **The LLM is used at rescore time, not on screen.** `engine` asks `narrative` for one Narrative per latest-year Gap (256 today) after each rescore and caches them. The first start on the VM already runs a rescore, so with the `LLM_*` values set in step 5 the cache fills with LLM Narratives straight away. If the key is added or changed later, run `rescore_now` (see [7. Verify](#7-verify)).
+- **If the LLM or the network fails during judging, the demo still works.** gap-summary reads the cache, and a Narrative that can't be generated falls back to the Template sentence. Nothing on a request path calls the LLM.
+- **LLM credits:** a rescore only calls the LLM for Gaps whose inputs changed. A redeploy with unchanged data makes 0 calls; a full regeneration (new key, model or prompt) makes about 256. Budget for a few full regenerations, not hundreds.
+- **`seed` runs again on every `up`.** It's safe to run twice: it reloads the data, rescores, and keeps every unchanged Narrative.
 - **After a VM reboot** everything comes back by itself (`RESTART_POLICY=unless-stopped` plus the Docker service being enabled). `seed` doesn't need to run again.
 - **Browser-side API calls:** today `web` reaches `api` server-side over the internal network (`API_URL=http://api:8000`). If #10 or #18 adds calls from the browser, they must use `https://<API_DOMAIN>`, and CORS already allows `WEB_ORIGIN`. Next.js bakes `NEXT_PUBLIC_*` variables in at build time, so such a URL must be set before `--build`.
 - **Cold start before judging:** after the last redeploy, open both URLs once so the first real visitor doesn't wait on a cold start. Rehearsal is #22.

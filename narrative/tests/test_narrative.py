@@ -151,3 +151,17 @@ def test_peer_median_and_at_reference_wording(helsinki_request):
     )
     at = helsinki_request.gap.model_copy(update={"value": 80.0, "deviation": 0.0, "direction": "at"})
     assert template_sentence(helsinki_request.model_copy(update={"gap": at})).startswith("Helsinki is at the 80% target")
+
+
+# --- /config (engine keys its Narrative cache on it) -----------------------------
+
+
+def test_config_without_llm_has_empty_model(client, no_llm_env):
+    body = client.get("/config").json()
+    assert body == {"prompt_version": prompt.PROMPT_VERSION, "model": ""}
+
+
+def test_config_with_llm_reports_the_model(client, monkeypatch):
+    monkeypatch.setenv("LLM_BASE_URL", "http://llm.local/v1")
+    monkeypatch.setenv("LLM_MODEL", "some-model")
+    assert client.get("/config").json() == {"prompt_version": prompt.PROMPT_VERSION, "model": "some-model"}

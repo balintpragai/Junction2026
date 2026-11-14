@@ -8,7 +8,7 @@ import pytest
 
 from app.main import app, get_repository
 from app.repository import NotFound
-from common.models import GapSummary, IndicatorList, RegionList
+from common.models import GapSummary, IndicatorList, OutreachList, RegionList
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -23,6 +23,8 @@ class FakeRepository:
         self.indicators = _load(IndicatorList, "indicators.json")
         s = _load(GapSummary, "gap_summary_helsinki_3621_2024.json")
         self.summaries = {(s.region.code, s.indicator.code, s.gap.year): s}
+        o = _load(OutreachList, "outreach_list_3621_2024.json")
+        self.outreach = {(o.indicator.code, o.year): o}
 
     def list_regions(self) -> RegionList:
         return self.regions
@@ -39,6 +41,12 @@ class FakeRepository:
             return self.summaries[(region_code, indicator_code, year)]
         except KeyError:
             raise NotFound(f"No Gap for region {region_code!r}, indicator {indicator_code!r} in {year}") from None
+
+    def outreach_list(self, indicator_code: str, year: int) -> OutreachList:
+        try:
+            return self.outreach[(indicator_code, year)]
+        except KeyError:
+            raise NotFound(f"No outreach list for indicator {indicator_code!r} in {year}") from None
 
 
 @pytest.fixture(autouse=True)

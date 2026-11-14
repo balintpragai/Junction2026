@@ -197,6 +197,43 @@
   },
   "components": {
     "schemas": {
+      "CovariateValue": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Indicator id of the covariate, e.g. 'foreign_background_pct'."
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "year": {
+            "type": "integer",
+            "title": "Year",
+            "description": "Year of the value: always the outreach list's year (no fallback to other years)."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "unit",
+          "value",
+          "year"
+        ],
+        "title": "CovariateValue",
+        "description": "One structural covariate for one Region. Describes the Region, not individuals."
+      },
       "DataQualityNote": {
         "properties": {
           "code": {
@@ -520,13 +557,22 @@
               }
             ],
             "title": "Immigrant Background Share Pct",
-            "description": "Share of the Region's population with an immigrant background, %."
+            "description": "Share of the Region's population with a foreign background (Statistics Finland), %. The same value as the 'foreign_background_pct' entry in `values`; null when there is no value in the list's year."
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/CovariateValue"
+            },
+            "type": "array",
+            "title": "Values",
+            "description": "Every loaded covariate that has a value for this Region in the list's year, sorted by code. A covariate with no value that year is left out (no fallback to an earlier or later year). Region-level only: see the list's ecological_fallacy_note before reading any of them as a cause."
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "immigrant_background_share_pct"
+          "immigrant_background_share_pct",
+          "values"
         ],
         "title": "OutreachCovariates"
       },
@@ -576,7 +622,7 @@
           "rows"
         ],
         "title": "OutreachList",
-        "description": "Regions below the reference, ranked by Gap, joined with covariates."
+        "description": "Regions on the wrong side of the indicator's Target (below it, or above it when lower is\nbetter), ranked by Gap, joined with covariates. Only indicators with a Target have one."
       },
       "OutreachRow": {
         "properties": {
@@ -604,7 +650,7 @@
             "type": "integer",
             "minimum": 1.0,
             "title": "Rank",
-            "description": "1 = largest Gap below the reference."
+            "description": "1 = largest Gap on the wrong side of the Target."
           },
           "covariates": {
             "$ref": "#/components/schemas/OutreachCovariates"

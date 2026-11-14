@@ -1,4 +1,188 @@
 region_code,region_name_en,year,population,pct_foreign_language_speakers,pct_foreign_background
+01,East Uusimaa wellbeing services county,2016,97033,5.11,5.34
+02,Central Uusimaa wellbeing services county,2016,194684,4.31,4.34
+03,West Uusimaa wellbeing services county,2016,456543,11.15,11.3
+04,Vantaa and Kerava wellbeing services county,2016,254852,15.59,15.92
+05,Southwest Finland wellbeing services county,2016,475543,6.44,6.66
+06,Satakunta wellbeing services county,2016,221740,3.02,3.11
+07,Kanta-Häme wellbeing services county,2016,173781,3.82,3.89
+08,Pirkanmaa wellbeing services county,2016,511642,4.49,4.55
+09,Päijät-Häme wellbeing services county,2016,208574,4.64,4.79
+10,Kymenlaakso wellbeing services county,2016,170770,6.07,6.23
+11,South Karelia wellbeing services county,2016,130506,5.73,5.93
+12,South Savo wellbeing services county,2016,140422,3.17,3.23
+13,North Savo wellbeing services county,2016,252815,2.75,2.8
+14,North Karelia wellbeing services county,2016,167599,3.55,3.64
+15,Central Finland wellbeing services county,2016,273910,3.12,3.22
+16,South Ostrobothnia wellbeing services county,2016,196572,1.99,2.12
+17,Ostrobothnia wellbeing services county,2016,176729,6.28,6.8
+18,Central Ostrobothnia wellbeing services county,2016,69027,2.86,2.97
+19,North Ostrobothnia wellbeing services county,2016,411150,2.57,2.66
+20,Kainuu wellbeing services county,2016,74803,2.69,2.76
+21,Lapland wellbeing services county,2016,180207,2.59,2.87
+90,City of Helsinki,2016,635181,14.68,14.95
+91,Åland,2016,29214,7.72,14.12
+01,East Uusimaa wellbeing services county,2017,97159,5.38,5.62
+02,Central Uusimaa wellbeing services county,2017,196040,4.62,4.64
+03,West Uusimaa wellbeing services county,2017,460572,11.79,11.93
+04,Vantaa and Kerava wellbeing services county,2017,258581,16.6,16.93
+05,Southwest Finland wellbeing services county,2017,477677,6.79,7.01
+06,Satakunta wellbeing services county,2017,220398,3.3,3.38
+07,Kanta-Häme wellbeing services county,2017,172720,4.02,4.09
+08,Pirkanmaa wellbeing services county,2017,514333,4.67,4.72
+09,Päijät-Häme wellbeing services county,2017,208048,4.91,5.08
+10,Kymenlaakso wellbeing services county,2017,168691,6.03,6.2
+11,South Karelia wellbeing services county,2017,129865,5.94,6.14
+12,South Savo wellbeing services county,2017,138822,3.21,3.26
+13,North Savo wellbeing services county,2017,251570,2.88,2.93
+14,North Karelia wellbeing services county,2017,166441,3.65,3.74
+15,Central Finland wellbeing services county,2017,273779,3.26,3.36
+16,South Ostrobothnia wellbeing services county,2017,195583,2.04,2.17
+17,Ostrobothnia wellbeing services county,2017,176272,6.64,7.17
+18,Central Ostrobothnia wellbeing services county,2017,68780,2.89,2.99
+19,North Ostrobothnia wellbeing services county,2017,411856,2.7,2.8
+20,Kainuu wellbeing services county,2017,73959,2.77,2.85
+21,Lapland wellbeing services county,2017,179223,2.7,2.97
+90,City of Helsinki,2017,643272,15.28,15.54
+91,Åland,2017,29489,8.1,14.64
+01,East Uusimaa wellbeing services county,2018,97263,5.59,5.83
+02,Central Uusimaa wellbeing services county,2018,196997,5.05,5.07
+03,West Uusimaa wellbeing services county,2018,464302,12.53,12.66
+04,Vantaa and Kerava wellbeing services county,2018,264420,17.78,18.13
+05,Southwest Finland wellbeing services county,2018,478582,7.14,7.37
+06,Satakunta wellbeing services county,2018,218624,3.49,3.57
+07,Kanta-Häme wellbeing services county,2018,171364,4.09,4.15
+08,Pirkanmaa wellbeing services county,2018,517333,4.83,4.88
+09,Päijät-Häme wellbeing services county,2018,207394,5.16,5.33
+10,Kymenlaakso wellbeing services county,2018,166623,6.07,6.24
+11,South Karelia wellbeing services county,2018,128756,6.12,6.33
+12,South Savo wellbeing services county,2018,136474,3.31,3.37
+13,North Savo wellbeing services county,2018,250414,3.0,3.06
+14,North Karelia wellbeing services county,2018,165569,3.69,3.78
+15,Central Finland wellbeing services county,2018,273283,3.33,3.44
+16,South Ostrobothnia wellbeing services county,2018,194316,2.13,2.26
+17,Ostrobothnia wellbeing services county,2018,176193,6.93,7.45
+18,Central Ostrobothnia wellbeing services county,2018,68437,2.9,3.01
+19,North Ostrobothnia wellbeing services county,2018,412161,2.83,2.92
+20,Kainuu wellbeing services county,2018,73061,2.74,2.82
+21,Lapland wellbeing services county,2018,178522,2.82,3.09
+90,City of Helsinki,2018,648042,15.71,15.97
+91,Åland,2018,29789,8.52,15.48
+01,East Uusimaa wellbeing services county,2019,97613,5.8,6.05
+02,Central Uusimaa wellbeing services county,2019,197529,5.48,5.51
+03,West Uusimaa wellbeing services county,2019,470217,13.37,13.48
+04,Vantaa and Kerava wellbeing services county,2019,270531,19.05,19.4
+05,Southwest Finland wellbeing services county,2019,479341,7.47,7.68
+06,Satakunta wellbeing services county,2019,216752,3.66,3.74
+07,Kanta-Häme wellbeing services county,2019,170925,4.22,4.29
+08,Pirkanmaa wellbeing services county,2019,519872,5.04,5.08
+09,Päijät-Häme wellbeing services county,2019,206315,5.39,5.53
+10,Kymenlaakso wellbeing services county,2019,164456,6.11,6.28
+11,South Karelia wellbeing services county,2019,127757,6.33,6.54
+12,South Savo wellbeing services county,2019,134314,3.44,3.5
+13,North Savo wellbeing services county,2019,249003,3.08,3.14
+14,North Karelia wellbeing services county,2019,164465,3.85,3.94
+15,Central Finland wellbeing services county,2019,272898,3.48,3.58
+16,South Ostrobothnia wellbeing services county,2019,193207,2.27,2.4
+17,Ostrobothnia wellbeing services county,2019,175923,7.17,7.71
+18,Central Ostrobothnia wellbeing services county,2019,68158,2.99,3.11
+19,North Ostrobothnia wellbeing services county,2019,412830,2.99,3.09
+20,Kainuu wellbeing services county,2019,72306,2.89,2.98
+21,Lapland wellbeing services county,2019,177161,2.84,3.11
+90,City of Helsinki,2019,653835,16.22,16.48
+91,Åland,2019,29884,8.77,15.92
+01,East Uusimaa wellbeing services county,2020,98254,6.13,6.39
+02,Central Uusimaa wellbeing services county,2020,199330,5.97,6.0
+03,West Uusimaa wellbeing services county,2020,473838,14.18,14.29
+04,Vantaa and Kerava wellbeing services county,2020,274336,20.34,20.71
+05,Southwest Finland wellbeing services county,2020,481403,7.86,8.09
+06,Satakunta wellbeing services county,2020,215416,3.97,4.04
+07,Kanta-Häme wellbeing services county,2020,170577,4.43,4.5
+08,Pirkanmaa wellbeing services county,2020,522852,5.15,5.19
+09,Päijät-Häme wellbeing services county,2020,205771,5.59,5.74
+10,Kymenlaakso wellbeing services county,2020,162812,6.24,6.42
+11,South Karelia wellbeing services county,2020,126921,6.52,6.7
+12,South Savo wellbeing services county,2020,132702,3.51,3.58
+13,North Savo wellbeing services county,2020,248265,3.22,3.28
+14,North Karelia wellbeing services county,2020,163537,4.01,4.09
+15,Central Finland wellbeing services county,2020,272617,3.61,3.71
+16,South Ostrobothnia wellbeing services county,2020,192150,2.4,2.53
+17,Ostrobothnia wellbeing services county,2020,175816,7.46,7.99
+18,Central Ostrobothnia wellbeing services county,2020,67988,3.15,3.26
+19,North Ostrobothnia wellbeing services county,2020,413830,3.11,3.2
+20,Kainuu wellbeing services county,2020,71664,3.12,3.21
+21,Lapland wellbeing services county,2020,176665,2.92,3.19
+90,City of Helsinki,2020,656920,16.63,16.9
+91,Åland,2020,30129,9.09,16.69
+01,East Uusimaa wellbeing services county,2021,99073,6.41,6.68
+02,Central Uusimaa wellbeing services county,2021,201854,6.41,6.45
+03,West Uusimaa wellbeing services county,2021,478919,15.02,15.14
+04,Vantaa and Kerava wellbeing services county,2021,276438,21.7,22.12
+05,Southwest Finland wellbeing services county,2021,483477,8.29,8.5
+06,Satakunta wellbeing services county,2021,214281,4.27,4.36
+07,Kanta-Häme wellbeing services county,2021,170213,4.58,4.63
+08,Pirkanmaa wellbeing services county,2021,527478,5.43,5.46
+09,Päijät-Häme wellbeing services county,2021,205124,5.86,6.0
+10,Kymenlaakso wellbeing services county,2021,161391,6.32,6.52
+11,South Karelia wellbeing services county,2021,126107,6.79,6.97
+12,South Savo wellbeing services county,2021,131688,3.59,3.64
+13,North Savo wellbeing services county,2021,248363,3.43,3.5
+14,North Karelia wellbeing services county,2021,163281,4.36,4.44
+15,Central Finland wellbeing services county,2021,272683,3.77,3.87
+16,South Ostrobothnia wellbeing services county,2021,191762,2.56,2.69
+17,Ostrobothnia wellbeing services county,2021,176041,7.81,8.36
+18,Central Ostrobothnia wellbeing services county,2021,67915,3.33,3.47
+19,North Ostrobothnia wellbeing services county,2021,415603,3.35,3.44
+20,Kainuu wellbeing services county,2021,71255,3.6,3.68
+21,Lapland wellbeing services county,2021,176494,3.04,3.32
+90,City of Helsinki,2021,658457,17.33,17.62
+91,Åland,2021,30344,9.37,17.29
+01,East Uusimaa wellbeing services county,2022,98972,6.72,6.99
+02,Central Uusimaa wellbeing services county,2022,203192,6.85,6.89
+03,West Uusimaa wellbeing services county,2022,486346,16.4,16.55
+04,Vantaa and Kerava wellbeing services county,2022,280495,23.45,23.9
+05,Southwest Finland wellbeing services county,2022,485567,8.9,9.14
+06,Satakunta wellbeing services county,2022,212556,4.55,4.64
+07,Kanta-Häme wellbeing services county,2022,169537,4.89,4.95
+08,Pirkanmaa wellbeing services county,2022,532671,5.97,6.02
+09,Päijät-Häme wellbeing services county,2022,204528,6.25,6.41
+10,Kymenlaakso wellbeing services county,2022,159488,6.52,6.72
+11,South Karelia wellbeing services county,2022,125353,7.38,7.56
+12,South Savo wellbeing services county,2022,130451,3.93,3.98
+13,North Savo wellbeing services county,2022,247689,3.71,3.79
+14,North Karelia wellbeing services county,2022,162540,4.85,4.95
+15,Central Finland wellbeing services county,2022,272437,4.04,4.13
+16,South Ostrobothnia wellbeing services county,2022,190774,2.84,2.97
+17,Ostrobothnia wellbeing services county,2022,176323,8.41,8.96
+18,Central Ostrobothnia wellbeing services county,2022,67805,3.61,3.74
+19,North Ostrobothnia wellbeing services county,2022,416543,3.66,3.74
+20,Kainuu wellbeing services county,2022,70521,4.08,4.15
+21,Lapland wellbeing services county,2022,175795,3.33,3.6
+90,City of Helsinki,2022,664028,18.33,18.63
+91,Åland,2022,30359,9.57,17.58
+01,East Uusimaa wellbeing services county,2023,98987,7.34,7.59
+02,Central Uusimaa wellbeing services county,2023,205444,7.66,7.73
+03,West Uusimaa wellbeing services county,2023,494952,17.92,18.08
+04,Vantaa and Kerava wellbeing services county,2023,285654,25.48,25.95
+05,Southwest Finland wellbeing services county,2023,490786,10.08,10.33
+06,Satakunta wellbeing services county,2023,211740,5.28,5.38
+07,Kanta-Häme wellbeing services county,2023,169547,5.74,5.79
+08,Pirkanmaa wellbeing services county,2023,539309,6.75,6.81
+09,Päijät-Häme wellbeing services county,2023,204479,7.03,7.2
+10,Kymenlaakso wellbeing services county,2023,158658,7.3,7.51
+11,South Karelia wellbeing services county,2023,125162,8.38,8.57
+12,South Savo wellbeing services county,2023,129914,4.85,4.9
+13,North Savo wellbeing services county,2023,248190,4.48,4.57
+14,North Karelia wellbeing services county,2023,162321,5.73,5.84
+15,Central Finland wellbeing services county,2023,273271,4.78,4.87
+16,South Ostrobothnia wellbeing services county,2023,190539,3.74,3.88
+17,Ostrobothnia wellbeing services county,2023,177602,9.69,10.25
+18,Central Ostrobothnia wellbeing services county,2023,67736,4.29,4.43
+19,North Ostrobothnia wellbeing services county,2023,418205,4.27,4.36
+20,Kainuu wellbeing services county,2023,70164,5.16,5.25
+21,Lapland wellbeing services county,2023,176150,4.03,4.31
+90,City of Helsinki,2023,674500,19.55,19.88
+91,Åland,2023,30541,9.97,18.19
 01,East Uusimaa wellbeing services county,2024,99415,7.97,8.23
 02,Central Uusimaa wellbeing services county,2024,207070,8.34,8.42
 03,West Uusimaa wellbeing services county,2024,502067,19.05,19.23
@@ -22,3 +206,26 @@ region_code,region_name_en,year,population,pct_foreign_language_speakers,pct_for
 21,Lapland wellbeing services county,2024,176151,4.74,5.02
 90,City of Helsinki,2024,684018,20.44,20.8
 91,Åland,2024,30654,10.26,18.74
+01,East Uusimaa wellbeing services county,2025,99584,8.27,8.54
+02,Central Uusimaa wellbeing services county,2025,207551,8.63,8.72
+03,West Uusimaa wellbeing services county,2025,506379,19.79,19.98
+04,Vantaa and Kerava wellbeing services county,2025,291723,28.35,28.89
+05,Southwest Finland wellbeing services county,2025,497800,11.81,12.08
+06,Satakunta wellbeing services county,2025,210112,6.32,6.43
+07,Kanta-Häme wellbeing services county,2025,168957,6.92,7.01
+08,Pirkanmaa wellbeing services county,2025,548910,7.8,7.87
+09,Päijät-Häme wellbeing services county,2025,204522,8.38,8.57
+10,Kymenlaakso wellbeing services county,2025,156198,8.32,8.54
+11,South Karelia wellbeing services county,2025,124238,9.96,10.16
+12,South Savo wellbeing services county,2025,128144,6.41,6.45
+13,North Savo wellbeing services county,2025,248512,5.71,5.81
+14,North Karelia wellbeing services county,2025,161418,7.11,7.24
+15,Central Finland wellbeing services county,2025,273731,5.83,5.91
+16,South Ostrobothnia wellbeing services county,2025,189474,4.79,4.93
+17,Ostrobothnia wellbeing services county,2025,179555,11.45,12.05
+18,Central Ostrobothnia wellbeing services county,2025,67498,5.32,5.46
+19,North Ostrobothnia wellbeing services county,2025,417939,4.91,5.0
+20,Kainuu wellbeing services county,2025,69193,6.53,6.64
+21,Lapland wellbeing services county,2025,176215,5.2,5.48
+90,City of Helsinki,2025,694392,21.24,21.61
+91,Åland,2025,30836,11.15,19.69

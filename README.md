@@ -4,6 +4,8 @@ An AI-powered gap-finder for equitable cancer care in Finland — built for the 
 
 **Start here → [`BUILD.md`](BUILD.md)** — the full build plan: architecture, schema, API contracts, the four workstreams, schedule, and what to do when time runs short.
 
+**Run it locally →** with Docker installed, `docker compose up --build` from the repo root, then open http://localhost:3000. Details, tests and troubleshooting: [`docs/local-development.md`](docs/local-development.md).
+
 ## Map of this repo
 
 | Directory | What's in it |
@@ -36,7 +38,7 @@ The running system, served over HTTPS by Caddy on one Linux VM with the same `co
 git pull && docker compose up -d --build
 ```
 
-Then run `deploy/check.sh` to confirm everything is healthy. Setup, verification, rollback and troubleshooting: [`docs/demo-host.md`](docs/demo-host.md). Running the stack on your own machine: [`docs/local-development.md`](docs/local-development.md).
+Then run `deploy/check.sh` to confirm everything is healthy. Setup, verification, rollback, troubleshooting and what to show on the day: [`docs/demo-host.md`](docs/demo-host.md). Every endpoint, with examples: [`docs/api.md`](docs/api.md). Running the stack on your own machine: [`docs/local-development.md`](docs/local-development.md).
 
 ## Tickets
 

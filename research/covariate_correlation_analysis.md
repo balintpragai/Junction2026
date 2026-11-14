@@ -2,8 +2,10 @@
 
 **Method:** pulled real covariate data from Statistics Finland (StatFin PxWeb API), aggregated from municipality level (308 municipalities) up to the 23 wellbeing services counties using the municipality→county `memberOf` mapping in `data/raw/sotkanet_regions.json` (population-weighted averages for rates; sums for counts). Joined against our existing 2024 outcome data and computed Pearson correlation coefficients. New files:
 
-- `data/processed/covariates_immigrant_background_by_wellbeing_county.csv` — % foreign-language speakers, % foreign background, by county, 2024. Source: StatFin `vaerak/159t.px`.
-- `data/processed/covariates_income_poverty_by_wellbeing_county.csv` — median disposable income per consumption unit, at-risk-of-poverty rate, by county, 2023 (latest available). Source: StatFin `tjt/14ww.px`.
+- `data/processed/covariates_immigrant_background_by_wellbeing_county.csv` — % foreign-language speakers, % foreign background, by county. Source: StatFin `vaerak/159t.px`.
+- `data/processed/covariates_income_poverty_by_wellbeing_county.csv` — median disposable income per consumption unit, at-risk-of-poverty rate, by county. Source: StatFin `tjt/14ww.px`.
+
+**Years:** the correlations below were computed with the 2024 immigrant-background values and the 2023 income values (then the latest published). Since #50 both files hold every year from 2016 (immigrant background to 2025, income to 2024), rebuilt by `scripts/build_statfin_covariates.py` with the same method; the 2024 and 2023 values used here are unchanged. The results have not been recomputed with 2024 income.
 
 **Caveat up front, in line with how we've treated every other number this session:** n=22–23 counties. This is directional and illustrative, not statistically powered — treat it as "worth investigating further," not proof. It's one step more rigorous than asserting a relationship without checking it, which is the actual bar this analysis needs to clear.
 

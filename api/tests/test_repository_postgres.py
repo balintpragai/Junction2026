@@ -20,8 +20,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app, get_repository
-from app.repository import NotFound, PostgresRepository
-from common.models import GapSummary
+from app.repository import ECOLOGICAL_FALLACY_NOTE, NotFound, PostgresRepository
+from common.models import GapSummary, OutreachList
 
 psycopg = pytest.importorskip("psycopg")
 from psycopg.conninfo import make_conninfo  # noqa: E402
@@ -36,12 +36,31 @@ REGIONS = [
     (1, "t-hki", "Helsinki", "city_of_helsinki", "uusimaa"),
     (2, "t-vk", "Vantaa-Kerava", "wellbeing_services_county", "uusimaa"),
     (3, "t-ala", "Åland", "aland", None),
+    (4, "t-up", "Upland", "wellbeing_services_county", "uusimaa"),
 ]
 INDICATORS = [
     # indicator_id, name, name_fi, unit, stage, has_target, target, higher_is_better
     ("3621", "Breast cancer screening attendance", "Rintasyöpäseulontaan osallistuminen", "%", "detection", True, 80.0, True),
     ("3620", "Cervical cancer screening attendance", None, "%", "detection", False, None, True),
     ("cov_test", "A covariate", None, "%", "covariate", False, None, None),
+    ("foreign_background_pct", "People with a foreign background", None, "% of population", "covariate", False, None, None),
+    ("lib_test", "Lower is better, with a Target", None, "%", "referral", True, 10.0, False),
+]
+# Outreach: extra 2024 Gaps (region_id, indicator, value, deviation, direction, severity)
+OUTREACH_GAPS = [
+    (2, "3621", 73.2, -6.8, "below", "act"),   # furthest below: rank 1
+    (4, "3621", 83.0, 3.0, "above", "ok"),     # above the Target: not listed
+    (1, "lib_test", 12.0, 2.0, "above", "watch"),  # lower is better: above = wrong side, listed
+    (2, "lib_test", 8.0, -2.0, "below", "ok"),     # lower is better: below = fine, not listed
+]
+# Covariate values (region_id, indicator, year, value); NULL rows carry a note.
+COVARIATES = [
+    (1, "foreign_background_pct", 2023, 18.0),
+    (1, "foreign_background_pct", 2024, 19.0),
+    (1, "foreign_background_pct", 2025, 20.0),  # another year: never on a 2023 or 2024 list
+    (1, "cov_test", 2022, 5.0),                 # only 2022: no fallback, so never on a 2023 or 2024 list
+    (2, "foreign_background_pct", 2024, 24.0),
+    (2, "cov_test", 2023, None),                # no value: ignored
 ]
 HKI_VALUES = {2019: 80.6, 2020: None, 2021: 77.4, 2022: 76.2, 2023: 75.0, 2024: 74.3, 2025: 73.0}
 HKI_2024_GAP = dict(
@@ -101,6 +120,14 @@ def _insert_rows(conn):
              gap["severity"], gap["rank"], gap["n_regions"], json.dumps(gap["peer_values"]), gap["trend_5y"],
              json.dumps(gap["data_quality_notes"])),
         )
+    for rid, iid, value, dev, direction, severity in OUTREACH_GAPS:
+        conn.execute(
+            f"INSERT INTO fact_gap_score ({gap_cols}) VALUES (%s, %s, 2024, %s, 'target', %s, %s, %s, %s, 1, 4, '[]', NULL, '[]', 'test')",
+            (rid, iid, value, 80.0 if iid == "3621" else 10.0, dev, direction, severity),
+        )
+    for rid, iid, year, value in COVARIATES:
+        notes = [] if value is not None else [{"code": "missing_value", "message": "No value published."}]
+        conn.execute("INSERT INTO fact_indicator_value VALUES (%s, %s, %s, %s, %s)", (rid, iid, year, value, json.dumps(notes)))
     for aid, title, goal, text, page, rank in ACTIONS:
         conn.execute(
             "INSERT INTO dim_strategy_action (action_id, sub_objective_title, goal, action_text, strategy_page)"
@@ -116,12 +143,12 @@ def repo(db_url):
 
 
 def test_regions_sorted_by_name(repo):
-    assert [r.name for r in repo.list_regions().regions] == ["Helsinki", "Vantaa-Kerava", "Åland"]
+    assert [r.name for r in repo.list_regions().regions] == ["Helsinki", "Upland", "Vantaa-Kerava", "Åland"]
 
 
 def test_indicators_exclude_covariates_and_list_scored_years(repo):
     indicators = {i.code: i for i in repo.list_indicators().indicators}
-    assert set(indicators) == {"3620", "3621"}
+    assert set(indicators) == {"3620", "3621", "lib_test"}
     assert indicators["3621"].years == [2023, 2024]
     assert indicators["3621"].target == 80.0
     assert indicators["3620"].years == [] and indicators["3620"].target is None
@@ -169,3 +196,81 @@ def test_routes_over_real_postgres(db_url):
         assert client.get(path).status_code == 404
     assert client.get("/regions").status_code == 200
     assert client.get("/indicators").status_code == 200
+
+
+# --- outreach list (#16) ---------------------------------------------------------
+
+
+def test_outreach_breast_screening(repo):
+    o = repo.outreach_list("3621", 2024)
+    OutreachList.model_validate(o.model_dump())
+    assert (o.reference_kind, o.reference_value, o.year) == ("target", 80.0, 2024)
+    assert o.ecological_fallacy_note == ECOLOGICAL_FALLACY_NOTE and o.ecological_fallacy_note.strip()
+    # Below the Target only, largest Gap first; Upland (above) is left out.
+    assert [(r.rank, r.region.code, r.deviation, r.severity) for r in o.rows] == [
+        (1, "t-vk", -6.8, "act"),
+        (2, "t-hki", -5.7, "act"),
+    ]
+    hki = o.rows[1].covariates
+    assert hki.immigrant_background_share_pct == 19.0
+    # Same-year covariates only: cov_test (2022) and foreign_background_pct 2023/2025 are left out.
+    assert [(v.code, v.year, v.value) for v in hki.values] == [("foreign_background_pct", 2024, 19.0)]
+    vk = o.rows[0].covariates
+    assert vk.immigrant_background_share_pct == 24.0
+    assert [v.code for v in vk.values] == ["foreign_background_pct"]  # NULL cov_test left out
+
+
+def test_outreach_lower_is_better_lists_regions_above_the_target(repo):
+    o = repo.outreach_list("lib_test", 2024)
+    assert [(r.region.code, r.deviation) for r in o.rows] == [("t-hki", 2.0)]
+
+
+def test_outreach_covariates_come_from_the_lists_year_only(repo):
+    o = repo.outreach_list("3621", 2023)
+    assert [r.region.code for r in o.rows] == ["t-hki"]
+    assert [(v.code, v.year, v.value) for v in o.rows[0].covariates.values] == [("foreign_background_pct", 2023, 18.0)]
+    assert all(v.year == o.year for row in o.rows for v in row.covariates.values)
+
+
+@pytest.mark.parametrize(
+    ("indicator", "year", "message"),
+    [
+        ("9999", 2024, "Unknown indicator code '9999'"),
+        ("cov_test", 2024, "Unknown indicator code 'cov_test'"),
+        ("3620", 2024, "Indicator '3620' has no Target"),
+        ("3621", 2019, "No Gaps for indicator '3621' in 2019"),
+    ],
+)
+def test_outreach_not_found(repo, indicator, year, message):
+    with pytest.raises(NotFound, match=message):
+        repo.outreach_list(indicator, year)
+
+
+def test_outreach_route_over_real_postgres(db_url):
+    app.dependency_overrides[get_repository] = lambda: PostgresRepository(db_url)
+    client = TestClient(app)
+    r = client.get("/outreach-list?indicator=3621&year=2024")
+    assert r.status_code == 200 and r.headers["cache-control"] == "max-age=300"
+    OutreachList.model_validate(r.json())
+    assert client.get("/outreach-list?indicator=3620&year=2024").status_code == 404
+
+
+# --- Narrative cache (#17) ---------------------------------------------------------
+
+
+def test_gap_summary_returns_the_cached_narrative(db_url, repo):
+    text = "Helsinki's attendance was 75% in 2023, 5 percentage points below the 80% target."
+    with psycopg.connect(db_url) as conn:
+        conn.execute(
+            "INSERT INTO narrative_cache (region_id, indicator_id, year, language, model, prompt_version, text, source, "
+            "numbers_checked, input_hash) VALUES (1, '3621', 2023, 'en', 'some-model', 'v1', %s, 'llm', true, 'h')",
+            (text,),
+        )
+    try:
+        s = repo.gap_summary("t-hki", "3621", 2023)
+        assert (s.narrative.text, s.narrative.source, s.narrative.language) == (text, "llm", "en")
+        # No cache row for 2024: the Template sentence, as before.
+        assert repo.gap_summary("t-hki", "3621", 2024).narrative.source == "template"
+    finally:
+        with psycopg.connect(db_url) as conn:
+            conn.execute("DELETE FROM narrative_cache")

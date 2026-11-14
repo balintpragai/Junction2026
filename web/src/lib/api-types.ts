@@ -93,6 +93,28 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * CovariateValue
+         * @description One structural covariate for one Region. Describes the Region, not individuals.
+         */
+        CovariateValue: {
+            /**
+             * Code
+             * @description Indicator id of the covariate, e.g. 'foreign_background_pct'.
+             */
+            code: string;
+            /** Name */
+            name: string;
+            /** Unit */
+            unit: string;
+            /** Value */
+            value: number;
+            /**
+             * Year
+             * @description Year of the value: always the outreach list's year (no fallback to other years).
+             */
+            year: number;
+        };
         /** DataQualityNote */
         DataQualityNote: {
             /** Code */
@@ -242,13 +264,19 @@ export interface components {
         OutreachCovariates: {
             /**
              * Immigrant Background Share Pct
-             * @description Share of the Region's population with an immigrant background, %.
+             * @description Share of the Region's population with a foreign background (Statistics Finland), %. The same value as the 'foreign_background_pct' entry in `values`; null when there is no value in the list's year.
              */
             immigrant_background_share_pct: number | null;
+            /**
+             * Values
+             * @description Every loaded covariate that has a value for this Region in the list's year, sorted by code. A covariate with no value that year is left out (no fallback to an earlier or later year). Region-level only: see the list's ecological_fallacy_note before reading any of them as a cause.
+             */
+            values: components["schemas"]["CovariateValue"][];
         };
         /**
          * OutreachList
-         * @description Regions below the reference, ranked by Gap, joined with covariates.
+         * @description Regions on the wrong side of the indicator's Target (below it, or above it when lower is
+         *     better), ranked by Gap, joined with covariates. Only indicators with a Target have one.
          */
         OutreachList: {
             indicator: components["schemas"]["Indicator"];
@@ -283,7 +311,7 @@ export interface components {
             severity: "ok" | "watch" | "act";
             /**
              * Rank
-             * @description 1 = largest Gap below the reference.
+             * @description 1 = largest Gap on the wrong side of the Target.
              */
             rank: number;
             covariates: components["schemas"]["OutreachCovariates"];
