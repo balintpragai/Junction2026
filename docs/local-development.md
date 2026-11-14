@@ -169,6 +169,7 @@ This dumps the spec straight from the app, so no running server is needed. It th
 
 | Symptom | Fix |
 |---|---|
+| `../common is not a valid editable requirement` (or `./common`) | Run the pip install from the **repo root**. pip resolves the `-e ./common` path against the current directory. |
 | `ModuleNotFoundError: No module named 'common'` | Run `.venv/bin/pip install -r api/requirements-dev.txt` again from the repo root. |
 | `ModuleNotFoundError: No module named 'app'` | Run uvicorn and pytest from inside `api/`. |
 | Server fails at startup with a `ValidationError` | A fixture doesn't match its model. The error names the file's field. |
