@@ -21,8 +21,8 @@ Any other region, indicator or year returns **404** with a JSON `detail` message
 ## Prerequisites
 
 - Python 3.12 or newer
-- Node.js with `npm`/`npx` (only to regenerate the TypeScript types and run `web`)
-- Docker (optional, only to run the container)
+- Node.js with `npm` (only to run `web` without Docker)
+- Docker (to run the stack, regenerate the TypeScript types and update pinned versions)
 
 ## One-time setup
 
@@ -33,7 +33,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r api/requirements-dev.txt
 ```
 
-`requirements-dev.txt` installs FastAPI, Uvicorn, pytest, and the shared `common/` package in editable mode, so model changes take effect without reinstalling.
+`requirements-dev.txt` installs FastAPI, Uvicorn, pytest, and the shared `common/` package in editable mode, so model changes take effect without reinstalling. It installs the exact versions pinned in `api/constraints.txt`, the same ones the `api` image uses (see [Pinned versions](#pinned-versions)).
 
 ## Run the API
 
@@ -84,7 +84,7 @@ cd api
 ../.venv/bin/python -m pytest
 ```
 
-The suite (`api/tests/test_contract.py`) checks that:
+The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) checks that:
 
 - every route returns 200 and its body validates against its Pydantic model
 - `/openapi.json` points each route at its typed schema
@@ -94,6 +94,7 @@ The suite (`api/tests/test_contract.py`) checks that:
 - outreach rows are below target and ranked by Gap
 - unknown combinations return 404
 - `Cache-Control` is set
+- the committed `web/openapi.json` matches what the app produces; on failure it lists the differing paths
 
 Run the tests after any change to `common/common/models.py` or to the fixtures.
 
@@ -222,14 +223,35 @@ Whenever `common/common/models.py` changes:
 scripts/gen-api-types.sh
 ```
 
-This dumps the spec straight from the app, so no running server is needed. It then runs `openapi-typescript` (pinned to 7.4.4) through `npx`. Commit both `web/openapi.json` and `web/src/lib/api-types.ts` in the same PR as the model change. To use a Python other than `.venv/bin/python`, set `PYTHON=/path/to/python`.
+It needs only Docker, and gives the same result on Linux, macOS and Windows (run it from Git Bash there). It:
+
+1. builds the `api` image, with the versions pinned in `api/constraints.txt`, and dumps the spec from it to `web/openapi.json` (no running server needed)
+2. runs `openapi-typescript` (pinned to 7.4.4) in a `node:24-slim` container to write `web/src/lib/api-types.ts`
+
+Commit both files in the same PR as the model change. On an unchanged contract the script leaves `git diff web/` empty. If you forget to run it, `api/tests/test_openapi_drift.py` fails and names the fields that differ.
+
+### Pinned versions
+
+`api/constraints.txt` holds the exact version of every Python package in the `api` image. Both the image (`api/Dockerfile`) and local dev installs (`api/requirements-dev.txt`) install with `-c api/constraints.txt`, so the spec, and the drift test, come out the same everywhere. The ranges in `api/requirements.txt` and `common/pyproject.toml` still say what is allowed. The constraints file says what is installed.
+
+To change a version, or to take newer ones on purpose:
+
+```sh
+# 1. If needed, edit the ranges in api/requirements.txt or common/pyproject.toml
+scripts/update-api-constraints.sh             # 2. resolves fresh in python:3.12-slim, rewrites api/constraints.txt
+.venv/bin/pip install -r api/requirements-dev.txt   # 3. update your venv
+scripts/gen-api-types.sh                      # 4. a new FastAPI or pydantic can change the spec
+cd api && ../.venv/bin/python -m pytest       # 5.
+```
+
+Commit `api/constraints.txt` together with any spec changes it causes. Don't edit it by hand.
 
 ## Changing the contract: checklist
 
 1. Edit the models in `common/common/models.py`.
 2. Update the matching fixture in `api/app/fixtures/`.
-3. `cd api && ../.venv/bin/python -m pytest`
-4. `scripts/gen-api-types.sh`
+3. `scripts/gen-api-types.sh`
+4. `cd api && ../.venv/bin/python -m pytest` (the drift test passes only after step 3)
 5. Commit the models, fixtures, `web/openapi.json` and `web/src/lib/api-types.ts` together.
 
 ## Troubleshooting
@@ -246,5 +268,7 @@ This dumps the spec straight from the app, so no running server is needed. It th
 | `permission denied ... /var/run/docker.sock` | `sudo usermod -aG docker $USER`, then log out and back in. |
 | `Bind for 0.0.0.0:8000 failed: port is already allocated` | Something else (often an old `docker run` of `api`) holds the port. Stop it, or set `API_PORT` / `WEB_PORT`. |
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
-| `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
+| `test_committed_openapi_matches_app` fails | The contract changed without regenerating: run `scripts/gen-api-types.sh`. If the only differences come from library versions, reinstall your venv from `api/requirements-dev.txt` so it uses `api/constraints.txt`. |
+| `gen-api-types.sh` or `update-api-constraints.sh`: `docker: command not found` or `Cannot connect to the Docker daemon` | Install Docker and start it. Both scripts need only Docker. |
+| `gen-api-types.sh` on Windows: `invalid volume specification` or `/web: No such file or directory` | Run it from Git Bash (`bash scripts/gen-api-types.sh`). The script handles the Windows path itself. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
