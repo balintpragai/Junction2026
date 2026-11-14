@@ -1,0 +1,6 @@
+region_code,indicator_id,year_from,year_to,note_code,note
+90,3336,2022,2024,reporting_break,"Missing, not zero: Helsinki's patient information system stopped reporting this indicator in May 2021 and resumed in early 2025 (THL indicator notes). Never interpolated."
+90,13,2021,2024,reporting_break,"Missing, not zero: Helsinki stops reporting this indicator after 2020. Probably the same reporting break as indicator 3336, but THL's notes were checked only for 3336. Never interpolated."
+90,5033,2021,2024,reporting_break,"Missing, not zero: Helsinki stops reporting this indicator after 2020. Probably the same reporting break as indicator 3336, but THL's notes were checked only for 3336. Never interpolated."
+18,13,2022,2022,missing_year,"Missing, not zero: no value was published for Central Ostrobothnia this year. Never interpolated."
+18,5033,2022,2022,missing_year,"Missing, not zero: no value was published for Central Ostrobothnia this year. Never interpolated."
