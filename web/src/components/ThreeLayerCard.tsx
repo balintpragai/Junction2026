@@ -68,9 +68,26 @@ export function ThreeLayerCard({ summary }: { summary: GapSummary }) {
             <ChunkBar value={gap.value} max={maxScale} target={indicator.target} tone={tone} />
           </div>
           <p style={{ marginTop: 8, fontSize: 12.5, color: "var(--ink-2)" }}>
-            Rank {gap.rank} of {gap.n_regions} Regions
-            {gap.peer_values.length > 0 ? ` compared, for ${indicator.name.toLowerCase()}, ${gap.year}.` : "."}
+            Rank {gap.rank} of {gap.n_regions} Regions, {gap.year}.
           </p>
+          {gap.peer_values.length > 1 && (
+            <p style={{ marginTop: 4, fontSize: 12.5, color: "var(--ink-2)" }}>
+              Peer Regions:{" "}
+              {gap.peer_values
+                .filter((p) => p.region_code !== region.code)
+                .map((p) => `${p.value}${indicator.unit}`)
+                .join(", ")}
+            </p>
+          )}
+          <details style={{ marginTop: 6 }}>
+            <summary style={{ fontSize: 11, fontFamily: "var(--font-mono)", color: "var(--ink-3)", cursor: "pointer" }}>
+              How Severity is set
+            </summary>
+            <p style={{ fontSize: 12, color: "var(--ink-2)", marginTop: 6 }}>
+              Fixed thresholds, not judgement: at or past target is <strong>ok</strong>; within 3 points short is{" "}
+              <strong>watch</strong>; more than 3 points short is <strong>act</strong>.
+            </p>
+          </details>
           {data_quality_notes.map((note) => (
             <p key={note.code} style={{ marginTop: 6, fontSize: 12, color: "var(--watch)", background: "var(--watch-soft)", borderRadius: 8, padding: "6px 10px" }}>
               {note.message}
@@ -94,7 +111,12 @@ export function ThreeLayerCard({ summary }: { summary: GapSummary }) {
             <p style={{ fontSize: 13, marginTop: 4, color: "var(--ink)" }}>
               <strong>{action.title}.</strong> {action.text}
             </p>
-            <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 4 }}>{action.source}</p>
+            <details style={{ marginTop: 6 }}>
+              <summary style={{ fontSize: 11, fontFamily: "var(--font-mono)", color: "var(--ink-3)", cursor: "pointer" }}>
+                Why this action
+              </summary>
+              <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 6, lineHeight: 1.5 }}>{action.source}</p>
+            </details>
           </div>
         )}
       </div>

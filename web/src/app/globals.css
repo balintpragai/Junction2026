@@ -1,27 +1,23 @@
-/* Design tokens for the V1 pitch demo.
-   Palette/type direction: dark icon rail + bold grotesque headline + soft
-   pastel severity cards, per the reference moodboard. Distinct from the
-   cream/Fraunces mockup tokens used in the Pathway Atlas / Reach Loop
-   artifacts on purpose — this is the "real app" skin. */
+/* Design tokens for the V1 pitch demo: a quiet, precise civic-data-product
+   look -- close to how THL/the Cancer Registry present their own figures --
+   rather than a borrowed consumer-SaaS skin. Magnitude on the map uses a
+   sequential rose ramp (see lib/sequential.ts); severity (ok/watch/act) is a
+   separate, status-coded scale used only off the map, never mixed with it. */
 
 :root {
-  --bg: #f2f3ef;
-  --canvas: #f2f3ef;
+  --bg: #f6f6f3;
   --card: #ffffff;
-  --rail: #14181a;
-  --rail-ink: #eef1ee;
-  --rail-ink-dim: #8b9490;
 
-  --ink: #12161a;
-  --ink-2: #5a6166;
-  --ink-3: #8a9094;
-  --line: #e2e4de;
-  --line-strong: #cfd2c9;
+  --ink: #14181a;
+  --ink-2: #565d61;
+  --ink-3: #868d90;
+  --line: #e1e3dd;
+  --line-strong: #cbcec6;
 
-  --brand: #236655;
+  --brand: #8a1960;
   --brand-ink: #ffffff;
-  --brand-soft: #e2f1ea;
-  --brand-line: #bfe0d1;
+  --brand-soft: #f7e7f0;
+  --brand-line: #e3bcd6;
 
   --good: #1f7a3d;
   --good-soft: #e4f3e6;
@@ -35,15 +31,10 @@
   --act-soft: #fbe4e1;
   --act-line: #f1bcb4;
 
-  --chip-yellow: #f6edb8;
-  --chip-yellow-ink: #6b5c0a;
-  --chip-lavender: #e4e1fb;
-  --chip-lavender-ink: #4b45a6;
-
-  --radius-lg: 26px;
-  --radius-md: 16px;
-  --radius-sm: 10px;
-  --shadow-card: 0 1px 2px rgba(18, 22, 26, 0.04), 0 10px 28px -14px rgba(18, 22, 26, 0.16);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+  --shadow-card: 0 1px 2px rgba(18, 22, 26, 0.04), 0 10px 26px -16px rgba(18, 22, 26, 0.18);
 }
 
 * {
@@ -57,11 +48,11 @@ body {
 
 body {
   margin: 0;
-  background: var(--canvas);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body), "Public Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 h1,
@@ -91,15 +82,23 @@ button {
   background: var(--brand-soft);
 }
 
-/* Interactive affordances — expressed in CSS since inline styles can't do :hover. */
-.nav-link {
-  transition: background 0.15s ease, color 0.15s ease;
+/* Interactive affordances -- expressed in CSS since inline styles can't do :hover. */
+.nav-tab:hover {
+  background: var(--bg);
 }
-.nav-link:hover {
-  background: rgba(238, 241, 238, 0.14);
+.nav-tab--active:hover {
+  background: var(--brand-soft);
 }
-.nav-link--active:hover {
-  background: var(--rail-ink);
+
+.map-region {
+  transition: filter 0.12s ease;
+}
+.map-region:hover {
+  filter: brightness(0.94);
+}
+.map-region:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
 }
 
 .tile {

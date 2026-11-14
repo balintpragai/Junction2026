@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { GapSummary, Indicator, Region } from "@/lib/api";
-import { TileMap } from "@/components/TileMap";
+import { FinlandMap } from "@/components/FinlandMap";
 import { ThreeLayerCard } from "@/components/ThreeLayerCard";
 import { StatTile } from "@/components/StatTile";
 
@@ -58,7 +58,7 @@ export function DecisionMakerView({
           <p style={{ fontSize: 11, fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--ink-3)", marginBottom: 12 }}>
             {indicator.name} · {Math.max(...indicator.years)}
           </p>
-          <TileMap regions={regions} summaries={summaries} selected={selected} onSelect={setSelected} />
+          <FinlandMap regions={regions} summaries={summaries} selected={selected} onSelect={setSelected} />
         </div>
 
         {current ? <ThreeLayerCard summary={current} /> : <p style={{ color: "var(--ink-3)" }}>No data for this Region.</p>}
