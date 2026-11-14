@@ -57,8 +57,8 @@ OUTREACH_GAPS = [
 COVARIATES = [
     (1, "foreign_background_pct", 2023, 18.0),
     (1, "foreign_background_pct", 2024, 19.0),
-    (1, "foreign_background_pct", 2025, 20.0),  # after the year: ignored
-    (1, "cov_test", 2022, 5.0),                 # latest at or before 2024 is 2022
+    (1, "foreign_background_pct", 2025, 20.0),  # another year: never on a 2023 or 2024 list
+    (1, "cov_test", 2022, 5.0),                 # only 2022: no fallback, so never on a 2023 or 2024 list
     (2, "foreign_background_pct", 2024, 24.0),
     (2, "cov_test", 2023, None),                # no value: ignored
 ]
@@ -213,7 +213,8 @@ def test_outreach_breast_screening(repo):
     ]
     hki = o.rows[1].covariates
     assert hki.immigrant_background_share_pct == 19.0
-    assert [(v.code, v.year, v.value) for v in hki.values] == [("cov_test", 2022, 5.0), ("foreign_background_pct", 2024, 19.0)]
+    # Same-year covariates only: cov_test (2022) and foreign_background_pct 2023/2025 are left out.
+    assert [(v.code, v.year, v.value) for v in hki.values] == [("foreign_background_pct", 2024, 19.0)]
     vk = o.rows[0].covariates
     assert vk.immigrant_background_share_pct == 24.0
     assert [v.code for v in vk.values] == ["foreign_background_pct"]  # NULL cov_test left out
@@ -224,11 +225,11 @@ def test_outreach_lower_is_better_lists_regions_above_the_target(repo):
     assert [(r.region.code, r.deviation) for r in o.rows] == [("t-hki", 2.0)]
 
 
-def test_outreach_earlier_year_uses_covariates_up_to_that_year(repo):
+def test_outreach_covariates_come_from_the_lists_year_only(repo):
     o = repo.outreach_list("3621", 2023)
     assert [r.region.code for r in o.rows] == ["t-hki"]
-    assert [(v.code, v.year, v.value) for v in o.rows[0].covariates.values] == [
-        ("cov_test", 2022, 5.0), ("foreign_background_pct", 2023, 18.0)]
+    assert [(v.code, v.year, v.value) for v in o.rows[0].covariates.values] == [("foreign_background_pct", 2023, 18.0)]
+    assert all(v.year == o.year for row in o.rows for v in row.covariates.values)
 
 
 @pytest.mark.parametrize(
