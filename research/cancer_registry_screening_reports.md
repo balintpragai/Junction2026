@@ -47,6 +47,15 @@ The single most valuable find — a **cancer-specific, regionally-resolved diagn
 
 **Reusable finding for the pitch:** Helsinki is bad-to-worst in 2 of 3 programmes (breast, cervical) but only middling in the third (colorectal); North Savo swings from fastest (cervical) to worst (colorectal). A credible gap-finder has to report *per cancer type*, not produce one "worst county" league table — real pathway performance doesn't collapse into a single ranking.
 
+## 2b. Correction: the breast report's county/native-language/region-of-birth breakdowns are exact tables, not charts
+
+**Found 2026-11-14, re-examining `breast.html` directly.** Each report's "Screening process" sections (tabs: Wellbeing services counties / Native language / Region of birth) render as real server-side `kableExtra` HTML `<table>`s with exact N and % columns (Invited → Attended → Invited to diagnostic examinations → Referred to specialized healthcare), not base64 images — they were missed in the first pass because the extraction then only targeted the embedded Plotly JSON and the base64 PNGs, not plain HTML tables. **Only the "Delays in access to diagnostic examinations" section remains image-only** (confirmed again directly: no table, only a base64 PNG, for every year checked) — the month-long delay figures in §2 below are still chart-read and still need the "read from Cancer Registry charts" attribution from ADR 0001. The funnel/equity tables do not carry a delay-in-months figure; they're a different, complementary metric.
+
+Three new exact CSVs pulled from this, for breast cancer, all years available in the report (`data/processed/cancerregistry/`):
+- `breast_wellbeing_county_funnel_2020_2024.csv` — all 23 counties (Åland only present where it reported a result that year), 2020–2024. Helsinki 2024: 38,630 invited → 28,686 attended (**74.3%**, exact match to THL Sotkanet 3621 — good cross-validation) → 1,001 invited to diagnostics (3.5% of attendees) → 243 referred to specialized care (24.3% of those examined).
+- `breast_native_language_funnel_2020_2024.csv` — Domestic vs. Other/missing, 2020–2024. 2024: Domestic **83.2%** vs. Other/missing **60.8%** attendance — supersedes the "~83–85% vs. 59–63%" chart-read range in §3 below with an exact figure, for breast specifically.
+- `breast_region_of_birth_funnel_2022_2024.csv` — 7 regions (Finland, Europe excl. Finland, Asia, Americas, Africa, Oceania, Unknown), 2022–2024. 2024: Finland **83.1%**, Africa **45.1%** (worst every year 2022–2024: 44.9%, 41.5%, 45.1%) — supersedes the "~82–85% vs. ~28–53%" chart-read range in §3 below for breast specifically. The cervical/colorectal equivalents in §3 have not been re-checked this round and remain chart-read estimates.
+
 ## 3. Visually-read data: participation by equity dimension, all three cancer types
 
 Consistent methodology across all three reports (own equity breakdowns, by 2-year/5-year age band):

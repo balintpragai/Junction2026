@@ -11,9 +11,7 @@
 | Original/raw pulls (JSON API responses, images, ODS) | `data/raw/` — kept for traceability, not for the build to read directly |
 | Fact-checked claims, citations, the covariate analysis | `research/*.md` — four files: `gemini_research.md`, `additional_data_sources.md`, `cancer_registry_screening_reports.md`, `covariate_correlation_analysis.md` |
 | Original source PDFs (national strategy, roadmap, mentor deck) | `zeneca_resources_en/` |
-| The two working mockup artifacts | Pathway Atlas — `https://claude.ai/artifact/TU4EHV8eV2jcgEva3NTG3X`; Reach Loop — `https://claude.ai/artifact/3M444xDbCuB55BPASLbWwY` (**tech-stack table on this one is stale, see note below**) |
-
-**One correction to make before anyone builds against it:** Reach Loop's published tech-stack section still describes the rev. 1 architecture (Vercel + Next.js Route Handlers + Vercel AI Gateway). This document supersedes that — the real plan is the containerized/FastAPI architecture below. Reach Loop's artifact should be updated to match once someone's building against this; don't build against what's currently live there.
+| The two working mockup artifacts | Pathway Atlas — `https://claude.ai/artifact/TU4EHV8eV2jcgEva3NTG3X`; Reach Loop — `https://claude.ai/artifact/3M444xDbCuB55BPASLbWwY` |
 
 ---
 
