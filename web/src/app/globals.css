@@ -1,0 +1,92 @@
+/* Design tokens for the V1 pitch demo.
+   Palette/type direction: dark icon rail + bold grotesque headline + soft
+   pastel severity cards, per the reference moodboard. Distinct from the
+   cream/Fraunces mockup tokens used in the Pathway Atlas / Reach Loop
+   artifacts on purpose — this is the "real app" skin. */
+
+:root {
+  --bg: #f2f3ef;
+  --canvas: #f2f3ef;
+  --card: #ffffff;
+  --rail: #14181a;
+  --rail-ink: #eef1ee;
+  --rail-ink-dim: #8b9490;
+
+  --ink: #12161a;
+  --ink-2: #5a6166;
+  --ink-3: #8a9094;
+  --line: #e2e4de;
+  --line-strong: #cfd2c9;
+
+  --brand: #236655;
+  --brand-ink: #ffffff;
+  --brand-soft: #e2f1ea;
+  --brand-line: #bfe0d1;
+
+  --good: #1f7a3d;
+  --good-soft: #e4f3e6;
+  --good-line: #bfe3c8;
+
+  --watch: #9c6a00;
+  --watch-soft: #fbeece;
+  --watch-line: #f0d79c;
+
+  --act: #bb3a2d;
+  --act-soft: #fbe4e1;
+  --act-line: #f1bcb4;
+
+  --chip-yellow: #f6edb8;
+  --chip-yellow-ink: #6b5c0a;
+  --chip-lavender: #e4e1fb;
+  --chip-lavender-ink: #4b45a6;
+
+  --radius-lg: 26px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 1px 2px rgba(18, 22, 26, 0.04), 0 10px 28px -14px rgba(18, 22, 26, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body), "Public Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), "Archivo", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.mono {
+  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--brand-soft);
+}

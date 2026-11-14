@@ -1,32 +1,38 @@
-// Placeholder page for the compose skeleton (#2). The real tabs arrive in #10 and #11.
-import type { components } from "@/lib/api-types";
+import { loadAllGapSummaries, loadRegions } from "@/lib/api";
+import { DecisionMakerView } from "@/components/DecisionMakerView";
 
-type RegionList = components["schemas"]["RegionList"];
-
-// Read at request time so the same image works in every environment.
 export const dynamic = "force-dynamic";
 
-async function loadRegions(): Promise<RegionList | null> {
-  const apiUrl = process.env.API_URL ?? "http://localhost:8000";
-  try {
-    const res = await fetch(`${apiUrl}/regions`, { cache: "no-store" });
-    return res.ok ? ((await res.json()) as RegionList) : null;
-  } catch {
-    return null;
-  }
-}
+const INDICATOR = "3621";
+const YEAR = 2024;
+const DEFAULT_REGION = "helsinki";
 
 export default async function Home() {
-  const data = await loadRegions();
+  const regionList = await loadRegions();
+  const regions = regionList?.regions ?? [];
+  const summaries = regions.length ? await loadAllGapSummaries(regions, INDICATOR, YEAR) : new Map();
+  const indicator = summaries.values().next().value?.indicator;
+
   return (
-    <main style={{ fontFamily: "system-ui, sans-serif", padding: "2rem", maxWidth: 640 }}>
-      <h1>Reach Loop</h1>
-      <p>Frontend placeholder. The decision-maker, outreach and patient tabs are coming.</p>
-      <p>
-        {data
-          ? `API reachable: ${data.regions.length} Regions loaded.`
-          : "API not reachable. Check that the api service is running and API_URL is set."}
-      </p>
-    </main>
+    <div>
+      <header style={{ marginBottom: 28 }}>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--brand)", fontWeight: 600 }}>
+          Decision-maker view
+        </p>
+        <h1 style={{ fontSize: "clamp(1.8rem, 3vw, 2.3rem)", marginTop: 8 }}>Where cancer care falls short of target</h1>
+        <p style={{ color: "var(--ink-2)", marginTop: 8, maxWidth: "64ch" }}>
+          Real data from THL Sotkanet and the Finnish Cancer Registry, scored against the National Cancer Strategy&rsquo;s own
+          targets. Click any Region for the full picture.
+        </p>
+      </header>
+
+      {regions.length === 0 || !indicator ? (
+        <p style={{ color: "var(--act)" }}>
+          Could not reach the API. Check that the <code>api</code> service is running and <code>API_URL</code> is set.
+        </p>
+      ) : (
+        <DecisionMakerView regions={regions} indicator={indicator} summaries={summaries} defaultCode={DEFAULT_REGION} />
+      )}
+    </div>
   );
 }
