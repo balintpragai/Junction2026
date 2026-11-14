@@ -216,7 +216,7 @@ curl -s 'localhost:8000/regions/90/gap-summary?indicator=3621'                  
 | `rows[].value`, `deviation`, `severity` | As in the gap-summary's `gap` |
 | `rows[].rank` | 1 = largest Gap on the wrong side of the Target |
 | `rows[].covariates.immigrant_background_share_pct` | The `foreign_background_pct` value (Statistics Finland), or `null` |
-| `rows[].covariates.values[]` | Every loaded covariate with a value for the Region: `{code, name, unit, value, year}`, sorted by `code`. `year` is the latest at or before the list's year; series end in different years (income 2023, physician vacancies 2022) |
+| `rows[].covariates.values[]` | Every loaded covariate with a value for the Region: `{code, name, unit, value, year}`, sorted by `code`. `year` is the latest at or before the list's year; series cover different years (immigrant background 2016–2025, income and poverty 2016–2024, physician vacancies end in 2022, broadband is a single 2025 snapshot) |
 
 ```sh
 curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
@@ -238,10 +238,10 @@ curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
         "values": [
           {"code": "2331", "name": "Population density", "unit": "inhabitants per km²", "value": 3188.7, "year": 2024},
           {"code": "3892", "name": "Vacant health-centre physician positions", "unit": "% of physician positions", "value": 9.0, "year": 2022},
-          {"code": "at_risk_of_poverty_rate", "name": "At-risk-of-poverty rate", "unit": "% of dwelling population", "value": 12.9, "year": 2023},
+          {"code": "at_risk_of_poverty_rate", "name": "At-risk-of-poverty rate", "unit": "% of dwelling population", "value": 14.1, "year": 2024},
           {"code": "foreign_background_pct", "name": "People with a foreign background", "unit": "% of population", "value": 20.8, "year": 2024},
           {"code": "foreign_language_speakers_pct", "name": "Foreign-language speakers", "unit": "% of population", "value": 20.44, "year": 2024},
-          {"code": "median_disposable_income", "name": "Median disposable income", "unit": "EUR per consumption unit", "value": 32766.0, "year": 2023}
+          {"code": "median_disposable_income", "name": "Median disposable income", "unit": "EUR per consumption unit", "value": 33525.0, "year": 2024}
         ]
       }
     }
