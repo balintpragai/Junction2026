@@ -1,5 +1,6 @@
 import { Archivo, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Shell } from "@/components/Shell";
+import { ProgramProvider } from "@/lib/program";
 import "./globals.css";
 
 const display = Archivo({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-display" });
@@ -14,8 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>
-        <Shell>{children}</Shell>
+      <body data-role="state">
+        <ProgramProvider>
+          <Shell>{children}</Shell>
+        </ProgramProvider>
       </body>
     </html>
   );

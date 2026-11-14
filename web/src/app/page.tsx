@@ -8,22 +8,17 @@ export default async function Home() {
   const regions = regionList?.regions ?? [];
   const profiles = regions.length ? await loadAllRegionProfiles(regions) : new Map();
 
-  return (
-    <div>
-      <header style={{ marginBottom: 24 }}>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--brand)", fontWeight: 600 }}>
-          Overview
+  if (regions.length === 0 || profiles.size === 0) {
+    return (
+      <div className="card-lg" style={{ padding: "48px 32px", maxWidth: 560, margin: "40px auto", textAlign: "center" }}>
+        <h1 style={{ fontSize: "1.25rem" }}>Could not reach the API</h1>
+        <p style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.6 }}>
+          Check that the backend is running and <code>API_URL</code> is set. For the demo, <code>mock/mock_api.py</code>{" "}
+          serves this contract on port 8000.
         </p>
-        <h1 style={{ fontSize: "clamp(1.8rem, 3vw, 2.3rem)", marginTop: 8 }}>Where cancer care falls short of target</h1>
-      </header>
+      </div>
+    );
+  }
 
-      {regions.length === 0 || profiles.size === 0 ? (
-        <p style={{ color: "var(--act)" }}>
-          Could not reach the API. Check that the backend is running and <code>API_URL</code> is set.
-        </p>
-      ) : (
-        <Explorer regions={regions} profiles={profiles} />
-      )}
-    </div>
-  );
+  return <Explorer regions={regions} profiles={profiles} />;
 }
