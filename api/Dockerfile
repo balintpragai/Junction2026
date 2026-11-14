@@ -1,5 +1,5 @@
-# Build from the repo root:  docker build -f api/Dockerfile -t reach-loop-api .
-FROM --platform=linux/amd64 python:3.12-slim
+# Build from the repo root:  docker build --platform linux/amd64 -f api/Dockerfile -t reach-loop-api .
+FROM python:3.12-slim
 
 WORKDIR /srv
 COPY common/ ./common/

@@ -2,7 +2,13 @@
 **
 !common/
 !api/
+!engine/
+!narrative/
+!seed/
+!web/
 **/__pycache__/
 **/*.egg-info/
 **/.pytest_cache/
-api/tests/
+**/tests/
+web/node_modules/
+web/.next/
