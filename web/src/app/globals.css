@@ -83,13 +83,6 @@ button {
 }
 
 /* Interactive affordances -- expressed in CSS since inline styles can't do :hover. */
-.nav-tab:hover {
-  background: var(--bg);
-}
-.nav-tab--active:hover {
-  background: var(--brand-soft);
-}
-
 .map-region {
   transition: filter 0.12s ease;
 }
@@ -99,17 +92,6 @@ button {
 .map-region:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 1px;
-}
-
-.tile {
-  transition: filter 0.1s ease;
-}
-.tile:hover {
-  filter: brightness(1.08);
-}
-.tile:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
 }
 
 details > summary {

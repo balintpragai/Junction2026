@@ -3,47 +3,51 @@
 import { useMemo } from "react";
 import { FINLAND_CENTROIDS, FINLAND_PATHS, FINLAND_VIEWBOX } from "@/lib/finland-paths";
 import { makeScale } from "@/lib/sequential";
-import type { GapSummary, Region } from "@/lib/api";
+import type { Region } from "@/lib/api";
 
 /** Real Region boundaries (Statistics Finland, see finland-paths.ts), colored
- *  by raw value on a sequential ramp -- the same convention the Cancer
- *  Registry's own charts use for this measure. Severity (ok/watch/act) is a
- *  separate encoding, shown on the selected Region's card, not mixed into
- *  this map's hue (dataviz skill: never mix a sequential and a status scale
- *  in one encoding). */
+ *  by whatever magnitude `value()` returns on a sequential ramp -- the same
+ *  convention the Cancer Registry's own charts use. Severity/status colors
+ *  stay off this map; the dataviz skill's rule against mixing a sequential
+ *  and a status scale in one encoding. */
 export function FinlandMap({
   regions,
-  summaries,
+  value,
+  label,
+  unit,
   selected,
   onSelect,
+  formatTick,
 }: {
   regions: Region[];
-  summaries: Map<string, GapSummary>;
+  value: (code: string) => number | null;
+  label: (code: string) => string;
+  unit: string;
   selected: string | null;
   onSelect: (code: string) => void;
+  formatTick?: (v: number) => string;
 }) {
-  const { scale, min, max, unit } = useMemo(() => {
-    const values = [...summaries.values()].map((s) => s.gap.value);
+  const { scale, min, max } = useMemo(() => {
+    const values = regions.map((r) => value(r.code)).filter((v): v is number => v != null);
     const lo = values.length ? Math.min(...values) : 0;
     const hi = values.length ? Math.max(...values) : 1;
-    const u = summaries.values().next().value?.indicator.unit ?? "";
-    return { scale: makeScale(lo, hi), min: lo, max: hi, unit: u };
-  }, [summaries]);
+    return { scale: makeScale(lo, hi), min: lo, max: hi };
+  }, [regions, value]);
 
   return (
     <div style={{ display: "flex", gap: 28, alignItems: "flex-start", flexWrap: "wrap" }}>
       <svg
         viewBox={FINLAND_VIEWBOX}
         role="img"
-        aria-label="Map of Finland's 23 Regions, colored by value. Click a Region for details."
+        aria-label="Map of Finland's 23 Regions. Click a Region for details."
         style={{ width: "100%", maxWidth: 360, height: "auto", display: "block", flex: "1 1 280px" }}
       >
         {regions.map((region) => {
           const d = FINLAND_PATHS[region.code];
           if (!d) return null;
-          const summary = summaries.get(region.code);
+          const v = value(region.code);
           const isSelected = selected === region.code;
-          const fill = summary ? scale(summary.gap.value) : "var(--line)";
+          const fill = v != null ? scale(v) : "var(--line)";
 
           return (
             <path
@@ -51,7 +55,7 @@ export function FinlandMap({
               className="map-region"
               tabIndex={0}
               role="button"
-              aria-label={`${region.name}${summary ? `, ${summary.gap.value}${summary.indicator.unit}` : ", no data"}`}
+              aria-label={label(region.code)}
               aria-pressed={isSelected}
               d={d}
               fill={fill}
@@ -87,12 +91,12 @@ export function FinlandMap({
         )}
       </svg>
 
-      <Legend min={min} max={max} unit={unit} />
+      <Legend min={min} max={max} unit={unit} format={formatTick ?? ((v) => v.toFixed(1))} />
     </div>
   );
 }
 
-function Legend({ min, max, unit }: { min: number; max: number; unit: string }) {
+function Legend({ min, max, unit, format }: { min: number; max: number; unit: string; format: (v: number) => string }) {
   const ticks = 5;
   const values = Array.from({ length: ticks }, (_, i) => max - ((max - min) / (ticks - 1)) * i);
 
@@ -113,7 +117,7 @@ function Legend({ min, max, unit }: { min: number; max: number; unit: string }) 
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: 148 }}>
           {values.map((v, i) => (
             <span key={i} className="mono" style={{ fontSize: 12, color: "var(--ink-2)" }}>
-              {v.toFixed(1)}
+              {format(v)}
             </span>
           ))}
         </div>
