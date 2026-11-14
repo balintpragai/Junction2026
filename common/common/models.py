@@ -139,9 +139,28 @@ class GapSummary(ContractModel):
 # --- Outreach list ----------------------------------------------------------
 
 
+class CovariateValue(ContractModel):
+    """One structural covariate for one Region. Describes the Region, not individuals."""
+
+    code: str = Field(description="Indicator id of the covariate, e.g. 'foreign_background_pct'.")
+    name: str
+    unit: str
+    value: float
+    year: int = Field(description="Year of the value: the latest year at or before the outreach list's year.")
+
+
 class OutreachCovariates(ContractModel):
     immigrant_background_share_pct: float | None = Field(
-        description="Share of the Region's population with an immigrant background, %."
+        description=(
+            "Share of the Region's population with a foreign background (Statistics Finland), %. "
+            "The same value as the 'foreign_background_pct' entry in `values`; null if not loaded."
+        )
+    )
+    values: list[CovariateValue] = Field(
+        description=(
+            "Every loaded covariate that has a value for this Region at or before the year, sorted by code. "
+            "Region-level only: see the list's ecological_fallacy_note before reading any of them as a cause."
+        )
     )
 
 
@@ -150,12 +169,13 @@ class OutreachRow(ContractModel):
     value: float
     deviation: float
     severity: Severity
-    rank: int = Field(ge=1, description="1 = largest Gap below the reference.")
+    rank: int = Field(ge=1, description="1 = largest Gap on the wrong side of the Target.")
     covariates: OutreachCovariates
 
 
 class OutreachList(ContractModel):
-    """Regions below the reference, ranked by Gap, joined with covariates."""
+    """Regions on the wrong side of the indicator's Target (below it, or above it when lower is
+    better), ranked by Gap, joined with covariates. Only indicators with a Target have one."""
 
     indicator: Indicator
     year: int

@@ -1,7 +1,6 @@
 """`api`: the public, read-only Reach Loop API.
 
-Regions, indicators and gap-summaries come from Postgres (see `repository.py`);
-`/outreach-list` is still a fixture until #16. Response shapes are the Pydantic
+Every data route reads Postgres (see `repository.py`). Response shapes are the Pydantic
 models in `common.models`; they are the contract with `web`. `api` never calls
 an LLM on a request path.
 """
@@ -11,14 +10,13 @@ import os
 from typing import Annotated
 
 import psycopg
-from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi import Depends, FastAPI, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from common.models import GapSummary, Health, IndicatorList, OutreachList, RegionList
 from common.settings import Settings
 
-from . import fixtures
 from .repository import NotFound, PostgresRepository, Repository
 
 log = logging.getLogger("api")
@@ -106,11 +104,10 @@ def gap_summary(
 )
 def outreach_list(
     response: Response,
+    repo: Repo,
     indicator: str = Query(description="Indicator code, e.g. '3621'"),
     year: int = Query(description="Year, e.g. 2024"),
 ) -> OutreachList:
-    result = fixtures.OUTREACH_LISTS.get((indicator, year))
-    if result is None:
-        raise HTTPException(404, f"No outreach list for indicator={indicator!r}, year={year}")
+    result = repo.outreach_list(indicator, year)  # NotFound -> 404
     _cache(response)
     return result
