@@ -25,7 +25,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
     <div>
       <p style={{ color: "var(--ink-2)", maxWidth: "70ch", marginBottom: 20 }}>
         Shaded by how many of the {current?.summary.indicators_tracked ?? 5} tracked indicators sit in{" "}
-        <strong>act</strong> this year -- not a single combined score. No Region is uniformly "the problem": click
+        <strong>act</strong> this year — not a single combined score. No Region is uniformly "the problem": click
         any Region to see which indicators, specifically, and what the data says is driving them.
       </p>
 

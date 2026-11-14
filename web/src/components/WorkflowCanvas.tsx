@@ -6,8 +6,10 @@ import "@xyflow/react/dist/style.css";
 import { ActionNode, OutputNode, TriggerNode, type RunStatus } from "@/components/workflow/nodes";
 import type { CandidateAction, Region } from "@/lib/api";
 
-const ROW_H = 150;
-const nodeTypes = { trigger: TriggerNode, action: ActionNode, output: OutputNode };
+const ROW_H = 230;
+// "output" collides with React Flow's own reserved built-in node type and
+// leaks its default border styling through -- named "destination" instead.
+const nodeTypes = { trigger: TriggerNode, action: ActionNode, destination: OutputNode };
 
 /** The action planner as a connected workflow -- a Region trigger branching
  *  into one node per candidate action, each wired to the message it would
@@ -71,7 +73,7 @@ export function WorkflowCanvas({ region, actions }: { region: Region; actions: C
           },
           {
             id: `output-${action.id}`,
-            type: "output",
+            type: "destination",
             position: { x: 660, y },
             data: { action, included: isIncluded, status },
           },
@@ -96,7 +98,7 @@ export function WorkflowCanvas({ region, actions }: { region: Region; actions: C
   if (actions.length === 0) {
     return (
       <p style={{ color: "var(--ink-2)" }}>
-        No candidate actions for {region.name} this year -- every tracked indicator is at or ahead of target.
+        No candidate actions for {region.name} this year — every tracked indicator is at or ahead of target.
       </p>
     );
   }
@@ -117,7 +119,7 @@ export function WorkflowCanvas({ region, actions }: { region: Region; actions: C
         }}
       >
         <span style={{ fontSize: 14 }}>
-          {plan.length === 0 ? "No actions selected -- tick “include” on a node" : `${plan.length} action${plan.length > 1 ? "s" : ""} in this plan`}
+          {plan.length === 0 ? "No actions selected — tick “include” on a node" : `${plan.length} action${plan.length > 1 ? "s" : ""} in this plan`}
         </span>
         <button
           onClick={activate}
@@ -150,7 +152,7 @@ export function WorkflowCanvas({ region, actions }: { region: Region; actions: C
             fontWeight: 600,
           }}
         >
-          Plan activated for {region.name} -- {plan.length} action{plan.length > 1 ? "s" : ""} sent (mock, nothing was actually sent).
+          Plan activated for {region.name} — {plan.length} action{plan.length > 1 ? "s" : ""} sent (mock, nothing was actually sent).
         </div>
       )}
 
@@ -163,13 +165,23 @@ export function WorkflowCanvas({ region, actions }: { region: Region; actions: C
           overflow: "hidden",
         }}
       >
-        <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView proOptions={{ hideAttribution: true }} nodesConnectable={false}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          fitView
+          fitViewOptions={{ padding: 0.25, minZoom: 0.3, maxZoom: 1 }}
+          minZoom={0.2}
+          proOptions={{ hideAttribution: true }}
+          nodesConnectable={false}
+          style={{ width: "100%", height: "100%" }}
+        >
           <Background gap={18} color="var(--line)" />
           <Controls showInteractive={false} />
         </ReactFlow>
       </div>
       <p style={{ fontSize: 12, color: "var(--ink-3)", marginTop: 10, fontFamily: "var(--font-mono)" }}>
-        drag nodes to rearrange -- tick "include" to add an action to the plan, then Activate
+        drag nodes to rearrange — tick "include" to add an action to the plan, then Activate
       </p>
     </div>
   );

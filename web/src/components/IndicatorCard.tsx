@@ -49,7 +49,7 @@ export function IndicatorCard({ entry }: { entry: GapEntry }) {
         <p style={{ fontSize: 12, color: "var(--ink-2)" }}>
           {gap.direction === "at" ? "At" : gap.direction === "below" ? "Below" : "Above"}{" "}
           {gap.reference_kind === "target" ? "target" : "peer median"} by {Math.abs(gap.deviation)}
-          {indicator.unit.startsWith("%") ? "pp" : ` ${indicator.unit}`} -- rank {gap.rank} of {gap.n_regions}.
+          {indicator.unit.startsWith("%") ? "pp" : ` ${indicator.unit}`} — rank {gap.rank} of {gap.n_regions}.
         </p>
         {peers.length > 0 && (
           <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>Peers: {peers.map((p) => `${p.value}${indicator.unit.startsWith("%") ? "%" : ""}`).join(", ")}</p>

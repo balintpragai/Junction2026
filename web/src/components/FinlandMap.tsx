@@ -97,8 +97,19 @@ export function FinlandMap({
 }
 
 function Legend({ min, max, unit, format }: { min: number; max: number; unit: string; format: (v: number) => string }) {
-  const ticks = 5;
-  const values = Array.from({ length: ticks }, (_, i) => max - ((max - min) / (ticks - 1)) * i);
+  // A small integer range (e.g. "0..4 indicators") gets one tick per integer
+  // instead of 5 evenly-spaced floats that can round to the same label twice.
+  const isSmallIntegerRange = Number.isInteger(min) && Number.isInteger(max) && max - min <= 6 && max - min >= 1;
+  const rawValues = isSmallIntegerRange
+    ? Array.from({ length: max - min + 1 }, (_, i) => max - i)
+    : Array.from({ length: 5 }, (_, i) => max - ((max - min) / 4) * i);
+  const seen = new Set<string>();
+  const values = rawValues.filter((v) => {
+    const label = format(v);
+    if (seen.has(label)) return false;
+    seen.add(label);
+    return true;
+  });
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: "0 0 auto" }}>
