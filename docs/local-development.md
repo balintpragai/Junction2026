@@ -139,7 +139,7 @@ The route tests run against an in-memory repository built from `api/tests/fixtur
 - the Gap fixture is internally consistent: deviation, rank, peer count, trend and Narrative all agree
 - the outreach list can't validate without a non-empty `ecological_fallacy_note`
 - outreach rows are below target and ranked by Gap
-- (Postgres tests) outreach lists only Regions on the wrong side of the Target (above it when lower is better), ranks by Gap size, takes each covariate's latest value at or before the year, and returns 404 for indicators without a Target
+- (Postgres tests) outreach lists only Regions on the wrong side of the Target (above it when lower is better), ranks by Gap size, shows covariates from the list's year only (no fallback to another year), and returns 404 for indicators without a Target
 - an unknown Region, an unknown indicator, or a year without a Gap returns 404, and a database outage returns 503 without leaking details
 - `Cache-Control` is set
 - the committed `web/openapi.json` matches what the app generates. If it fails, the message shows the diff and tells you to run `scripts/gen-api-types.sh`.
@@ -343,7 +343,7 @@ const summary: GapSummary = await res.json();
 ### Rules for the UI
 
 - **Show `ecological_fallacy_note`** wherever the outreach list appears. It is required in the contract, so the UI can't drop it without anyone noticing.
-- **Covariates describe Regions, not people.** Each row's `covariates.values` lists every loaded covariate with its own `year` (the latest at or before the list's year; series end in different years). `immigrant_background_share_pct` repeats the `foreign_background_pct` value for convenience. Per `research/covariate_correlation_analysis.md`, foreign background is the covariate that holds at both Region and individual level; don't present income or poverty as a targeting variable.
+- **Covariates describe Regions, not people.** Each row's `covariates.values` lists the covariates that have a value **in the list's year**; a covariate with no value that year is left out, never filled from another year, so which ones appear depends on the year (see the coverage table in [api.md](api.md#get-outreach-list)). Don't assume a fixed set of columns. `immigrant_background_share_pct` repeats the `foreign_background_pct` value for convenience and is `null` when there is none (today: every year before 2024). Per `research/covariate_correlation_analysis.md`, foreign background is the covariate that holds at both Region and individual level; don't present income or poverty as a targeting variable.
 - **Show `narrative.text` as given.** `narrative.source` is `llm` or `template` (a Template sentence). Use it for a badge if you like. Don't rewrite the text.
 - `gap.reference_kind` is `target` when the indicator has a Target and `peer_median` when it doesn't. Label the reference accordingly.
 - `indicator.target` is `null` for most indicators.

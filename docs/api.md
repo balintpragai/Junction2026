@@ -215,8 +215,8 @@ curl -s 'localhost:8000/regions/90/gap-summary?indicator=3621'                  
 | `rows[].region` | The Region |
 | `rows[].value`, `deviation`, `severity` | As in the gap-summary's `gap` |
 | `rows[].rank` | 1 = largest Gap on the wrong side of the Target |
-| `rows[].covariates.immigrant_background_share_pct` | The `foreign_background_pct` value (Statistics Finland), or `null` |
-| `rows[].covariates.values[]` | Every loaded covariate with a value for the Region: `{code, name, unit, value, year}`, sorted by `code`. `year` is the latest at or before the list's year; series end in different years (income 2023, physician vacancies 2022) |
+| `rows[].covariates.immigrant_background_share_pct` | The `foreign_background_pct` value (Statistics Finland) for the list's year, or `null` when there is none (today: every list before 2024, see the coverage table below) |
+| `rows[].covariates.values[]` | Every loaded covariate with a value for the Region **in the list's year**: `{code, name, unit, value, year}`, sorted by `code`. `year` always equals the list's year. A covariate with no value that year is left out, never filled from an earlier or later year |
 
 ```sh
 curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
@@ -237,18 +237,16 @@ curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
         "immigrant_background_share_pct": 20.8,
         "values": [
           {"code": "2331", "name": "Population density", "unit": "inhabitants per km²", "value": 3188.7, "year": 2024},
-          {"code": "3892", "name": "Vacant health-centre physician positions", "unit": "% of physician positions", "value": 9.0, "year": 2022},
-          {"code": "at_risk_of_poverty_rate", "name": "At-risk-of-poverty rate", "unit": "% of dwelling population", "value": 12.9, "year": 2023},
+          {"code": "3213", "name": "Kela medical travel reimbursements per inhabitant", "unit": "EUR per inhabitant", "value": 22.4, "year": 2024},
           {"code": "foreign_background_pct", "name": "People with a foreign background", "unit": "% of population", "value": 20.8, "year": 2024},
-          {"code": "foreign_language_speakers_pct", "name": "Foreign-language speakers", "unit": "% of population", "value": 20.44, "year": 2024},
-          {"code": "median_disposable_income", "name": "Median disposable income", "unit": "EUR per consumption unit", "value": 32766.0, "year": 2023}
+          {"code": "foreign_language_speakers_pct", "name": "Foreign-language speakers", "unit": "% of population", "value": 20.44, "year": 2024}
         ]
       }
     }
   ]
 }
 ```
-_(trimmed: 4 rows for 2024 (Helsinki −5.7, West Uusimaa −3.9, Vantaa and Kerava −3.3, East Uusimaa −0.2), and 13 covariates per row; the Kela travel ones are left out here)_
+_(trimmed: 4 rows for 2024 (Helsinki −5.7, West Uusimaa −3.9, Vantaa and Kerava −3.3, East Uusimaa −0.2), and 10 covariates per row; the other Kela travel series are left out here)_
 
 Sizes on the current data, year 2024: 3621 lists 4 Regions, 3620 lists 20, 6103 lists 22.
 
@@ -261,7 +259,20 @@ curl -s 'localhost:8000/outreach-list?indicator=3621&year=1900'    # 404 {"detai
 curl -s 'localhost:8000/outreach-list?indicator=foreign_background_pct&year=2024'   # 404 (covariates aren't indicators here)
 ```
 
-**How to read the covariates:** per `research/covariate_correlation_analysis.md`, the foreign-background share is the covariate that points the same way at Region and individual level. Income and poverty don't; don't present them as targeting variables. The 4 broadband covariates have only a 2025 snapshot, so they never appear on a 2024 list.
+**Same year only.** Covariates are shown only for the year the list is for. When a series has no value that year (it ends earlier, hasn't been published yet, or only one year was loaded), the covariate is left out rather than filled from another year, so every figure on a list describes the same year. Which covariates that leaves, on the current data:
+
+| Covariate | 2016–2022 | 2023 | 2024 | Why |
+|---|---|---|---|---|
+| Kela medical travel (2297, 2298, 2299, 2300, 3213, 3227, 3228), population density (2331) | ✓ | ✓ | ✓ | Complete yearly series |
+| Vacant health-centre physician positions (3892) | ✓ | – | – | Legacy series, ends in 2022 |
+| Median disposable income, at-risk-of-poverty rate | – | ✓ | – | Only 2023 loaded; 2024 not yet published |
+| Foreign background, foreign-language speakers | – | – | ✓ | Only 2024 loaded |
+| Broadband (4 series) | – | – | – | Only a 2025 snapshot |
+| **Covariates per row** | **9** | **10** | **10** | |
+
+Loading the Statistics Finland series for every year will fill the gaps for foreign background, income and poverty: [#50](https://github.com/balintpragai/Junction2026/issues/50).
+
+**How to read the covariates:** per `research/covariate_correlation_analysis.md`, the foreign-background share is the covariate that points the same way at Region and individual level. Income and poverty don't; don't present them as targeting variables.
 
 ### Interactive docs and the OpenAPI spec
 
