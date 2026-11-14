@@ -7,7 +7,8 @@
    actions when present.
 3. Prints counts only (never data rows).
 4. Asks `engine` to rescore and waits, so `fact_gap_score` is filled before
-   `api` starts. Exits non-zero if the rescore fails.
+   `api` starts. A failed or partial rescore is a loud warning, not an error:
+   seed still exits 0, because the previous Gaps stay in place.
 
 Run with `python -m seed`. Paths resolve from the repo root (or /srv in the image).
 """
@@ -81,16 +82,36 @@ def main() -> int:
     for table, n in counts.items():
         print(f"  {table:<26} {n:>6}")
 
-    # --- Score: a fresh `docker compose up` ends fully scored ---------------
+    rescore(settings.engine_url)  # type: ignore[arg-type]
+    return 0
+
+
+def rescore(engine_url: str) -> None:
+    """Score so a fresh `docker compose up` ends fully scored.
+
+    A rescore problem is a warning, not a failure: the data above is loaded and
+    consistent, and a failed rescore leaves the previous Gaps in place, so the
+    stack should still come up. Only a load error stops it.
+    """
     print("seed: rescore: started, waiting for engine")
     try:
-        job = engine_client.rescore_and_wait(settings.engine_url)  # type: ignore[arg-type]
+        job = engine_client.rescore_and_wait(engine_url)
     except engine_client.RescoreFailed as e:
-        print(f"seed: rescore: FAILED\n{e.job.model_dump_json(indent=2)}", file=sys.stderr)
-        return 1
+        _warn(f"rescore failed; previous Gaps kept\n{e.job.model_dump_json(indent=2)}")
+        return
+    except (TimeoutError, OSError) as e:  # OSError covers urllib's URLError: engine unreachable
+        _warn(f"rescore did not finish ({type(e).__name__}: {e}); previous Gaps kept")
+        return
     print(f"seed: rescore: {job.status}, {job.gaps_written} Gaps written, {job.gaps_removed} stale removed")
+    if job.status == "partial":
+        _warn(f"rescore partial: {len(job.failed_indicators)} indicator(s) kept their previous Gaps")
     print(job.model_dump_json(indent=2))
-    return 0
+
+
+def _warn(message: str) -> None:
+    sys.stdout.flush()  # keep the log in order: stdout is block-buffered in the container, stderr is not
+    print(f"seed: WARNING: {message}", file=sys.stderr)
+    print("seed: WARNING: the stack starts anyway. Fix, then: docker compose exec engine python -m app.rescore_now", file=sys.stderr)
 
 
 if __name__ == "__main__":

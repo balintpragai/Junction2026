@@ -8,8 +8,10 @@ from fastapi.testclient import TestClient
 from app.jobs import JobRegistry
 from app.main import app, get_jobs
 from app.rescore import RescoreResult
+from common.models import IndicatorFailure
 
-RESULT = RescoreResult(engine_version="0.2.0+tabc", gaps_written=1234, gaps_removed=2)
+RESULT = RescoreResult(engine_version="0.2.0+tabc", gaps_written=1234, gaps_removed=2, indicators_scored=12, failures=[])
+BROKEN = IndicatorFailure(code="3336", error="ZeroDivisionError: division by zero")
 
 
 def succeed() -> RescoreResult:
@@ -47,6 +49,26 @@ def test_failed_job_reports_the_error_and_the_next_job_still_runs():
     assert done.error == "RuntimeError: database is down"
     assert done.gaps_written is None
     assert registry.wait(registry.submit().id, timeout=5).status == "failed"  # worker survived
+
+
+def test_some_indicators_failing_is_partial():
+    result = RescoreResult(engine_version="v", gaps_written=1700, gaps_removed=0, indicators_scored=11, failures=[BROKEN])
+    registry = JobRegistry(lambda: result)
+    done = registry.wait(registry.submit().id, timeout=5)
+
+    assert done.status == "partial"
+    assert done.failed_indicators == [BROKEN]
+    assert (done.gaps_written, done.indicators_scored) == (1700, 11)
+    assert "1 indicator(s) failed" in done.error
+
+
+def test_every_indicator_failing_is_failed():
+    result = RescoreResult(engine_version="v", gaps_written=0, gaps_removed=0, indicators_scored=0, failures=[BROKEN])
+    registry = JobRegistry(lambda: result)
+    done = registry.wait(registry.submit().id, timeout=5)
+
+    assert done.status == "failed"
+    assert done.failed_indicators == [BROKEN]
 
 
 def test_jobs_run_one_at_a_time_in_order():

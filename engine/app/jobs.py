@@ -63,15 +63,26 @@ class JobRegistry:
             log.exception("rescore job %s failed", job_id)
             self._update(job_id, status="failed", finished_at=_now(), error=f"{type(e).__name__}: {e}")
             return
-        log.info(
-            "rescore job %s succeeded: %d Gaps written, %d removed, engine_version %s",
-            job_id, result.gaps_written, result.gaps_removed, result.engine_version,
+        if not result.failures:
+            status, error = "succeeded", None
+        elif result.indicators_scored > 0:
+            status, error = "partial", f"{len(result.failures)} indicator(s) failed and kept their previous Gaps"
+        else:
+            status, error = "failed", "Every indicator failed to score; every previous Gap is unchanged"
+        log.log(
+            logging.INFO if status == "succeeded" else logging.WARNING,
+            "rescore job %s %s: %d Gaps written, %d removed, %d indicator(s) scored, failed: %s, engine_version %s",
+            job_id, status, result.gaps_written, result.gaps_removed, result.indicators_scored,
+            [f.code for f in result.failures] or "none", result.engine_version,
         )
         self._update(
             job_id,
-            status="succeeded",
+            status=status,
             finished_at=_now(),
             engine_version=result.engine_version,
             gaps_written=result.gaps_written,
             gaps_removed=result.gaps_removed,
+            indicators_scored=result.indicators_scored,
+            failed_indicators=result.failures,
+            error=error,
         )

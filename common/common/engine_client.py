@@ -39,7 +39,12 @@ def rescore_and_wait(
     poll_interval_s: float = POLL_INTERVAL_S,
     sleep: Callable[[float], None] = time.sleep,
 ) -> RescoreJob:
-    """Start a rescore and poll until it finishes. Raises RescoreFailed if it fails, TimeoutError if it doesn't finish."""
+    """Start a rescore and poll until it finishes.
+
+    Returns the job when it `succeeded` or was `partial` (check `failed_indicators`).
+    Raises RescoreFailed if it `failed`, TimeoutError if it doesn't finish, and
+    OSError (urllib.error.URLError) if `engine` can't be reached.
+    """
     job = start_rescore(engine_url)
     waited = 0.0
     while not job.done:
@@ -48,6 +53,6 @@ def rescore_and_wait(
         sleep(poll_interval_s)
         waited += poll_interval_s
         job = get_job(engine_url, job.id)
-    if job.status != "succeeded":
+    if job.status == "failed":
         raise RescoreFailed(job)
     return job

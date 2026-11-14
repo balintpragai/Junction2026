@@ -52,6 +52,17 @@ def test_polls_until_succeeded(engine):
     assert seen == ["POST /jobs/rescore", "GET /jobs/j1", "GET /jobs/j1"]
 
 
+def test_partial_job_is_returned_not_raised(engine):
+    url, responses, _ = engine
+    failure = {"code": "3336", "error": "ZeroDivisionError: division by zero"}
+    responses += [job("queued"), job("partial", gaps_written=9, failed_indicators=[failure])]
+
+    done = rescore_and_wait(url, sleep=lambda _: None)
+
+    assert done.status == "partial"
+    assert [f.code for f in done.failed_indicators] == ["3336"]
+
+
 def test_failed_job_raises_with_the_job(engine):
     url, responses, _ = engine
     responses += [job("queued"), job("failed", error="RuntimeError: boom")]

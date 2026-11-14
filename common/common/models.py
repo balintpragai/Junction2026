@@ -209,7 +209,14 @@ class NarrativeResult(ContractModel):
 
 # --- engine jobs (internal: seed / operator -> engine) -----------------------
 
-JobStatus = Literal["queued", "running", "succeeded", "failed"]
+JobStatus = Literal["queued", "running", "succeeded", "partial", "failed"]
+"""`partial`: some indicators failed to score and kept their previous Gaps; the rest were scored.
+`failed`: nothing was scored; every previous Gap is unchanged."""
+
+
+class IndicatorFailure(ContractModel):
+    code: str = Field(description="Indicator id that failed to score.")
+    error: str
 
 
 class RescoreJob(ContractModel):
@@ -221,17 +228,21 @@ class RescoreJob(ContractModel):
     started_at: datetime | None = None
     finished_at: datetime | None = None
     engine_version: str | None = Field(
-        default=None, description="Written to every Gap the job stored. Set when the job succeeds."
+        default=None, description="Written to every Gap the job stored. Set when the job finishes writing."
     )
     gaps_written: int | None = Field(default=None, description="Gaps upserted into fact_gap_score.")
     gaps_removed: int | None = Field(
         default=None, description="Stale Gaps deleted because their value is no longer in the data."
     )
+    indicators_scored: int | None = None
+    failed_indicators: list[IndicatorFailure] = Field(
+        default_factory=list, description="Indicators skipped this run; each keeps its previous Gaps."
+    )
     error: str | None = None
 
     @property
     def done(self) -> bool:
-        return self.status in ("succeeded", "failed")
+        return self.status in ("succeeded", "partial", "failed")
 
 
 # --- Misc -------------------------------------------------------------------

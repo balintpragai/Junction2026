@@ -39,7 +39,9 @@ def find(rows, indicator_code, region_code, year):
 
 @pytest.fixture(scope="module")
 def rows():
-    return compute_gaps(inputs(), THRESHOLDS)
+    result = compute_gaps(inputs(), THRESHOLDS)
+    assert (result.failures, result.indicators_scored) == ([], len(INDICATORS))
+    return result.rows
 
 
 def test_helsinki_breast_screening_2024_matches_the_scoring_test(rows):
@@ -84,14 +86,46 @@ def test_missing_years_produce_no_row(rows):
 
 
 def test_stored_value_notes_come_first_then_scoring_notes():
-    stored = DataQualityNote(code="short_history", message="Only 2022-24.")
-    rows = compute_gaps(inputs(value_notes={("6103", HELSINKI, 2024): [stored]}), THRESHOLDS)
+    stored = {"code": "short_history", "message": "Only 2022-24."}
+    rows = compute_gaps(inputs(value_notes={("6103", HELSINKI, 2024): [stored]}), THRESHOLDS).rows
     notes = find(rows, "6103", HELSINKI, 2024).data_quality_notes
+    assert notes[0] == DataQualityNote(**stored)
     assert [n.code for n in notes] == ["short_history", "trend_unavailable"]
 
 
+# --- One indicator failing does not stop the others -----------------------------
+
+
+def test_malformed_stored_note_fails_only_its_indicator(rows):
+    bad = {"code": "x", "message": "y", "unexpected": 1}  # DataQualityNote forbids extra keys
+    result = compute_gaps(inputs(value_notes={("3621", HELSINKI, 2024): [bad]}), THRESHOLDS)
+
+    [failure] = result.failures
+    assert failure.code == "3621"
+    assert failure.error.startswith("ValidationError")
+    assert result.indicators_scored == len(INDICATORS) - 1
+    # Not one row of the failed indicator is kept, even years before the bad note.
+    assert not [r for r in result.rows if r.gap.indicator_code == "3621"]
+    assert result.rows == [r for r in rows if r.gap.indicator_code != "3621"]
+
+
+def test_score_raising_fails_only_its_indicator(monkeypatch):
+    import app.rescore
+
+    def flaky_score(indicator, *args):
+        if indicator.code == "3336":
+            raise ZeroDivisionError("division by zero")
+        return score(indicator, *args)
+
+    monkeypatch.setattr(app.rescore, "score", flaky_score)
+    result = compute_gaps(inputs(), THRESHOLDS)
+
+    assert [(f.code, f.error) for f in result.failures] == [("3336", "ZeroDivisionError: division by zero")]
+    assert {r.gap.indicator_code for r in result.rows} == set(INDICATORS) - {"3336"}
+
+
 def test_output_is_deterministic_and_ordered(rows):
-    assert compute_gaps(inputs(), THRESHOLDS) == rows
+    assert compute_gaps(inputs(), THRESHOLDS).rows == rows
     keys = [(r.gap.indicator_code, r.gap.year, r.gap.region_code) for r in rows]
     assert keys == sorted(keys)
 

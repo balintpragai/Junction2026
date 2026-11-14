@@ -4,6 +4,7 @@
 
 `engine` publishes no port, so this runs inside its container and calls the
 running service on localhost. Prints the final job status as JSON.
+Exit code: 0 succeeded, 2 partial (see failed_indicators), 1 failed.
 """
 
 import sys
@@ -18,7 +19,7 @@ def main(engine_url: str = "http://localhost:8000") -> int:
         print(e.job.model_dump_json(indent=2))
         return 1
     print(job.model_dump_json(indent=2))
-    return 0
+    return 2 if job.status == "partial" else 0
 
 
 if __name__ == "__main__":
