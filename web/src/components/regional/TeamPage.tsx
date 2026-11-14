@@ -32,10 +32,9 @@ export function TeamPage() {
 
   return (
     <RoleGate allow="regional">
-      <header style={{ marginBottom: 18 }}>
-        <p className="eyebrow">Team</p>
-        <h1 style={{ fontSize: "clamp(1.6rem, 3vw, 2.1rem)", marginTop: 7 }}>Who is carrying what</h1>
-        <p className="lede" style={{ marginTop: 8 }}>
+      <header style={{ marginBottom: 16 }}>
+        <h1 style={{ fontSize: "clamp(1.35rem, 2.4vw, 1.7rem)" }}>Who is carrying what</h1>
+        <p style={{ color: "var(--ink-2)", marginTop: 5, fontSize: 13.5, maxWidth: "78ch" }}>
           Open work across every directive issued to {account.org}. A national playbook names a function; this is
           the person who holds it here.
         </p>
@@ -61,7 +60,6 @@ export function TeamPage() {
                     placeItems: "center",
                     fontSize: 12.5,
                     fontWeight: 700,
-                    fontFamily: "var(--font-mono)",
                     flex: "none",
                   }}
                 >
@@ -75,8 +73,8 @@ export function TeamPage() {
 
               <div className="row" style={{ gap: 7, marginTop: 12, flexWrap: "wrap" }}>
                 <span className="tag">{work.length} open</span>
-                <span className="tag">{days}d assigned</span>
-                <span className="tag">{m.baseLoad}d existing</span>
+                <span className="tag">{days} {days === 1 ? "day" : "days"} assigned</span>
+                <span className="tag">{m.baseLoad} {m.baseLoad === 1 ? "day" : "days"} existing</span>
                 {blocked > 0 && <span className="tag tag-act">{blocked} blocked</span>}
               </div>
 
@@ -86,9 +84,9 @@ export function TeamPage() {
                     <div key={i} className="sunk" style={{ padding: "8px 10px" }}>
                       <p style={{ fontSize: 12, fontWeight: 650, lineHeight: 1.35 }}>{w.title}</p>
                       <p className="truncate" style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 2 }}>
-                        {w.directive} · {w.days}d
-                        {w.status === "active" && <strong style={{ color: "var(--watch)" }}> · in progress</strong>}
-                        {w.status === "blocked" && <strong style={{ color: "var(--act)" }}> · blocked</strong>}
+                        {w.directive}, {w.days} {w.days === 1 ? "day" : "days"}
+                        {w.status === "active" && <strong style={{ color: "var(--watch)" }}>, in progress</strong>}
+                        {w.status === "blocked" && <strong style={{ color: "var(--act)" }}>, blocked</strong>}
                       </p>
                     </div>
                   ))}

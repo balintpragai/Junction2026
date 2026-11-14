@@ -11,6 +11,12 @@ const MIN_K = 1;
 const MAX_K = 9;
 /** Past this zoom the Regions are big enough to carry their own labels. */
 const LABEL_K = 2.1;
+/** Regions whose drawn shape is too small to be a dependable pointer
+ *  target at low zoom. */
+/* Ordered back-to-front: Helsinki has the smallest real outline of the
+   three and is the most often wanted, so it is drawn last and wins any
+   overlap. */
+const SMALL_REGIONS = ["keski-uusimaa", "vantaa-kerava", "helsinki"];
 
 interface View {
   x: number;
@@ -46,7 +52,7 @@ export function DecisionMap({
   formatTick?: (v: number) => string;
   selected: string | null;
   onSelect: (code: string) => void;
-  height?: number;
+  height?: number | string;
 }) {
   const [view, setView] = useState<View>(FIT);
   const [hover, setHover] = useState<{ code: string; x: number; y: number } | null>(null);
@@ -109,7 +115,11 @@ export function DecisionMap({
 
   function onPointerDown(e: React.PointerEvent) {
     if (e.button !== 0) return;
-    (e.currentTarget as Element).setPointerCapture(e.pointerId);
+    // Deliberately NOT capturing the pointer here. Capturing on pointerdown
+    // retargets the subsequent click event to the capturing element, so
+    // every click landed on the <svg> instead of the Region path under the
+    // cursor and selecting a Region silently did nothing. Capture is taken
+    // below, only once a real drag begins.
     dragFrom.current = { px: e.clientX, py: e.clientY, vx: view.x, vy: view.y };
   }
 
@@ -121,7 +131,17 @@ export function DecisionMap({
     const rect = svg.getBoundingClientRect();
     const dx = ((e.clientX - from.px) / rect.width) * vw;
     const dy = ((e.clientY - from.py) / rect.height) * vh;
-    if (!dragging && Math.hypot(e.clientX - from.px, e.clientY - from.py) > 3) setDragging(true);
+    if (!dragging && Math.hypot(e.clientX - from.px, e.clientY - from.py) > 3) {
+      setDragging(true);
+      // Now that this is a drag and not a click, capture so the pan keeps
+      // tracking if the pointer leaves the map.
+      try {
+        (e.currentTarget as Element).setPointerCapture(e.pointerId);
+      } catch {
+        // Capture can be refused if the pointer is already gone; panning
+        // still works inside the element without it.
+      }
+    }
     setView((v) => clamp({ ...v, x: from.vx - dx, y: from.vy - dy }));
   }
 
@@ -130,7 +150,8 @@ export function DecisionMap({
     // Cleared on the next frame so the click that ends a drag doesn't also
     // select whatever Region the pointer happens to be over.
     if (dragging) requestAnimationFrame(() => setDragging(false));
-    (e.currentTarget as Element).releasePointerCapture?.(e.pointerId);
+    const el = e.currentTarget as Element;
+    if (el.hasPointerCapture?.(e.pointerId)) el.releasePointerCapture(e.pointerId);
   }
 
   /** Frame one Region — used by the control's "focus selection" and by a
@@ -167,7 +188,11 @@ export function DecisionMap({
   const showLabels = view.k >= LABEL_K;
 
   return (
-    <div style={{ position: "relative", height, borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--bg-sunk)" }}>
+    <div
+      className="map-frame"
+      style={{ position: "relative", height, borderRadius: 12, overflow: "hidden", background: "var(--bg-sunk)" }}
+    >
+      <style>{`@media (max-width: 1080px) { .map-frame { height: 380px !important; } }`}</style>
       <svg
         ref={svgRef}
         viewBox={`${view.x} ${view.y} ${vw} ${vh}`}
@@ -228,24 +253,30 @@ export function DecisionMap({
           );
         })}
 
-        {/* Helsinki's real shape is correct but small (a city, not a county) --
-            an invisible larger hit-area keeps it clickable when zoomed out
-            without changing what's drawn. It shrinks as you zoom in, so it
-            never covers its neighbours once they're big enough to hit. */}
-        {FINLAND_CENTROIDS.helsinki && view.k < 4 && (
-          <circle
-            cx={FINLAND_CENTROIDS.helsinki[0]}
-            cy={FINLAND_CENTROIDS.helsinki[1]}
-            r={9 / view.k}
-            fill="transparent"
-            aria-hidden="true"
-            style={{ cursor: "pointer" }}
-            onPointerEnter={(e) => setHover({ code: "helsinki", x: e.clientX, y: e.clientY })}
-            onClick={() => {
-              if (!dragging) onSelect("helsinki");
-            }}
-          />
-        )}
+        {/* The capital-area Regions are cities, not counties: their real
+            outlines are correct but only a few pixels across when zoomed
+            out. An invisible circle keeps each reliably clickable, and
+            shrinks away once the shapes themselves are big enough to hit. */}
+        {view.k < 4 &&
+          SMALL_REGIONS.map((code) => {
+            const c = FINLAND_CENTROIDS[code];
+            if (!c || !regions.some((r) => r.code === code)) return null;
+            return (
+              <circle
+                key={`hit-${code}`}
+                cx={c[0]}
+                cy={c[1]}
+                r={6 / view.k}
+                fill="transparent"
+                aria-hidden="true"
+                style={{ cursor: "pointer" }}
+                onPointerEnter={(e) => setHover({ code, x: e.clientX, y: e.clientY })}
+                onClick={() => {
+                  if (!dragging) onSelect(code);
+                }}
+              />
+            );
+          })}
 
         {showLabels &&
           regions.map((region) => {
@@ -276,7 +307,7 @@ export function DecisionMap({
                     textAnchor="middle"
                     style={{
                       fontSize: 9.5 / view.k,
-                      fontFamily: "var(--font-mono)",
+                      fontVariantNumeric: "tabular-nums",
                       fill: "var(--ink-2)",
                       paintOrder: "stroke",
                       stroke: "var(--card)",
@@ -317,16 +348,15 @@ export function DecisionMap({
           position: "absolute",
           right: 14,
           bottom: 12,
-          fontSize: 10.5,
-          fontFamily: "var(--font-mono)",
+          fontSize: 11,
           color: "var(--ink-3)",
-          background: "rgba(255,255,255,0.8)",
-          padding: "3px 8px",
+          background: "rgba(255,255,255,0.82)",
+          padding: "3px 9px",
           borderRadius: 6,
           pointerEvents: "none",
         }}
       >
-        drag to pan · scroll to zoom · double-click a Region to frame it
+        Drag to pan, scroll to zoom, double-click to frame a Region
       </p>
 
       <style>{`
@@ -396,19 +426,8 @@ function Legend({ min, max, unit, format }: { min: number; max: number; unit: st
         padding: "10px 12px",
       }}
     >
-      <p
-        style={{
-          fontSize: 9.5,
-          fontFamily: "var(--font-mono)",
-          color: "var(--ink-3)",
-          textTransform: "uppercase",
-          letterSpacing: "0.04em",
-          marginBottom: 7,
-          maxWidth: 92,
-          lineHeight: 1.25,
-        }}
-      >
-        {unit}
+      <p style={{ fontSize: 11, color: "var(--ink-2)", marginBottom: 7, maxWidth: 118, lineHeight: 1.3 }}>
+        {unit.charAt(0).toUpperCase() + unit.slice(1)}
       </p>
       <div style={{ display: "flex", gap: 10 }}>
       <div
@@ -424,7 +443,7 @@ function Legend({ min, max, unit, format }: { min: number; max: number; unit: st
       />
       <div className="col" style={{ justifyContent: "space-between", height: 112 }}>
         {values.map((v, i) => (
-          <span key={i} className="mono" style={{ fontSize: 11, color: "var(--ink-2)", lineHeight: 1 }}>
+          <span key={i} className="tnum" style={{ fontSize: 11, color: "var(--ink-2)", lineHeight: 1 }}>
             {format(v)}
           </span>
         ))}

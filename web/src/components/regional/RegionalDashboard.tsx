@@ -8,6 +8,8 @@ import { allSteps, criticalPathDays, uniqueCounterparties } from "@/lib/playbook
 import {
   progressOf,
   useProgram,
+  dueLabel,
+  isOverdue,
   STATUS_LABEL,
   STATUS_TONE,
   type Directive,
@@ -54,6 +56,7 @@ export function RegionalDashboard() {
       awaiting: sorted.filter((d) => d.status === "issued").length,
       active: steps.filter((s) => s.status === "active").length,
       blocked: steps.filter((s) => s.status === "blocked").length,
+      overdue: sorted.filter(isOverdue).length,
       unassigned: sorted
         .filter((d) => d.status !== "complete")
         .flatMap((d) => d.steps)
@@ -69,12 +72,10 @@ export function RegionalDashboard() {
 
   return (
     <RoleGate allow="regional">
-      <header style={{ marginBottom: 18 }}>
-        <p className="eyebrow">Regional workspace</p>
-        <h1 style={{ fontSize: "clamp(1.6rem, 3vw, 2.1rem)", marginTop: 7 }}>{account.org}</h1>
-        <p className="lede" style={{ marginTop: 8 }}>
-          Directives issued to this Region by the national cancer programme. The State set the outcome; the working
-          detail — who does what, in which order, with which institution — is yours.
+      <header style={{ marginBottom: 16 }}>
+        <h1 style={{ fontSize: "clamp(1.35rem, 2.4vw, 1.7rem)" }}>{account.org}</h1>
+        <p style={{ color: "var(--ink-2)", marginTop: 5, fontSize: 13.5, maxWidth: "78ch" }}>
+          The State sets the outcome. Who does what, in which order and with which institution is yours.
         </p>
       </header>
 
@@ -84,6 +85,7 @@ export function RegionalDashboard() {
         <Stat value={String(stats.active)} label={plural(stats.active, "step")} />
         <Stat value={String(stats.unassigned)} label={`${stats.unassigned === 1 ? "step" : "steps"} unassigned`} tone={stats.unassigned > 0 ? "watch" : undefined} />
         <Stat value={String(stats.blocked)} label="blocked" tone={stats.blocked > 0 ? "act" : undefined} />
+        <Stat value={String(stats.overdue)} label="past the response window" tone={stats.overdue > 0 ? "act" : undefined} />
       </div>
 
       {sorted.length === 0 ? (
@@ -100,7 +102,7 @@ export function RegionalDashboard() {
           style={{ display: "grid", gridTemplateColumns: "minmax(0, 330px) minmax(0, 1fr)", gap: 20, alignItems: "flex-start" }}
         >
           <div className="col" style={{ gap: 9, position: "sticky", top: 78 }}>
-            <p className="section-title">Inbox</p>
+            <h2 style={{ fontSize: 12.5, color: "var(--ink-2)" }}>Inbox</h2>
             {sorted.map((d) => (
               <DirectiveRow key={d.id} directive={d} active={selected?.id === d.id} onClick={() => select(d)} />
             ))}
@@ -112,7 +114,7 @@ export function RegionalDashboard() {
 
       <style>{`
         @media (max-width: 1040px) {
-          .regional-grid { grid-template-columns: 1fr !important; }
+          .regional-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .regional-grid > div:first-child { position: static !important; }
         }
       `}</style>
@@ -122,6 +124,7 @@ export function RegionalDashboard() {
 
 function DirectiveRow({ directive, active, onClick }: { directive: Directive; active: boolean; onClick: () => void }) {
   const { pct, done, total } = progressOf(directive);
+  const due = dueLabel(directive);
   const isNew = directive.status === "issued";
   return (
     <button
@@ -148,8 +151,19 @@ function DirectiveRow({ directive, active, onClick }: { directive: Directive; ac
         >
           <span style={{ display: "block", width: `${pct}%`, height: "100%", background: pct === 100 ? "var(--good)" : "var(--accent)" }} />
         </span>
-        <span className="mono" style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 4, display: "block" }}>
-          {done}/{total} steps · issued {relative(directive.issuedAt)}
+        <span style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 4, display: "block" }}>
+          {done} of {total} steps, issued {relative(directive.issuedAt)}
+        </span>
+        <span
+          style={{
+            fontSize: 10.5,
+            marginTop: 2,
+            display: "block",
+            fontWeight: due.overdue ? 650 : 400,
+            color: due.overdue ? "var(--act)" : "var(--ink-3)",
+          }}
+        >
+          {due.text}
         </span>
       </span>
     </button>
@@ -162,6 +176,7 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
   const phases = useMemo(() => phasesFor(directive), [directive, phasesFor]);
   const team = useMemo(() => teamFor(directive.regionCode), [directive.regionCode]);
   const { pct, done, total } = progressOf(directive);
+  const detailDue = dueLabel(directive);
   const needsAssigning = directive.steps.some((s) => !s.assigneeId && s.status !== "done");
   const parties = uniqueCounterparties(phases);
 
@@ -178,7 +193,7 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
         }}
       >
         <div className="row" style={{ gap: 7, flexWrap: "wrap", marginBottom: 9 }}>
-          <span className="eyebrow">From the national programme</span>
+          <span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)" }}>From the national programme</span>
           <span className={PRIORITY_TAG[directive.priority]} style={{ marginLeft: "auto" }}>
             {directive.priority}
           </span>
@@ -187,9 +202,21 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
         <p style={{ fontSize: 14, color: "var(--ink)", marginTop: 9, lineHeight: 1.6 }}>
           <strong>Asked of this Region:</strong> {directive.mandate}
         </p>
+        <p
+          style={{
+            fontSize: 12.5,
+            marginTop: 9,
+            fontWeight: detailDue.overdue ? 650 : 500,
+            color: detailDue.overdue ? "var(--act)" : "var(--ink-2)",
+          }}
+        >
+          {directive.priority === "urgent" ? "Urgent" : directive.priority === "high" ? "High priority" : "Routine"} —{" "}
+          {detailDue.text}, by {new Date(directive.dueAt).toLocaleDateString("en-GB", { day: "numeric", month: "long" })}.
+        </p>
+
         <details style={{ marginTop: 11 }}>
           <summary style={{ fontSize: 12, fontWeight: 650, cursor: "pointer", color: "var(--ink-2)" }}>
-            The evidence behind it ▾
+            The evidence behind it
           </summary>
           <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6 }}>{directive.evidence}</p>
           <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6 }}>{directive.action.why}</p>
@@ -202,7 +229,7 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
             <span style={{ fontSize: 12, color: "var(--ink-2)", fontWeight: 600 }}>
               {done} of {total} steps complete
             </span>
-            <span className="mono" style={{ fontSize: 12, fontWeight: 700 }}>
+            <span className="num" style={{ fontSize: 12 }}>
               {pct}%
             </span>
           </div>
@@ -210,8 +237,8 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
             <div style={{ width: `${pct}%`, height: "100%", background: pct === 100 ? "var(--good)" : "var(--accent)" }} />
           </div>
         </div>
-        <span className="mono" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-          {criticalPathDays(phases)}d · {allSteps(phases).length} steps · {parties.length} bodies
+        <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
+          {allSteps(phases).length} steps over {criticalPathDays(phases)} working days, involving {parties.length} bodies
         </span>
         {needsAssigning && (
           <button className="btn btn-primary btn-sm" onClick={() => assignAll(directive.id)} style={{ marginLeft: "auto" }}>
@@ -277,7 +304,7 @@ function Stat({ value, label, tone }: { value: string; label: string; tone?: "br
   const color = tone === "brand" ? "var(--accent)" : tone === "watch" ? "var(--watch)" : tone === "act" ? "var(--act)" : "var(--ink)";
   return (
     <div className="card" style={{ padding: "12px 14px" }}>
-      <p className="mono" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.1, color }}>
+      <p className="num" style={{ fontSize: 24, lineHeight: 1.1, color }}>
         {value}
       </p>
       <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>

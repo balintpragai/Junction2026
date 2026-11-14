@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo } from "react";
 import { RoleGate } from "@/components/RoleGate";
-import { progressOf, useProgram, STATUS_LABEL, STATUS_TONE, type Directive } from "@/lib/program";
+import { progressOf, useProgram, dueLabel, isOverdue, STATUS_LABEL, STATUS_TONE, type Directive } from "@/lib/program";
 import { criticalPathDays } from "@/lib/playbook";
 import { regionalAccountFor } from "@/lib/roles";
 
@@ -34,21 +34,20 @@ export function Programmes() {
   const totals = useMemo(() => {
     const open = directives.filter((d) => d.status !== "complete").length;
     const waiting = directives.filter((d) => d.status === "issued").length;
-    const blocked = directives.filter((d) => d.status === "blocked").length;
+    const overdue = directives.filter(isOverdue).length;
     const avg = directives.length
       ? Math.round(directives.reduce((s, d) => s + progressOf(d).pct, 0) / directives.length)
       : 0;
-    return { open, waiting, blocked, avg };
+    return { open, waiting, overdue, avg };
   }, [directives]);
 
   return (
     <RoleGate allow="state">
-      <header style={{ marginBottom: 18 }}>
-        <p className="eyebrow">Programmes</p>
-        <h1 style={{ fontSize: "clamp(1.6rem, 3vw, 2.1rem)", marginTop: 7 }}>Directives in flight</h1>
-        <p className="lede" style={{ marginTop: 8 }}>
-          Everything issued from this office, and what each Region has reported back. You see progress, not the
-          Region&rsquo;s working detail — assigning and sequencing the work is theirs to do.
+      <header style={{ marginBottom: 16 }}>
+        <h1 style={{ fontSize: "clamp(1.35rem, 2.4vw, 1.7rem)" }}>Directives in flight</h1>
+        <p style={{ color: "var(--ink-2)", marginTop: 5, fontSize: 13.5, maxWidth: "78ch" }}>
+          What each Region has reported back. You see progress, not their working detail — assigning and sequencing
+          the work is theirs to do.
         </p>
       </header>
 
@@ -68,6 +67,7 @@ export function Programmes() {
             <Stat value={String(directives.length)} label="directives issued" />
             <Stat value={String(totals.open)} label="still open" />
             <Stat value={String(totals.waiting)} label="not yet acknowledged" />
+            <Stat value={String(totals.overdue)} label="past the response window" tone={totals.overdue > 0 ? "act" : undefined} />
             <Stat value={`${totals.avg}%`} label="average progress" />
           </div>
 
@@ -89,6 +89,7 @@ export function Programmes() {
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(330px, 1fr))", gap: 12 }}>
                     {list.map((d) => {
                       const { pct, done, total } = progressOf(d);
+                      const due = dueLabel(d);
                       const blocked = d.steps.filter((s) => s.status === "blocked").length;
                       return (
                         <div key={d.id} className="card-lg" style={{ padding: 16 }}>
@@ -104,10 +105,10 @@ export function Programmes() {
 
                           <div style={{ marginTop: 12 }}>
                             <div className="row" style={{ justifyContent: "space-between", marginBottom: 5 }}>
-                              <span className="mono" style={{ fontSize: 11, color: "var(--ink-3)" }}>
-                                {done}/{total} steps reported
+                              <span style={{ fontSize: 11, color: "var(--ink-3)" }}>
+                                {done} of {total} steps reported
                               </span>
-                              <span className="mono" style={{ fontSize: 11.5, fontWeight: 700 }}>
+                              <span className="num" style={{ fontSize: 11.5 }}>
                                 {pct}%
                               </span>
                             </div>
@@ -123,8 +124,18 @@ export function Programmes() {
                           </div>
 
                           <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 9 }}>
-                            {criticalPathDays(phasesFor(d))} working days end to end ·{" "}
-                            {d.acknowledgedAt ? "acknowledged by the Region" : "awaiting acknowledgement"}
+                            {criticalPathDays(phasesFor(d))} working days of work end to end.{" "}
+                            {d.acknowledgedAt ? "Acknowledged by the Region." : "Not yet acknowledged."}
+                          </p>
+                          <p
+                            style={{
+                              fontSize: 11,
+                              marginTop: 3,
+                              fontWeight: due.overdue ? 650 : 400,
+                              color: due.overdue ? "var(--act)" : "var(--ink-3)",
+                            }}
+                          >
+                            {due.text.charAt(0).toUpperCase() + due.text.slice(1)}.
                           </p>
                         </div>
                       );
@@ -140,10 +151,10 @@ export function Programmes() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label, tone }: { value: string; label: string; tone?: "act" }) {
   return (
     <div className="card" style={{ padding: "12px 14px" }}>
-      <p className="mono" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.1 }}>
+      <p className="num" style={{ fontSize: 24, lineHeight: 1.1, color: tone === "act" ? "var(--act)" : "var(--ink)" }}>
         {value}
       </p>
       <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3 }}>{label}</p>

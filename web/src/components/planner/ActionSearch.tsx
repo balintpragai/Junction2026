@@ -39,7 +39,7 @@ export function ActionSearch({
 
   return (
     <div className="card" style={{ padding: "13px 15px" }}>
-      <label htmlFor="action-search" className="section-title" style={{ display: "block", marginBottom: 8 }}>
+      <label htmlFor="action-search" style={{ display: "block", marginBottom: 8, fontSize: 12.5, fontWeight: 600 }}>
         Add an action
       </label>
       <input
@@ -47,7 +47,8 @@ export function ActionSearch({
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder={`Search ${library.length} strategy actions…`}
+        placeholder={`Search ${library.length} strategy actions`}
+        aria-label={`Search all ${library.length} National Cancer Strategy actions`}
         style={{ width: "100%", fontSize: 13 }}
       />
 

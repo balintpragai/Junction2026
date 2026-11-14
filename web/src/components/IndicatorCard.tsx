@@ -39,7 +39,7 @@ export function IndicatorCard({ entry }: { entry: GapEntry }) {
 
       <div style={{ padding: "16px 18px", display: "flex", flexDirection: "column", gap: 10 }}>
         <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 10 }}>
-          <span className="mono" style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)" }}>
+          <span className="num" style={{ fontSize: 26, color: "var(--ink)" }}>
             {gap.value}
             {indicator.unit.startsWith("%") ? "%" : ` ${indicator.unit}`}
           </span>

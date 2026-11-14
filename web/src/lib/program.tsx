@@ -15,6 +15,44 @@ import { buildPlaybook, allSteps, type PlaybookPhase } from "@/lib/playbook";
 import { DEFAULT_ACCOUNT_ID, accountById, type Account } from "@/lib/roles";
 import { memberForFunction } from "@/lib/team";
 
+/** What each priority actually commits the Region to. Without this the
+ *  choice was cosmetic — the planner said a response window followed from
+ *  it and then no date was ever computed. */
+export const RESPONSE_WINDOW_DAYS: Record<Priority, number> = {
+  urgent: 5,
+  high: 20,
+  routine: 60,
+};
+
+/** Working days, not calendar days: a statutory response window is counted
+ *  in them, and a 5-day urgent window that silently includes a weekend is
+ *  the kind of error that loses a Region two days of a five-day clock. */
+export function addWorkingDays(from: Date, days: number): Date {
+  const d = new Date(from);
+  let left = days;
+  while (left > 0) {
+    d.setDate(d.getDate() + 1);
+    const day = d.getDay();
+    if (day !== 0 && day !== 6) left--;
+  }
+  return d;
+}
+
+export function workingDaysUntil(iso: string): number {
+  const target = new Date(iso);
+  const now = new Date();
+  const sign = target >= now ? 1 : -1;
+  const [a, b] = sign > 0 ? [now, target] : [target, now];
+  let n = 0;
+  const d = new Date(a);
+  while (d < b) {
+    d.setDate(d.getDate() + 1);
+    const day = d.getDay();
+    if (day !== 0 && day !== 6) n++;
+  }
+  return n * sign;
+}
+
 export type DirectiveStatus = "issued" | "acknowledged" | "in_progress" | "blocked" | "complete";
 export type StepStatus = "todo" | "active" | "done" | "blocked";
 export type Priority = "routine" | "high" | "urgent";
@@ -35,6 +73,9 @@ export interface Directive {
   issuedByAccountId: string;
   issuedAt: string;
   priority: Priority;
+  /** When the Region owes the State a response. Derived from `priority` at
+   *  issue time so it survives a later change to the window lengths. */
+  dueAt: string;
   /** What the State is asking for, in a sentence — the instruction itself. */
   mandate: string;
   /** The Gap that justifies it, carried along so the Region can see the case. */
@@ -53,7 +94,7 @@ export interface ProgramState {
   readIds: string[];
 }
 
-const STORAGE_KEY = "frontiers-health:program:v1";
+const STORAGE_KEY = "frontiers-health:program:v2";
 
 // --- seeding ----------------------------------------------------------------
 
@@ -140,14 +181,16 @@ export function newDirective(input: {
     status: s.level === "state" && s.id.startsWith("mandate-") ? "done" : "todo",
     assigneeId: null,
   }));
+  const issuedAt = input.issuedAt ?? new Date().toISOString();
   return {
     id: `${input.regionCode}:${input.action.id}:${Math.random().toString(36).slice(2, 8)}`,
     regionCode: input.regionCode,
     regionName: input.regionName,
     action: input.action,
     issuedByAccountId: input.issuedByAccountId,
-    issuedAt: input.issuedAt ?? new Date().toISOString(),
+    issuedAt,
     priority: input.priority,
+    dueAt: addWorkingDays(new Date(issuedAt), RESPONSE_WINDOW_DAYS[input.priority]).toISOString(),
     mandate: input.mandate,
     evidence: input.evidence,
     status: "issued",
@@ -292,6 +335,20 @@ export function useProgram(): ProgramApi {
 }
 
 // --- derived helpers --------------------------------------------------------
+
+export function isOverdue(d: Directive): boolean {
+  return d.status !== "complete" && new Date(d.dueAt) < new Date();
+}
+
+/** "in 12 working days" / "3 working days overdue" — the phrasing a
+ *  deadline needs, rather than a bare date the reader has to do maths on. */
+export function dueLabel(d: Directive): { text: string; overdue: boolean } {
+  const n = workingDaysUntil(d.dueAt);
+  if (d.status === "complete") return { text: "closed", overdue: false };
+  if (n < 0) return { text: `${Math.abs(n)} working days overdue`, overdue: true };
+  if (n === 0) return { text: "response due today", overdue: true };
+  return { text: `response due in ${n} working day${n === 1 ? "" : "s"}`, overdue: false };
+}
 
 export function progressOf(d: Directive): { done: number; total: number; pct: number } {
   const total = d.steps.length;

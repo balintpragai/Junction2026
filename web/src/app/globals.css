@@ -15,7 +15,10 @@
 
   --ink: #14181a;
   --ink-2: #565d61;
-  --ink-3: #868d90;
+  /* Checked against every surface it actually lands on, not just white:
+     the soft status washes are darker than the page and were quietly
+     pushing this below the floor. Worst case is 4.73:1 on --act-soft. */
+  --ink-3: #616769;
   --line: #e1e3dd;
   --line-strong: #cbcec6;
 
@@ -24,9 +27,10 @@
   --brand-soft: #f7e7f0;
   --brand-line: #e3bcd6;
 
-  /* The Regional role's accent. Validated against the brand rose as a
-     two-slot categorical pair (CVD dE 19.2, normal-vision dE 27.4). */
-  --region: #2a78d6;
+  /* The Regional role's accent. 4.96:1 both as text on white and under
+     white text, so it works as a label colour and as a filled avatar.
+     Validated against the brand rose as a two-slot categorical pair. */
+  --region: #245fb0;
   --region-soft: #e6effc;
   --region-line: #bcd5f4;
 
@@ -34,7 +38,7 @@
   --good-soft: #e4f3e6;
   --good-line: #bfe3c8;
 
-  --watch: #9c6a00;
+  --watch: #8e6100;
   --watch-soft: #fbeece;
   --watch-line: #f0d79c;
 
@@ -94,8 +98,19 @@ p {
   margin: 0;
 }
 
-.mono {
-  font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+/* Figures, not labels. Tabular numerals keep columns of numbers aligned,
+   which is the one job a monospace face was doing here; the rest of the
+   interface stays in the text face. */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Figures inside running text: aligned columns, same typeface as everything
+   around them. A monospace face for small data labels is a costume, not a
+   function — the alignment is the only part worth keeping. */
+.tnum {
   font-variant-numeric: tabular-nums;
 }
 
@@ -113,32 +128,9 @@ button {
 
 /* --- typographic roles ---------------------------------------------------- */
 
-.eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0;
-}
-
-.eyebrow-muted {
-  color: var(--ink-3);
-}
-
 .lede {
   color: var(--ink-2);
   max-width: 72ch;
-}
-
-.section-title {
-  font-size: 13px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-  color: var(--ink-3);
 }
 
 /* --- surfaces ------------------------------------------------------------- */
@@ -268,13 +260,11 @@ select:focus {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  border-radius: 999px;
-  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  border-radius: 5px;
+  padding: 2px 7px;
   border: 1px solid var(--line);
   color: var(--ink-3);
   background: var(--card);
@@ -374,6 +364,43 @@ summary::-webkit-details-marker {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* Present to screen readers and to the document outline, absent from the
+   screen. Used for the page title on the map, where a visible headline
+   would push the working UI down the page for no one's benefit. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- hit areas ------------------------------------------------------------
+   Controls that are visually small on purpose (a dismiss cross, a "more"
+   toggle) still need a real target. An invisible ::after overlay was the
+   tidier trick but did not hit-test reliably, so these claim actual box
+   size instead and centre their glyph inside it. */
+
+.hit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  min-height: 26px;
+}
+
+@media (pointer: coarse) {
+  .hit {
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 

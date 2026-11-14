@@ -1,14 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { DecisionMap } from "@/components/map/DecisionMap";
+import { RegionTable } from "@/components/RegionTable";
 import { RegionPanel } from "@/components/region/RegionPanel";
 import { RoleGate } from "@/components/RoleGate";
 import type { Region, RegionProfile } from "@/lib/api";
 
 /** How the map is shaded. "Indicators needing action" is the overview; the
- *  rest shade by one indicator, which is what you switch to once you want to
- *  know *which* problem is where rather than how many there are. */
+ *  rest shade by one indicator, which is what you switch to once you want
+ *  to know *which* problem is where rather than how many there are. */
 interface Metric {
   id: string;
   label: string;
@@ -22,48 +24,71 @@ function metricsFor(sample: RegionProfile | undefined): Metric[] {
   const overview: Metric = {
     id: "act",
     label: "Indicators needing action",
-    unit: "indicators in act",
+    unit: "indicators needing action",
     value: (p) => p.summary.indicators_act,
     format: (v) => String(Math.round(v)),
     describe: (p, v) => `${p.region.name} — ${v} of ${p.summary.indicators_tracked} indicators need action`,
   };
   if (!sample) return [overview];
 
-  const perIndicator: Metric[] = sample.gaps.map((g) => ({
-    id: g.indicator.code,
-    label: g.indicator.name,
-    unit: g.indicator.unit,
-    value: (p) => p.gaps.find((x) => x.indicator.code === g.indicator.code)?.gap.value ?? null,
-    format: (v) => (g.indicator.unit.startsWith("%") ? `${v.toFixed(0)}%` : v.toFixed(1)),
-    describe: (p, v) => {
-      const entry = p.gaps.find((x) => x.indicator.code === g.indicator.code);
-      const suffix = g.indicator.unit.startsWith("%") ? "%" : ` ${g.indicator.unit}`;
-      return `${p.region.name} — ${g.indicator.name}: ${v}${suffix}${entry ? ` (rank ${entry.gap.rank} of ${entry.gap.n_regions})` : ""}`;
-    },
-  }));
-
-  return [overview, ...perIndicator];
+  return [
+    overview,
+    ...sample.gaps.map((g) => ({
+      id: g.indicator.code,
+      label: g.indicator.name,
+      unit: g.indicator.unit,
+      value: (p: RegionProfile) => p.gaps.find((x) => x.indicator.code === g.indicator.code)?.gap.value ?? null,
+      format: (v: number) => (g.indicator.unit.startsWith("%") ? `${v.toFixed(0)}%` : v.toFixed(1)),
+      describe: (p: RegionProfile, v: number) => {
+        const entry = p.gaps.find((x) => x.indicator.code === g.indicator.code);
+        const suffix = g.indicator.unit.startsWith("%") ? "%" : ` ${g.indicator.unit}`;
+        return `${p.region.name} — ${g.indicator.name} ${v}${suffix}${entry ? `, ranked ${entry.gap.rank} of ${entry.gap.n_regions}` : ""}`;
+      },
+    })),
+  ];
 }
 
-/** The Decision Map: the product's front door. Every Region on one screen,
- *  shaded by whichever measure is in question, with the selected Region's
- *  full profile beside it. State Decision Makers only — a Regional account
- *  has no business reading 22 other Regions' performance. */
+/** The Decision Map: the product's front door. Every Region at once, shaded
+ *  by whichever measure is in question, with the selected Region's profile
+ *  beside it. The map answers "where"; the table beside it answers "which
+ *  are worst", which a map cannot.
+ *
+ *  State Decision Makers only — a Regional account has no business reading
+ *  22 other Regions' performance. */
 export function Explorer({ regions, profiles }: { regions: Region[]; profiles: Map<string, RegionProfile> }) {
-  const [selected, setSelected] = useState<string>(regions[0]?.code ?? "");
-  const [metricId, setMetricId] = useState("act");
+  const router = useRouter();
+  const params = useSearchParams();
   const [query, setQuery] = useState("");
+
+  // Selection and shading live in the URL, so a view can be linked and
+  // survives a reload. `replace`, not `push`: clicking twenty Regions
+  // should not bury the back button under twenty entries.
+  const selected = params.get("region") ?? regions[0]?.code ?? "";
+  const metricId = params.get("by") ?? "act";
+  const view = params.get("view") === "table" ? "table" : "map";
+
+  const setParam = useCallback(
+    (key: string, value: string) => {
+      const next = new URLSearchParams(params.toString());
+      next.set(key, value);
+      router.replace(`?${next.toString()}`, { scroll: false });
+    },
+    [params, router],
+  );
+  const setSelected = useCallback((code: string) => setParam("region", code), [setParam]);
 
   const metrics = useMemo(() => metricsFor(profiles.values().next().value), [profiles]);
   const metric = metrics.find((m) => m.id === metricId) ?? metrics[0];
   const current = profiles.get(selected);
 
-  const worst = useMemo(() => {
-    let best: RegionProfile | null = null;
+  const { worst, totalAct } = useMemo(() => {
+    let w: RegionProfile | null = null;
+    let n = 0;
     for (const p of profiles.values()) {
-      if (!best || p.summary.indicators_act > best.summary.indicators_act) best = p;
+      n += p.summary.indicators_act;
+      if (!w || p.summary.indicators_act > w.summary.indicators_act) w = p;
     }
-    return best;
+    return { worst: w, totalAct: n };
   }, [profiles]);
 
   const matches = useMemo(() => {
@@ -72,36 +97,47 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
     return regions.filter((r) => r.name.toLowerCase().includes(q)).slice(0, 6);
   }, [query, regions]);
 
-  const totalAct = useMemo(() => {
-    let n = 0;
-    for (const p of profiles.values()) n += p.summary.indicators_act;
-    return n;
-  }, [profiles]);
-
   return (
     <RoleGate allow="state">
-      <header style={{ marginBottom: 18 }}>
-        <p className="eyebrow">Decision Map</p>
-        <h1 style={{ fontSize: "clamp(1.7rem, 3vw, 2.2rem)", marginTop: 7 }}>
-          Where cancer care falls short of target
-        </h1>
-        <p className="lede" style={{ marginTop: 8 }}>
-          Every Region in Finland, shaded by the measure you choose. {totalAct} indicator readings across{" "}
-          {profiles.size} Regions currently sit in <strong>act</strong>. No Region is uniformly the problem — click one
-          to see which indicators, specifically, and what the data says is behind them.
-        </p>
-      </header>
+      {/* No visible headline. A console opens on the work, not on a title
+          card explaining it — the explanation sits at the foot of the page
+          for whoever wants it. The h1 stays for the document outline. */}
+      <h1 className="sr-only">Decision map: where cancer care falls short of target</h1>
 
-      {/* Controls sit in one row above the map, never floating over it. */}
       <div
-        className="card"
-        style={{ padding: "11px 14px", marginBottom: 14, display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}
+        style={{
+          position: "sticky",
+          top: 60,
+          zIndex: 20,
+          background: "var(--bg)",
+          paddingBlock: 10,
+          marginTop: -10,
+          marginBottom: 12,
+        }}
       >
+      <div
+        style={{
+          display: "flex",
+          gap: 10,
+          alignItems: "center",
+          flexWrap: "wrap",
+          padding: "10px 12px",
+          background: "var(--card)",
+          border: "1px solid var(--line)",
+          borderRadius: 12,
+        }}
+      >
+        <ViewToggle view={view} onChange={(v) => setParam("view", v)} />
+
+        <span style={{ width: 1, height: 22, background: "var(--line)" }} aria-hidden="true" />
+
         <label className="row" style={{ gap: 8 }}>
-          <span className="section-title" style={{ fontSize: 11 }}>
-            Shade by
-          </span>
-          <select value={metricId} onChange={(e) => setMetricId(e.target.value)} style={{ padding: "7px 10px", fontSize: 13 }}>
+          <span style={{ fontSize: 12.5, color: "var(--ink-2)" }}>Shade by</span>
+          <select
+            value={metricId}
+            onChange={(e) => setParam("by", e.target.value)}
+            style={{ padding: "7px 10px", fontSize: 13, minHeight: 34 }}
+          >
             {metrics.map((m) => (
               <option key={m.id} value={m.id}>
                 {m.label}
@@ -110,17 +146,30 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
           </select>
         </label>
 
-        <div style={{ position: "relative", minWidth: 210, flex: "1 1 210px", maxWidth: 320 }}>
+        <div style={{ position: "relative", minWidth: 190, flex: "1 1 190px", maxWidth: 300 }}>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Find a Region…"
-            aria-label="Find a Region"
-            style={{ width: "100%", padding: "7px 11px", fontSize: 13 }}
+            placeholder="Find a Region"
+            aria-label="Find a Region by name"
+            style={{ width: "100%", padding: "7px 11px", fontSize: 13, minHeight: 34 }}
           />
           {matches.length > 0 && (
-            <div className="card-lg" style={{ position: "absolute", top: "calc(100% + 5px)", left: 0, right: 0, zIndex: 30, padding: 5, boxShadow: "var(--shadow-pop)" }}>
+            <div
+              style={{
+                position: "absolute",
+                top: "calc(100% + 5px)",
+                left: 0,
+                right: 0,
+                zIndex: 30,
+                padding: 5,
+                background: "var(--card)",
+                border: "1px solid var(--line-strong)",
+                borderRadius: 10,
+                boxShadow: "var(--shadow-pop)",
+              }}
+            >
               {matches.map((r) => (
                 <button
                   key={r.code}
@@ -128,7 +177,18 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
                     setSelected(r.code);
                     setQuery("");
                   }}
-                  style={{ display: "block", width: "100%", textAlign: "left", border: "none", background: "transparent", borderRadius: 7, padding: "7px 9px", fontSize: 13, cursor: "pointer" }}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    minHeight: 32,
+                    textAlign: "left",
+                    border: "none",
+                    background: "transparent",
+                    borderRadius: 7,
+                    padding: "7px 9px",
+                    fontSize: 13,
+                    cursor: "pointer",
+                  }}
                 >
                   {r.name}
                 </button>
@@ -139,57 +199,136 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
 
         {worst && (
           <button
-            className="btn btn-quiet btn-sm"
             onClick={() => setSelected(worst.region.code)}
-            style={{ marginLeft: "auto" }}
+            style={{
+              marginLeft: "auto",
+              minHeight: 34,
+              padding: "6px 10px",
+              border: "1px solid var(--line)",
+              borderRadius: 8,
+              background: "transparent",
+              fontSize: 12.5,
+              color: "var(--ink-2)",
+              cursor: "pointer",
+            }}
           >
-            Most in act: <strong style={{ color: "var(--act)" }}>{worst.region.name}</strong> ({worst.summary.indicators_act})
+            Worst overall is{" "}
+            <strong style={{ color: "var(--act)" }}>{shortRegion(worst.region.name)}</strong>, with{" "}
+            {worst.summary.indicators_act}
           </button>
         )}
       </div>
+      </div>
 
-      <div
-        className="decision-grid"
-        style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.05fr) minmax(0, 1fr)", gap: 22, alignItems: "flex-start" }}
-      >
-        <div className="decision-map-col" style={{ position: "sticky", top: 78 }}>
-          <div className="card-lg" style={{ padding: 10 }}>
-            <DecisionMap
-              regions={regions}
-              value={(code) => {
-                const p = profiles.get(code);
-                return p ? metric.value(p) : null;
-              }}
-              label={(code) => {
-                const p = profiles.get(code);
-                if (!p) return "No data";
-                const v = metric.value(p);
-                return v == null ? `${p.region.name} — no data` : metric.describe(p, v);
-              }}
-              unit={metric.unit}
-              formatTick={metric.format}
-              selected={selected}
-              onSelect={setSelected}
-              height={580}
-            />
+      {view === "table" ? (
+        <div className="col" style={{ gap: 18 }}>
+          <RegionTable regions={regions} profiles={profiles} selected={selected} onSelect={setSelected} />
+          {current && <RegionPanel profile={current} all={profiles} onPick={setSelected} />}
+        </div>
+      ) : (
+        <div
+          className="explorer-grid"
+          style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.05fr) minmax(0, 1fr)", gap: 22, alignItems: "flex-start" }}
+        >
+          {/* On a narrow screen the map stacks above the panel, which breaks
+              the interaction: a click updates content the reader cannot see.
+              There it becomes a shorter, scroll-with-the-page strip and the
+              profile follows immediately underneath. */}
+          <div className="explorer-map" style={{ position: "sticky", top: 16 }}>
+            <div style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 16, padding: 10, boxShadow: "var(--shadow-card)" }}>
+              <DecisionMap
+                regions={regions}
+                value={(code) => {
+                  const p = profiles.get(code);
+                  return p ? metric.value(p) : null;
+                }}
+                label={(code) => {
+                  const p = profiles.get(code);
+                  if (!p) return "No data";
+                  const v = metric.value(p);
+                  return v == null ? `${p.region.name} has no reading` : metric.describe(p, v);
+                }}
+                unit={metric.unit}
+                formatTick={metric.format}
+                selected={selected}
+                onSelect={setSelected}
+                height="clamp(360px, calc(100vh - 190px), 780px)"
+              />
+            </div>
+          </div>
+
+          <div>
+            {current ? (
+              <RegionPanel profile={current} all={profiles} onPick={setSelected} />
+            ) : (
+              <p style={{ color: "var(--ink-3)" }}>Pick a Region on the map.</p>
+            )}
           </div>
         </div>
+      )}
 
-        <div>
-          {current ? (
-            <RegionPanel profile={current} all={profiles} onPick={setSelected} />
-          ) : (
-            <p style={{ color: "var(--ink-3)" }}>Select a Region on the map.</p>
-          )}
-        </div>
-      </div>
+      <p
+        style={{
+          marginTop: 28,
+          paddingTop: 14,
+          borderTop: "1px solid var(--line)",
+          fontSize: 12.5,
+          color: "var(--ink-3)",
+          maxWidth: "80ch",
+          lineHeight: 1.55,
+        }}
+      >
+        {totalAct} indicator readings across {profiles.size} Regions need action this year. No Region is uniformly
+        the problem, which is why this shows each indicator separately rather than one combined score.
+      </p>
 
       <style>{`
         @media (max-width: 1080px) {
-          .decision-grid { grid-template-columns: 1fr !important; }
-          .decision-map-col { position: static !important; }
+          .explorer-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .explorer-map { position: static !important; }
+          .explorer-map > div { padding: 6px !important; }
         }
       `}</style>
     </RoleGate>
   );
+}
+
+function ViewToggle({ view, onChange }: { view: string; onChange: (v: string) => void }) {
+  return (
+    <div
+      role="group"
+      aria-label="View"
+      style={{ display: "flex", gap: 2, padding: 2, background: "var(--bg)", border: "1px solid var(--line)", borderRadius: 9 }}
+    >
+      {(["map", "table"] as const).map((v) => {
+        const on = view === v;
+        return (
+          <button
+            key={v}
+            onClick={() => onChange(v)}
+            aria-pressed={on}
+            style={{
+              minHeight: 30,
+              padding: "5px 13px",
+              border: "none",
+              borderRadius: 7,
+              background: on ? "var(--card)" : "transparent",
+              boxShadow: on ? "0 1px 2px rgba(18,22,26,0.1)" : "none",
+              color: on ? "var(--ink)" : "var(--ink-2)",
+              fontWeight: on ? 650 : 450,
+              fontSize: 12.5,
+              cursor: "pointer",
+              textTransform: "capitalize",
+            }}
+          >
+            {v}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function shortRegion(name: string) {
+  return name.replace(/ wellbeing services county$/, "").replace(/^City of /, "");
 }

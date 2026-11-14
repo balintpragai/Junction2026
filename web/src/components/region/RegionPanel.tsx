@@ -40,17 +40,20 @@ export function RegionPanel({
   return (
     <div className="col" style={{ gap: 18 }}>
       <header>
-        <p className="eyebrow">Region profile · {profile.year}</p>
-        <h2 style={{ fontSize: "1.65rem", marginTop: 6 }}>{region.name}</h2>
-        <div className="row" style={{ marginTop: 10, flexWrap: "wrap", gap: 7 }}>
-          <span className={`tag ${summary.indicators_act > 0 ? "tag-act" : "tag-good"}`}>
-            {summary.indicators_act} need action
-          </span>
-          <span className={`tag ${summary.indicators_watch > 0 ? "tag-watch" : ""}`}>
-            {summary.indicators_watch} to watch
-          </span>
-          <span className="tag">{summary.indicators_tracked} tracked</span>
-        </div>
+        <h2 style={{ fontSize: "1.5rem" }}>{region.name}</h2>
+        <p style={{ marginTop: 5, fontSize: 13, color: "var(--ink-2)" }}>
+          Of {summary.indicators_tracked} indicators tracked in {profile.year},{" "}
+          <strong style={{ color: summary.indicators_act > 0 ? "var(--act)" : "var(--good)" }}>
+            {summary.indicators_act} {summary.indicators_act === 1 ? "needs" : "need"} action
+          </strong>
+          {summary.indicators_watch > 0 && (
+            <>
+              {" "}
+              and {summary.indicators_watch} {summary.indicators_watch === 1 ? "is" : "are"} close to target
+            </>
+          )}
+          .
+        </p>
       </header>
 
       {/* The summary description: the main thing on this panel, which is why
@@ -63,9 +66,7 @@ export function RegionPanel({
           padding: "18px 20px",
         }}
       >
-        <p className="eyebrow" style={{ marginBottom: 9 }}>
-          Summary
-        </p>
+        <h3 style={{ fontSize: 12.5, color: "var(--brand)", marginBottom: 9, letterSpacing: 0 }}>What the data says</h3>
         <div className="col" style={{ gap: 8 }}>
           {synthesis.map((s, i) => (
             <p key={i} style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink)" }}>
@@ -76,14 +77,11 @@ export function RegionPanel({
         <div className="row" style={{ marginTop: 15, gap: 10, flexWrap: "wrap" }}>
           <Link href={`/region/${region.code}/actions`} className="btn btn-dark">
             Explore actions
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
           </Link>
           {live.length > 0 && (
             <span style={{ fontSize: 12.5, color: "var(--ink-2)" }}>
-              {live.length} directive{live.length > 1 ? "s" : ""} already running here ·{" "}
-              <span className="mono">{Math.round(live.reduce((s, d) => s + progressOf(d).pct, 0) / live.length)}% complete</span>
+              {live.length} directive{live.length > 1 ? "s are" : " is"} already running here, on average{" "}
+              {Math.round(live.reduce((s, d) => s + progressOf(d).pct, 0) / live.length)}% complete.
             </span>
           )}
         </div>
@@ -148,7 +146,7 @@ export function RegionPanel({
                   return (
                     <div key={key} className="card" style={{ padding: "14px 15px" }}>
                       <p style={{ fontSize: 11.5, color: "var(--ink-3)", lineHeight: 1.35 }}>{meta.name}</p>
-                      <p className="mono" style={{ fontSize: 22, fontWeight: 800, marginTop: 5 }}>
+                      <p className="num" style={{ fontSize: 22, marginTop: 5 }}>
                         {value}
                         {suffix}
                       </p>
@@ -167,9 +165,12 @@ export function RegionPanel({
                         />
                         <div style={{ position: "absolute", left: "50%", top: -3, width: 2, height: 12, background: "var(--ink-2)" }} />
                       </div>
-                      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 7 }}>
-                        Median {meta.median}
-                        {suffix} · <strong style={{ color: above ? "var(--accent)" : "var(--ink-2)" }}>{above ? "above" : "at or below"}</strong>
+                      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 7 }}>
+                        <strong style={{ color: above ? "var(--accent)" : "var(--ink-2)" }}>
+                          {above ? "Above" : "At or below"}
+                        </strong>{" "}
+                        the {meta.median}
+                        {suffix} national median
                       </p>
                     </div>
                   );

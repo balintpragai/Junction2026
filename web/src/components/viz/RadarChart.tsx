@@ -52,9 +52,10 @@ export function RadarChart({
     <figure style={{ margin: 0 }}>
       <figcaption style={{ marginBottom: 10 }}>
         <p style={{ fontSize: 14, fontWeight: 700 }}>{regionName} against the national median</p>
-        <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 2 }}>
-          Each spoke is this Region&rsquo;s position in the national range for that indicator — 0 is the weakest of the
-          23 Regions, 100 the strongest. Hover a point for the real measurement.
+        <p style={{ fontSize: 11.5, color: "var(--ink-2)", marginTop: 3, lineHeight: 1.45 }}>
+          Distance from the centre is standing among the Regions with a reading for that indicator, not the
+          measurement itself: the centre is the weakest Region and the outer edge the strongest. Each spoke prints
+          the real figure and this Region&rsquo;s rank.
         </p>
       </figcaption>
 
@@ -83,26 +84,15 @@ export function RadarChart({
             const [x, y] = point(i, 100);
             return <line key={i} x1={CX} y1={CY} x2={x} y2={y} stroke="var(--line)" strokeWidth={1} />;
           })}
-          {RINGS.map((ring) => (
-            <text
-              key={`t-${ring}`}
-              x={CX + 3}
-              y={CY - (ring / 100) * R - 2}
-              className="mono"
-              style={{ fontSize: 8.5, fill: "var(--ink-3)" }}
-            >
-              {ring}
-            </text>
-          ))}
 
           {/* national median first, so the Region's own line sits on top */}
-          <polygon points={poly((a) => a.medianScore)} fill="rgba(42,120,214,0.10)" stroke="#2a78d6" strokeWidth={2} />
+          <polygon points={poly((a) => a.medianScore)} fill="rgba(36,95,176,0.12)" stroke="#245fb0" strokeWidth={2} />
           <polygon points={poly((a) => a.score)} fill="rgba(138,25,96,0.14)" stroke="#8a1960" strokeWidth={2.4} />
 
           {/* markers: median behind, Region in front, each with a surface ring */}
           {axes.map((a, i) => {
             const [x, y] = point(i, a.medianScore);
-            return <circle key={`m-${i}`} cx={x} cy={y} r={4} fill="#2a78d6" stroke="var(--card)" strokeWidth={2} />;
+            return <circle key={`m-${i}`} cx={x} cy={y} r={4} fill="#245fb0" stroke="var(--card)" strokeWidth={2} />;
           })}
           {axes.map((a, i) => {
             const [x, y] = point(i, a.score);
@@ -112,11 +102,15 @@ export function RadarChart({
                 key={`r-${i}`}
                 cx={x}
                 cy={y}
-                r={on ? 7 : 5}
+                r={5}
                 fill="#8a1960"
                 stroke="var(--card)"
                 strokeWidth={2}
-                style={{ transition: "r 0.12s ease" }}
+                style={{
+                  transformOrigin: `${x}px ${y}px`,
+                  transform: on ? "scale(1.4)" : "scale(1)",
+                  transition: "transform 0.12s ease",
+                }}
               />
             );
           })}
@@ -139,10 +133,9 @@ export function RadarChart({
                   x={lx}
                   y={ly + 11}
                   textAnchor={anchor}
-                  className="mono"
                   style={{ fontSize: 10, fill: hover === i ? "var(--ink)" : "var(--ink-3)" }}
                 >
-                  {formatValue(a.raw, a.unit)}
+                  {formatValue(a.raw, a.unit)} ({ordinal(a.rank)})
                 </text>
               </g>
             );
@@ -163,7 +156,7 @@ export function RadarChart({
                 style={{ cursor: "pointer" }}
               >
                 <title>
-                  {a.name}: {formatValue(a.raw, a.unit)} — rank {a.rank} of {a.nRegions}. National median{" "}
+                  {a.name}: {formatValue(a.raw, a.unit)}, {ordinal(a.rank)} of {a.nRegions} Regions. National median{" "}
                   {formatValue(a.medianRaw, a.unit)}.
                 </title>
               </circle>
@@ -171,20 +164,40 @@ export function RadarChart({
           })}
         </svg>
 
-        <div className="col" style={{ gap: 10, flex: "0 0 auto", minWidth: 150 }}>
+        {/* Fixed width, and the readout is always in the layout rather than
+            appearing on hover.
+
+            Mounting it on hover made the chart flicker: the card widened
+            this column, which shrank the SVG, which moved the vertex out
+            from under the cursor, which cleared the hover, which unmounted
+            the card and restored the layout — about sixty times a second,
+            at any width where this column was the tight one. Reserving the
+            space makes the loop impossible rather than unlikely. */}
+        <div className="col" style={{ gap: 10, flex: "0 0 176px", width: 176 }}>
           <LegendRow color="#8a1960" label={regionName} />
-          <LegendRow color="#2a78d6" label="National median" />
-          {hover != null && (
-            <div className="sunk" style={{ padding: "9px 11px", maxWidth: 190 }}>
-              <p style={{ fontSize: 11.5, fontWeight: 650 }}>{axes[hover].name}</p>
-              <p className="mono" style={{ fontSize: 15, fontWeight: 700, marginTop: 3 }}>
-                {formatValue(axes[hover].raw, axes[hover].unit)}
+          <LegendRow color="#245fb0" label="National median" />
+          <div
+            className="sunk"
+            aria-live="polite"
+            style={{ padding: "9px 11px", minHeight: 92, display: "flex", flexDirection: "column", justifyContent: "center" }}
+          >
+            {hover == null ? (
+              <p style={{ fontSize: 11.5, color: "var(--ink-3)", lineHeight: 1.45 }}>
+                Point at a spoke for the figure behind it.
               </p>
-              <p style={{ fontSize: 11, color: "var(--ink-2)", marginTop: 3 }}>
-                Rank {axes[hover].rank} of {axes[hover].nRegions} · median {formatValue(axes[hover].medianRaw, axes[hover].unit)}
-              </p>
-            </div>
-          )}
+            ) : (
+              <>
+                <p style={{ fontSize: 11.5, fontWeight: 650 }}>{axes[hover].name}</p>
+                <p style={{ fontSize: 15, fontWeight: 700, marginTop: 3 }}>
+                  {formatValue(axes[hover].raw, axes[hover].unit)}
+                </p>
+                <p style={{ fontSize: 11, color: "var(--ink-2)", marginTop: 3, lineHeight: 1.45 }}>
+                  {ordinal(axes[hover].rank)} of {axes[hover].nRegions} Regions. National median{" "}
+                  {formatValue(axes[hover].medianRaw, axes[hover].unit)}.
+                </p>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -207,14 +220,14 @@ export function RadarChart({
                 {axes.map((a) => (
                   <tr key={a.code} style={{ borderTop: "1px solid var(--line)" }}>
                     <td style={{ padding: "6px 8px" }}>{a.name}</td>
-                    <td className="mono" style={{ padding: "6px 8px", textAlign: "right", fontWeight: 650 }}>
+                    <td className="tnum" style={{ padding: "6px 8px", textAlign: "right", fontWeight: 650 }}>
                       {formatValue(a.raw, a.unit)}
                     </td>
-                    <td className="mono" style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
+                    <td className="tnum" style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
                       {formatValue(a.medianRaw, a.unit)}
                     </td>
-                    <td className="mono" style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
-                      {a.rank}/{a.nRegions}
+                    <td style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
+                      {ordinal(a.rank)} of {a.nRegions}
                     </td>
                   </tr>
                 ))}
@@ -225,6 +238,14 @@ export function RadarChart({
       )}
     </figure>
   );
+}
+
+/** "3rd", "22nd" — the rank reads as a position, which is what the radial
+ *  distance encodes, so the two agree. */
+function ordinal(n: number): string {
+  const rem100 = n % 100;
+  if (rem100 >= 11 && rem100 <= 13) return `${n}th`;
+  return `${n}${["th", "st", "nd", "rd"][n % 10] ?? "th"}`;
 }
 
 function LegendRow({ color, label }: { color: string; label: string }) {

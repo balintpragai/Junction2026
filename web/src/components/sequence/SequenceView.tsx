@@ -13,6 +13,11 @@ import {
 import { FUNCTION_LABEL, type TeamMember } from "@/lib/team";
 import type { StepState, StepStatus } from "@/lib/program";
 
+/** "1 day", not "1 days". */
+function dayLabel(n: number): string {
+  return `${n} ${n === 1 ? "day" : "days"}`;
+}
+
 const STATUS_TONE: Record<StepStatus, { fg: string; bg: string; line: string; label: string }> = {
   todo: { fg: "var(--ink-3)", bg: "var(--card)", line: "var(--line)", label: "Not started" },
   active: { fg: "var(--watch)", bg: "var(--watch-soft)", line: "var(--watch-line)", label: "In progress" },
@@ -62,7 +67,7 @@ export function SequenceView({
 
       <details className="card" style={{ padding: "11px 14px" }}>
         <summary style={{ fontSize: 12.5, fontWeight: 650, cursor: "pointer", color: "var(--ink-2)" }}>
-          Who has to be involved ({parties.length}) ▾
+          Who has to be involved ({parties.length})
         </summary>
         <div className="col" style={{ gap: 7, marginTop: 11 }}>
           {parties.map((c) => (
@@ -93,7 +98,6 @@ export function SequenceView({
                     placeItems: "center",
                     fontSize: 12,
                     fontWeight: 700,
-                    fontFamily: "var(--font-mono)",
                     background: phaseDone ? "var(--good)" : "var(--ink)",
                     color: "#fff",
                     flex: "none",
@@ -108,10 +112,10 @@ export function SequenceView({
 
               <div style={{ paddingBottom: pi < phases.length - 1 ? 22 : 0 }}>
                 <div className="row" style={{ gap: 9, flexWrap: "wrap" }}>
-                  <h4 style={{ fontSize: 14.5 }}>{phase.name}</h4>
+                  <h3 style={{ fontSize: 14.5 }}>{phase.name}</h3>
                   <span className="tag">
-                    {Math.max(0, ...phaseSteps.map((s) => s.durationDays))}d
-                    {phaseSteps.length > 1 ? ` · ${phaseSteps.length} in parallel` : ""}
+                    {dayLabel(Math.max(0, ...phaseSteps.map((s) => s.durationDays)))}
+                    {phaseSteps.length > 1 ? `, ${phaseSteps.length} in parallel` : ""}
                   </span>
                   {phaseSteps.every((s) => s.level === "state") && <span className="tag tag-accent">State</span>}
                 </div>
@@ -198,10 +202,10 @@ function StepCard({
     >
       <div className="row" style={{ gap: 7, flexWrap: "wrap", marginBottom: 7 }}>
         <span className={`tag ${isState ? "tag-accent" : ""}`}>{isState ? "State" : FUNCTION_LABEL[step.func]}</span>
-        <span className="tag">{step.durationDays}d</span>
+        <span className="tag">{dayLabel(step.durationDays)}</span>
         {win && (
-          <span className="mono" style={{ fontSize: 10, color: "var(--ink-3)" }}>
-            day {win.start}–{win.end}
+          <span style={{ fontSize: 10.5, color: "var(--ink-3)" }}>
+            day {win.start} to {win.end}
           </span>
         )}
         {working && (
@@ -220,16 +224,20 @@ function StepCard({
         {step.detail}
       </p>
       {(clipped || open) && (
-        <button className="btn btn-quiet btn-sm" style={{ padding: "2px 0", fontSize: 11.5 }} onClick={() => setOpen((v) => !v)}>
+        <button
+          className="btn btn-quiet btn-sm hit"
+          aria-expanded={open}
+          aria-label={open ? `Show less about ${step.title}` : `Show more about ${step.title}`}
+          style={{ padding: "2px 0", fontSize: 11.5, justifyContent: "flex-start", minWidth: 44 }}
+          onClick={() => setOpen((v) => !v)}
+        >
           {open ? "less" : "more"}
         </button>
       )}
 
       {step.counterparties.length > 0 && (
         <div className="row" style={{ gap: 5, flexWrap: "wrap", marginTop: 9 }}>
-          <span style={{ fontSize: 10.5, color: "var(--ink-3)", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-            notify
-          </span>
+          <span style={{ fontSize: 11, color: "var(--ink-3)" }}>Notify</span>
           {step.counterparties.map((c) => (
             <PartyChip key={c.name} party={c} />
           ))}
@@ -326,7 +334,7 @@ export function PartyChip({ party }: { party: Counterparty }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="sunk" style={{ padding: "10px 12px" }}>
-      <p className="mono" style={{ fontSize: 20, fontWeight: 800, lineHeight: 1.1 }}>
+      <p className="num" style={{ fontSize: 20, lineHeight: 1.1 }}>
         {value}
       </p>
       <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>

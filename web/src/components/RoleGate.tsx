@@ -22,8 +22,7 @@ export function RoleGate({ allow, children }: { allow: RoleId; children: React.R
   const home = account.role === "state" ? "/" : "/regional";
   return (
     <div className="card-lg" style={{ padding: "40px 36px", maxWidth: 560, margin: "40px auto", textAlign: "center" }}>
-      <p className="eyebrow">Not your desk</p>
-      <h2 style={{ fontSize: "1.3rem", marginTop: 9 }}>This screen belongs to the {ROLE_LABEL[allow]}</h2>
+      <h2 style={{ fontSize: "1.25rem" }}>This screen belongs to the {ROLE_LABEL[allow]}</h2>
       <p style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.6 }}>
         You are signed in as <strong>{account.name}</strong>, {ROLE_LABEL[account.role]} at {account.org}.{" "}
         {allow === "state"

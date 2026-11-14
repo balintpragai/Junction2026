@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { loadAllRegionProfiles, loadRegions } from "@/lib/api";
 import { Explorer } from "@/components/Explorer";
+import { MapSkeleton } from "@/components/Skeletons";
 
 export const dynamic = "force-dynamic";
 
@@ -20,5 +22,11 @@ export default async function Home() {
     );
   }
 
-  return <Explorer regions={regions} profiles={profiles} />;
+  // Explorer reads the selected Region out of the URL, which needs a
+  // Suspense boundary to prerender.
+  return (
+    <Suspense fallback={<MapSkeleton />}>
+      <Explorer regions={regions} profiles={profiles} />
+    </Suspense>
+  );
 }

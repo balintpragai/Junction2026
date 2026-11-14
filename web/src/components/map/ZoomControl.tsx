@@ -98,7 +98,7 @@ export function ZoomControl({
       </IconButton>
 
       <span
-        className="mono"
+        className="tnum"
         aria-hidden="true"
         style={{ fontSize: 9.5, color: "var(--ink-3)", padding: "1px 0", borderTop: "1px solid var(--line)", width: "100%", textAlign: "center" }}
       >

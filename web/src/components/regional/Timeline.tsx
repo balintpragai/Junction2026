@@ -60,9 +60,7 @@ export function Timeline({
       <div className="scroll-y" style={{ maxHeight: 560, paddingRight: 4 }}>
         {phases.map((phase) => (
           <div key={phase.id} style={{ marginBottom: 14 }}>
-            <p className="section-title" style={{ fontSize: 10.5, marginBottom: 6 }}>
-              {phase.name}
-            </p>
+            <p style={{ fontSize: 11.5, fontWeight: 600, color: "var(--ink-2)", marginBottom: 6 }}>{phase.name}</p>
             <div className="col" style={{ gap: 5 }}>
               {phase.steps.map((step) => {
                 const win = times.get(step.id)!;
@@ -93,7 +91,7 @@ export function Timeline({
                         />
                       ))}
                       <div
-                        title={`${step.title} — day ${win.start} to ${win.end}, ${assignee?.name ?? "unassigned"}`}
+                        title={`${step.title}, day ${win.start} to ${win.end}, ${assignee?.name ?? "unassigned"}`}
                         style={{
                           position: "absolute",
                           left: `${left}%`,
@@ -116,7 +114,7 @@ export function Timeline({
                             their duration in the tooltip only. */}
                         {width > 5 && (
                           <span
-                            className="mono"
+                            className="tnum"
                             style={{ fontSize: 9.5, color: status === "todo" ? "var(--ink-2)" : "#fff", whiteSpace: "nowrap", fontWeight: 600 }}
                           >
                             {step.durationDays}d
@@ -138,10 +136,10 @@ export function Timeline({
           {ticks.map((d) => (
             <span
               key={d}
-              className="mono"
-              style={{ position: "absolute", left: `${(d / total) * 100}%`, fontSize: 10, color: "var(--ink-3)", transform: "translateX(-50%)" }}
+              className="num"
+              style={{ position: "absolute", left: `${(d / total) * 100}%`, fontSize: 10, color: "var(--ink-3)", transform: "translateX(-50%)", fontWeight: 400 }}
             >
-              d{d}
+              {d === 0 ? "start" : `day ${d}`}
             </span>
           ))}
         </div>
@@ -217,7 +215,6 @@ export function TeamLoad({
                   placeItems: "center",
                   fontSize: 11,
                   fontWeight: 700,
-                  fontFamily: "var(--font-mono)",
                   flex: "none",
                 }}
               >
@@ -228,7 +225,7 @@ export function TeamLoad({
                 <p style={{ fontSize: 11, color: "var(--ink-3)" }}>{FUNCTION_LABEL[member.func]}</p>
               </div>
               <div style={{ textAlign: "right", flex: "none" }}>
-                <p className="mono" style={{ fontSize: 14, fontWeight: 700 }}>
+                <p className="num" style={{ fontSize: 14 }}>
                   {count}
                 </p>
                 <p style={{ fontSize: 10, color: "var(--ink-3)" }}>step{count === 1 ? "" : "s"}</p>
@@ -243,9 +240,9 @@ export function TeamLoad({
               <span style={{ width: `${(days / maxDays) * 100}%`, background: blocked > 0 ? "var(--act)" : "var(--accent)" }} />
             </div>
             <p style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 5 }}>
-              {member.baseLoad}d existing work · {days}d from this directive
-              {done > 0 && ` · ${done} done`}
-              {blocked > 0 && <strong style={{ color: "var(--act)" }}> · {blocked} blocked</strong>}
+              {member.baseLoad} days of existing work, {days} from this directive
+              {done > 0 && `, ${done} done`}
+              {blocked > 0 && <strong style={{ color: "var(--act)" }}>, {blocked} blocked</strong>}
             </p>
           </div>
         ))}

@@ -43,11 +43,12 @@ export function Shell({ children }: { children: ReactNode }) {
           style={{
             maxWidth: 1480,
             margin: "0 auto",
-            padding: "0 28px",
+            padding: "0 16px",
             display: "flex",
             alignItems: "center",
-            gap: 20,
+            gap: 12,
             height: 60,
+            minWidth: 0,
           }}
         >
           <Link
@@ -55,12 +56,15 @@ export function Shell({ children }: { children: ReactNode }) {
             style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flex: "none" }}
           >
             <Mark />
-            <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 17, color: "var(--ink)" }}>
+            <span
+              className="wordmark"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 17, color: "var(--ink)" }}
+            >
               Frontiers Health
             </span>
           </Link>
 
-          <nav style={{ display: "flex", gap: 2, marginLeft: 8 }}>
+          <nav style={{ display: "flex", gap: 2, marginLeft: 4, minWidth: 0 }}>
             {nav.map((item) => (
               <NavLink key={item.href} href={item.href} label={item.label} />
             ))}
@@ -91,7 +95,6 @@ export function Shell({ children }: { children: ReactNode }) {
                     fontWeight: 700,
                     display: "grid",
                     placeItems: "center",
-                    fontFamily: "var(--font-mono)",
                   }}
                 >
                   {unreadCount}
@@ -104,9 +107,24 @@ export function Shell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main style={{ flex: 1, padding: "28px 28px 64px" }}>
+      <main style={{ flex: 1, padding: "24px 16px 64px" }}>
         <div style={{ maxWidth: 1480, margin: "0 auto" }}>{children}</div>
       </main>
+
+      {/* The header is the widest fixed row in the app, so it decided the
+          document width on a phone and forced every page to scroll
+          sideways. Below 720px it sheds the parts that are redundant with
+          the avatar and the current page. */}
+      <style>{`
+        @media (min-width: 721px) {
+          main { padding-left: 28px !important; padding-right: 28px !important; }
+        }
+        @media (max-width: 720px) {
+          .wordmark { display: none; }
+          .account-id { display: none; }
+          .account-chevron { display: none; }
+        }
+      `}</style>
     </div>
   );
 }
@@ -166,11 +184,11 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
         style={{ paddingLeft: 6, gap: 9 }}
       >
         <Avatar initials={current.initials} />
-        <span className="col" style={{ alignItems: "flex-start", lineHeight: 1.25 }}>
+        <span className="account-id col" style={{ alignItems: "flex-start", lineHeight: 1.25 }}>
           <span style={{ fontSize: 12.5, fontWeight: 650 }}>{current.name}</span>
           <span style={{ fontSize: 10.5, color: "var(--accent)", fontWeight: 600 }}>{ROLE_LABEL[current.role]}</span>
         </span>
-        <Chevron open={open} />
+        <span className="account-chevron"><Chevron open={open} /></span>
       </button>
 
       {open && (
@@ -187,17 +205,13 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
             zIndex: 60,
           }}
         >
-          <p className="eyebrow eyebrow-muted" style={{ padding: "8px 10px 6px" }}>
-            Signed in as
-          </p>
+          <p style={{ padding: "8px 10px 6px", fontSize: 11.5, color: "var(--ink-3)" }}>Signed in as</p>
           {(["state", "regional"] as const).map((role) => (
             <div key={role}>
               <p
                 style={{
-                  fontSize: 10.5,
-                  fontFamily: "var(--font-mono)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
+                  fontSize: 11,
+                  fontWeight: 600,
                   color: "var(--ink-3)",
                   padding: "8px 10px 4px",
                   borderTop: role === "regional" ? "1px solid var(--line)" : "none",
@@ -233,7 +247,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
                     <span className="col" style={{ minWidth: 0, flex: 1 }}>
                       <span style={{ fontSize: 13, fontWeight: 650 }}>{a.name}</span>
                       <span className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-                        {a.title} · {a.org}
+                        {a.title}, {a.org}
                       </span>
                     </span>
                     {active && <span style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>✓</span>}
@@ -263,7 +277,6 @@ function Avatar({ initials, muted }: { initials: string; muted?: boolean }) {
         placeItems: "center",
         fontSize: 11,
         fontWeight: 700,
-        fontFamily: "var(--font-mono)",
       }}
     >
       {initials}
@@ -271,13 +284,19 @@ function Avatar({ initials, muted }: { initials: string; muted?: boolean }) {
   );
 }
 
+/** The brand mark — the Kemijärvi outline, served with a transparent
+ *  background so it sits on the header rather than in a black box.
+ *  Rendered at 30px because the shape's finer arms stop resolving below
+ *  about that size. */
 function Mark() {
   return (
-    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" style={{ flex: "none" }}>
-      <rect width="26" height="26" rx="7" fill="var(--ink)" />
-      <path d="M8 17.5V8.5h9" stroke="var(--card)" strokeWidth="2.1" strokeLinecap="round" fill="none" />
-      <circle cx="17" cy="17.5" r="2.4" fill="var(--accent)" />
-    </svg>
+    <img
+      src="/logo.png"
+      alt=""
+      width={30}
+      height={30}
+      style={{ flex: "none", display: "block", objectFit: "contain" }}
+    />
   );
 }
 

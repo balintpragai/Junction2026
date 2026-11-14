@@ -4,17 +4,19 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { CandidateAction, Region, RegionProfile } from "@/lib/api";
 import { buildPlaybook, criticalPathDays, uniqueCounterparties, allSteps } from "@/lib/playbook";
-import { newDirective, useProgram, type Priority } from "@/lib/program";
+import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, addWorkingDays, type Priority } from "@/lib/program";
 import { regionalAccountFor } from "@/lib/roles";
 import { SequenceView } from "@/components/sequence/SequenceView";
 import { ActionSearch } from "@/components/planner/ActionSearch";
 
 type Stage = "build" | "review" | "issued";
 
+/** Each priority names the response window it actually sets, so the choice
+ *  reads as a commitment rather than a mood. */
 const PRIORITY_LABEL: Record<Priority, string> = {
-  routine: "Routine — next planning cycle",
-  high: "High — this quarter",
-  urgent: "Urgent — immediate response required",
+  routine: "Routine",
+  high: "High",
+  urgent: "Urgent",
 };
 
 /** Where a State Decision Maker turns a Region's Gaps into instructions.
@@ -121,9 +123,9 @@ export function ActionPlanner({
             <ActionSearch recommended={recommended} library={library} addedIds={planIds} onAdd={add} />
 
             <div className="card" style={{ padding: "13px 15px" }}>
-              <p className="section-title" style={{ marginBottom: 10 }}>
+              <h2 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>
                 In this plan ({plan.length})
-              </p>
+              </h2>
               {plan.length === 0 ? (
                 <p style={{ fontSize: 12.5, color: "var(--ink-3)", lineHeight: 1.5 }}>
                   Nothing yet. Add a recommended action above, or search the full National Cancer Strategy.
@@ -151,14 +153,15 @@ export function ActionPlanner({
                         >
                           <span style={{ fontSize: 12.5, fontWeight: 650, lineHeight: 1.35, display: "block" }}>{a.title}</span>
                           <span style={{ fontSize: 10.5, color: "var(--ink-3)" }}>
-                            {buildPlaybook(a, region.name).reduce((n, p) => n + p.steps.length, 0)} steps ·{" "}
-                            {criticalPathDays(buildPlaybook(a, region.name))}d
+                            {buildPlaybook(a, region.name).reduce((n, p) => n + p.steps.length, 0)} steps over{" "}
+                            {criticalPathDays(buildPlaybook(a, region.name))} working days
                           </span>
                         </button>
                         <button
                           onClick={() => remove(a.id)}
-                          aria-label={`Remove ${a.title}`}
-                          title="Remove"
+                          aria-label={`Remove ${a.title} from the plan`}
+                          title="Remove from plan"
+                          className="hit"
                           style={{ border: "none", background: "transparent", color: "var(--ink-3)", cursor: "pointer", fontSize: 15, lineHeight: 1, padding: 0, flex: "none" }}
                         >
                           ×
@@ -193,22 +196,20 @@ export function ActionPlanner({
                       {focus.workflow.type === "patient_message" ? "Reaches patients" : "Reaches institutions"}
                     </span>
                   </div>
-                  <h3 style={{ fontSize: "1.25rem", marginTop: 10 }}>{focus.title}</h3>
+                  <h2 style={{ fontSize: "1.25rem", marginTop: 10 }}>{focus.title}</h2>
                   <p style={{ fontSize: 13.5, color: "var(--ink-2)", marginTop: 7, lineHeight: 1.6, maxWidth: "74ch" }}>
                     {focus.description}
                   </p>
                   <details className="sunk" style={{ padding: "10px 13px", marginTop: 11 }}>
                     <summary style={{ fontSize: 12, fontWeight: 650, cursor: "pointer", color: "var(--ink-2)" }}>
-                      Why this action, for this Region ▾
+                      Why this action, for this Region
                     </summary>
                     <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6 }}>{focus.why}</p>
                   </details>
                 </header>
 
                 <div style={{ borderTop: "1px solid var(--line)", paddingTop: 15 }}>
-                  <p className="section-title" style={{ marginBottom: 4 }}>
-                    What this sets in motion
-                  </p>
+                  <h3 style={{ fontSize: 13, marginBottom: 4 }}>What this sets in motion</h3>
                   <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 14, maxWidth: "74ch" }}>
                     Choosing this action does not send a message. It starts the chain below — every step the Region
                     has to complete, and every institution that has to be told, before anything reaches a patient.
@@ -245,7 +246,7 @@ export function ActionPlanner({
 
       <style>{`
         @media (max-width: 1040px) {
-          .planner-grid { grid-template-columns: 1fr !important; }
+          .planner-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .planner-grid > div:first-child { position: static !important; }
         }
       `}</style>
@@ -281,7 +282,7 @@ function Stages({ stage, canReview, onStage }: { stage: Stage; canReview: boolea
           >
             <span className="row" style={{ gap: 8 }}>
               <span
-                className="mono"
+                className="tnum"
                 style={{
                   width: 20,
                   height: 20,
@@ -339,15 +340,14 @@ function ReviewStage({
   return (
     <div className="review-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 360px)", gap: 20, alignItems: "flex-start" }}>
       <div className="card-lg" style={{ padding: 22 }}>
-        <p className="eyebrow">Step 2</p>
-        <h3 style={{ fontSize: "1.3rem", marginTop: 7 }}>What you are about to issue</h3>
+        <h2 style={{ fontSize: "1.25rem" }}>What you are about to issue</h2>
         <p style={{ fontSize: 13.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6, maxWidth: "70ch" }}>
           Issuing hands these actions to {region.name}. You will not see work happen immediately — the Region has to
           assign each step to its own people and work out the detail. What comes back to you is reported progress.
         </p>
 
         <div style={{ marginTop: 20 }}>
-          <label htmlFor="mandate" className="section-title" style={{ display: "block", marginBottom: 7 }}>
+          <label htmlFor="mandate" style={{ display: "block", marginBottom: 7, fontSize: 12.5, fontWeight: 600 }}>
             The instruction
           </label>
           <textarea
@@ -375,31 +375,38 @@ function ReviewStage({
         </div>
 
         <div style={{ marginTop: 18 }}>
-          <p className="section-title" style={{ marginBottom: 7 }}>
-            Priority
-          </p>
+          <p style={{ marginBottom: 7, fontSize: 12.5, fontWeight: 600 }}>Priority</p>
           <div className="row" style={{ gap: 8, flexWrap: "wrap" }}>
             {(["routine", "high", "urgent"] as Priority[]).map((p) => (
               <button
                 key={p}
                 onClick={() => setPriority(p)}
+                aria-pressed={priority === p}
                 className="btn btn-sm"
                 style={{
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: 1,
+                  height: "auto",
+                  padding: "7px 12px",
                   background: priority === p ? "var(--ink)" : "var(--card)",
                   color: priority === p ? "var(--card)" : "var(--ink-2)",
                   border: `1px solid ${priority === p ? "var(--ink)" : "var(--line-strong)"}`,
                 }}
               >
-                {PRIORITY_LABEL[p]}
+                <span style={{ fontWeight: 650 }}>{PRIORITY_LABEL[p]}</span>
+                <span style={{ fontSize: 11, opacity: 0.75 }}>
+                  {RESPONSE_WINDOW_DAYS[p]} working days to respond
+                </span>
               </button>
             ))}
           </div>
         </div>
 
         <div style={{ marginTop: 22, borderTop: "1px solid var(--line)", paddingTop: 16 }}>
-          <p className="section-title" style={{ marginBottom: 10 }}>
+          <h3 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>
             The {plan.length} action{plan.length > 1 ? "s" : ""}
-          </p>
+          </h3>
           <div className="col" style={{ gap: 9 }}>
             {plan.map((a) => {
               const phases = buildPlaybook(a, region.name);
@@ -407,8 +414,8 @@ function ReviewStage({
                 <div key={a.id} className="sunk" style={{ padding: "11px 13px" }}>
                   <p style={{ fontSize: 13, fontWeight: 650 }}>{a.title}</p>
                   <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3 }}>
-                    {allSteps(phases).length} steps · {criticalPathDays(phases)} working days ·{" "}
-                    {uniqueCounterparties(phases).length} bodies involved
+                    {allSteps(phases).length} steps over {criticalPathDays(phases)} working days, involving{" "}
+                    {uniqueCounterparties(phases).length} bodies
                   </p>
                 </div>
               );
@@ -419,16 +426,20 @@ function ReviewStage({
 
       <div className="col" style={{ gap: 14, position: "sticky", top: 78 }}>
         <div className="card-lg" style={{ padding: 18 }}>
-          <p className="section-title" style={{ marginBottom: 11 }}>
-            Lands on
-          </p>
+          <h3 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 11 }}>Lands on</h3>
           {recipientName ? (
             <>
               <p style={{ fontSize: 14, fontWeight: 700 }}>{recipientName}</p>
               <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 2 }}>{recipientOrg}</p>
               <p style={{ fontSize: 12, color: "var(--ink-3)", marginTop: 9, lineHeight: 1.5 }}>
-                They are notified immediately and own every step from there. Their response window is set by the
-                priority above.
+                They are notified immediately and own every step from there. They owe you a response by{" "}
+                <strong style={{ color: "var(--ink-2)" }}>
+                  {addWorkingDays(new Date(), RESPONSE_WINDOW_DAYS[priority]).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                  })}
+                </strong>
+                .
               </p>
             </>
           ) : (
@@ -456,7 +467,7 @@ function ReviewStage({
 
       <style>{`
         @media (max-width: 1040px) {
-          .review-grid { grid-template-columns: 1fr !important; }
+          .review-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .review-grid > div:last-of-type { position: static !important; }
         }
       `}</style>
@@ -467,7 +478,7 @@ function ReviewStage({
 function Mini({ value, label }: { value: string; label: string }) {
   return (
     <div className="sunk" style={{ padding: "8px 10px" }}>
-      <p className="mono" style={{ fontSize: 17, fontWeight: 800, lineHeight: 1.1 }}>
+      <p className="tnum" style={{ fontSize: 17, fontWeight: 800, lineHeight: 1.1 }}>
         {value}
       </p>
       <p style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 2, lineHeight: 1.3 }}>{label}</p>

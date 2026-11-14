@@ -54,10 +54,10 @@ export function RankStrip({
             <div className="row" style={{ justifyContent: "space-between", marginBottom: 7, gap: 10 }}>
               <span style={{ fontSize: 12.5, fontWeight: 650 }}>{entry.indicator.name}</span>
               <span className="row" style={{ gap: 8, flex: "none" }}>
-                <span className="mono" style={{ fontSize: 12.5, fontWeight: 700, color: tone }}>
+                <span className="tnum" style={{ fontSize: 12.5, fontWeight: 700, color: tone }}>
                   {formatValue(self, entry.indicator.unit)}
                 </span>
-                <span className="mono" style={{ fontSize: 11, color: "var(--ink-3)" }}>
+                <span className="tnum" style={{ fontSize: 11, color: "var(--ink-3)" }}>
                   #{entry.gap.rank}/{entry.gap.n_regions}
                 </span>
               </span>
@@ -144,7 +144,7 @@ export function RankStrip({
             </div>
 
             <div className="row" style={{ justifyContent: "space-between", marginTop: 1 }}>
-              <span className="mono" style={{ fontSize: 10, color: "var(--ink-3)" }}>
+              <span className="tnum" style={{ fontSize: 10, color: "var(--ink-3)" }}>
                 worst {formatValue(higher ? lo : hi, entry.indicator.unit)}
               </span>
               {hover?.indicator === code && (
@@ -152,7 +152,7 @@ export function RankStrip({
                   {points.find((p) => p.code === hover.code)?.name}
                 </span>
               )}
-              <span className="mono" style={{ fontSize: 10, color: "var(--ink-3)" }}>
+              <span className="tnum" style={{ fontSize: 10, color: "var(--ink-3)" }}>
                 best {formatValue(higher ? hi : lo, entry.indicator.unit)}
               </span>
             </div>
