@@ -1,0 +1,4 @@
+# Local test setup for seed. Run from the repo root:
+#   .venv/bin/pip install -r seed/requirements-dev.txt
+-e ./common
+pytest>=8

@@ -5,6 +5,12 @@ WORKDIR /srv
 COPY common/ ./common/
 RUN pip install --no-cache-dir ./common
 
+# Schema and data, at the same paths as in the repo (seed resolves them from /srv).
+COPY db/ ./db/
+COPY data/raw/sotkanet_regions.json ./data/raw/
+COPY data/curated/ ./data/curated/
+COPY data/processed/ ./data/processed/
+
 COPY seed/seed/ ./seed/seed/
 WORKDIR /srv/seed
 

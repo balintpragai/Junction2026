@@ -4,7 +4,7 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). Only `api` does real work so far. It serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `seed`, `engine`, `narrative` and `web` are stubs that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` and `web` are stubs that later tickets fill in.
 
 | Route | Response type | Fixture coverage |
 |---|---|---|
@@ -112,13 +112,37 @@ docker compose down              # stop; add -v to also delete the database volu
 | `db` | Postgres 16, data in the `db-data` volume | none |
 | `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
 | `engine` | FastAPI stub, `/health` only | none |
-| `seed` | One-shot: checks `db` and `engine`, exits 0 | none |
+| `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, checks `engine`, exits 0 | none |
 | `api` | The fixture API | `8000` (`API_PORT`) |
 | `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
 Startup order: `db` → `narrative` → `engine` → `seed` (must exit 0) → `api` → `web`. Each step waits for the one before it to be healthy.
 
 Then open http://localhost:3000. It should say "API reachable: 23 Regions loaded."
+
+### `seed`: schema and data
+
+`seed` runs on every `docker compose up` and is safe to run again: it reloads the data and applies only the schema files it hasn't applied yet. `docker compose logs seed` shows what it loaded, as counts only (never data rows).
+
+| What | Where | Notes |
+|---|---|---|
+| Schema | `db/001_schema.sql`, … | Plain SQL, applied in file-name order and recorded in `schema_migrations`. Never edit a shipped file; add the next number. |
+| Regions | `data/raw/sotkanet_regions.json` | The 23 `HYVINVOINTIALUE` entries. `parent_area` comes from `data/curated/region_parent_area.csv` when present. |
+| Indicators | `data/curated/indicators.csv` | One row per indicator: stage, unit, Target, direction, and the processed file (and column, for wide files) its values come from. A new indicator is a new row here, not new code. |
+| Values | `data/processed/*.csv` | Only the 23 Regions; the "Whole country" row is skipped. Empty cells are stored as NULL with a `missing_value` note, never zero. |
+| Known missing years | `data/curated/known_missing_values.csv` | Stored as NULL with the reason, e.g. Helsinki on 3336 for 2022–24. |
+| Strategy actions | `data/curated/strategy_action.csv`, `strategy_action_indicator.csv` | Loaded when present; skipped (not an error) when missing. |
+
+Data-quality notes live in `fact_indicator_value.data_quality_notes` as a list of `{"code", "message"}`, the shape of `DataQualityNote`. Every covariate row carries `ecological_fallacy`; every colorectal-screening (6103) row carries `short_history`.
+
+To start from an empty database: `docker compose down -v`, then `docker compose up --build`.
+
+Run the loader's tests without Docker:
+
+```sh
+.venv/bin/pip install -r seed/requirements-dev.txt     # from the repo root
+cd seed && ../.venv/bin/python -m pytest
+```
 
 ### Configuration
 
@@ -247,6 +271,6 @@ This dumps the spec straight from the app, so no running server is needed. It th
 | `docker: unknown command: docker compose` | Install the compose plugin: `sudo pacman -S docker-compose`. |
 | `permission denied ... /var/run/docker.sock` | `sudo usermod -aG docker $USER`, then log out and back in. |
 | `Bind for 0.0.0.0:8000 failed: port is already allocated` | Something else (often an old `docker run` of `api`) holds the port. Stop it, or set `API_PORT` / `WEB_PORT`. |
-| `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
+| `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. A `SeedInputError` names the input file, line and column that is malformed; nothing is written until every file reads cleanly. |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |

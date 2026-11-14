@@ -6,6 +6,10 @@
 !narrative/
 !seed/
 !web/
+!db/
+!data/processed/
+!data/curated/
+!data/raw/sotkanet_regions.json
 **/__pycache__/
 **/*.egg-info/
 **/.pytest_cache/
