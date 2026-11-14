@@ -1,0 +1,6 @@
+# Install from the repo root:  .venv/bin/pip install -r narrative/requirements-dev.txt
+# (pip resolves the -e path below against the current directory, not this file.)
+-r requirements.txt
+-e ./common
+pytest>=8
+httpx2
