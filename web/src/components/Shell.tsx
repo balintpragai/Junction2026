@@ -17,7 +17,7 @@ export function Shell({ children }: { children: ReactNode }) {
           }}
         >
           <Link href="/" style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, textDecoration: "none", color: "var(--ink)" }}>
-            Reach Loop
+            Frontiers Health
           </Link>
           <span style={{ marginLeft: "auto", fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)" }}>
             AstraZeneca × Junction 2026 — V1 demo

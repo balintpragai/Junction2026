@@ -7,7 +7,7 @@ const body = Public_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], va
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono" });
 
 export const metadata = {
-  title: "Reach Loop",
+  title: "Frontiers Health",
   description: "Where Finnish cancer care falls short of national targets, Region by Region.",
 };
 
