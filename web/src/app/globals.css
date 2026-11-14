@@ -90,3 +90,35 @@ button {
 ::selection {
   background: var(--brand-soft);
 }
+
+/* Interactive affordances — expressed in CSS since inline styles can't do :hover. */
+.nav-link {
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-link:hover {
+  background: rgba(238, 241, 238, 0.14);
+}
+.nav-link--active:hover {
+  background: var(--rail-ink);
+}
+
+.tile {
+  transition: filter 0.1s ease;
+}
+.tile:hover {
+  filter: brightness(1.08);
+}
+.tile:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+details > summary {
+  transition: color 0.1s ease;
+}
+details > summary:hover {
+  color: var(--brand);
+}
+summary::-webkit-details-marker {
+  display: none;
+}

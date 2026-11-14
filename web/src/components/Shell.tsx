@@ -55,6 +55,7 @@ export function Shell({ children }: { children: ReactNode }) {
                 href={href}
                 aria-label={label}
                 title={label}
+                className={`nav-link${active ? " nav-link--active" : ""}`}
                 style={{
                   width: 46,
                   height: 46,
