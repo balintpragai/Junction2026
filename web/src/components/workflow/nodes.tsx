@@ -37,22 +37,21 @@ export function TriggerNode({ data }: { data: { regionName: string; subtitle: st
 export function ActionNode({
   data,
 }: {
-  data: { action: CandidateAction; included: boolean; status: RunStatus; onToggle: () => void };
+  data: { action: CandidateAction; status: RunStatus; onRemove: () => void };
 }) {
-  const { action, included, status, onToggle } = data;
-  const tone = included ? STATUS_COLOR[status] : "var(--line-strong)";
+  const { action, status, onRemove } = data;
+  const tone = STATUS_COLOR[status];
 
   return (
     <div
       style={{
         width: 270,
-        background: included ? "var(--card)" : "var(--bg)",
-        border: `1.5px solid ${tone}`,
+        background: "var(--card)",
+        border: `1.5px solid ${status === "idle" ? "var(--brand-line)" : tone}`,
         borderRadius: "var(--radius-md)",
         padding: "12px 14px",
-        opacity: included ? 1 : 0.55,
-        boxShadow: included ? "var(--shadow-card)" : "none",
-        transition: "border-color 0.2s ease, opacity 0.2s ease",
+        boxShadow: "var(--shadow-card)",
+        transition: "border-color 0.2s ease",
       }}
     >
       <Handle type="target" position={Position.Left} style={{ background: tone, width: 9, height: 9 }} />
@@ -63,18 +62,32 @@ export function ActionNode({
             fontFamily: "var(--font-mono)",
             textTransform: "uppercase",
             letterSpacing: "0.03em",
-            color: "var(--ink-3)",
-            border: "1px solid var(--line)",
+            color: action.recommended ? "var(--brand)" : "var(--ink-3)",
+            border: `1px solid ${action.recommended ? "var(--brand-line)" : "var(--line)"}`,
+            background: action.recommended ? "var(--brand-soft)" : "transparent",
             borderRadius: 999,
             padding: "1px 7px",
           }}
         >
           {KIND_LABEL[action.kind]}
         </span>
-        <label className="nodrag" style={{ display: "flex", alignItems: "center", gap: 5, cursor: "pointer", fontSize: 10.5, color: "var(--ink-2)" }}>
-          <input type="checkbox" checked={included} onChange={onToggle} style={{ width: 14, height: 14 }} />
-          include
-        </label>
+        <button
+          className="nodrag"
+          onClick={onRemove}
+          aria-label={`Remove ${action.title} from the plan`}
+          title="Remove from plan"
+          style={{
+            border: "none",
+            background: "transparent",
+            color: "var(--ink-3)",
+            cursor: "pointer",
+            fontSize: 15,
+            lineHeight: 1,
+            padding: "0 2px",
+          }}
+        >
+          ×
+        </button>
       </div>
       <p
         style={{
@@ -124,21 +137,20 @@ export function ActionNode({
   );
 }
 
-export function OutputNode({ data }: { data: { action: CandidateAction; included: boolean; status: RunStatus } }) {
-  const { action, included, status } = data;
-  const tone = included ? STATUS_COLOR[status] : "var(--line-strong)";
+export function OutputNode({ data }: { data: { action: CandidateAction; status: RunStatus } }) {
+  const { action, status } = data;
+  const tone = STATUS_COLOR[status];
   const workflow = action.workflow;
 
   return (
     <div
       style={{
         width: 230,
-        background: included ? "var(--card)" : "var(--bg)",
-        border: `1.5px solid ${tone}`,
+        background: "var(--card)",
+        border: `1.5px solid ${status === "idle" ? "var(--line-strong)" : tone}`,
         borderRadius: "var(--radius-md)",
         padding: "12px 14px",
-        opacity: included ? 1 : 0.5,
-        transition: "border-color 0.2s ease, opacity 0.2s ease",
+        transition: "border-color 0.2s ease",
       }}
     >
       <Handle type="target" position={Position.Left} style={{ background: tone, width: 9, height: 9 }} />
@@ -159,8 +171,8 @@ export function OutputNode({ data }: { data: { action: CandidateAction; included
       >
         {workflow.type === "patient_message" ? workflow.profile : workflow.target}
       </p>
-      <p style={{ fontSize: 11, marginTop: 8, fontWeight: 650, color: tone }}>
-        {!included ? "Not in plan" : status === "idle" ? "Queued" : status === "sending" ? "Sending..." : "Sent (mock)"}
+      <p style={{ fontSize: 11, marginTop: 8, fontWeight: 650, color: status === "idle" ? "var(--ink-3)" : tone }}>
+        {status === "idle" ? "Ready to send" : status === "sending" ? "Sending…" : "Sent (mock)"}
       </p>
     </div>
   );

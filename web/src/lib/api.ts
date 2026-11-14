@@ -60,6 +60,9 @@ export interface GapEntry {
 export interface CandidateAction {
   id: string;
   kind: "strategy" | "covariate";
+  /** True when the engine matched this to a Gap in this Region; false for
+   *  actions picked by hand out of the full strategy library. */
+  recommended: boolean;
   title: string;
   description: string;
   why: string;
@@ -93,6 +96,13 @@ export function loadOverview(): Promise<{ year: number; rows: OverviewRow[] } | 
 
 export function loadRegionProfile(code: string): Promise<RegionProfile | null> {
   return getJson(`/regions/${code}/profile`);
+}
+
+/** Every curated National Cancer Strategy action, searchable in the planner
+ *  so a decision-maker isn't limited to the engine's recommendations. */
+export async function loadActionLibrary(code: string): Promise<CandidateAction[]> {
+  const res = await getJson<{ actions: CandidateAction[] }>(`/regions/${code}/action-library`);
+  return res?.actions ?? [];
 }
 
 /** Every Region's profile, fetched in parallel -- small n (23), and `api`
