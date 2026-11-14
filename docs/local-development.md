@@ -174,5 +174,6 @@ This dumps the spec straight from the app, so no running server is needed. It th
 | `ModuleNotFoundError: No module named 'app'` | Run uvicorn and pytest from inside `api/`. |
 | Server fails at startup with a `ValidationError` | A fixture doesn't match its model. The error names the file's field. |
 | Browser blocks requests (CORS) | Add the `web` origin to `WEB_ORIGIN`. |
+| `docker build`: `lstat .../api/api: no such file or directory` | Run `docker build -f api/Dockerfile -t reach-loop-api .` from the **repo root**, not from `api/`. |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
