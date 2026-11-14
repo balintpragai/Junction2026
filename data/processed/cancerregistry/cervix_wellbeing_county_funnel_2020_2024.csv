@@ -1,0 +1,238 @@
+year,screening_group,wellbeing_county,invited_n,attended_n,attended_pct,followup_recommended_n,followup_recommended_pct,referred_colposcopy_n,referred_colposcopy_pct,attended_colposcopy_n,attended_colposcopy_pct,hsil_or_worse_n,hsil_or_worse_pct
+2024,Age group screening,Central Finland,13086,9182,70.2,482,5.2,111,1.2,91,82.0,32,35.2
+2024,Age group screening,Central Ostrobothnia,3114,2152,69.1,107,5.0,30,1.4,28,93.3,12,42.9
+2024,Age group screening,Central Uusimaa,10808,8294,76.7,416,5.0,89,1.1,87,97.8,34,39.1
+2024,Age group screening,City of Helsinki,38382,27514,71.7,1753,6.4,277,1.0,260,93.9,105,40.4
+2024,Age group screening,East Uusimaa,5125,3909,76.3,179,4.6,24,0.6,23,95.8,9,39.1
+2024,Age group screening,Kainuu,3305,2594,78.5,72,2.8,13,0.5,10,76.9,6,60.0
+2024,Age group screening,Kanta-Häme,8312,5814,69.9,361,6.2,88,1.5,80,90.9,30,37.5
+2024,Age group screening,Kymenlaakso,7751,5968,77.0,317,5.3,63,1.1,57,90.5,24,42.1
+2024,Age group screening,Lapland,8555,6825,79.8,485,7.1,123,1.8,100,81.3,34,34.0
+2024,Age group screening,North Karelia,7572,5135,67.8,205,4.0,93,1.8,91,97.8,37,40.7
+2024,Age group screening,North Ostrobothnia,19455,14288,73.4,654,4.6,146,1.0,107,73.3,54,50.5
+2024,Age group screening,North Savo,12037,8367,69.5,530,6.3,110,1.3,106,96.4,40,37.7
+2024,Age group screening,Ostrobothnia,8088,5841,72.2,267,4.6,80,1.4,78,97.5,33,42.3
+2024,Age group screening,Pirkanmaa,27033,19198,71.0,1172,6.1,255,1.3,242,94.9,85,35.1
+2024,Age group screening,Päijät-Häme,9996,6817,68.2,423,6.2,111,1.6,107,96.4,38,35.5
+2024,Age group screening,Satakunta,10022,7170,71.5,420,5.9,99,1.4,97,98.0,34,35.1
+2024,Age group screening,South Karelia,5942,4560,76.7,230,5.0,59,1.3,49,83.1,20,40.8
+2024,Age group screening,South Ostrobothnia,8922,7315,82.0,403,5.5,95,1.3,89,93.7,38,42.7
+2024,Age group screening,South Savo,6029,4955,82.2,302,6.1,63,1.3,57,90.5,23,40.4
+2024,Age group screening,Southwest Finland,24297,18823,77.5,1065,5.7,190,1.0,4,2.1,2,50.0
+2024,Age group screening,Vantaa and Kerava,15285,10952,71.7,616,5.6,139,1.3,134,96.4,51,38.1
+2024,Age group screening,West Uusimaa,26151,19429,74.3,917,4.7,181,0.9,174,96.1,55,31.6
+2024,Age group screening,Åland,1545,1235,79.9,77,6.2,6,0.5,0,0.0,0,–
+2024,Age group screening,Total,280812,206337,73.5,11453,5.6,2445,1.2,2071,84.7,796,38.4
+2024,Risk group screening,Central Finland,538,443,82.3,0,0.0,198,44.7,165,83.3,24,14.5
+2024,Risk group screening,Central Ostrobothnia,63,48,76.2,0,0.0,8,16.7,5,62.5,2,40.0
+2024,Risk group screening,Central Uusimaa,443,364,82.2,2,0.5,175,48.1,170,97.1,62,36.5
+2024,Risk group screening,City of Helsinki,1972,1613,81.8,3,0.2,797,49.4,748,93.9,146,19.5
+2024,Risk group screening,East Uusimaa,223,183,82.1,0,0.0,93,50.8,91,97.8,32,35.2
+2024,Risk group screening,Kainuu,47,38,80.9,4,10.5,2,5.3,2,100.0,1,50.0
+2024,Risk group screening,Kanta-Häme,315,259,82.2,0,0.0,126,48.6,108,85.7,19,17.6
+2024,Risk group screening,Kymenlaakso,407,340,83.5,0,0.0,152,44.7,144,94.7,27,18.8
+2024,Risk group screening,Lapland,211,178,84.4,4,2.2,29,16.3,24,82.8,5,20.8
+2024,Risk group screening,North Karelia,332,242,72.9,2,0.8,125,51.7,121,96.8,19,15.7
+2024,Risk group screening,North Ostrobothnia,421,343,81.5,17,5.0,46,13.4,41,89.1,11,26.8
+2024,Risk group screening,North Savo,485,394,81.2,4,1.0,205,52.0,187,91.2,34,18.2
+2024,Risk group screening,Ostrobothnia,264,205,77.7,0,0.0,23,11.2,22,95.7,10,45.5
+2024,Risk group screening,Pirkanmaa,1085,898,82.8,0,0.0,489,54.5,437,89.4,86,19.7
+2024,Risk group screening,Päijät-Häme,398,341,85.7,0,0.0,183,53.7,169,92.3,28,16.6
+2024,Risk group screening,Satakunta,401,345,86.0,0,0.0,202,58.6,197,97.5,36,18.3
+2024,Risk group screening,South Karelia,270,223,82.6,0,0.0,101,45.3,85,84.2,11,12.9
+2024,Risk group screening,South Ostrobothnia,368,328,89.1,0,0.0,119,36.3,106,89.1,22,20.8
+2024,Risk group screening,South Savo,277,237,85.6,84,35.4,16,6.8,16,100.0,5,31.2
+2024,Risk group screening,Southwest Finland,921,789,85.7,0,0.0,320,40.6,1,0.3,0,0.0
+2024,Risk group screening,Vantaa and Kerava,710,576,81.1,1,0.2,302,52.4,282,93.4,45,16.0
+2024,Risk group screening,West Uusimaa,1104,915,82.9,2,0.2,414,45.2,396,95.7,70,17.7
+2024,Risk group screening,Åland,43,39,90.7,0,0.0,7,17.9,0,0.0,0,–
+2024,Risk group screening,Total,11298,9341,82.7,123,1.3,4132,44.2,3517,85.1,695,19.8
+2023,Age group screening,Central Finland,12867,8702,67.6,413,4.7,131,1.5,125,95.4,38,30.4
+2023,Age group screening,Central Ostrobothnia,2995,2145,71.6,86,4.0,27,1.3,27,100.0,12,44.4
+2023,Age group screening,Central Uusimaa,10638,8045,75.6,490,6.1,84,1.0,80,95.2,38,47.5
+2023,Age group screening,City of Helsinki,37770,27385,72.5,1802,6.6,333,1.2,311,93.4,113,36.3
+2023,Age group screening,East Uusimaa,5047,3870,76.7,188,4.9,37,1.0,36,97.3,17,47.2
+2023,Age group screening,Kainuu,3222,2464,76.5,72,2.9,20,0.8,12,60.0,1,8.3
+2023,Age group screening,Kanta-Häme,8288,5677,68.5,292,5.1,82,1.4,79,96.3,28,35.4
+2023,Age group screening,Kymenlaakso,7718,5967,77.3,346,5.8,56,0.9,53,94.6,22,41.5
+2023,Age group screening,Lapland,8633,6208,71.9,340,5.5,80,1.3,63,78.8,26,41.3
+2023,Age group screening,North Karelia,7651,4926,64.4,240,4.9,80,1.6,77,96.2,39,50.6
+2023,Age group screening,North Ostrobothnia,19144,14068,73.5,550,3.9,128,0.9,118,92.2,43,36.4
+2023,Age group screening,North Savo,11969,8250,68.9,509,6.2,103,1.2,99,96.1,38,38.4
+2023,Age group screening,Ostrobothnia,8156,6222,76.3,265,4.3,41,0.7,37,90.2,15,40.5
+2023,Age group screening,Pirkanmaa,26461,18603,70.3,1017,5.5,254,1.4,248,97.6,100,40.3
+2023,Age group screening,Päijät-Häme,10080,7055,70.0,433,6.1,128,1.8,121,94.5,40,33.1
+2023,Age group screening,Satakunta,10081,7317,72.6,402,5.5,149,2.0,147,98.7,57,38.8
+2023,Age group screening,South Karelia,5922,4574,77.2,242,5.3,54,1.2,53,98.1,5,9.4
+2023,Age group screening,South Ostrobothnia,8907,7037,79.0,373,5.3,82,1.2,80,97.6,40,50.0
+2023,Age group screening,South Savo,6052,5032,83.1,308,6.1,48,1.0,47,97.9,26,55.3
+2023,Age group screening,Southwest Finland,24169,18617,77.0,1020,5.5,226,1.2,124,54.9,92,74.2
+2023,Age group screening,Vantaa and Kerava,14711,10665,72.5,671,6.3,124,1.2,123,99.2,49,39.8
+2023,Age group screening,West Uusimaa,25305,18762,74.1,953,5.1,174,0.9,168,96.6,66,39.3
+2023,Age group screening,Åland,1581,1235,78.1,41,3.3,27,2.2,26,96.3,9,34.6
+2023,Age group screening,Total,277367,202826,73.1,11053,5.4,2468,1.2,2254,91.3,914,40.6
+2023,Risk group screening,Central Finland,522,411,78.7,0,0.0,189,46.0,183,96.8,27,14.8
+2023,Risk group screening,Central Ostrobothnia,78,63,80.8,6,9.5,7,11.1,7,100.0,0,0.0
+2023,Risk group screening,Central Uusimaa,399,318,79.7,0,0.0,153,48.1,147,96.1,43,29.3
+2023,Risk group screening,City of Helsinki,1493,1230,82.4,4,0.3,584,47.5,557,95.4,104,18.7
+2023,Risk group screening,East Uusimaa,172,130,75.6,0,0.0,55,42.3,54,98.2,17,31.5
+2023,Risk group screening,Kainuu,64,48,75.0,4,8.3,6,12.5,6,100.0,1,16.7
+2023,Risk group screening,Kanta-Häme,294,249,84.7,0,0.0,127,51.0,118,92.9,22,18.6
+2023,Risk group screening,Kymenlaakso,362,304,84.0,0,0.0,131,43.1,128,97.7,14,10.9
+2023,Risk group screening,Lapland,136,106,77.9,12,11.3,19,17.9,18,94.7,6,33.3
+2023,Risk group screening,North Karelia,383,279,72.8,2,0.7,138,49.5,133,96.4,28,21.1
+2023,Risk group screening,North Ostrobothnia,345,293,84.9,32,10.9,30,10.2,25,83.3,4,16.0
+2023,Risk group screening,North Savo,69,41,59.4,4,9.8,8,19.5,8,100.0,1,12.5
+2023,Risk group screening,Ostrobothnia,267,222,83.1,11,5.0,37,16.7,33,89.2,7,21.2
+2023,Risk group screening,Pirkanmaa,1050,868,82.7,0,0.0,491,56.6,476,96.9,104,21.8
+2023,Risk group screening,Päijät-Häme,372,301,80.9,0,0.0,167,55.5,163,97.6,40,24.5
+2023,Risk group screening,Satakunta,445,386,86.7,0,0.0,237,61.4,235,99.2,51,21.7
+2023,Risk group screening,South Karelia,69,57,82.6,0,0.0,14,24.6,12,85.7,3,25.0
+2023,Risk group screening,South Ostrobothnia,345,288,83.5,2,0.7,91,31.6,84,92.3,22,26.2
+2023,Risk group screening,South Savo,172,148,86.0,18,12.2,11,7.4,11,100.0,5,45.5
+2023,Risk group screening,Southwest Finland,1079,965,89.4,4,0.4,451,46.7,110,24.4,100,90.9
+2023,Risk group screening,Vantaa and Kerava,566,475,83.9,1,0.2,239,50.3,233,97.5,45,19.3
+2023,Risk group screening,West Uusimaa,844,686,81.3,0,0.0,310,45.2,297,95.8,67,22.6
+2023,Risk group screening,Åland,37,32,86.5,3,9.4,2,6.2,2,100.0,1,50.0
+2023,Risk group screening,Total,9563,7900,82.6,103,1.3,3497,44.3,3040,86.9,712,23.4
+2022,Age group screening,Central Finland,12927,9232,71.4,568,6.2,77,0.8,76,98.7,27,35.5
+2022,Age group screening,Central Ostrobothnia,3187,2388,74.9,69,2.9,19,0.8,19,100.0,7,36.8
+2022,Age group screening,Central Uusimaa,10531,7849,74.5,368,4.7,73,0.9,71,97.3,33,46.5
+2022,Age group screening,City of Helsinki,37763,26753,70.8,1758,6.6,330,1.2,321,97.3,132,41.1
+2022,Age group screening,East Uusimaa,5197,3856,74.2,182,4.7,31,0.8,31,100.0,12,38.7
+2022,Age group screening,Kainuu,3327,2486,74.7,71,2.9,17,0.7,17,100.0,7,41.2
+2022,Age group screening,Kanta-Häme,8416,6057,72.0,316,5.2,47,0.8,45,95.7,20,44.4
+2022,Age group screening,Kymenlaakso,7995,6007,75.1,370,6.2,69,1.1,67,97.1,27,40.3
+2022,Age group screening,Lapland,8593,6229,72.5,225,3.6,62,1.0,60,96.8,22,36.7
+2022,Age group screening,North Karelia,7691,5127,66.7,310,6.0,69,1.3,67,97.1,29,43.3
+2022,Age group screening,North Ostrobothnia,19550,14372,73.5,507,3.5,161,1.1,141,87.6,60,42.6
+2022,Age group screening,North Savo,12239,8229,67.2,501,6.1,85,1.0,84,98.8,33,39.3
+2022,Age group screening,Ostrobothnia,8067,6164,76.4,270,4.4,63,1.0,63,100.0,29,46.0
+2022,Age group screening,Pirkanmaa,26280,18811,71.6,1094,5.8,182,1.0,178,97.8,93,52.2
+2022,Age group screening,Päijät-Häme,10045,7136,71.0,413,5.8,72,1.0,71,98.6,48,67.6
+2022,Age group screening,Satakunta,10255,7549,73.6,408,5.4,73,1.0,72,98.6,29,40.3
+2022,Age group screening,South Karelia,5990,4328,72.3,270,6.2,17,0.4,17,100.0,2,11.8
+2022,Age group screening,South Ostrobothnia,8797,6716,76.3,345,5.1,53,0.8,53,100.0,21,39.6
+2022,Age group screening,South Savo,6205,4790,77.2,285,5.9,48,1.0,48,100.0,17,35.4
+2022,Age group screening,Southwest Finland,24072,17734,73.7,926,5.2,265,1.5,258,97.4,109,42.2
+2022,Age group screening,Vantaa and Kerava,14552,10181,70.0,645,6.3,135,1.3,130,96.3,54,41.5
+2022,Age group screening,West Uusimaa,25483,18495,72.6,997,5.4,143,0.8,136,95.1,60,44.1
+2022,Age group screening,Åland,1611,1252,77.7,46,3.7,26,2.1,25,96.2,5,20.0
+2022,Age group screening,Total,278773,201741,72.4,10944,5.4,2117,1.0,2050,96.8,876,42.7
+2022,Risk group screening,Central Finland,604,467,77.3,18,3.9,205,43.9,197,96.1,34,17.3
+2022,Risk group screening,Central Ostrobothnia,77,62,80.5,2,3.2,4,6.5,4,100.0,1,25.0
+2022,Risk group screening,Central Uusimaa,521,403,77.4,2,0.5,201,49.9,193,96.0,64,33.2
+2022,Risk group screening,City of Helsinki,1966,1491,75.8,5,0.3,691,46.3,665,96.2,158,23.8
+2022,Risk group screening,East Uusimaa,248,192,77.4,3,1.6,84,43.8,78,92.9,16,20.5
+2022,Risk group screening,Kainuu,40,35,87.5,2,5.7,2,5.7,2,100.0,2,100.0
+2022,Risk group screening,Kanta-Häme,314,260,82.8,6,2.3,127,48.8,120,94.5,27,22.5
+2022,Risk group screening,Kymenlaakso,117,96,82.1,0,0.0,20,20.8,19,95.0,4,21.1
+2022,Risk group screening,Lapland,109,87,79.8,9,10.3,10,11.5,10,100.0,8,80.0
+2022,Risk group screening,North Karelia,289,182,63.0,0,0.0,104,57.1,103,99.0,15,14.6
+2022,Risk group screening,North Ostrobothnia,243,203,83.5,19,9.4,25,12.3,24,96.0,6,25.0
+2022,Risk group screening,North Savo,243,164,67.5,12,7.3,4,2.4,4,100.0,1,25.0
+2022,Risk group screening,Ostrobothnia,233,195,83.7,19,9.7,14,7.2,14,100.0,1,7.1
+2022,Risk group screening,Pirkanmaa,1261,1030,81.7,10,1.0,525,51.0,505,96.2,131,25.9
+2022,Risk group screening,Päijät-Häme,479,381,79.5,2,0.5,187,49.1,184,98.4,54,29.3
+2022,Risk group screening,Satakunta,560,482,86.1,4,0.8,235,48.8,232,98.7,46,19.8
+2022,Risk group screening,South Karelia,138,106,76.8,0,0.0,20,18.9,18,90.0,4,22.2
+2022,Risk group screening,South Ostrobothnia,402,300,74.6,11,3.7,109,36.3,100,91.7,18,18.0
+2022,Risk group screening,South Savo,187,155,82.9,17,11.0,16,10.3,15,93.8,3,20.0
+2022,Risk group screening,Southwest Finland,848,711,83.8,22,3.1,277,39.0,264,95.3,73,27.7
+2022,Risk group screening,Vantaa and Kerava,766,577,75.3,1,0.2,274,47.5,264,96.4,62,23.5
+2022,Risk group screening,West Uusimaa,1101,860,78.1,2,0.2,376,43.7,361,96.0,77,21.3
+2022,Risk group screening,Åland,34,26,76.5,2,7.7,1,3.8,1,100.0,0,0.0
+2022,Risk group screening,Total,10780,8465,78.5,168,2.0,3511,41.5,3377,96.2,805,23.8
+2021,Age group screening,Central Finland,11094,8068,72.7,570,7.1,102,1.3,102,100.0,45,44.1
+2021,Age group screening,Central Ostrobothnia,2721,2020,74.2,76,3.8,17,0.8,10,58.8,6,60.0
+2021,Age group screening,Central Uusimaa,10324,7627,73.9,420,5.5,71,0.9,70,98.6,42,60.0
+2021,Age group screening,City of Helsinki,37239,26570,71.3,1887,7.1,370,1.4,356,96.2,153,43.0
+2021,Age group screening,East Uusimaa,5000,3605,72.1,196,5.4,42,1.2,41,97.6,20,48.8
+2021,Age group screening,Kainuu,3374,2610,77.4,73,2.8,19,0.7,11,57.9,5,45.5
+2021,Age group screening,Kanta-Häme,7332,5223,71.2,286,5.5,55,1.1,52,94.5,27,51.9
+2021,Age group screening,Kymenlaakso,7953,6060,76.2,407,6.7,44,0.7,43,97.7,25,58.1
+2021,Age group screening,Lapland,7366,5398,73.3,168,3.1,48,0.9,40,83.3,23,57.5
+2021,Age group screening,North Karelia,6467,4697,72.6,314,6.7,48,1.0,33,68.8,17,51.5
+2021,Age group screening,North Ostrobothnia,17031,12518,73.5,480,3.8,113,0.9,64,56.6,37,57.8
+2021,Age group screening,North Savo,11242,7383,65.7,301,4.1,71,1.0,60,84.5,27,45.0
+2021,Age group screening,Ostrobothnia,7264,5595,77.0,262,4.7,43,0.8,36,83.7,13,36.1
+2021,Age group screening,Pirkanmaa,22747,16781,73.8,1083,6.5,229,1.4,229,100.0,96,41.9
+2021,Age group screening,Päijät-Häme,8441,6074,72.0,429,7.1,95,1.6,90,94.7,49,54.4
+2021,Age group screening,Satakunta,10306,7615,73.9,472,6.2,102,1.3,102,100.0,61,59.8
+2021,Age group screening,South Karelia,5083,3791,74.6,69,1.8,28,0.7,28,100.0,8,28.6
+2021,Age group screening,South Ostrobothnia,7573,5928,78.3,331,5.6,42,0.7,40,95.2,23,57.5
+2021,Age group screening,South Savo,5178,3750,72.4,176,4.7,36,1.0,35,97.2,11,31.4
+2021,Age group screening,Southwest Finland,22110,16375,74.1,1052,6.4,140,0.9,110,78.6,65,59.1
+2021,Age group screening,Vantaa and Kerava,14589,10515,72.1,674,6.4,144,1.4,140,97.2,68,48.6
+2021,Age group screening,West Uusimaa,25276,18165,71.9,945,5.2,172,0.9,166,96.5,74,44.6
+2021,Age group screening,Åland,1383,1069,77.3,51,4.8,13,1.2,7,53.8,5,71.4
+2021,Age group screening,Total,257093,187437,72.9,10722,5.7,2044,1.1,1865,91.2,900,48.3
+2021,Risk group screening,Central Finland,539,510,94.6,12,2.4,244,47.8,244,100.0,53,21.7
+2021,Risk group screening,Central Ostrobothnia,95,81,85.3,7,8.6,1,1.2,1,100.0,0,0.0
+2021,Risk group screening,Central Uusimaa,692,545,78.8,1,0.2,194,35.6,185,95.4,45,24.3
+2021,Risk group screening,City of Helsinki,2455,1952,79.5,5,0.3,707,36.2,674,95.3,154,22.8
+2021,Risk group screening,East Uusimaa,285,230,80.7,1,0.4,90,39.1,87,96.7,25,28.7
+2021,Risk group screening,Kainuu,60,47,78.3,6,12.8,2,4.3,1,50.0,1,100.0
+2021,Risk group screening,Kanta-Häme,251,250,99.6,2,0.8,126,50.4,126,100.0,26,20.6
+2021,Risk group screening,Kymenlaakso,164,93,56.7,2,2.2,18,19.4,17,94.4,5,29.4
+2021,Risk group screening,Lapland,135,116,85.9,14,12.1,9,7.8,9,100.0,4,44.4
+2021,Risk group screening,North Karelia,301,207,68.8,83,40.1,21,10.1,14,66.7,5,35.7
+2021,Risk group screening,North Ostrobothnia,300,240,80.0,26,10.8,9,3.8,4,44.4,2,50.0
+2021,Risk group screening,North Savo,199,110,55.3,23,20.9,9,8.2,7,77.8,4,57.1
+2021,Risk group screening,Ostrobothnia,239,198,82.8,27,13.6,13,6.6,11,84.6,4,36.4
+2021,Risk group screening,Pirkanmaa,1015,1015,100.0,2,0.2,513,50.5,513,100.0,100,19.5
+2021,Risk group screening,Päijät-Häme,311,308,99.0,3,1.0,176,57.1,175,99.4,42,24.0
+2021,Risk group screening,Satakunta,291,291,100.0,0,0.0,159,54.6,159,100.0,24,15.1
+2021,Risk group screening,South Karelia,271,124,45.8,0,0.0,14,11.3,12,85.7,3,25.0
+2021,Risk group screening,South Ostrobothnia,252,197,78.2,38,19.3,7,3.6,5,71.4,2,40.0
+2021,Risk group screening,South Savo,145,133,91.7,22,16.5,4,3.0,4,100.0,3,75.0
+2021,Risk group screening,Southwest Finland,864,704,81.5,200,28.4,53,7.5,33,62.3,25,75.8
+2021,Risk group screening,Vantaa and Kerava,1020,808,79.2,2,0.2,269,33.3,258,95.9,64,24.8
+2021,Risk group screening,West Uusimaa,1372,1110,80.9,3,0.3,378,34.1,366,96.8,89,24.3
+2021,Risk group screening,Åland,28,21,75.0,5,23.8,0,0.0,0,–,0,–
+2021,Risk group screening,Total,11284,9290,82.3,484,5.2,3016,32.5,2905,96.3,680,23.4
+2020,Age group screening,Central Finland,11090,7503,67.7,519,6.9,66,0.9,66,100.0,25,37.9
+2020,Age group screening,Central Ostrobothnia,2742,2017,73.6,70,3.5,18,0.9,18,100.0,5,27.8
+2020,Age group screening,Central Uusimaa,10269,7658,74.6,462,6.0,61,0.8,61,100.0,42,68.9
+2020,Age group screening,City of Helsinki,37752,25531,67.6,1937,7.6,239,0.9,228,95.4,105,46.1
+2020,Age group screening,East Uusimaa,4978,3643,73.2,229,6.3,27,0.7,27,100.0,16,59.3
+2020,Age group screening,Kainuu,3510,2643,75.3,41,1.6,13,0.5,13,100.0,3,23.1
+2020,Age group screening,Kanta-Häme,7266,4815,66.3,274,5.7,43,0.9,43,100.0,10,23.3
+2020,Age group screening,Kymenlaakso,8164,6095,74.7,117,1.9,49,0.8,49,100.0,25,51.0
+2020,Age group screening,Lapland,7379,5370,72.8,100,1.9,35,0.7,35,100.0,20,57.1
+2020,Age group screening,North Karelia,6610,4946,74.8,291,5.9,53,1.1,53,100.0,26,49.1
+2020,Age group screening,North Ostrobothnia,17230,12389,71.9,230,1.9,117,0.9,117,100.0,57,48.7
+2020,Age group screening,North Savo,10979,6917,63.0,145,2.1,76,1.1,76,100.0,28,36.8
+2020,Age group screening,Ostrobothnia,7329,5533,75.5,201,3.6,43,0.8,43,100.0,18,41.9
+2020,Age group screening,Pirkanmaa,22546,15621,69.3,1069,6.8,164,1.0,164,100.0,86,52.4
+2020,Age group screening,Päijät-Häme,8580,5782,67.4,393,6.8,46,0.8,46,100.0,19,41.3
+2020,Age group screening,Satakunta,10416,7459,71.6,478,6.4,84,1.1,84,100.0,39,46.4
+2020,Age group screening,South Karelia,5189,3714,71.6,116,3.1,34,0.9,34,100.0,15,44.1
+2020,Age group screening,South Ostrobothnia,7895,6146,77.8,367,6.0,48,0.8,48,100.0,28,58.3
+2020,Age group screening,South Savo,5482,4166,76.0,231,5.5,33,0.8,33,100.0,19,57.6
+2020,Age group screening,Southwest Finland,22205,16013,72.1,701,4.4,161,1.0,161,100.0,82,50.9
+2020,Age group screening,Vantaa and Kerava,14144,10113,71.5,715,7.1,96,0.9,93,96.9,48,51.6
+2020,Age group screening,West Uusimaa,24607,17204,69.9,1046,6.1,110,0.6,108,98.2,60,55.6
+2020,Age group screening,Åland,1394,1105,79.3,30,2.7,13,1.2,13,100.0,4,30.8
+2020,Age group screening,Total,257756,182383,70.8,9762,5.4,1629,0.9,1613,99.0,780,48.4
+2020,Risk group screening,Central Finland,265,197,74.3,10,5.1,46,23.4,46,100.0,7,15.2
+2020,Risk group screening,Central Ostrobothnia,44,38,86.4,7,18.4,1,2.6,1,100.0,1,100.0
+2020,Risk group screening,City of Helsinki,1,1,100.0,0,0.0,0,0.0,0,–,0,–
+2020,Risk group screening,East Uusimaa,1,1,100.0,0,0.0,0,0.0,0,–,0,–
+2020,Risk group screening,Kainuu,34,26,76.5,0,0.0,0,0.0,0,–,0,–
+2020,Risk group screening,Kanta-Häme,29,26,89.7,1,3.8,6,23.1,6,100.0,0,0.0
+2020,Risk group screening,Kymenlaakso,157,117,74.5,0,0.0,17,14.5,17,100.0,4,23.5
+2020,Risk group screening,Lapland,148,119,80.4,9,7.6,15,12.6,14,93.3,11,78.6
+2020,Risk group screening,North Karelia,114,85,74.6,4,4.7,2,2.4,2,100.0,0,0.0
+2020,Risk group screening,North Ostrobothnia,196,164,83.7,7,4.3,7,4.3,7,100.0,4,57.1
+2020,Risk group screening,North Savo,367,13,3.5,3,23.1,2,15.4,2,100.0,0,0.0
+2020,Risk group screening,Ostrobothnia,224,191,85.3,28,14.7,6,3.1,6,100.0,2,33.3
+2020,Risk group screening,Pirkanmaa,89,89,100.0,0,0.0,47,52.8,47,100.0,8,17.0
+2020,Risk group screening,Päijät-Häme,132,89,67.4,2,2.2,28,31.5,28,100.0,8,28.6
+2020,Risk group screening,Satakunta,410,335,81.7,0,0.0,152,45.4,152,100.0,33,21.7
+2020,Risk group screening,South Karelia,202,107,53.0,27,25.2,7,6.5,7,100.0,4,57.1
+2020,Risk group screening,South Ostrobothnia,294,242,82.3,42,17.4,8,3.3,8,100.0,6,75.0
+2020,Risk group screening,South Savo,300,56,18.7,4,7.1,0,0.0,0,–,0,–
+2020,Risk group screening,Southwest Finland,769,645,83.9,151,23.4,37,5.7,37,100.0,20,54.1
+2020,Risk group screening,Åland,18,11,61.1,3,27.3,0,0.0,0,–,0,–
+2020,Risk group screening,Total,3794,2552,67.3,298,11.7,381,14.9,380,99.7,108,28.4
