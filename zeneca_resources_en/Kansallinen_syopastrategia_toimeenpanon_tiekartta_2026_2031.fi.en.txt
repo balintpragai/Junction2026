@@ -862,7 +862,7 @@ accessing treatment requires adequate resources. In the future, blood tests that
 identify multiple cancers (multi-cancer early detection or MCED) may contribute to the 
 early detection of several types of cancer. However, their introduction requires ongoing 
 studies to show that they can reduce cancer mortality in a cost-effective manner.
-Indicators of the implementation of early diagnostics include the initial prevalence of the disease, 
+Indicators of the implementation of early diagnostics include the stage of the disease at diagnosis [corrected: machine translation said "initial prevalence"; Finnish: "taudin lähtötilanteen levinneisyys"],
 access to treatment times, the proportion of patients treated with a view to cure, and survival.
 23
 --- PAGE 24 ---
@@ -901,7 +901,7 @@ Early transition to symptomatic care is in the patient's best interest, as it al
 burdensome treatments and procedures that do not improve the prognosis or quality of life. 
 Psychosocial support for the patient and their loved ones is essential throughout the treatment 
 process.
-Indicators include access to treatment times, cancer prevalence, and indicators 
+Indicators include access to treatment times, cancer stage [corrected: machine translation said "cancer prevalence"; Finnish: "syövän levinneisyys"], and indicators
 describing treatment outcomes: the proportion of patients receiving curative treatment 
 and survival. Objective indicators enable national and international comparison and 
 promote equality.
@@ -1955,7 +1955,7 @@ implementation launched in welfare areas.
 2029–2031:Standardized referral criteria and operating models included in all significant 
 cancer-specific care chain descriptions. Implementation expanded nationwide and 
 monitoring established as part of care chain management.
-Meter:At least 70% of cancers will be diagnosed in prevalence categories I–II by 
+Meter:At least 70% of cancers will be diagnosed in stages I–II [corrected: machine translation said "prevalence categories I–II"; Finnish: "levinneisyysluokissa I–II"] by
 2035.
 Meter:The guidelines (referral criteria and operating models) have been incorporated 
 into all national care chains.
@@ -2216,7 +2216,7 @@ Schedule:
 Cancer Quality Register produces annual reports on at least five different cancers, and the information 
 obtained from them guides the development of national and regional cancer care and the operation of 
 the service system based on objectives.
-Meter:The quality register's database (including prevalence data) enables reliable 
+Meter:The quality register's database (including stage data [corrected: machine translation said "prevalence data"; Finnish: "levinneisyystieto"]) enables reliable
 assessment and comparison of quality and effectiveness (database coverage 90%); 
 Number of clinical cancer notifications (target 90% of cases automated by 2030).
 Measure 3.2.2 Define and launch peer development processes to 
