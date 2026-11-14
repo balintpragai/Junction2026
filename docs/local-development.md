@@ -20,7 +20,7 @@ In a gap-summary:
 - `gap.peer_values` holds the other Regions in the same parent area (curated peer group), not all 23.
 - `trend` is the Region's values up to the requested year, without years that have no value.
 - `action` is the linked National Cancer Strategy action with the lowest rank that has text, or `null`.
-- `narrative` is the **Template sentence** for the Gap (`source: "template"`), built in `api` with no LLM call. The Narrative cache (#17) will replace it with checked LLM text.
+- `narrative` is the Narrative `engine` cached for this Gap after the last rescore (#17), with its `source`: `llm` (LLM text that passed the number-check) or `template` (a Template sentence). Only latest-year Gaps are cached; for any other year `api` builds the Template sentence itself. `api` never calls an LLM.
 
 ## Prerequisites
 
@@ -167,7 +167,7 @@ cd seed && ../.venv/bin/python -m pytest
 
 A rescore scores every Region × indicator × year that has a value (covariates are never scored) with `score()` from `engine/app/scoring.py`, then upserts `fact_gap_score` in one transaction. Every row gets the same `scored_at` and the `engine_version`. Rows whose value has gone from the data are deleted. Åland is scored as usual, with empty `peer_values` and a `no_peers` note.
 
-`seed` triggers one after every load, so `docker compose up` ends fully scored and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
+After scoring, the same job **fills the Narrative cache** (see below). `seed` triggers one after every load, so `docker compose up` ends fully scored, with a Narrative for every latest-year Gap, and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
 
 ```sh
 docker compose exec engine python -m app.rescore_now   # prints the job's final status as JSON
@@ -186,6 +186,21 @@ docker compose exec engine python -m app.rescore_now   # prints the job's final 
 
 Only a failed **load** makes `seed` exit non-zero and stop `api` from starting, because then the data itself is inconsistent. On a brand-new database a failed rescore means `api` starts with no Gaps. After fixing the cause, run `rescore_now`. `docker compose logs engine` has the full traceback for every failed indicator.
 
+**The Narrative cache** (`engine/app/narratives.py`, `narrative_cache` table). For each indicator's latest scored year, every Region's Gap gets one English Narrative (about 275 rows). For each Gap, `engine` builds a `NarrativeRequest` with the Gap, the Region and indicator names, the matched strategy action (the same one gap-summary shows) and the data-quality notes, then:
+
+- computes `input_hash` = SHA-256 of that request plus the LLM model `narrative` reports at `GET /config`;
+- **keeps** the cached row if its `input_hash` and `prompt_version` both match, so a rescore with unchanged inputs makes no `narrative` or LLM calls;
+- otherwise asks `POST /narrative` (8 at a time) and replaces the row, storing `model` (`''` for a Template sentence), `prompt_version`, `source`, `numbers_checked` and `input_hash`;
+- deletes rows whose Gap is no longer a latest-year Gap, and the outdated row of any Narrative that failed to generate, so gap-summary never shows text built from old numbers. It falls back to the Template sentence instead.
+
+With no `LLM_*` variables every row is a Template sentence. A Narrative problem never fails the job: the job reports `narratives_generated`, `narratives_kept`, `narratives_failed`, `narratives_removed` and `narrative_sources` (counts by `source` after the run), or `narrative_error` if `narrative` was unreachable. `seed` prints one line with these counts. To refresh Narratives after changing the `LLM_*` settings, restart `narrative` with the new env, then run `rescore_now`: the model is part of the hash, so every row is regenerated.
+
+Counts by source, from the database:
+
+```sh
+docker compose exec db psql -U reachloop -d reachloop -c "SELECT source, model, count(*) FROM narrative_cache GROUP BY 1, 2"
+```
+
 `engine_version` is `ENGINE_VERSION` from `engine/app/rescore.py` plus a hash of the thresholds, so a threshold change shows up in every row. Bump `ENGINE_VERSION` when scoring logic changes.
 
 Run the engine's tests without Docker:
@@ -194,6 +209,8 @@ Run the engine's tests without Docker:
 .venv/bin/pip install -r engine/requirements-dev.txt     # from the repo root
 cd engine && ../.venv/bin/python -m pytest
 ```
+
+The Narrative-cache tests in `engine/tests/test_narratives.py` also need a scratch Postgres (`TEST_DATABASE_URL`, see [Run the tests](#run-the-tests)); without it they're skipped.
 
 ### Configuration
 
@@ -224,7 +241,7 @@ docker run --rm -p 8000:8000 reach-loop-api
 
 ## `narrative` service
 
-Internal only: `engine` calls it, and it publishes no port. `POST /narrative` takes a `NarrativeRequest` (one Gap plus Region and indicator names, unit, optional action text and data-quality note, and `language`). It returns a `NarrativeResult`: `text`, `source` (`llm` | `template`), `language`, `numbers_checked`, `prompt_version` and `rejected_numbers`. Both models are in `common/common/models.py`.
+Internal only: `engine` calls it, and it publishes no port. `POST /narrative` takes a `NarrativeRequest` (one Gap plus Region and indicator names, unit, optional action text and data-quality note, and `language`). It returns a `NarrativeResult`: `text`, `source` (`llm` | `template`), `language`, `numbers_checked`, `prompt_version` and `rejected_numbers`. Both models are in `common/common/models.py`. `GET /config` returns the `prompt_version` and the configured LLM `model` (`''` without an LLM); `engine` keys its Narrative cache on both. The Template sentence code lives in `common/common/template.py`, shared with `api`.
 
 How it decides:
 1. If an LLM is configured (`LLM_BASE_URL` and `LLM_MODEL`; `LLM_API_KEY` is optional) and `language` is `en`, it calls `{LLM_BASE_URL}/chat/completions` at temperature 0 with the strict prompt in `narrative/app/prompt.py`.

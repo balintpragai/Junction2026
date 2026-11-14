@@ -252,3 +252,24 @@ def test_outreach_route_over_real_postgres(db_url):
     assert r.status_code == 200 and r.headers["cache-control"] == "max-age=300"
     OutreachList.model_validate(r.json())
     assert client.get("/outreach-list?indicator=3620&year=2024").status_code == 404
+
+
+# --- Narrative cache (#17) ---------------------------------------------------------
+
+
+def test_gap_summary_returns_the_cached_narrative(db_url, repo):
+    text = "Helsinki's attendance was 75% in 2023, 5 percentage points below the 80% target."
+    with psycopg.connect(db_url) as conn:
+        conn.execute(
+            "INSERT INTO narrative_cache (region_id, indicator_id, year, language, model, prompt_version, text, source, "
+            "numbers_checked, input_hash) VALUES (1, '3621', 2023, 'en', 'some-model', 'v1', %s, 'llm', true, 'h')",
+            (text,),
+        )
+    try:
+        s = repo.gap_summary("t-hki", "3621", 2023)
+        assert (s.narrative.text, s.narrative.source, s.narrative.language) == (text, "llm", "en")
+        # No cache row for 2024: the Template sentence, as before.
+        assert repo.gap_summary("t-hki", "3621", 2024).narrative.source == "template"
+    finally:
+        with psycopg.connect(db_url) as conn:
+            conn.execute("DELETE FROM narrative_cache")
