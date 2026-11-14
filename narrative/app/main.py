@@ -16,7 +16,7 @@ from common.models import Health, NarrativeRequest, NarrativeResult
 from . import prompt
 from .llm import ChatClient, client_from_env
 from .numbers import allowed_numbers, unverified_numbers
-from .template import template_sentence
+from common.template import template_sentence
 
 log = logging.getLogger("narrative")
 

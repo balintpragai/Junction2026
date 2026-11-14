@@ -4,19 +4,23 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)); `web` is a stub that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads Regions, indicators and Gaps from Postgres (#14); only `/outreach-list` is still a fixture (#16). `web` is a stub that later tickets fill in.
 
-| Route | Response type | Fixture coverage |
+| Route | Response type | Source |
 |---|---|---|
-| `GET /health` | `Health` | always `{"status":"ok"}` |
-| `GET /regions` | `RegionList` | all 23 Regions |
-| `GET /indicators` | `IndicatorList` | 4 indicators; only `3621` has a Target (80%) |
-| `GET /regions/{code}/gap-summary?indicator=&year=` | `GapSummary` | only `helsinki`, `3621`, `2024` |
-| `GET /outreach-list?indicator=&year=` | `OutreachList` | only `3621`, `2024` |
+| `GET /health` | `Health` | always `{"status":"ok"}` (no database call) |
+| `GET /regions` | `RegionList` | `dim_region`: the 23 Regions, sorted by name |
+| `GET /indicators` | `IndicatorList` | `dim_indicator` without covariates; `years` = years that have Gaps |
+| `GET /regions/{code}/gap-summary?indicator=&year=` | `GapSummary` | `fact_gap_score` + trend from `fact_indicator_value` + the top-ranked strategy action |
+| `GET /outreach-list?indicator=&year=` | `OutreachList` | **fixture**, only `3621`, `2024` (placeholder numbers, slug Region codes) |
 
-Any other region, indicator or year returns **404** with a JSON `detail` message. Both query parameters are required. Leaving one out returns **422**.
+**Region codes are Sotkanet codes** from `dim_region.code` (not the `helsinki`-style slugs of the old fixtures). Get them from `/regions`. An unknown Region or indicator, a covariate, or a year without a Gap returns **404** with a JSON `detail` message. Both query parameters are required; leaving one out returns **422**. If Postgres is unreachable, data routes return **503**.
 
-> **Fixture numbers are placeholders.** Only Helsinki's 2024 breast-screening value (74.3% against the 80% Target, deviation −5.7, Severity `act`) comes from the brief. Peer values, trend, covariates and the strategy action text are invented so the UI has something to render. Never quote them as real figures. The gap-summary response carries a `fixture_data` note in `data_quality_notes` that says so.
+In a gap-summary:
+- `gap.peer_values` holds the other Regions in the same parent area (curated peer group), not all 23.
+- `trend` is the Region's values up to the requested year, without years that have no value.
+- `action` is the linked National Cancer Strategy action with the lowest rank that has text, or `null`.
+- `narrative` is the **Template sentence** for the Gap (`source: "template"`), built in `api` with no LLM call. The Narrative cache (#17) will replace it with checked LLM text.
 
 ## Prerequisites
 
@@ -48,12 +52,13 @@ cd api
 - Interactive docs (Swagger UI): http://localhost:8000/docs
 - OpenAPI spec: http://localhost:8000/openapi.json
 
-The app checks every fixture against its model at startup. If a fixture no longer matches the contract, the server won't start, and the error names the bad field.
+The data routes need Postgres: set `DATABASE_URL` (for example to a database the compose stack seeded, or any Postgres with `db/*.sql` applied and data loaded). Without it they fail; `/health` still answers. The outreach fixture is checked against its model at startup.
 
 ### Environment variables
 
 | Variable | Default | Purpose |
 |---|---|---|
+| `DATABASE_URL` | none (required for data routes) | Postgres to read from, e.g. `postgresql://reachloop:reachloop@localhost:5432/reachloop` |
 | `WEB_ORIGIN` | `http://localhost:3000` | Allowed CORS origins, comma-separated. Set it if `web` runs on another port. |
 
 Example: `WEB_ORIGIN=http://localhost:3000,http://localhost:5173 ../.venv/bin/uvicorn app.main:app --reload`
@@ -70,11 +75,13 @@ With the server running:
 curl -s localhost:8000/health
 curl -s localhost:8000/regions
 curl -s localhost:8000/indicators
-curl -s 'localhost:8000/regions/helsinki/gap-summary?indicator=3621&year=2024'
+HKI=$(curl -s localhost:8000/regions | python3 -c 'import json,sys; print(next(r["code"] for r in json.load(sys.stdin)["regions"] if r["name"] == "Helsinki"))')
+curl -s "localhost:8000/regions/$HKI/gap-summary?indicator=3621&year=2024"
 curl -s 'localhost:8000/outreach-list?indicator=3621&year=2024'
 
-# Expected 404 (no fixture for this combination)
-curl -s -w '\n%{http_code}\n' 'localhost:8000/regions/lappi/gap-summary?indicator=3621&year=2024'
+# Expected 404s
+curl -s -w '\n%{http_code}\n' 'localhost:8000/regions/nowhere/gap-summary?indicator=3621&year=2024'
+curl -s -w '\n%{http_code}\n' "localhost:8000/regions/$HKI/gap-summary?indicator=nope&year=2024"
 ```
 
 Pipe through `jq` (or `python3 -m json.tool`) for readable output.
@@ -86,7 +93,7 @@ cd api
 ../.venv/bin/python -m pytest
 ```
 
-The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) checks that:
+The route tests run against an in-memory repository built from `api/tests/fixtures/` (contract-shaped examples, placeholder numbers), so they need no database. The suite (`test_contract.py`, `test_openapi_drift.py`) checks that:
 
 - every route returns 200 and its body validates against its Pydantic model
 - `/openapi.json` points each route at its typed schema
@@ -94,11 +101,19 @@ The suite (`api/tests/test_contract.py`, `api/tests/test_openapi_drift.py`) chec
 - the Gap fixture is internally consistent: deviation, rank, peer count, trend and Narrative all agree
 - the outreach list can't validate without a non-empty `ecological_fallacy_note`
 - outreach rows are below target and ranked by Gap
-- unknown combinations return 404
+- an unknown Region, an unknown indicator, or a year without a Gap returns 404, and a database outage returns 503 without leaking details
 - `Cache-Control` is set
 - the committed `web/openapi.json` matches what the app generates. If it fails, the message shows the diff and tells you to run `scripts/gen-api-types.sh`.
 
 Run the tests after any change to `common/common/models.py` or to the fixtures.
+
+**The SQL** (`api/app/repository.py`) is tested against a real Postgres with the real schema in `test_repository_postgres.py`. It's skipped unless `TEST_DATABASE_URL` is set. It creates and drops its own temporary schema and uses synthetic rows, so any scratch Postgres works:
+
+```sh
+docker run --rm -d --name rl-test-db -p 55432:5432 -e POSTGRES_PASSWORD=test postgres:16
+cd api && TEST_DATABASE_URL=postgresql://postgres:test@localhost:55432/postgres ../.venv/bin/python -m pytest
+docker stop rl-test-db
+```
 
 ## Run the whole stack (docker compose)
 
@@ -116,7 +131,7 @@ docker compose down              # stop; add -v to also delete the database volu
 | `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
 | `engine` | Scoring and the rescore job: `POST /jobs/rescore`, `GET /jobs/{id}` | none |
 | `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, runs a rescore and waits for it (a rescore problem is a warning), exits 0 | none |
-| `api` | The fixture API | `8000` (`API_PORT`) |
+| `api` | Reads Regions, indicators and Gaps from Postgres; outreach list still a fixture | `8000` (`API_PORT`) |
 | `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
 Startup order: `db` → `narrative` → `engine` → `seed` (must exit 0) → `api` → `web`. Each step waits for the one before it to be healthy.
@@ -335,4 +350,5 @@ Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run a
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. A `SeedInputError` names the input file, line and column that is malformed; nothing is written until every file reads cleanly. |
 | `seed: WARNING: rescore ...` in `docker compose logs seed`, or Gaps look stale | The stack started on the previous Gaps. The warning names what failed; `docker compose logs engine` has the traceback. Fix it, then `docker compose exec engine python -m app.rescore_now`. See [`engine`: the rescore job](#engine-the-rescore-job). |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
-| 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
+| 404 from gap-summary | Check the Region code (Sotkanet code from `/regions`, not a slug), the indicator (not a covariate), and that `/indicators` lists that year. Outreach list: only the fixture `3621`/`2024` exists until #16. |
+| 503 from a data route | `api` can't reach Postgres: check `DATABASE_URL` and `docker compose ps db`. |
