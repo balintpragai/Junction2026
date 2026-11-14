@@ -9,6 +9,7 @@ Vocabulary follows GLOSSARY.md: Region, Gap, Target, Severity, Narrative,
 Template sentence.
 """
 
+from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -204,6 +205,44 @@ class NarrativeResult(ContractModel):
         default_factory=list,
         description="Numbers from a discarded LLM output that were not in the request. Empty unless the LLM output was rejected for invented numbers.",
     )
+
+
+# --- engine jobs (internal: seed / operator -> engine) -----------------------
+
+JobStatus = Literal["queued", "running", "succeeded", "partial", "failed"]
+"""`partial`: some indicators failed to score and kept their previous Gaps; the rest were scored.
+`failed`: nothing was scored; every previous Gap is unchanged."""
+
+
+class IndicatorFailure(ContractModel):
+    code: str = Field(description="Indicator id that failed to score.")
+    error: str
+
+
+class RescoreJob(ContractModel):
+    """One run of the rescore job: score every Region × indicator × year and store the Gaps."""
+
+    id: str
+    status: JobStatus
+    created_at: datetime
+    started_at: datetime | None = None
+    finished_at: datetime | None = None
+    engine_version: str | None = Field(
+        default=None, description="Written to every Gap the job stored. Set when the job finishes writing."
+    )
+    gaps_written: int | None = Field(default=None, description="Gaps upserted into fact_gap_score.")
+    gaps_removed: int | None = Field(
+        default=None, description="Stale Gaps deleted because their value is no longer in the data."
+    )
+    indicators_scored: int | None = None
+    failed_indicators: list[IndicatorFailure] = Field(
+        default_factory=list, description="Indicators skipped this run; each keeps its previous Gaps."
+    )
+    error: str | None = None
+
+    @property
+    def done(self) -> bool:
+        return self.status in ("succeeded", "partial", "failed")
 
 
 # --- Misc -------------------------------------------------------------------

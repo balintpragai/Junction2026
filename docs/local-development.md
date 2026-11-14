@@ -4,7 +4,7 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` and `web` are stubs that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), but `api` still serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)); `web` is a stub that later tickets fill in.
 
 | Route | Response type | Fixture coverage |
 |---|---|---|
@@ -114,8 +114,8 @@ docker compose down              # stop; add -v to also delete the database volu
 |---|---|---|
 | `db` | Postgres 16, data in the `db-data` volume | none |
 | `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
-| `engine` | FastAPI stub, `/health` only | none |
-| `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, checks `engine`, exits 0 | none |
+| `engine` | Scoring and the rescore job: `POST /jobs/rescore`, `GET /jobs/{id}` | none |
+| `seed` | One-shot: applies `db/*.sql`, loads Regions, indicators and values, runs a rescore and waits for it (a rescore problem is a warning), exits 0 | none |
 | `api` | The fixture API | `8000` (`API_PORT`) |
 | `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
@@ -145,6 +145,38 @@ Run the loader's tests without Docker:
 ```sh
 .venv/bin/pip install -r seed/requirements-dev.txt     # from the repo root
 cd seed && ../.venv/bin/python -m pytest
+```
+
+### `engine`: the rescore job
+
+A rescore scores every Region × indicator × year that has a value (covariates are never scored) with `score()` from `engine/app/scoring.py`, then upserts `fact_gap_score` in one transaction. Every row gets the same `scored_at` and the `engine_version`. Rows whose value has gone from the data are deleted. Åland is scored as usual, with empty `peer_values` and a `no_peers` note.
+
+`seed` triggers one after every load, so `docker compose up` ends fully scored and `api` only starts after it. There is no cron job. To rescore by hand, for example after editing `engine/app/severity_thresholds.toml` (re-read on every run):
+
+```sh
+docker compose exec engine python -m app.rescore_now   # prints the job's final status as JSON
+```
+
+`POST /jobs/rescore` returns `202` with a `RescoreJob` (`common/common/models.py`). Poll `GET /jobs/{id}` until `status` is `succeeded`, `partial` or `failed`; a finished job reports `gaps_written`, `gaps_removed`, `indicators_scored` and `engine_version`. Jobs run one at a time. Job history is in memory and is lost when `engine` restarts.
+
+**When scoring fails**, the stack still comes up on the last good Gaps:
+
+| What fails | Job `status` | What happens to `fact_gap_score` | `seed` | `rescore_now` exit |
+|---|---|---|---|---|
+| Nothing | `succeeded` | Every Gap rewritten | exits 0 | 0 |
+| Some indicators (e.g. a malformed stored note, a `score()` bug) | `partial` | The other indicators are rewritten; each failed one keeps its previous Gaps. `failed_indicators` lists them with the error | `WARNING`, exits 0 | 2 |
+| Every indicator, or the whole job (e.g. the database) | `failed` | Unchanged: the transaction rolls back | `WARNING`, exits 0 | 1 |
+| `engine` unreachable or the job takes over 10 minutes | — | Unchanged | `WARNING`, exits 0 | — |
+
+Only a failed **load** makes `seed` exit non-zero and stop `api` from starting, because then the data itself is inconsistent. On a brand-new database a failed rescore means `api` starts with no Gaps. After fixing the cause, run `rescore_now`. `docker compose logs engine` has the full traceback for every failed indicator.
+
+`engine_version` is `ENGINE_VERSION` from `engine/app/rescore.py` plus a hash of the thresholds, so a threshold change shows up in every row. Bump `ENGINE_VERSION` when scoring logic changes.
+
+Run the engine's tests without Docker:
+
+```sh
+.venv/bin/pip install -r engine/requirements-dev.txt     # from the repo root
+cd engine && ../.venv/bin/python -m pytest
 ```
 
 ### Configuration
@@ -304,5 +336,6 @@ If the spec changes, check the `git diff web/` is only the library's doing, then
 | `gen-api-types.sh` on Windows: `invalid mount config` or files land in a strange path | Run it from Git Bash. The script handles the path conversion there. |
 | `web/` files owned by root after regenerating | You ran an old copy of the script. Fix with `sudo chown -R $USER web/` and pull the latest script. |
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. A `SeedInputError` names the input file, line and column that is malformed; nothing is written until every file reads cleanly. |
+| `seed: WARNING: rescore ...` in `docker compose logs seed`, or Gaps look stale | The stack started on the previous Gaps. The warning names what failed; `docker compose logs engine` has the traceback. Fix it, then `docker compose exec engine python -m app.rescore_now`. See [`engine`: the rescore job](#engine-the-rescore-job). |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
