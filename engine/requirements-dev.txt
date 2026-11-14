@@ -2,3 +2,6 @@
 # (pip resolves the -e path below against the current directory, not this file.)
 -e ./common
 pytest>=8
+# For FastAPI's TestClient (tests/test_jobs.py).
+httpx>=0.27
+httpx2

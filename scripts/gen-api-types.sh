@@ -35,12 +35,23 @@ echo "==> Building $API_IMAGE (pinned versions from api/constraints.txt)"
 docker build --quiet --platform linux/amd64 -f api/Dockerfile -t "$API_IMAGE" . >/dev/null
 
 echo "==> Dumping the OpenAPI spec to web/openapi.json"
+# Write to a temp file next to the target, then rename it into place, so a
+# failed run never leaves a truncated web/openapi.json (idea from PR #32).
+# The temp file is created by the container process (umask 022), so the result
+# keeps normal 644 permissions.
 docker run --rm --platform linux/amd64 "${user_args[@]}" -v "$host_web:/web" "$API_IMAGE" python -c '
-import json
+import json, os
 from app.main import app
-with open("/web/openapi.json", "w", encoding="utf-8", newline="\n") as f:
-    json.dump(app.openapi(), f, indent=2, ensure_ascii=False)
-    f.write("\n")
+spec = app.openapi()
+tmp = "/web/.openapi.json.tmp"
+try:
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(spec, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    os.replace(tmp, "/web/openapi.json")
+finally:
+    if os.path.exists(tmp):
+        os.remove(tmp)
 '
 
 echo "==> Generating web/src/lib/api-types.ts with $OPENAPI_TYPESCRIPT"
