@@ -112,7 +112,7 @@ The challenge requires covering **at least one indicator connected to Goal 3** o
 > Action proposal #2: *"Support a smooth transition to specialized medical care by defining standardized referral criteria as part of national care chains, which, when met, will quickly direct patients suffering from possible cancer symptoms to the necessary diagnostic tests."*
 
 **Key data-gap admissions in the strategy itself (important for "data quality & transparency" — use these to frame limitations honestly):**
-- *"Clinical cancer registry notifications at the time of diagnosis, which include cancer prevalence data, only cover approximately 40% of all cancer cases."* (p.30 area)
+- *"Clinical cancer registry notifications at the time of diagnosis, which include cancer stage data, only cover approximately 40% of all cancer cases."* (p.30 area) — the machine translation says "prevalence data"; the Finnish original has *levinneisyystieto*, which means stage (spread) data.
 - *"A cancer care quality register has not yet been established in Finland... Comparisons of treatment implementation between regions are made sporadically, and are based on crude and fragmented indicators, if comparisons are made at all."* (p.35 area, sub-objective 3.2)
 - Target: automate clinical cancer notifications to 90% of cases by 2030; quality-register database coverage target 90%.
 

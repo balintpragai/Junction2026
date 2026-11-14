@@ -188,7 +188,7 @@ Reducing the burden of cancer through prevention and early detection
 • Preventable cancers decrease by 1,000 cases per year*
 • All cancer screening programs achieve an 80% participation rate in each wellness 
 area
-• At least 70% of cancers are diagnosed in stage III
+• At least 70% of cancers are diagnosed in stages I–II [corrected: machine translation said "stage III"; Finnish original p.5: "levinneisyysluokissa I-II"]
 Ensuring equal and effective cancer treatment
 • 5-year survival rates for poor-prognosis cancers reach Nordic levels**
 • Cancer mortality will decrease by 10% (currently 13,300 people per year)
