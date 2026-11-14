@@ -110,7 +110,7 @@ docker compose down              # stop; add -v to also delete the database volu
 | Service | What it is now | Port on your machine |
 |---|---|---|
 | `db` | Postgres 16, data in the `db-data` volume | none |
-| `narrative` | FastAPI stub, `/health` only | none |
+| `narrative` | `POST /narrative`: LLM Narrative with number-check, or Template sentence | none |
 | `engine` | FastAPI stub, `/health` only | none |
 | `seed` | One-shot: checks `db` and `engine`, exits 0 | none |
 | `api` | The fixture API | `8000` (`API_PORT`) |
@@ -144,6 +144,29 @@ Each image builds from the **repo root**, because the Python images need `common
 docker build --platform linux/amd64 -f api/Dockerfile -t reach-loop-api .
 docker run --rm -p 8000:8000 reach-loop-api
 ```
+
+## `narrative` service
+
+Internal only: `engine` calls it, and it publishes no port. `POST /narrative` takes a `NarrativeRequest` (one Gap plus Region and indicator names, unit, optional action text and data-quality note, and `language`). It returns a `NarrativeResult`: `text`, `source` (`llm` | `template`), `language`, `numbers_checked`, `prompt_version` and `rejected_numbers`. Both models are in `common/common/models.py`.
+
+How it decides:
+1. If an LLM is configured (`LLM_BASE_URL` and `LLM_MODEL`; `LLM_API_KEY` is optional) and `language` is `en`, it calls `{LLM_BASE_URL}/chat/completions` at temperature 0 with the strict prompt in `narrative/app/prompt.py`.
+2. **Number-check:** every number in the reply must match a figure from the facts sent to the LLM. `5,7` and `5.7` match, and units and signs are ignored (`%` and `pp`). Rounded or invented numbers fail. So does a reply over 60 words, or an LLM error.
+3. If anything fails, or no LLM is configured, or `language` is `fi`, it returns the **Template sentence**. It never returns an error to the caller.
+
+`prompt_version` is a hash of the prompt and the Template sentence wording. It changes whenever either changes, so cached Narratives can be invalidated exactly.
+
+Run and test it without Docker:
+
+```sh
+.venv/bin/pip install -r narrative/requirements-dev.txt     # from the repo root
+cd narrative && ../.venv/bin/python -m pytest
+cd narrative && ../.venv/bin/uvicorn app.main:app --port 8001   # no LLM: Template sentences only
+```
+
+To try a real LLM, set the three variables before starting it, for example `LLM_BASE_URL=https://api.openai.com/v1 LLM_MODEL=... LLM_API_KEY=...`. Any OpenAI-compatible endpoint works (vLLM, Ollama, Gemini's OpenAI-compatible API, Verda).
+
+The Finnish Template sentence wording is pending native-speaker review (#21).
 
 ## Run `web` without Docker
 

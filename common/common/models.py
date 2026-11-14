@@ -11,7 +11,7 @@ Template sentence.
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 Severity = Literal["ok", "watch", "act"]
 """How urgently a Gap calls for action, set by fixed thresholds."""
@@ -160,6 +160,45 @@ class OutreachList(ContractModel):
         description="Required caveat: Region-level associations do not describe individuals. The UI must show it.",
     )
     rows: list[OutreachRow]
+
+
+# --- narrative service (internal: engine -> narrative) -----------------------
+
+NarrativeLanguage = Literal["en", "fi"]
+
+
+class NarrativeRequest(ContractModel):
+    """One Gap plus the context a Narrative may draw on. Every figure in the
+    Narrative must come from here."""
+
+    region_name: str
+    indicator_name: str = Field(description="English indicator name, e.g. 'Breast cancer screening attendance'.")
+    indicator_name_fi: str | None = Field(default=None, description="Finnish indicator name; required when language is 'fi'.")
+    unit: str = Field(description="Unit of the Gap's value, e.g. '%'.")
+    gap: Gap
+    action_text: str | None = None
+    data_quality_note: str | None = None
+    language: NarrativeLanguage = Field(
+        default="en", description="'fi' always returns a Template sentence; LLM Narratives are English only."
+    )
+
+    @model_validator(mode="after")
+    def _finnish_needs_finnish_name(self) -> "NarrativeRequest":
+        if self.language == "fi" and not self.indicator_name_fi:
+            raise ValueError("indicator_name_fi is required when language is 'fi'")
+        return self
+
+
+class NarrativeResult(ContractModel):
+    text: str = Field(min_length=1)
+    source: NarrativeSource
+    language: NarrativeLanguage
+    numbers_checked: bool = Field(description="True when every number in `text` was found in the request.")
+    prompt_version: str = Field(description="Changes whenever the prompt or the Template sentence wording changes.")
+    rejected_numbers: list[str] = Field(
+        default_factory=list,
+        description="Numbers from a discarded LLM output that were not in the request. Empty unless the LLM output was rejected for invented numbers.",
+    )
 
 
 # --- Misc -------------------------------------------------------------------
