@@ -1,0 +1,93 @@
+# Reach Loop: the whole stack.  `docker compose up --build`
+# Config comes only from env vars (see .env.example); every value has a default.
+# Only api and web publish ports; the rest stay on the internal network.
+
+name: reach-loop
+
+x-python-healthcheck: &python-healthcheck
+  test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)"]
+  interval: 5s
+  timeout: 3s
+  retries: 10
+  start_period: 5s
+
+x-database-url: &database-url ${DATABASE_URL:-postgresql://reachloop:reachloop@db:5432/reachloop}
+
+services:
+  db:
+    image: postgres:16
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-reachloop}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-reachloop}
+      POSTGRES_DB: ${POSTGRES_DB:-reachloop}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  narrative:
+    build: { context: ., dockerfile: narrative/Dockerfile }
+    platform: linux/amd64
+    environment:
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+    healthcheck: *python-healthcheck
+
+  engine:
+    build: { context: ., dockerfile: engine/Dockerfile }
+    platform: linux/amd64
+    environment:
+      DATABASE_URL: *database-url
+      NARRATIVE_URL: ${NARRATIVE_URL:-http://narrative:8000}
+    depends_on:
+      db: { condition: service_healthy }
+      narrative: { condition: service_healthy }
+    healthcheck: *python-healthcheck
+
+  seed:
+    build: { context: ., dockerfile: seed/Dockerfile }
+    platform: linux/amd64
+    environment:
+      DATABASE_URL: *database-url
+      ENGINE_URL: ${ENGINE_URL:-http://engine:8000}
+    depends_on:
+      db: { condition: service_healthy }
+      engine: { condition: service_healthy }
+    restart: "no"
+
+  api:
+    build: { context: ., dockerfile: api/Dockerfile }
+    platform: linux/amd64
+    environment:
+      DATABASE_URL: *database-url
+      WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:3000}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db: { condition: service_healthy }
+      seed: { condition: service_completed_successfully }
+    healthcheck: *python-healthcheck
+
+  web:
+    build: { context: ., dockerfile: web/Dockerfile }
+    platform: linux/amd64
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  db-data:

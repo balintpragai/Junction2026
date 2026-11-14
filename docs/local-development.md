@@ -4,7 +4,7 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 ## Current state
 
-Only `api` exists. It serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `db`, `seed`, `engine` and `narrative` don't exist yet, so there is no `docker compose` file yet.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). Only `api` does real work so far. It serves **fixtures**, not database data (Step 0 in BUILD.md, "contracts before code"). `seed`, `engine`, `narrative` and `web` are stubs that later tickets fill in.
 
 | Route | Response type | Fixture coverage |
 |---|---|---|
@@ -97,18 +97,62 @@ The suite (`api/tests/test_contract.py`) checks that:
 
 Run the tests after any change to `common/common/models.py` or to the fixtures.
 
-## Run in Docker
+## Run the whole stack (docker compose)
 
-The image builds from the **repo root** because it needs both `common/` and `api/`:
+Needs Docker with the compose plugin (Arch: `sudo pacman -S docker-compose docker-buildx`). From the repo root:
 
 ```sh
-docker build -f api/Dockerfile -t reach-loop-api .
-docker run --rm -p 8000:8000 -e WEB_ORIGIN=http://localhost:3000 reach-loop-api
+docker compose up --build        # add -d to run in the background
+docker compose ps                # every service should be "healthy"; seed shows "exited (0)"
+docker compose down              # stop; add -v to also delete the database volume
 ```
 
-The image targets `linux/amd64` and has a `HEALTHCHECK` on `/health`.
+| Service | What it is now | Port on your machine |
+|---|---|---|
+| `db` | Postgres 16, data in the `db-data` volume | none |
+| `narrative` | FastAPI stub, `/health` only | none |
+| `engine` | FastAPI stub, `/health` only | none |
+| `seed` | One-shot: checks `db` and `engine`, exits 0 | none |
+| `api` | The fixture API | `8000` (`API_PORT`) |
+| `web` | Next.js placeholder page, `/health` | `3000` (`WEB_PORT`) |
 
-> The Docker image has not been build-tested yet. Report any failure.
+Startup order: `db` → `narrative` → `engine` → `seed` (must exit 0) → `api` → `web`. Each step waits for the one before it to be healthy.
+
+Then open http://localhost:3000. It should say "API reachable: 23 Regions loaded."
+
+### Configuration
+
+Everything comes from environment variables. `.env.example` lists them all. Each has a working default in `compose.yaml`, so a clean clone runs without a `.env`. To override values, `cp .env.example .env` and edit it. Compose reads `.env` on its own, and it's gitignored. Never commit real keys.
+
+| Variable | Used by | Default |
+|---|---|---|
+| `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | `db` | `reachloop` |
+| `DATABASE_URL` | `engine`, `seed`, `api` | `postgresql://reachloop:reachloop@db:5432/reachloop` |
+| `ENGINE_URL` | `seed` | `http://engine:8000` |
+| `NARRATIVE_URL` | `engine` | `http://narrative:8000` |
+| `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` | `narrative` | empty (Template sentences only) |
+| `WEB_ORIGIN` | `api` (CORS) | `http://localhost:3000` |
+| `API_PORT`, `WEB_PORT` | published ports | `8000`, `3000` |
+
+Python services read these through `common.settings.Settings`. A service that needs a variable calls `.require(...)` at startup and stops with the names of any missing ones.
+
+### Build one image
+
+Each image builds from the **repo root**, because the Python images need `common/`. All images target `linux/amd64`:
+
+```sh
+docker build --platform linux/amd64 -f api/Dockerfile -t reach-loop-api .
+docker run --rm -p 8000:8000 reach-loop-api
+```
+
+## Run `web` without Docker
+
+```sh
+cd web
+npm ci
+API_URL=http://localhost:8000 npm run dev    # http://localhost:3000
+npm run typecheck
+```
 
 ## Frontend (`web`): using the contract
 
@@ -175,5 +219,9 @@ This dumps the spec straight from the app, so no running server is needed. It th
 | Server fails at startup with a `ValidationError` | A fixture doesn't match its model. The error names the file's field. |
 | Browser blocks requests (CORS) | Add the `web` origin to `WEB_ORIGIN`. |
 | `docker build`: `lstat .../api/api: no such file or directory` | Run `docker build -f api/Dockerfile -t reach-loop-api .` from the **repo root**, not from `api/`. |
+| `docker: unknown command: docker compose` | Install the compose plugin: `sudo pacman -S docker-compose`. |
+| `permission denied ... /var/run/docker.sock` | `sudo usermod -aG docker $USER`, then log out and back in. |
+| `Bind for 0.0.0.0:8000 failed: port is already allocated` | Something else (often an old `docker run` of `api`) holds the port. Stop it, or set `API_PORT` / `WEB_PORT`. |
+| `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
 | 404 from gap-summary or outreach-list | Only the fixture combinations in the table at the top exist. |
