@@ -358,7 +358,6 @@ Examples, from the #9 PR with the Helsinki request:
 
 Found while writing this reference, from real responses. None are API bugs, but the UI or the data owners should know them.
 
-- **Kela travel amounts look like euros, not "EUR 1000".** Helsinki's `2297` (reimbursements) is `15372000.0` with unit `"EUR 1000"`, which would be €15.4 billion. But dividing it by the per-inhabitant value (`3213`, €22.4) gives about 686,000, roughly Helsinki's population. So the values are plain euros (€15.4 million) and the `"EUR 1000"` label is wrong. The same check on `2298` (costs, €26.6 per inhabitant in `3227`) gives about 688,000. Check `unit` for 2297 and 2298 in `data/curated/indicators.csv` before showing them.
 - **`rank` and `peer_values` count different Regions.** `rank`/`n_regions` are among all Regions with a value; `peer_values` are only the parent-area peers. Don't label a peer chart "rank".
 - **The matched action for breast screening** is 2.4.1 (screening quality manuals and register data). Whether that's the best first action for low attendance is a curation question (#5), not code.
 - **Template sentences for some units read awkwardly**, e.g. `index (whole country = 100)`. They're correct but clunky; #20 reviews every Narrative.

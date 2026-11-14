@@ -216,7 +216,6 @@ Good things to point out while showing it:
 - **Nothing on screen waits for the LLM.** Narratives are generated after each rescore and cached. If the LLM or the network fails during judging, the cards still show the last good Narratives, or Template sentences.
 - **Gaps, not bottlenecks** ([ADR 0001](adr/0001-gaps-not-bottlenecks.md)): every figure is a published indicator compared with a Target or with peer Regions.
 - **Don't** present income or poverty covariates as targeting variables. The foreign-background share is the one that holds at both Region and individual level (`research/covariate_correlation_analysis.md`).
-- **Avoid** the Kela travel amounts (2297, 2298) until their unit is fixed. The values look like euros but are labelled "EUR 1000" (see [api.md](api.md#data-observations-worth-knowing)).
 
 ## Things to know for the demo
 
