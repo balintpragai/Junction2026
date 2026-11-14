@@ -294,21 +294,18 @@ On Linux and macOS the files are written as your user, not root. On Windows the 
 
 ### Bump the pinned versions
 
-`api/constraints.txt` pins every Python package in the api image, so the same commit always produces the same spec. `api/requirements.txt` and `common/pyproject.toml` keep the allowed ranges. To move to newer versions:
+`api/constraints.txt` pins every Python package in the api image, so the same commit always produces the same spec. `api/requirements.txt` and `common/pyproject.toml` keep the allowed ranges; the constraints file says what is actually installed. To move to newer versions, or after changing a range:
 
 ```sh
-# 1. Resolve the newest versions inside the ranges, for the image's Python and platform
-#    (Windows Git Bash: prefix with MSYS_NO_PATHCONV=1 and use "$(pwd -W)" instead of "$PWD")
-docker run --rm --platform linux/amd64 -v "$PWD:/src:ro" python:3.12-slim \
-  sh -c 'cp -r /src/common /src/api /tmp/ && cd /tmp && pip install -q ./common -r api/requirements.txt && pip freeze --exclude reach-loop-common' > /tmp/pins.txt
-# 2. Replace the pin lines in api/constraints.txt with /tmp/pins.txt (keep the header comment)
-# 3. Regenerate and test
-scripts/gen-api-types.sh
-.venv/bin/pip install -r api/requirements-dev.txt
-cd api && ../.venv/bin/python -m pytest
+scripts/update-api-constraints.sh                    # 1. resolves fresh in python:3.12-slim (linux/amd64), rewrites api/constraints.txt
+.venv/bin/pip install -r api/requirements-dev.txt    # 2. update your venv to the new pins
+scripts/gen-api-types.sh                             # 3. a new FastAPI or pydantic can change the spec
+cd api && ../.venv/bin/python -m pytest              # 4.
 ```
 
-If the spec changes, check the `git diff web/` is only the library's doing, then commit `api/constraints.txt` and `web/` together. To bump a single package, edit its line in `api/constraints.txt` and run steps 3 onwards.
+`update-api-constraints.sh` needs only Docker, mounts the repo read-only, and replaces `api/constraints.txt` only after resolving succeeds. If the spec changes, check that `git diff web/` is only the library's doing, then commit `api/constraints.txt` and `web/` together. To bump a single package, edit its line in `api/constraints.txt` by hand and run steps 2 to 4.
+
+Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run as root, and regenerated files in `web/` end up owned by root. If you can't use Docker without `sudo`, add yourself to the `docker` group (see Troubleshooting).
 
 ## Changing the contract: checklist
 
@@ -334,7 +331,7 @@ If the spec changes, check the `git diff web/` is only the library's doing, then
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
 | `test_committed_openapi_matches_app` fails | A model changed without regenerating. Run `scripts/gen-api-types.sh` and commit `web/`. If you didn't change a model, reinstall the dev env so it has the pinned versions: `.venv/bin/pip install -r api/requirements-dev.txt`. |
 | `gen-api-types.sh` on Windows: `invalid mount config` or files land in a strange path | Run it from Git Bash. The script handles the path conversion there. |
-| `web/` files owned by root after regenerating | You ran an old copy of the script. Fix with `sudo chown -R $USER web/` and pull the latest script. |
+| `web/` files owned by root after regenerating | The script ran under `sudo`. Fix with `sudo chown -R $USER web/`, then run it as yourself (in the `docker` group). For a one-off without re-logging in: `sudo -u $USER -g docker scripts/gen-api-types.sh`. |
 | `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. A `SeedInputError` names the input file, line and column that is malformed; nothing is written until every file reads cleanly. |
 | `seed: WARNING: rescore ...` in `docker compose logs seed`, or Gaps look stale | The stack started on the previous Gaps. The warning names what failed; `docker compose logs engine` has the traceback. Fix it, then `docker compose exec engine python -m app.rescore_now`. See [`engine`: the rescore job](#engine-the-rescore-job). |
 | `npx: command not found` in `gen-api-types.sh` | Install Node.js with npm. |
