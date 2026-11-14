@@ -2,6 +2,8 @@
 
 This is the reference for running the Reach Loop services locally, testing them, and building `web` against them. Keep it up to date when a service, route or command changes.
 
+Every endpoint, with inputs, outputs, errors and real examples, is described in [api.md](api.md).
+
 ## Current state
 
 All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads every data route from Postgres: Regions, indicators and Gaps (#14), and the outreach list (#16). `web` is a stub that later tickets fill in.
