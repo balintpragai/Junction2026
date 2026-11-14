@@ -9,7 +9,7 @@ import { regionalAccountFor } from "@/lib/roles";
 import { SequenceView } from "@/components/sequence/SequenceView";
 import { ActionSearch } from "@/components/planner/ActionSearch";
 
-type Stage = "build" | "review" | "issued";
+type Stage = "planning" | "issued";
 
 /** Each priority names the response window it actually sets, so the choice
  *  reads as a commitment rather than a mood. */
@@ -39,7 +39,7 @@ export function ActionPlanner({
   const { account, issue } = useProgram();
   const [plan, setPlan] = useState<CandidateAction[]>([]);
   const [focusId, setFocusId] = useState<string | null>(null);
-  const [stage, setStage] = useState<Stage>("build");
+  const [stage, setStage] = useState<Stage>("planning");
   const [priority, setPriority] = useState<Priority>("high");
   const [mandate, setMandate] = useState("");
 
@@ -72,7 +72,6 @@ export function ActionPlanner({
   function add(action: CandidateAction) {
     setPlan((prev) => (prev.some((a) => a.id === action.id) ? prev : [...prev, action]));
     setFocusId(action.id);
-    setStage("build");
   }
 
   function remove(id: string) {
@@ -112,10 +111,8 @@ export function ActionPlanner({
 
   return (
     <div className="col" style={{ gap: 18 }}>
-      <Stages stage={stage} canReview={plan.length > 0} onStage={setStage} />
 
-      {stage === "build" ? (
-        <div
+      <div
           className="planner-grid"
           style={{ display: "grid", gridTemplateColumns: "minmax(0, 340px) minmax(0, 1fr)", gap: 20, alignItems: "flex-start" }}
         >
@@ -172,15 +169,22 @@ export function ActionPlanner({
                 </div>
               )}
 
-              <button
-                className="btn btn-primary"
-                style={{ width: "100%", marginTop: 13 }}
-                disabled={plan.length === 0}
-                onClick={() => setStage("review")}
-              >
-                Review &amp; issue {plan.length > 0 ? `(${plan.length})` : ""}
-              </button>
             </div>
+
+            {plan.length > 0 && (
+              <IssuePanel
+                region={region}
+                plan={plan}
+                totals={totals}
+                priority={priority}
+                setPriority={setPriority}
+                mandate={mandate}
+                setMandate={setMandate}
+                defaultMandate={defaultMandate}
+                recipientName={recipient?.name}
+                onIssue={issuePlan}
+              />
+            )}
           </div>
 
           <div>
@@ -227,22 +231,6 @@ export function ActionPlanner({
             )}
           </div>
         </div>
-      ) : (
-        <ReviewStage
-          region={region}
-          plan={plan}
-          totals={totals}
-          priority={priority}
-          setPriority={setPriority}
-          mandate={mandate}
-          setMandate={setMandate}
-          defaultMandate={defaultMandate}
-          recipientName={recipient?.name}
-          recipientOrg={recipient?.org}
-          onBack={() => setStage("build")}
-          onIssue={issuePlan}
-        />
-      )}
 
       <style>{`
         @media (max-width: 1040px) {
@@ -254,63 +242,10 @@ export function ActionPlanner({
   );
 }
 
-function Stages({ stage, canReview, onStage }: { stage: Stage; canReview: boolean; onStage: (s: Stage) => void }) {
-  const items: { id: Stage; label: string; hint: string }[] = [
-    { id: "build", label: "Build the plan", hint: "Choose actions and read what each one triggers" },
-    { id: "review", label: "Review & issue", hint: "Confirm the mandate and hand it to the Region" },
-  ];
-  return (
-    <div className="row" style={{ gap: 8, flexWrap: "wrap" }}>
-      {items.map((item, i) => {
-        const active = stage === item.id;
-        const enabled = item.id === "build" || canReview;
-        return (
-          <button
-            key={item.id}
-            onClick={() => enabled && onStage(item.id)}
-            disabled={!enabled}
-            className="card"
-            style={{
-              flex: "1 1 240px",
-              textAlign: "left",
-              padding: "10px 14px",
-              cursor: enabled ? "pointer" : "not-allowed",
-              opacity: enabled ? 1 : 0.5,
-              borderColor: active ? "var(--accent)" : "var(--line)",
-              background: active ? "var(--accent-soft)" : "var(--card)",
-            }}
-          >
-            <span className="row" style={{ gap: 8 }}>
-              <span
-                className="tnum"
-                style={{
-                  width: 20,
-                  height: 20,
-                  borderRadius: 999,
-                  display: "grid",
-                  placeItems: "center",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  background: active ? "var(--accent)" : "var(--bg-sunk)",
-                  color: active ? "#fff" : "var(--ink-3)",
-                  flex: "none",
-                }}
-              >
-                {i + 1}
-              </span>
-              <span style={{ fontSize: 13, fontWeight: 650 }}>{item.label}</span>
-            </span>
-            <span style={{ fontSize: 11.5, color: "var(--ink-3)", display: "block", marginTop: 3, marginLeft: 28 }}>
-              {item.hint}
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-function ReviewStage({
+/** What issuing commits to, next to the plan it applies to. This replaced a
+ *  separate review screen: a mode switch is a lot of ceremony around three
+ *  fields, and it put the primary action somewhere you had to navigate to. */
+function IssuePanel({
   region,
   plan,
   totals,
@@ -320,8 +255,6 @@ function ReviewStage({
   setMandate,
   defaultMandate,
   recipientName,
-  recipientOrg,
-  onBack,
   onIssue,
 }: {
   region: Region;
@@ -333,144 +266,81 @@ function ReviewStage({
   setMandate: (s: string) => void;
   defaultMandate: string;
   recipientName?: string;
-  recipientOrg?: string;
-  onBack: () => void;
   onIssue: () => void;
 }) {
   return (
-    <div className="review-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 360px)", gap: 20, alignItems: "flex-start" }}>
-      <div className="card-lg" style={{ padding: 22 }}>
-        <h2 style={{ fontSize: "1.25rem" }}>What you are about to issue</h2>
-        <p style={{ fontSize: 13.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6, maxWidth: "70ch" }}>
-          Issuing hands these actions to {region.name}. You will not see work happen immediately — the Region has to
-          assign each step to its own people and work out the detail. What comes back to you is reported progress.
-        </p>
+    <div className="card" style={{ padding: "13px 15px" }}>
+      <h2 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>Issue to the Region</h2>
 
-        <div style={{ marginTop: 20 }}>
-          <label htmlFor="mandate" style={{ display: "block", marginBottom: 7, fontSize: 12.5, fontWeight: 600 }}>
-            The instruction
-          </label>
-          <textarea
-            id="mandate"
-            value={mandate}
-            onChange={(e) => setMandate(e.target.value)}
-            placeholder={defaultMandate}
-            rows={3}
+      <label htmlFor="mandate" style={{ display: "block", fontSize: 12, fontWeight: 600, marginBottom: 5 }}>
+        The instruction
+      </label>
+      <textarea
+        id="mandate"
+        value={mandate}
+        onChange={(e) => setMandate(e.target.value)}
+        placeholder={defaultMandate}
+        rows={3}
+        style={{
+          width: "100%",
+          border: "1px solid var(--line-strong)",
+          borderRadius: "var(--radius-sm)",
+          padding: "8px 10px",
+          fontSize: 12.5,
+          fontFamily: "inherit",
+          lineHeight: 1.5,
+          color: "var(--ink)",
+          resize: "vertical",
+        }}
+      />
+      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 4, lineHeight: 1.45 }}>
+        State the outcome and the deadline, not the method. The method is the Region&rsquo;s to choose.
+      </p>
+
+      <p style={{ fontSize: 12, fontWeight: 600, marginTop: 12, marginBottom: 6 }}>Priority</p>
+      <div className="col" style={{ gap: 5 }}>
+        {(["urgent", "high", "routine"] as Priority[]).map((p) => (
+          <button
+            key={p}
+            onClick={() => setPriority(p)}
+            aria-pressed={priority === p}
             style={{
-              width: "100%",
-              border: "1px solid var(--line-strong)",
-              borderRadius: "var(--radius-sm)",
-              padding: "10px 12px",
-              fontSize: 13.5,
-              fontFamily: "inherit",
-              lineHeight: 1.55,
-              color: "var(--ink)",
-              resize: "vertical",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: 8,
+              padding: "7px 10px",
+              borderRadius: 8,
+              cursor: "pointer",
+              fontSize: 12.5,
+              background: priority === p ? "var(--ink)" : "var(--card)",
+              color: priority === p ? "var(--card)" : "var(--ink-2)",
+              border: `1px solid ${priority === p ? "var(--ink)" : "var(--line-strong)"}`,
             }}
-          />
-          <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 5 }}>
-            Left blank, the default above is used. State the outcome and the deadline, not the method — the method is
-            the Region&rsquo;s to choose.
-          </p>
-        </div>
-
-        <div style={{ marginTop: 18 }}>
-          <p style={{ marginBottom: 7, fontSize: 12.5, fontWeight: 600 }}>Priority</p>
-          <div className="row" style={{ gap: 8, flexWrap: "wrap" }}>
-            {(["routine", "high", "urgent"] as Priority[]).map((p) => (
-              <button
-                key={p}
-                onClick={() => setPriority(p)}
-                aria-pressed={priority === p}
-                className="btn btn-sm"
-                style={{
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  gap: 1,
-                  height: "auto",
-                  padding: "7px 12px",
-                  background: priority === p ? "var(--ink)" : "var(--card)",
-                  color: priority === p ? "var(--card)" : "var(--ink-2)",
-                  border: `1px solid ${priority === p ? "var(--ink)" : "var(--line-strong)"}`,
-                }}
-              >
-                <span style={{ fontWeight: 650 }}>{PRIORITY_LABEL[p]}</span>
-                <span style={{ fontSize: 11, opacity: 0.75 }}>
-                  {RESPONSE_WINDOW_DAYS[p]} working days to respond
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div style={{ marginTop: 22, borderTop: "1px solid var(--line)", paddingTop: 16 }}>
-          <h3 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>
-            The {plan.length} action{plan.length > 1 ? "s" : ""}
-          </h3>
-          <div className="col" style={{ gap: 9 }}>
-            {plan.map((a) => {
-              const phases = buildPlaybook(a, region.name);
-              return (
-                <div key={a.id} className="sunk" style={{ padding: "11px 13px" }}>
-                  <p style={{ fontSize: 13, fontWeight: 650 }}>{a.title}</p>
-                  <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3 }}>
-                    {allSteps(phases).length} steps over {criticalPathDays(phases)} working days, involving{" "}
-                    {uniqueCounterparties(phases).length} bodies
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+          >
+            <span style={{ fontWeight: 650, textTransform: "capitalize" }}>{p}</span>
+            <span style={{ fontSize: 11, opacity: 0.75 }}>{RESPONSE_WINDOW_DAYS[p]} working days</span>
+          </button>
+        ))}
       </div>
 
-      <div className="col" style={{ gap: 14, position: "sticky", top: 78 }}>
-        <div className="card-lg" style={{ padding: 18 }}>
-          <h3 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 11 }}>Lands on</h3>
-          {recipientName ? (
-            <>
-              <p style={{ fontSize: 14, fontWeight: 700 }}>{recipientName}</p>
-              <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 2 }}>{recipientOrg}</p>
-              <p style={{ fontSize: 12, color: "var(--ink-3)", marginTop: 9, lineHeight: 1.5 }}>
-                They are notified immediately and own every step from there. They owe you a response by{" "}
-                <strong style={{ color: "var(--ink-2)" }}>
-                  {addWorkingDays(new Date(), RESPONSE_WINDOW_DAYS[priority]).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                  })}
-                </strong>
-                .
-              </p>
-            </>
-          ) : (
-            <p style={{ fontSize: 12.5, color: "var(--watch)", lineHeight: 1.5 }}>
-              No Regional Decision Maker account is registered for {region.name} in this demo. The directive is still
-              issued and will appear for that Region once an account exists.
-            </p>
-          )}
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 12, lineHeight: 1.5 }}>
+        {recipientName ? <strong style={{ color: "var(--ink-2)" }}>{recipientName}</strong> : "The Region"} is
+        notified at once and owns every step from there. {totals.steps} steps and {totals.parties} bodies, with a
+        response owed by{" "}
+        <strong style={{ color: "var(--ink-2)" }}>
+          {addWorkingDays(new Date(), RESPONSE_WINDOW_DAYS[priority]).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+          })}
+        </strong>
+        .
+      </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 9, marginTop: 15 }}>
-            <Mini value={String(totals.steps)} label="steps created" />
-            <Mini value={`${totals.days}d`} label="critical path" />
-            <Mini value={String(totals.parties)} label="bodies notified" />
-            <Mini value={String(plan.length)} label="directives" />
-          </div>
-
-          <button className="btn btn-primary" style={{ width: "100%", marginTop: 16 }} onClick={onIssue} disabled={plan.length === 0}>
-            Issue to {region.name.replace(/ wellbeing services county$/, "")}
-          </button>
-          <button className="btn btn-quiet btn-sm" style={{ width: "100%", marginTop: 6 }} onClick={onBack}>
-            Back to the plan
-          </button>
-        </div>
-      </div>
-
-      <style>{`
-        @media (max-width: 1040px) {
-          .review-grid { grid-template-columns: minmax(0, 1fr) !important; }
-          .review-grid > div:last-of-type { position: static !important; }
-        }
-      `}</style>
+      <button className="btn btn-primary" style={{ width: "100%", marginTop: 12 }} onClick={onIssue}>
+        Issue {plan.length} action{plan.length > 1 ? "s" : ""} to{" "}
+        {region.name.replace(/ wellbeing services county$/, "")}
+      </button>
     </div>
   );
 }

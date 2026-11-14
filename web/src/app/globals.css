@@ -312,13 +312,38 @@ select:focus {
 
 /* --- disclosure ----------------------------------------------------------- */
 
+/* A summary with no marker reads as a label rather than a control. These
+   carry a chevron that turns when the section opens — drawn in CSS rather
+   than typed as a "▾", which sits on a different baseline in every font. */
+
 details > summary {
   transition: color 0.1s ease;
   list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
+
+details > summary::before {
+  content: "";
+  flex: none;
+  width: 0;
+  height: 0;
+  border-left: 4.5px solid currentColor;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  opacity: 0.5;
+  transition: transform 0.14s ease;
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
 details > summary:hover {
   color: var(--accent);
 }
+
 summary::-webkit-details-marker {
   display: none;
 }

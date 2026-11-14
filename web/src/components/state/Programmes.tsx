@@ -33,7 +33,7 @@ export function Programmes() {
 
   const totals = useMemo(() => {
     const open = directives.filter((d) => d.status !== "complete").length;
-    const waiting = directives.filter((d) => d.status === "issued").length;
+    const waiting = directives.filter((d) => d.status === "not_started").length;
     const overdue = directives.filter(isOverdue).length;
     const avg = directives.length
       ? Math.round(directives.reduce((s, d) => s + progressOf(d).pct, 0) / directives.length)
@@ -66,7 +66,7 @@ export function Programmes() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 10, marginBottom: 20 }}>
             <Stat value={String(directives.length)} label="directives issued" />
             <Stat value={String(totals.open)} label="still open" />
-            <Stat value={String(totals.waiting)} label="not yet acknowledged" />
+            <Stat value={String(totals.waiting)} label="not started by the Region" />
             <Stat value={String(totals.overdue)} label="past the response window" tone={totals.overdue > 0 ? "act" : undefined} />
             <Stat value={`${totals.avg}%`} label="average progress" />
           </div>
@@ -125,7 +125,7 @@ export function Programmes() {
 
                           <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 9 }}>
                             {criticalPathDays(phasesFor(d))} working days of work end to end.{" "}
-                            {d.acknowledgedAt ? "Acknowledged by the Region." : "Not yet acknowledged."}
+                            {d.status === "not_started" ? "The Region has not started." : "The Region has it in hand."}
                           </p>
                           <p
                             style={{

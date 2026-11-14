@@ -19,9 +19,9 @@ function dayLabel(n: number): string {
 }
 
 const STATUS_TONE: Record<StepStatus, { fg: string; bg: string; line: string; label: string }> = {
-  todo: { fg: "var(--ink-3)", bg: "var(--card)", line: "var(--line)", label: "Not started" },
-  active: { fg: "var(--watch)", bg: "var(--watch-soft)", line: "var(--watch-line)", label: "In progress" },
-  done: { fg: "var(--good)", bg: "var(--good-soft)", line: "var(--good-line)", label: "Done" },
+  not_started: { fg: "var(--ink-3)", bg: "var(--card)", line: "var(--line)", label: "Not started" },
+  in_progress: { fg: "var(--watch)", bg: "var(--watch-soft)", line: "var(--watch-line)", label: "In progress" },
+  complete: { fg: "var(--good)", bg: "var(--good-soft)", line: "var(--good-line)", label: "Done" },
   blocked: { fg: "var(--act)", bg: "var(--act-soft)", line: "var(--act-line)", label: "Blocked" },
 };
 
@@ -84,7 +84,13 @@ export function SequenceView({
           const phaseSteps = phase.steps;
           const phaseDone =
             mode === "work" &&
-            phaseSteps.every((s) => stepStates?.find((x) => x.stepId === s.id)?.status === "done");
+            phaseSteps.every((s) => stepStates?.find((x) => x.stepId === s.id)?.status === "complete");
+          const phaseLive =
+            mode === "work" &&
+            phaseSteps.some((s) => {
+              const st = stepStates?.find((x) => x.stepId === s.id)?.status;
+              return st === "in_progress" || st === "blocked";
+            });
           return (
             <li key={phase.id} style={{ display: "grid", gridTemplateColumns: "34px 1fr", gap: 14 }}>
               {/* the spine */}
@@ -121,27 +127,33 @@ export function SequenceView({
                 </div>
                 <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 4, maxWidth: "74ch" }}>{phase.summary}</p>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: phaseSteps.length > 1 ? "repeat(auto-fit, minmax(270px, 1fr))" : "1fr",
-                    gap: 10,
-                    marginTop: 11,
-                  }}
-                >
-                  {phaseSteps.map((step) => (
-                    <StepCard
-                      key={step.id}
-                      step={step}
-                      mode={mode}
-                      window={times.get(step.id)}
-                      state={stepStates?.find((s) => s.stepId === step.id)}
-                      team={team}
-                      onAssign={onAssign}
-                      onStatus={onStatus}
-                    />
-                  ))}
-                </div>
+                <details open={phaseLive} style={{ marginTop: 9 }}>
+                  <summary style={{ fontSize: 12, fontWeight: 600, color: "var(--ink-2)", cursor: "pointer" }}>
+                    {phaseSteps.length} {phaseSteps.length === 1 ? "step" : "steps"}
+                    {mode === "work" && phaseDone ? ", all done" : ""}
+                  </summary>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: phaseSteps.length > 1 ? "repeat(auto-fit, minmax(270px, 1fr))" : "1fr",
+                      gap: 10,
+                      marginTop: 10,
+                    }}
+                  >
+                    {phaseSteps.map((step) => (
+                      <StepCard
+                        key={step.id}
+                        step={step}
+                        mode={mode}
+                        window={times.get(step.id)}
+                        state={stepStates?.find((s) => s.stepId === step.id)}
+                        team={team}
+                        onAssign={onAssign}
+                        onStatus={onStatus}
+                      />
+                    ))}
+                  </div>
+                </details>
               </div>
             </li>
           );
@@ -174,7 +186,7 @@ function StepCard({
   // otherwise a "more" link appears above text that is already complete.
   const [clipped, setClipped] = useState(false);
   const detailRef = useRef<HTMLParagraphElement>(null);
-  const status = state?.status ?? "todo";
+  const status = state?.status ?? "not_started";
   const tone = STATUS_TONE[status];
   const working = mode === "work";
   const assignee = team?.find((m) => m.id === state?.assigneeId);
@@ -196,7 +208,7 @@ function StepCard({
       style={{
         padding: "12px 14px",
         borderColor: working ? tone.line : "var(--line)",
-        background: working && status !== "todo" ? tone.bg : "var(--card)",
+        background: working && status !== "not_started" ? tone.bg : "var(--card)",
         opacity: isState && working ? 0.72 : 1,
       }}
     >
@@ -286,9 +298,9 @@ function StepCard({
             aria-label={`Status of ${step.title}`}
             style={{ fontSize: 12, padding: "5px 8px", flex: "0 0 auto" }}
           >
-            <option value="todo">Not started</option>
-            <option value="active">In progress</option>
-            <option value="done">Done</option>
+            <option value="not_started">Not started</option>
+            <option value="in_progress">In progress</option>
+            <option value="complete">Done</option>
             <option value="blocked">Blocked</option>
           </select>
         </div>

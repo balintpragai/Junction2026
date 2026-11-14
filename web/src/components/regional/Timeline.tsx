@@ -5,9 +5,9 @@ import { FUNCTION_LABEL, type TeamMember } from "@/lib/team";
 import type { StepState, StepStatus } from "@/lib/program";
 
 const BAR_TONE: Record<StepStatus, string> = {
-  todo: "var(--line-strong)",
-  active: "var(--watch)",
-  done: "var(--good)",
+  not_started: "var(--line-strong)",
+  in_progress: "var(--watch)",
+  complete: "var(--good)",
   blocked: "var(--act)",
 };
 
@@ -46,11 +46,11 @@ export function Timeline({
           finish date.
         </p>
         <div className="row" style={{ gap: 12, flexWrap: "wrap" }}>
-          {(["todo", "active", "done", "blocked"] as StepStatus[]).map((s) => (
+          {(["not_started", "in_progress", "complete", "blocked"] as StepStatus[]).map((s) => (
             <span key={s} className="row" style={{ gap: 5 }}>
               <span style={{ width: 10, height: 10, borderRadius: 3, background: BAR_TONE[s], flex: "none" }} />
               <span style={{ fontSize: 11, color: "var(--ink-2)" }}>
-                {s === "todo" ? "Not started" : s === "active" ? "In progress" : s === "done" ? "Done" : "Blocked"}
+                {s === "not_started" ? "Not started" : s === "in_progress" ? "In progress" : s === "complete" ? "Done" : "Blocked"}
               </span>
             </span>
           ))}
@@ -65,7 +65,7 @@ export function Timeline({
               {phase.steps.map((step) => {
                 const win = times.get(step.id)!;
                 const st = stepStates.find((s) => s.stepId === step.id);
-                const status = st?.status ?? "todo";
+                const status = st?.status ?? "not_started";
                 const assignee = team.find((m) => m.id === st?.assigneeId);
                 const left = (win.start / total) * 100;
                 const width = Math.max(1.5, (step.durationDays / total) * 100);
@@ -115,7 +115,7 @@ export function Timeline({
                         {width > 5 && (
                           <span
                             className="tnum"
-                            style={{ fontSize: 9.5, color: status === "todo" ? "var(--ink-2)" : "#fff", whiteSpace: "nowrap", fontWeight: 600 }}
+                            style={{ fontSize: 9.5, color: status === "not_started" ? "var(--ink-2)" : "#fff", whiteSpace: "nowrap", fontWeight: 600 }}
                           >
                             {step.durationDays}d
                           </span>
@@ -169,7 +169,7 @@ export function TeamLoad({
         member: m,
         count: mine.length,
         days: spec.reduce((n, s) => n + (s?.durationDays ?? 0), 0),
-        done: mine.filter((s) => s.status === "done").length,
+        done: mine.filter((s) => s.status === "complete").length,
         blocked: mine.filter((s) => s.status === "blocked").length,
       };
     })

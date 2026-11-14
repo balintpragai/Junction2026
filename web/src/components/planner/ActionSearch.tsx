@@ -66,7 +66,7 @@ export function ActionSearch({
           <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginBottom: 8, lineHeight: 1.45 }}>
             Recommended here, matched to this Region&rsquo;s own Gaps:
           </p>
-          <div className="col" style={{ gap: 6 }}>
+          <div className="col scroll-y" style={{ gap: 6, maxHeight: 290, paddingRight: 2 }}>
             {recommended.map((a) => (
               <Row key={a.id} action={a} added={addedIds.has(a.id)} onAdd={() => onAdd(a)} compact />
             ))}

@@ -19,7 +19,7 @@ export function TeamPage() {
       if (d.status === "complete") continue;
       const steps = allSteps(phasesFor(d));
       for (const st of d.steps) {
-        if (!st.assigneeId || st.status === "done") continue;
+        if (!st.assigneeId || st.status === "complete") continue;
         const spec = steps.find((s) => s.id === st.stepId);
         if (!spec) continue;
         const list = map.get(st.assigneeId) ?? [];
@@ -85,7 +85,7 @@ export function TeamPage() {
                       <p style={{ fontSize: 12, fontWeight: 650, lineHeight: 1.35 }}>{w.title}</p>
                       <p className="truncate" style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 2 }}>
                         {w.directive}, {w.days} {w.days === 1 ? "day" : "days"}
-                        {w.status === "active" && <strong style={{ color: "var(--watch)" }}>, in progress</strong>}
+                        {w.status === "in_progress" && <strong style={{ color: "var(--watch)" }}>, in progress</strong>}
                         {w.status === "blocked" && <strong style={{ color: "var(--act)" }}>, blocked</strong>}
                       </p>
                     </div>

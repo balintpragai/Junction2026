@@ -53,8 +53,8 @@ export function workingDaysUntil(iso: string): number {
   return n * sign;
 }
 
-export type DirectiveStatus = "issued" | "acknowledged" | "in_progress" | "blocked" | "complete";
-export type StepStatus = "todo" | "active" | "done" | "blocked";
+export type DirectiveStatus = "not_started" | "in_progress" | "blocked" | "complete";
+export type StepStatus = "not_started" | "in_progress" | "blocked" | "complete";
 export type Priority = "routine" | "high" | "urgent";
 
 export interface StepState {
@@ -81,7 +81,6 @@ export interface Directive {
   /** The Gap that justifies it, carried along so the Region can see the case. */
   evidence: string;
   status: DirectiveStatus;
-  acknowledgedAt: string | null;
   steps: StepState[];
   /** Set when the Region assigns the whole chain to its team in one go. */
   assignedAt: string | null;
@@ -94,7 +93,7 @@ export interface ProgramState {
   readIds: string[];
 }
 
-const STORAGE_KEY = "frontiers-health:program:v2";
+const STORAGE_KEY = "frontiers-health:program:v3";
 
 // --- seeding ----------------------------------------------------------------
 
@@ -140,11 +139,10 @@ function seedDirectives(): Directive[] {
     issuedAt: days(12),
   });
   a.status = "in_progress";
-  a.acknowledgedAt = days(11);
   a.assignedAt = days(11);
   a.steps = a.steps.map((s, i) => ({
     ...s,
-    status: i < 4 ? "done" : i === 4 ? "active" : "todo",
+    status: i < 4 ? "complete" : i === 4 ? "in_progress" : "not_started",
   }));
 
   const b = newDirective({
@@ -178,7 +176,7 @@ export function newDirective(input: {
     stepId: s.id,
     // The two national steps are complete by definition — the State did them
     // in the act of issuing.
-    status: s.level === "state" && s.id.startsWith("mandate-") ? "done" : "todo",
+    status: s.level === "state" && s.id.startsWith("mandate-") ? "complete" : "not_started",
     assigneeId: null,
   }));
   const issuedAt = input.issuedAt ?? new Date().toISOString();
@@ -193,8 +191,7 @@ export function newDirective(input: {
     dueAt: addWorkingDays(new Date(issuedAt), RESPONSE_WINDOW_DAYS[input.priority]).toISOString(),
     mandate: input.mandate,
     evidence: input.evidence,
-    status: "issued",
-    acknowledgedAt: null,
+    status: "not_started",
     steps,
     assignedAt: null,
   };
@@ -211,7 +208,6 @@ interface ProgramApi {
   visibleDirectives: Directive[];
   unreadCount: number;
   issue: (d: Directive[]) => void;
-  acknowledge: (id: string) => void;
   markRead: (id: string) => void;
   assignAll: (id: string) => void;
   setStepAssignee: (directiveId: string, stepId: string, assigneeId: string | null) => void;
@@ -278,13 +274,7 @@ export function ProgramProvider({ children }: { children: React.ReactNode }) {
     visibleDirectives,
     unreadCount,
     issue: (ds) => update((s) => ({ ...s, directives: [...ds, ...s.directives] })),
-    acknowledge: (id) =>
-      patchDirective(id, (d) => ({
-        ...d,
-        status: d.status === "issued" ? "acknowledged" : d.status,
-        acknowledgedAt: d.acknowledgedAt ?? new Date().toISOString(),
-      })),
-    markRead: (id) => update((s) => (s.readIds.includes(id) ? s : { ...s, readIds: [...s.readIds, id] })),
+      markRead: (id) => update((s) => (s.readIds.includes(id) ? s : { ...s, readIds: [...s.readIds, id] })),
     assignAll: (id) =>
       patchDirective(id, (d) => {
         const phases = buildPlaybook(d.action, d.regionName);
@@ -293,7 +283,6 @@ export function ProgramProvider({ children }: { children: React.ReactNode }) {
           ...d,
           assignedAt: new Date().toISOString(),
           status: d.status === "complete" ? d.status : "in_progress",
-          acknowledgedAt: d.acknowledgedAt ?? new Date().toISOString(),
           steps: d.steps.map((st) => {
             const spec = byId.get(st.stepId);
             if (!spec || spec.level === "state") return st;
@@ -309,9 +298,9 @@ export function ProgramProvider({ children }: { children: React.ReactNode }) {
     setStepStatus: (directiveId, stepId, status) =>
       patchDirective(directiveId, (d) => {
         const steps = d.steps.map((s) => (s.stepId === stepId ? { ...s, status } : s));
-        const everyDone = steps.every((s) => s.status === "done");
+        const everyDone = steps.every((s) => s.status === "complete");
         const anyBlocked = steps.some((s) => s.status === "blocked");
-        const anyMoving = steps.some((s) => s.status === "active" || s.status === "done");
+        const anyMoving = steps.some((s) => s.status === "in_progress" || s.status === "complete");
         const next: DirectiveStatus = everyDone
           ? "complete"
           : anyBlocked
@@ -352,21 +341,20 @@ export function dueLabel(d: Directive): { text: string; overdue: boolean } {
 
 export function progressOf(d: Directive): { done: number; total: number; pct: number } {
   const total = d.steps.length;
-  const done = d.steps.filter((s) => s.status === "done").length;
+  const done = d.steps.filter((s) => s.status === "complete").length;
   return { done, total, pct: total === 0 ? 0 : Math.round((done / total) * 100) };
 }
 
+/** One set of words for work, used for a directive and for a step alike. */
 export const STATUS_LABEL: Record<DirectiveStatus, string> = {
-  issued: "Awaiting the Region",
-  acknowledged: "Acknowledged",
+  not_started: "Not started",
   in_progress: "In progress",
   blocked: "Blocked",
-  complete: "Complete",
+  complete: "Done",
 };
 
 export const STATUS_TONE: Record<DirectiveStatus, "neutral" | "watch" | "good" | "act" | "brand"> = {
-  issued: "brand",
-  acknowledged: "neutral",
+  not_started: "brand",
   in_progress: "watch",
   blocked: "act",
   complete: "good",

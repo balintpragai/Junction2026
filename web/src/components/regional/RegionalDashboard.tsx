@@ -31,7 +31,7 @@ const TONE_CLASS: Record<string, string> = {
   act: "tag tag-act",
 };
 
-type Tab = "workflow" | "timeline" | "team";
+type Tab = "workflow" | "schedule";
 
 /** The Regional Decision Maker's desk. Not a smaller version of the State's
  *  map — a different product for a different job: what has been handed to
@@ -39,7 +39,7 @@ type Tab = "workflow" | "timeline" | "team";
  *  lands. The national picture is deliberately absent; it is not this
  *  person's decision to make. */
 export function RegionalDashboard() {
-  const { account, visibleDirectives, markRead, acknowledge } = useProgram();
+  const { account, visibleDirectives, markRead } = useProgram();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const sorted = useMemo(
@@ -53,21 +53,20 @@ export function RegionalDashboard() {
     const steps = sorted.flatMap((d) => d.steps);
     return {
       open: open.length,
-      awaiting: sorted.filter((d) => d.status === "issued").length,
-      active: steps.filter((s) => s.status === "active").length,
+      awaiting: sorted.filter((d) => d.status === "not_started").length,
+      active: steps.filter((s) => s.status === "in_progress").length,
       blocked: steps.filter((s) => s.status === "blocked").length,
       overdue: sorted.filter(isOverdue).length,
       unassigned: sorted
         .filter((d) => d.status !== "complete")
         .flatMap((d) => d.steps)
-        .filter((s) => !s.assigneeId && s.status !== "done").length,
+        .filter((s) => !s.assigneeId && s.status !== "complete").length,
     };
   }, [sorted]);
 
   function select(d: Directive) {
     setSelectedId(d.id);
     markRead(d.id);
-    if (d.status === "issued") acknowledge(d.id);
   }
 
   return (
@@ -81,7 +80,7 @@ export function RegionalDashboard() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(132px, 1fr))", gap: 10, marginBottom: 18 }}>
         <Stat value={String(stats.open)} label={`open ${stats.open === 1 ? "directive" : "directives"}`} />
-        <Stat value={String(stats.awaiting)} label="not yet acknowledged" tone={stats.awaiting > 0 ? "brand" : undefined} />
+        <Stat value={String(stats.awaiting)} label="not started" tone={stats.awaiting > 0 ? "brand" : undefined} />
         <Stat value={String(stats.active)} label={plural(stats.active, "step")} />
         <Stat value={String(stats.unassigned)} label={`${stats.unassigned === 1 ? "step" : "steps"} unassigned`} tone={stats.unassigned > 0 ? "watch" : undefined} />
         <Stat value={String(stats.blocked)} label="blocked" tone={stats.blocked > 0 ? "act" : undefined} />
@@ -125,7 +124,7 @@ export function RegionalDashboard() {
 function DirectiveRow({ directive, active, onClick }: { directive: Directive; active: boolean; onClick: () => void }) {
   const { pct, done, total } = progressOf(directive);
   const due = dueLabel(directive);
-  const isNew = directive.status === "issued";
+  const isNew = directive.status === "not_started";
   return (
     <button
       onClick={onClick}
@@ -177,7 +176,7 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
   const team = useMemo(() => teamFor(directive.regionCode), [directive.regionCode]);
   const { pct, done, total } = progressOf(directive);
   const detailDue = dueLabel(directive);
-  const needsAssigning = directive.steps.some((s) => !s.assigneeId && s.status !== "done");
+  const needsAssigning = directive.steps.some((s) => !s.assigneeId && s.status !== "complete");
   const parties = uniqueCounterparties(phases);
 
   return (
@@ -251,9 +250,8 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
         <div role="tablist" aria-label="Directive views" style={{ display: "flex", borderBottom: "1px solid var(--line)", background: "var(--bg)" }}>
           {(
             [
-              { id: "workflow", label: "Workflow" },
-              { id: "timeline", label: "Timeline" },
-              { id: "team", label: "Team load" },
+              { id: "workflow", label: "The chain" },
+              { id: "schedule", label: "Who and when" },
             ] as { id: Tab; label: string }[]
           ).map((t) => {
             const active = tab === t.id;
@@ -292,8 +290,15 @@ function DirectiveDetail({ directive }: { directive: Directive }) {
               onStatus={(stepId, status) => setStepStatus(directive.id, stepId, status)}
             />
           )}
-          {tab === "timeline" && <Timeline phases={phases} stepStates={directive.steps} team={team} />}
-          {tab === "team" && <TeamLoad phases={phases} stepStates={directive.steps} team={team} />}
+          {tab === "schedule" && (
+            <div className="col" style={{ gap: 24 }}>
+              <Timeline phases={phases} stepStates={directive.steps} team={team} />
+              <div style={{ borderTop: "1px solid var(--line)", paddingTop: 20 }}>
+                <h3 style={{ fontSize: 13, marginBottom: 12 }}>What that puts on each person</h3>
+                <TeamLoad phases={phases} stepStates={directive.steps} team={team} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

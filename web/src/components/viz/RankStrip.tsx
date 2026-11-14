@@ -24,7 +24,7 @@ export function RankStrip({
   const [hover, setHover] = useState<{ indicator: string; code: string } | null>(null);
 
   return (
-    <div className="col" style={{ gap: 16 }}>
+    <div className="col" style={{ gap: 20 }} role="group" aria-label={`${profile.region.name} against every other Region, indicator by indicator`}>
       {profile.gaps.map((entry) => {
         const code = entry.indicator.code;
         const higher = entry.indicator.higher_is_better;
@@ -50,8 +50,14 @@ export function RankStrip({
           entry.gap.severity === "act" ? "var(--act)" : entry.gap.severity === "watch" ? "var(--watch)" : "var(--good)";
 
         return (
-          <div key={code}>
-            <div className="row" style={{ justifyContent: "space-between", marginBottom: 7, gap: 10 }}>
+          <div
+            key={code}
+            style={{
+              paddingBottom: 16,
+              borderBottom: "1px solid var(--line)",
+            }}
+          >
+            <div className="row" style={{ justifyContent: "space-between", marginBottom: 5, gap: 10 }}>
               <span style={{ fontSize: 12.5, fontWeight: 650 }}>{entry.indicator.name}</span>
               <span className="row" style={{ gap: 8, flex: "none" }}>
                 <span className="tnum" style={{ fontSize: 12.5, fontWeight: 700, color: tone }}>
@@ -101,6 +107,7 @@ export function RankStrip({
                   return (
                     <button
                       key={p.code}
+                      tabIndex={-1}
                       onClick={() => onPick?.(p.code)}
                       onMouseEnter={() => setHover({ indicator: code, code: p.code })}
                       onMouseLeave={() => setHover(null)}
@@ -143,7 +150,26 @@ export function RankStrip({
               />
             </div>
 
-            <div className="row" style={{ justifyContent: "space-between", marginTop: 1 }}>
+            <p style={{ fontSize: 12.5, color: "var(--ink-2)", lineHeight: 1.5, marginTop: 6 }}>
+              {entry.narrative.text}
+            </p>
+            {entry.data_quality_notes.map((note, i) => (
+              <p
+                key={i}
+                style={{
+                  fontSize: 11.5,
+                  color: "var(--watch)",
+                  background: "var(--watch-soft)",
+                  borderRadius: 6,
+                  padding: "5px 9px",
+                  marginTop: 6,
+                }}
+              >
+                {note.message}
+              </p>
+            ))}
+
+            <div className="row" style={{ justifyContent: "space-between", marginTop: 6 }}>
               <span className="tnum" style={{ fontSize: 10, color: "var(--ink-3)" }}>
                 worst {formatValue(higher ? lo : hi, entry.indicator.unit)}
               </span>
