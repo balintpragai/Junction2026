@@ -1,0 +1,24 @@
+region_code,region_name_en,parent_area,basis,note
+01,East Uusimaa wellbeing services county,Uusimaa,maakunta,
+02,Central Uusimaa wellbeing services county,Uusimaa,maakunta,
+03,West Uusimaa wellbeing services county,Uusimaa,maakunta,
+04,Vantaa and Kerava wellbeing services county,Uusimaa,maakunta,
+90,City of Helsinki,Uusimaa,maakunta,"Placed with the four other Uusimaa Regions: same maakunta, same YTA (Southern Finland) and same ERVA (Helsinki University Hospital). The only single-city Region, so peers share geography and specialist care, not urban structure."
+05,Southwest Finland wellbeing services county,Western Finland,yta,
+06,Satakunta wellbeing services county,Western Finland,yta,
+17,Ostrobothnia wellbeing services county,Western Finland,yta,
+07,Kanta-Häme wellbeing services county,Inland Finland,yta,
+08,Pirkanmaa wellbeing services county,Inland Finland,yta,
+16,South Ostrobothnia wellbeing services county,Inland Finland,yta,
+09,Päijät-Häme wellbeing services county,Southern Finland,yta,Southern Finland YTA minus the Uusimaa Regions.
+10,Kymenlaakso wellbeing services county,Southern Finland,yta,Southern Finland YTA minus the Uusimaa Regions.
+11,South Karelia wellbeing services county,Southern Finland,yta,Southern Finland YTA minus the Uusimaa Regions.
+12,South Savo wellbeing services county,Eastern Finland,yta,
+13,North Savo wellbeing services county,Eastern Finland,yta,
+14,North Karelia wellbeing services county,Eastern Finland,yta,
+15,Central Finland wellbeing services county,Eastern Finland,yta,
+18,Central Ostrobothnia wellbeing services county,Northern Finland,yta,
+19,North Ostrobothnia wellbeing services county,Northern Finland,yta,
+20,Kainuu wellbeing services county,Northern Finland,yta,
+21,Lapland wellbeing services county,Northern Finland,yta,
+91,Åland,Åland,yta,"Own group with no peers: Åland runs its own healthcare system outside the wellbeing services county reform. Its specialist care goes to Turku (ERVA), but it is kept out of Western Finland so it does not skew that group's peer values. score() must handle an empty peer list."
