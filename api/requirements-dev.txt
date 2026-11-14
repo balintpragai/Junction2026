@@ -1,0 +1,8 @@
+# Install from the repo root:  .venv/bin/pip install -r api/requirements-dev.txt
+# (pip resolves the -e path below against the current directory, not this file.)
+-r requirements.txt
+-e ./common
+pytest>=8
+httpx>=0.27
+# Newer Starlette test clients use httpx2 and warn without it; httpx stays for older versions.
+httpx2

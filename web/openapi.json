@@ -1,0 +1,785 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Reach Loop API",
+    "description": "Read-only public API: Regions, indicators, Gap summaries and outreach lists.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "tags": [
+          "lookups"
+        ],
+        "summary": "List Regions",
+        "operationId": "list_regions_regions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/indicators": {
+      "get": {
+        "tags": [
+          "lookups"
+        ],
+        "summary": "List Indicators",
+        "operationId": "list_indicators_indicators_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndicatorList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions/{code}/gap-summary": {
+      "get": {
+        "tags": [
+          "gaps"
+        ],
+        "summary": "Gap Summary",
+        "operationId": "gap_summary_regions__code__gap_summary_get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "indicator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Indicator code, e.g. '3621'",
+              "title": "Indicator"
+            },
+            "description": "Indicator code, e.g. '3621'"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Year, e.g. 2024",
+              "title": "Year"
+            },
+            "description": "Year, e.g. 2024"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GapSummary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No Gap for this Region, indicator and year"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/outreach-list": {
+      "get": {
+        "tags": [
+          "gaps"
+        ],
+        "summary": "Outreach List",
+        "operationId": "outreach_list_outreach_list_get",
+        "parameters": [
+          {
+            "name": "indicator",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Indicator code, e.g. '3621'",
+              "title": "Indicator"
+            },
+            "description": "Indicator code, e.g. '3621'"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Year, e.g. 2024",
+              "title": "Year"
+            },
+            "description": "Year, e.g. 2024"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutreachList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No outreach list for this indicator and year"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DataQualityNote": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "DataQualityNote"
+      },
+      "Gap": {
+        "properties": {
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "indicator_code": {
+            "type": "string",
+            "title": "Indicator Code"
+          },
+          "year": {
+            "type": "integer",
+            "title": "Year"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "reference_kind": {
+            "type": "string",
+            "enum": [
+              "target",
+              "peer_median"
+            ],
+            "title": "Reference Kind"
+          },
+          "reference_value": {
+            "type": "number",
+            "title": "Reference Value",
+            "description": "The Target, or the peer median."
+          },
+          "deviation": {
+            "type": "number",
+            "title": "Deviation",
+            "description": "value − reference_value, signed, in the indicator's unit."
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "above",
+              "below",
+              "at"
+            ],
+            "title": "Direction"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "watch",
+              "act"
+            ],
+            "title": "Severity"
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Rank",
+            "description": "Position among n_regions; 1 = best performing."
+          },
+          "n_regions": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "N Regions"
+          },
+          "peer_values": {
+            "items": {
+              "$ref": "#/components/schemas/PeerValue"
+            },
+            "type": "array",
+            "title": "Peer Values",
+            "description": "Every Region's value for the same indicator and year."
+          },
+          "trend_5y": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trend 5Y",
+            "description": "Change in value over the last five years, in the indicator's unit; null if too little history."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region_code",
+          "indicator_code",
+          "year",
+          "value",
+          "reference_kind",
+          "reference_value",
+          "deviation",
+          "direction",
+          "severity",
+          "rank",
+          "n_regions",
+          "peer_values",
+          "trend_5y"
+        ],
+        "title": "Gap",
+        "description": "How far one Region's value on one indicator, in one year, sits from its\nTarget (or from the other Regions when there is no Target)."
+      },
+      "GapSummary": {
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "indicator": {
+            "$ref": "#/components/schemas/Indicator"
+          },
+          "gap": {
+            "$ref": "#/components/schemas/Gap"
+          },
+          "action": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StrategyAction"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "data_quality_notes": {
+            "items": {
+              "$ref": "#/components/schemas/DataQualityNote"
+            },
+            "type": "array",
+            "title": "Data Quality Notes"
+          },
+          "narrative": {
+            "$ref": "#/components/schemas/Narrative"
+          },
+          "trend": {
+            "items": {
+              "$ref": "#/components/schemas/TrendPoint"
+            },
+            "type": "array",
+            "title": "Trend",
+            "description": "Series for the sparkline, ascending by year."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region",
+          "indicator",
+          "gap",
+          "action",
+          "data_quality_notes",
+          "narrative",
+          "trend"
+        ],
+        "title": "GapSummary",
+        "description": "Everything the three-layer card needs, in one round-trip."
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Health": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Health"
+      },
+      "Indicator": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Sotkanet indicator id, e.g. '3621'."
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit",
+            "description": "Unit of `value`, e.g. '%'."
+          },
+          "higher_is_better": {
+            "type": "boolean",
+            "title": "Higher Is Better"
+          },
+          "target": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target",
+            "description": "National Cancer Strategy Target, or null when the indicator has none."
+          },
+          "years": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Years",
+            "description": "Years with data, ascending."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "unit",
+          "higher_is_better",
+          "target",
+          "years"
+        ],
+        "title": "Indicator"
+      },
+      "IndicatorList": {
+        "properties": {
+          "indicators": {
+            "items": {
+              "$ref": "#/components/schemas/Indicator"
+            },
+            "type": "array",
+            "title": "Indicators"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "indicators"
+        ],
+        "title": "IndicatorList"
+      },
+      "Narrative": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "llm",
+              "template"
+            ],
+            "title": "Source"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "fi"
+            ],
+            "title": "Language"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "source",
+          "language"
+        ],
+        "title": "Narrative",
+        "description": "Plain-language sentence(s) describing one Gap. Every figure comes from the Gap."
+      },
+      "OutreachCovariates": {
+        "properties": {
+          "immigrant_background_share_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Immigrant Background Share Pct",
+            "description": "Share of the Region's population with an immigrant background, %."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "immigrant_background_share_pct"
+        ],
+        "title": "OutreachCovariates"
+      },
+      "OutreachList": {
+        "properties": {
+          "indicator": {
+            "$ref": "#/components/schemas/Indicator"
+          },
+          "year": {
+            "type": "integer",
+            "title": "Year"
+          },
+          "reference_kind": {
+            "type": "string",
+            "enum": [
+              "target",
+              "peer_median"
+            ],
+            "title": "Reference Kind"
+          },
+          "reference_value": {
+            "type": "number",
+            "title": "Reference Value"
+          },
+          "ecological_fallacy_note": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Ecological Fallacy Note",
+            "description": "Required caveat: Region-level associations do not describe individuals. The UI must show it."
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/OutreachRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "indicator",
+          "year",
+          "reference_kind",
+          "reference_value",
+          "ecological_fallacy_note",
+          "rows"
+        ],
+        "title": "OutreachList",
+        "description": "Regions below the reference, ranked by Gap, joined with covariates."
+      },
+      "OutreachRow": {
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "deviation": {
+            "type": "number",
+            "title": "Deviation"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "watch",
+              "act"
+            ],
+            "title": "Severity"
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Rank",
+            "description": "1 = largest Gap below the reference."
+          },
+          "covariates": {
+            "$ref": "#/components/schemas/OutreachCovariates"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region",
+          "value",
+          "deviation",
+          "severity",
+          "rank",
+          "covariates"
+        ],
+        "title": "OutreachRow"
+      },
+      "PeerValue": {
+        "properties": {
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region_code",
+          "value"
+        ],
+        "title": "PeerValue"
+      },
+      "Region": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Stable Region identifier used in URLs."
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Display name, e.g. 'Helsinki'."
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "wellbeing_services_county",
+              "city_of_helsinki",
+              "aland"
+            ],
+            "title": "Kind"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "kind"
+        ],
+        "title": "Region",
+        "description": "One of the 23 areas THL reports on."
+      },
+      "RegionList": {
+        "properties": {
+          "regions": {
+            "items": {
+              "$ref": "#/components/schemas/Region"
+            },
+            "type": "array",
+            "title": "Regions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "regions"
+        ],
+        "title": "RegionList"
+      },
+      "StrategyAction": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "Document the action comes from."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "text",
+          "source"
+        ],
+        "title": "StrategyAction",
+        "description": "The National Cancer Strategy action matched to this Gap."
+      },
+      "TrendPoint": {
+        "properties": {
+          "year": {
+            "type": "integer",
+            "title": "Year"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "year",
+          "value"
+        ],
+        "title": "TrendPoint"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

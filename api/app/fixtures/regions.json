@@ -1,0 +1,119 @@
+{
+  "regions": [
+    {
+      "code": "helsinki",
+      "name": "Helsinki",
+      "kind": "city_of_helsinki"
+    },
+    {
+      "code": "ita-uusimaa",
+      "name": "Itä-Uusimaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "keski-uusimaa",
+      "name": "Keski-Uusimaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "lansi-uusimaa",
+      "name": "Länsi-Uusimaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "vantaa-kerava",
+      "name": "Vantaa-Kerava",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "varsinais-suomi",
+      "name": "Varsinais-Suomi",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "satakunta",
+      "name": "Satakunta",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "kanta-hame",
+      "name": "Kanta-Häme",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "pirkanmaa",
+      "name": "Pirkanmaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "paijat-hame",
+      "name": "Päijät-Häme",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "kymenlaakso",
+      "name": "Kymenlaakso",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "etela-karjala",
+      "name": "Etelä-Karjala",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "etela-savo",
+      "name": "Etelä-Savo",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "pohjois-savo",
+      "name": "Pohjois-Savo",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "pohjois-karjala",
+      "name": "Pohjois-Karjala",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "keski-suomi",
+      "name": "Keski-Suomi",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "etela-pohjanmaa",
+      "name": "Etelä-Pohjanmaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "pohjanmaa",
+      "name": "Pohjanmaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "keski-pohjanmaa",
+      "name": "Keski-Pohjanmaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "pohjois-pohjanmaa",
+      "name": "Pohjois-Pohjanmaa",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "kainuu",
+      "name": "Kainuu",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "lappi",
+      "name": "Lappi",
+      "kind": "wellbeing_services_county"
+    },
+    {
+      "code": "aland",
+      "name": "Åland",
+      "kind": "aland"
+    }
+  ]
+}

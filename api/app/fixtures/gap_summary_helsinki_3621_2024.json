@@ -1,0 +1,173 @@
+{
+  "region": {
+    "code": "helsinki",
+    "name": "Helsinki",
+    "kind": "city_of_helsinki"
+  },
+  "indicator": {
+    "code": "3621",
+    "name": "Breast cancer screening attendance",
+    "unit": "%",
+    "higher_is_better": true,
+    "target": 80.0,
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "gap": {
+    "region_code": "helsinki",
+    "indicator_code": "3621",
+    "year": 2024,
+    "value": 74.3,
+    "reference_kind": "target",
+    "reference_value": 80.0,
+    "deviation": -5.7,
+    "direction": "below",
+    "severity": "act",
+    "rank": 21,
+    "n_regions": 23,
+    "peer_values": [
+      {
+        "region_code": "helsinki",
+        "value": 74.3
+      },
+      {
+        "region_code": "ita-uusimaa",
+        "value": 84.1
+      },
+      {
+        "region_code": "keski-uusimaa",
+        "value": 82.6
+      },
+      {
+        "region_code": "lansi-uusimaa",
+        "value": 80.9
+      },
+      {
+        "region_code": "vantaa-kerava",
+        "value": 73.2
+      },
+      {
+        "region_code": "varsinais-suomi",
+        "value": 85.0
+      },
+      {
+        "region_code": "satakunta",
+        "value": 86.2
+      },
+      {
+        "region_code": "kanta-hame",
+        "value": 84.7
+      },
+      {
+        "region_code": "pirkanmaa",
+        "value": 83.9
+      },
+      {
+        "region_code": "paijat-hame",
+        "value": 81.5
+      },
+      {
+        "region_code": "kymenlaakso",
+        "value": 82.2
+      },
+      {
+        "region_code": "etela-karjala",
+        "value": 85.6
+      },
+      {
+        "region_code": "etela-savo",
+        "value": 86.8
+      },
+      {
+        "region_code": "pohjois-savo",
+        "value": 87.1
+      },
+      {
+        "region_code": "pohjois-karjala",
+        "value": 86.4
+      },
+      {
+        "region_code": "keski-suomi",
+        "value": 84.3
+      },
+      {
+        "region_code": "etela-pohjanmaa",
+        "value": 88.0
+      },
+      {
+        "region_code": "pohjanmaa",
+        "value": 85.9
+      },
+      {
+        "region_code": "keski-pohjanmaa",
+        "value": 87.5
+      },
+      {
+        "region_code": "pohjois-pohjanmaa",
+        "value": 83.1
+      },
+      {
+        "region_code": "kainuu",
+        "value": 86.0
+      },
+      {
+        "region_code": "lappi",
+        "value": 79.4
+      },
+      {
+        "region_code": "aland",
+        "value": 70.8
+      }
+    ],
+    "trend_5y": -6.3
+  },
+  "action": {
+    "id": "fixture-action-screening-outreach",
+    "title": "Raise screening participation (fixture placeholder)",
+    "text": "Placeholder action text. The real matched action comes from the National Cancer Strategy 2026-2035 once the action table is seeded.",
+    "source": "National Cancer Strategy 2026-2035"
+  },
+  "data_quality_notes": [
+    {
+      "code": "fixture_data",
+      "message": "Fixture data: only Helsinki's 2024 value (74.3%) is from the brief; peer values, trend and action are placeholders."
+    }
+  ],
+  "narrative": {
+    "text": "Helsinki is 5.7 pp below the 80% target for breast cancer screening attendance in 2024, ranking 21 of 23.",
+    "source": "template",
+    "language": "en"
+  },
+  "trend": [
+    {
+      "year": 2019,
+      "value": 80.6
+    },
+    {
+      "year": 2020,
+      "value": 79.1
+    },
+    {
+      "year": 2021,
+      "value": 77.4
+    },
+    {
+      "year": 2022,
+      "value": 76.2
+    },
+    {
+      "year": 2023,
+      "value": 75.0
+    },
+    {
+      "year": 2024,
+      "value": 74.3
+    }
+  ]
+}
