@@ -31,6 +31,7 @@ from psycopg.types.json import Jsonb
 from common.db import connect
 from common.models import DataQualityNote, Gap, Indicator, IndicatorFailure
 
+from .narratives import FillResult
 from .scoring import SeverityThresholds, load_thresholds, score
 
 log = logging.getLogger(__name__)
@@ -88,6 +89,10 @@ class RescoreResult:
     gaps_removed: int
     indicators_scored: int
     failures: list[IndicatorFailure]
+    narratives: FillResult | None = None
+    """Set by the job once the Narrative cache is filled (#17)."""
+    narrative_error: str | None = None
+    """Set when the Narrative step could not run at all."""
 
 
 # --- 1. Load -------------------------------------------------------------------

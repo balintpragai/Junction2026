@@ -215,6 +215,13 @@ class NarrativeRequest(ContractModel):
         return self
 
 
+class NarrativeConfig(ContractModel):
+    """What `narrative` would use right now. `engine` keys the Narrative cache on it."""
+
+    prompt_version: str
+    model: str = Field(description="The configured LLM model, or '' when no LLM is configured (Template sentences only).")
+
+
 class NarrativeResult(ContractModel):
     text: str = Field(min_length=1)
     source: NarrativeSource
@@ -259,6 +266,20 @@ class RescoreJob(ContractModel):
         default_factory=list, description="Indicators skipped this run; each keeps its previous Gaps."
     )
     error: str | None = None
+    narratives_generated: int | None = Field(
+        default=None, description="Narratives requested from `narrative` this run (new or changed inputs)."
+    )
+    narratives_kept: int | None = Field(default=None, description="Cached Narratives whose inputs were unchanged.")
+    narratives_failed: int | None = Field(
+        default=None, description="Narratives that could not be generated; each keeps its previous cache row, if any."
+    )
+    narratives_removed: int | None = Field(default=None, description="Cache rows deleted because their Gap is no longer a latest-year Gap.")
+    narrative_sources: dict[str, int] = Field(
+        default_factory=dict, description="Cached latest-year Narratives by source after this run, e.g. {'template': 276}."
+    )
+    narrative_error: str | None = Field(
+        default=None, description="Set when the Narrative step could not run at all (e.g. `narrative` unreachable). Gaps are still scored."
+    )
 
     @property
     def done(self) -> bool:

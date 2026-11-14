@@ -3,8 +3,10 @@
 `PostgresRepository` reads what `seed` loaded and the rescore job (#13) scored.
 Routes depend on the `Repository` protocol, so tests can swap in a fake.
 
-`api` never calls an LLM. Until the Narrative cache (#17) is filled, every
-gap-summary carries the Template sentence for its Gap, which is exact by
+`api` never calls an LLM. gap-summary returns the Narrative that `engine`
+cached for the Gap after the last rescore (#17): checked LLM text or a Template
+sentence. Only latest-year Gaps are cached; for any other Gap (or before the
+first fill) it builds the Template sentence itself, which is exact by
 construction and needs no network.
 """
 
@@ -138,6 +140,16 @@ class PostgresRepository:
                 (region["region_id"], indicator_code, year),
             ).fetchall()
 
+            cached = conn.execute(
+                """
+                SELECT text, source FROM narrative_cache
+                WHERE region_id = %s AND indicator_id = %s AND year = %s AND language = 'en'
+                ORDER BY created_at DESC
+                LIMIT 1
+                """,
+                (region["region_id"], indicator_code, year),
+            ).fetchone()
+
             action = conn.execute(
                 """
                 SELECT a.action_id, a.sub_objective_title, a.goal, a.action_text, a.strategy_page
@@ -167,23 +179,30 @@ class PostgresRepository:
             peer_values=[PeerValue(**p) for p in g["peer_values"]],
             trend_5y=g["trend_5y"],
         )
-        narrative_text = template_sentence(
-            NarrativeRequest(
-                region_name=region_model.name,
-                indicator_name=indicator_model.name,
-                indicator_name_fi=name_fi,
-                unit=indicator_model.unit,
-                gap=gap,
+        if cached is not None:
+            narrative = Narrative(text=cached["text"], source=cached["source"], language="en")
+        else:
+            narrative = Narrative(
+                text=template_sentence(
+                    NarrativeRequest(
+                        region_name=region_model.name,
+                        indicator_name=indicator_model.name,
+                        indicator_name_fi=name_fi,
+                        unit=indicator_model.unit,
+                        gap=gap,
+                        language="en",
+                    )
+                ),
+                source="template",
                 language="en",
             )
-        )
         return GapSummary(
             region=region_model,
             indicator=indicator_model,
             gap=gap,
             action=_strategy_action(action) if action else None,
             data_quality_notes=[DataQualityNote(**n) for n in g["data_quality_notes"]],
-            narrative=Narrative(text=narrative_text, source="template", language="en"),
+            narrative=narrative,
             trend=[TrendPoint(year=t["year"], value=t["value"]) for t in trend],
         )
 
