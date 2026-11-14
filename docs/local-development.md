@@ -4,6 +4,19 @@ This is the reference for running the Reach Loop services locally, testing them,
 
 Every endpoint, with inputs, outputs, errors and real examples, is described in [api.md](api.md).
 
+## Quick start: Docker only
+
+To just run the stack you need only Docker with the compose plugin (Docker Desktop on Windows and macOS). No Python, Node or `.env` is required. From the repo root:
+
+```sh
+docker compose up --build -d
+docker compose ps        # five services "healthy", seed "Exited (0)"
+```
+
+Then open http://localhost:3000. It should say "API reachable: 23 Regions loaded." The API's interactive docs are at http://localhost:8000/docs. Stop with `docker compose down`.
+
+The Python setup below is only needed to run the tests, or to run a service outside Docker. Details on the stack: [Run the whole stack](#run-the-whole-stack-docker-compose).
+
 ## Current state
 
 All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads every data route from Postgres: Regions, indicators and Gaps (#14), and the outreach list (#16). `web` is a stub that later tickets fill in.
@@ -26,11 +39,11 @@ In a gap-summary:
 
 ## Prerequisites
 
-- Python 3.12 or newer
-- Node.js with `npm` (only to run `web` outside Docker)
 - Docker (to run the stack, and to regenerate the TypeScript types)
+- Python 3.12 or newer (only for the tests, or to run a service outside Docker)
+- Node.js with `npm` (only to run `web` outside Docker)
 
-## One-time setup
+## One-time setup (tests and running outside Docker)
 
 From the repo root:
 
@@ -41,7 +54,30 @@ python3 -m venv .venv
 
 `requirements-dev.txt` installs FastAPI, Uvicorn, pytest, and the shared `common/` package in editable mode, so model changes take effect without reinstalling. It installs the same pinned versions as the api image (`api/constraints.txt`), so the tests see the same OpenAPI spec the image produces.
 
-On Windows the venv's Python is `.venv\Scripts\python` instead of `.venv/bin/python`.
+**On Windows** the venv's programs are in `.venv\Scripts\` instead of `.venv/bin/`. Every `.venv/bin/<tool>` in this document becomes `.venv\Scripts\<tool>` (PowerShell) or `.venv/Scripts/<tool>` (Git Bash), and `python3` is `python`:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\pip install -r api/requirements-dev.txt
+```
+
+### Run every test suite
+
+Install all the dev requirements once (from the repo root), then run each suite from inside its own directory:
+
+```sh
+for s in api seed engine narrative; do .venv/bin/pip install -r $s/requirements-dev.txt; done
+for s in api seed engine narrative common; do (cd $s && ../.venv/bin/python -m pytest -q) || echo "FAILED: $s"; done
+```
+
+PowerShell:
+
+```powershell
+foreach ($s in 'api','seed','engine','narrative') { .venv\Scripts\pip install -r "$s/requirements-dev.txt" }
+foreach ($s in 'api','seed','engine','narrative','common') { Push-Location $s; ..\.venv\Scripts\python -m pytest -q; if ($LASTEXITCODE) { "FAILED: $s" }; Pop-Location }
+```
+
+`common/` (the shared models, settings and engine client) has its own tests in `common/tests/`.
 
 ## Run the API
 
@@ -120,7 +156,7 @@ docker stop rl-test-db
 
 ## Run the whole stack (docker compose)
 
-Needs Docker with the compose plugin (Arch: `sudo pacman -S docker-compose docker-buildx`). From the repo root:
+Needs Docker with the compose plugin: Docker Desktop on Windows and macOS (it includes compose), or on Arch `sudo pacman -S docker-compose docker-buildx`. From the repo root:
 
 ```sh
 docker compose up --build        # add -d to run in the background
@@ -144,6 +180,8 @@ Then open http://localhost:3000. It should say "API reachable: 23 Regions loaded
 ### `seed`: schema and data
 
 `seed` runs on every `docker compose up` and is safe to run again: it reloads the data and applies only the schema files it hasn't applied yet. `docker compose logs seed` shows what it loaded, as counts only (never data rows).
+
+The "table row counts" block in that log is taken **before** the rescore, so on a fresh database it shows `fact_gap_score 0`. That's expected. The line after it, `seed: rescore: succeeded, N Gaps written`, is the one that tells you scoring worked.
 
 | What | Where | Notes |
 |---|---|---|
@@ -361,10 +399,10 @@ Run both scripts as yourself, not with `sudo`. Under `sudo` the containers run a
 | A route returns 500 with a `ValidationError` in the `api` logs | A database row doesn't fit the contract model (for example an unexpected `kind`). The error names the field. |
 | Browser blocks requests (CORS) | Add the `web` origin to `WEB_ORIGIN`. |
 | `docker build`: `lstat .../api/api: no such file or directory` | Run `docker build -f api/Dockerfile -t reach-loop-api .` from the **repo root**, not from `api/`. |
-| `docker: unknown command: docker compose` | Install the compose plugin: `sudo pacman -S docker-compose`. |
+| `docker: unknown command: docker compose` | Install the compose plugin: Docker Desktop includes it on Windows and macOS; on Arch, `sudo pacman -S docker-compose`. |
+| Windows: `Unable to copy ... venvlauncher.exe` while creating the venv | Usually harmless. Check with `.venv\Scripts\python --version`; if that works, carry on. |
 | `permission denied ... /var/run/docker.sock` | `sudo usermod -aG docker $USER`, then log out and back in. |
 | `Bind for 0.0.0.0:8000 failed: port is already allocated` | Something else (often an old `docker run` of `api`) holds the port. Stop it, or set `API_PORT` / `WEB_PORT`. |
-| `seed` exits non-zero | `docker compose logs seed`. It needs `db` and `engine` healthy and `DATABASE_URL` / `ENGINE_URL` set. |
 | `test_committed_openapi_matches_app` fails | A model changed without regenerating. Run `scripts/gen-api-types.sh` and commit `web/`. If you didn't change a model, reinstall the dev env so it has the pinned versions: `.venv/bin/pip install -r api/requirements-dev.txt`. |
 | `gen-api-types.sh` on Windows: `invalid mount config` or files land in a strange path | Run it from Git Bash. The script handles the path conversion there. |
 | `web/` files owned by root after regenerating | The script ran under `sudo`. Fix with `sudo chown -R $USER web/`, then run it as yourself (in the `docker` group). For a one-off without re-logging in: `sudo -u $USER -g docker scripts/gen-api-types.sh`. |

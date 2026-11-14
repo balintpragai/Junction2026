@@ -4,6 +4,8 @@ An AI-powered gap-finder for equitable cancer care in Finland — built for the 
 
 **Start here → [`BUILD.md`](BUILD.md)** — the full build plan: architecture, schema, API contracts, the four workstreams, schedule, and what to do when time runs short.
 
+**Run it locally →** with Docker installed, `docker compose up --build` from the repo root, then open http://localhost:3000. Details, tests and troubleshooting: [`docs/local-development.md`](docs/local-development.md).
+
 ## Map of this repo
 
 | Directory | What's in it |
