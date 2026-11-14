@@ -1,0 +1,4 @@
+# Install from the repo root:  .venv/bin/pip install -r engine/requirements-dev.txt
+# (pip resolves the -e path below against the current directory, not this file.)
+-e ./common
+pytest>=8

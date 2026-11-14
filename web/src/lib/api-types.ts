@@ -148,7 +148,7 @@ export interface components {
             n_regions: number;
             /**
              * Peer Values
-             * @description Every Region's value for the same indicator and year.
+             * @description Values of the other Regions in the same parent area, for the same indicator and year. Regions without a value that year are left out; empty when there are no peers (e.g. Åland).
              */
             peer_values: components["schemas"]["PeerValue"][];
             /**

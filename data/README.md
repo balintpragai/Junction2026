@@ -10,12 +10,12 @@ All CSVs use the 23 Finnish **wellbeing services counties** (`hyvinvointialue`) 
 |---|---|---|---|
 | `3621_breast_screening_attendance_by_wellbeing_county.csv` | Breast cancer (mammography) screening attendance, % of invited | 2016–2024 | THL Sotkanet, indicator 3621 |
 | `3620_cervical_screening_attendance_by_wellbeing_county.csv` | Cervical cancer (Pap) screening attendance, % of invited | 2016–2024 | THL Sotkanet, indicator 3620 |
-| `6103_colorectal_screening_attendance_by_wellbeing_county.csv` | Colorectal cancer screening attendance, % of invited | 2016–2024 (program is newer, fewer years populated) | THL Sotkanet, indicator 6103 |
-| `3625_breast_cancer_5yr_survival_by_wellbeing_county.csv` | Breast cancer 5-year relative survival, % | multi-year | THL Sotkanet, indicator 3625 |
-| `3626_cervical_cancer_5yr_survival_by_wellbeing_county.csv` | Cervical cancer 5-year relative survival, % | multi-year | THL Sotkanet, indicator 3626 |
-| `3627_bowel_cancer_5yr_survival_by_wellbeing_county.csv` | Bowel cancer 5-year relative survival, % | multi-year | THL Sotkanet, indicator 3627 |
-| `5643_cancer_index_age_standardised_by_wellbeing_county.csv` | Cancer incidence index, age-standardised (national=100 reference) | multi-year | THL Sotkanet, indicator 5643 |
-| `5395_special_refund_cancer_medicines_pct_pop_by_wellbeing_county.csv` | % of population currently entitled to special reimbursement for cancer medicines | 2016–2024 | THL Sotkanet, indicator 5395 — **proxy for active-treatment prevalence**, not a direct "time to treatment" measure |
+| `6103_colorectal_screening_attendance_by_wellbeing_county.csv` | Colorectal cancer screening attendance, % of invited | 2022–2024 only (newest programme) | THL Sotkanet, indicator 6103 |
+| `3625_breast_cancer_5yr_survival_by_wellbeing_county.csv` | Breast cancer 5-year relative survival, % | 2019–2024 for Regions (Whole country: 2016–2017, 2019–2024) | THL Sotkanet, indicator 3625 |
+| `3626_cervical_cancer_5yr_survival_by_wellbeing_county.csv` | Cervical cancer 5-year relative survival, % | 2019–2024 for Regions (Whole country: 2016–2017, 2019–2024) | THL Sotkanet, indicator 3626 |
+| `3627_bowel_cancer_5yr_survival_by_wellbeing_county.csv` | Bowel cancer 5-year relative survival, % | 2019–2024 for Regions (Whole country: 2016–2017, 2019–2024) | THL Sotkanet, indicator 3627 |
+| `5643_cancer_index_age_standardised_by_wellbeing_county.csv` | Cancer incidence index, age-standardised (national=100 reference) | 2017–2024 | THL Sotkanet, indicator 5643 |
+| `5395_special_refund_cancer_medicines_pct_pop_by_wellbeing_county.csv` | % of population currently entitled to special reimbursement for cancer medicines | 2017–2024 | THL Sotkanet, indicator 5395 — **proxy for active-treatment prevalence**, not a direct "time to treatment" measure |
 | `2475_outpatient_visits_oncology_radiotherapy_by_wellbeing_county.csv` | Outpatient visits, oncology & radiotherapy (specialised care) | 2016–2024 | THL Sotkanet, indicator 2475 — **capacity/volume proxy**, not case-mix adjusted |
 | `13_referrals_processed_within_3_days_pct_by_wellbeing_county.csv` | Referrals for specialised health care processed within 3 days, % of referrals received | 2016–2024 | THL Sotkanet, indicator 13 — **not cancer-specific** (all specialities); legal basis: Health Care Act 1326/2010 §52–53, non-urgent referral triage must start within 3 weeks |
 | `5033_referrals_processed_over_21_days_pct_by_wellbeing_county.csv` | Referrals processed after more than 21 days, % | 2016–2024 | THL Sotkanet, indicator 5033 — not cancer-specific |
@@ -34,6 +34,23 @@ All CSVs use the 23 Finnish **wellbeing services counties** (`hyvinvointialue`) 
 - **Long-wait prevalence (>6 months) varies ~10x across counties in 2024: North Savo 98.1 per 10k vs. South Karelia 9.3 per 10k** — this is the closest thing we have to a direct, quantified, regionally-located treatment-access gap tied to Goal 3's "patients receive treatment within target times" indicator (not cancer-specific, but it's literally the data family THL Guideline 21/2016 — the strategy's own named monitoring mechanism — is built on). See `research/additional_data_sources.md` §1.
 
 **Caveat carried over from `research/additional_data_sources.md`:** none of the waiting-time indicators (13, 5033, 3336) or THL's open procedure-queue cubes break out cancer care as its own monitored category — cancer surgery isn't a tracked queue group in THL's open elective-queue system, consistent with the strategy's own admission that no cancer-specific quality register exists yet. Any claim combining these with cancer-specific indicators should say explicitly that the wait-time figures are for specialised care generally, not oncology specifically.
+
+### Known gaps in the 12 Sotkanet indicators
+
+Checked 2026-11-14 against `combined_cancer_indicators_by_wellbeing_county.csv`, while building the Gap-scoring tests (ticket #8). Missing values are stored as missing, never interpolated, and Gap scoring treats them that way.
+
+- **The "Whole country" row (region code `358`) is not a Region.** It sits in the same files as the 23 Regions. Leave it out before ranking or comparing Regions, or it counts towards rank, the number of Regions and the z-score.
+- **Regions with no rows at all for an indicator:**
+  - Indicators 13, 3336 and 5033 (waiting times and referrals): East Uusimaa (`01`), Central Uusimaa (`02`), West Uusimaa (`03`), Vantaa and Kerava (`04`) and Åland (`91`). For these indicators Helsinki therefore has no other Uusimaa Region to compare with.
+  - Indicators 3621 (breast screening) and 6103 (colorectal screening): Åland (`91`).
+- **Missing years inside a series:**
+  - Helsinki (`90`): 3336 stops after 2021 (see the table above), and **13 and 5033 stop after 2020** (2021–2024 missing). The same reporting break is the likely cause, but THL's notes were only checked for 3336.
+  - Central Ostrobothnia (`18`): no 2022 value for 13 or 5033.
+- **Short histories**, so a five-year trend (latest year compared with four years earlier) does not exist yet:
+  - 6103 colorectal screening: 2022–2024 only, so no trend before 2026.
+  - 3625, 3626, 3627 survival: Regions have values from 2019 only, so the first trend is 2023.
+  - 5395 and 5643: from 2017, so the first trend is 2021.
+- **Whole-percent values on 5033:** many Regions share the same value (in 2024, three Regions at 0% and eight at 1%), so ranks tie often.
 
 ## `raw/` — original API responses, kept for traceability
 

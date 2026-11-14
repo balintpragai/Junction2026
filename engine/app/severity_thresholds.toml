@@ -1,0 +1,24 @@
+# Severity thresholds for Gap scoring (ticket #8).
+#
+# Severity is set by these fixed, written-down numbers, never by judgement case
+# by case (GLOSSARY.md). Change a number here and the next rescore uses it; no
+# code change needed. Values agreed in the grilling session, open to revision.
+
+[targeted]
+# Indicators with a Target. "Shortfall" is how far the value sits on the bad
+# side of the Target, in the indicator's unit (percentage points for % data):
+#   ok    : at or better than the Target (shortfall <= 0)
+#   watch : shortfall up to and including watch_max_shortfall
+#   act   : shortfall greater than watch_max_shortfall
+watch_max_shortfall = 3.0
+
+[untargeted]
+# Indicators without a Target. z-score of the value against the other Regions
+# (mean and population standard deviation of every other Region with a value
+# that year), counted only in the bad direction. A value far off in the good
+# direction is ok.
+#   ok    : z_bad < watch_z
+#   watch : watch_z <= z_bad < act_z
+#   act   : z_bad >= act_z
+watch_z = 1.0
+act_z = 1.5
