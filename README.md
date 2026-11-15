@@ -1,8 +1,11 @@
 # Frontiers Health
 
-An AI-powered gap-finder for equitable cancer care in Finland — built for the AstraZeneca challenge at Junction 2026.
+## Two women in Helsinki open the same letter. One of them dies in cancer. Help us prevent that.
+Breast Cancer that is detected at early stages has almost 100% survival rate, this is why screenings are important. Screenings are free in Finland, women are invited bi-yearly for these. So who goes? Mostly citizens in well developped and well connected regions. The problem is, that a lot regions are not well connected and there are a significant number immigrant women, who need the screening, but don't speak the language. The data shows these problems, but doesn't make it understandable for decision makers. And arranging the right invitation to the right people at the right time isn't just one person's one decision. It takes 10 decision making bodies 14 steps and has no name on it.
 
-> **Naming.** The product is **Frontiers Health** (frontiershealth.xyz) — that is what the app, the API and the demo say. **`reach-loop` / `reachloop` remains the internal codename**, and you will still see it as the compose project name, the Postgres user and database, and the image tags. Those are deliberate: renaming them would mean recreating the database volume for nothing a user can see.
+Frontiers Health solves these problems, by tracking and visualizing relevant data broken down to regions, so that involved authorities can see more problematic regions. Our solution allows them to file required documentation, reasoning, action plan and reach out to involved stakeholders to streamline the process from identifying vulnerable groups, through sending the invitation all the way to getting them to screening.
+
+This project was created for Junction 2026 Astra Zeneca challenge.
 
 **Start here → [`BUILD.md`](BUILD.md)** — the full build plan: architecture, schema, API contracts, the four workstreams, schedule, and what to do when time runs short.
 
@@ -31,10 +34,8 @@ Both are mockups with real data wired into static JS — `BUILD.md` is the plan 
 
 The running system, served over HTTPS by Caddy on one Linux VM with the same `compose.yaml`:
 
-- **Web:** `https://frontiershealth.xyz` — _not live yet (#12); the domain still shows the registrar's parking page_
-- **API:** `https://api.frontiershealth.xyz` — _not live yet (#12)_ (interactive docs at `/docs`)
-
-The names are settled and the repo side is ready; what is missing is a host to point them at. See [`docs/demo-host.md`](docs/demo-host.md) step 3 for the exact Spaceship DNS records.
+- **Web:** _not live yet (#12)_
+- **API:** _not live yet (#12)_ (interactive docs at `/docs`)
 
 **Redeploy** (on the VM, from the repo checkout):
 
