@@ -14,7 +14,7 @@ import type { CandidateAction } from "@/lib/api";
 import { buildPlaybook, allSteps, type PlaybookPhase } from "@/lib/playbook";
 import { DEFAULT_ACCOUNT_ID, accountById, type Account } from "@/lib/roles";
 import { memberForFunction } from "@/lib/team";
-import { HELSINKI } from "@/lib/region-codes";
+import { HELSINKI, KNOWN_REGION_CODES } from "@/lib/region-codes";
 
 /** What each priority actually commits the Region to. Without this the
  *  choice was cosmetic — the planner said a response window followed from
@@ -94,7 +94,20 @@ export interface ProgramState {
   readIds: string[];
 }
 
-const STORAGE_KEY = "frontiers-health:program:v3";
+/** Bump this whenever the persisted shape OR the meaning of a field changes.
+ *  A stored directive is matched to an account by `regionCode`, so when the app
+ *  moved from slug Region codes ("helsinki") to the Sotkanet codes the api
+ *  serves ("90"), every directive a browser already held stopped matching any
+ *  regional account: the State account, which filters nothing, still showed
+ *  them all, while every Regional account showed "Nothing has been issued".
+ *  Old keys are cleared on load rather than migrated — this is demo state, and
+ *  a half-migrated directive is worse than a clean reseed. */
+const STORAGE_KEY = "frontiers-health:program:v4";
+const RETIRED_STORAGE_KEYS = [
+  "frontiers-health:program:v3",
+  "frontiers-health:program:v2",
+  "frontiers-health:program:v1",
+];
 
 // --- seeding ----------------------------------------------------------------
 
@@ -228,9 +241,16 @@ export function ProgramProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     let loaded: ProgramState | null = null;
     try {
+      for (const stale of RETIRED_STORAGE_KEYS) window.localStorage.removeItem(stale);
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) loaded = JSON.parse(raw) as ProgramState;
     } catch {
+      loaded = null;
+    }
+    // A directive whose Region matches no account is unreachable: every
+    // Regional account would show an empty page while State showed it. Treat
+    // that as corrupt state and reseed, rather than rendering a dead handoff.
+    if (loaded && loaded.directives.some((d) => !KNOWN_REGION_CODES.has(d.regionCode))) {
       loaded = null;
     }
     setState(loaded ?? { accountId: DEFAULT_ACCOUNT_ID, directives: seedDirectives(), readIds: [] });

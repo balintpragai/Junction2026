@@ -49,3 +49,7 @@ export const SMALL_REGIONS = [KESKI_UUSIMAA, VANTAA_KERAVA, HELSINKI];
 
 /** The capital area, which the map offers as one "Helsinki and region" shortcut. */
 export const CAPITAL_AREA = [HELSINKI, VANTAA_KERAVA, KESKI_UUSIMAA, LANSI_UUSIMAA, ITA_UUSIMAA];
+
+/** Every Sotkanet code the app knows, for validating anything that arrives
+ *  from outside the current build — a URL, or state persisted by an older one. */
+export const KNOWN_REGION_CODES = new Set(Object.keys(GEOMETRY_SLUG));
