@@ -18,6 +18,12 @@ const LABEL_K = 2.1;
    overlap. */
 const SMALL_REGIONS = ["keski-uusimaa", "vantaa-kerava", "helsinki"];
 
+/** The capital area: five Regions inside a few map units of each other,
+ *  holding about a third of the country's population. At the zoom that
+ *  shows all of Finland they are an unreadable knot, which is the whole
+ *  reason this shortcut exists. */
+const CAPITAL_AREA = ["helsinki", "vantaa-kerava", "keski-uusimaa", "lansi-uusimaa", "ita-uusimaa"];
+
 interface View {
   x: number;
   y: number;
@@ -156,14 +162,59 @@ export function DecisionMap({
 
   /** Frame one Region — used by the control's "focus selection" and by a
    *  double-click on the Region itself. */
-  const frameRegion = useCallback(
-    (code: string) => {
-      const c = FINLAND_CENTROIDS[code];
-      if (!c) return;
-      const k = code === "helsinki" || code === "vantaa-kerava" || code === "keski-uusimaa" ? 7 : 3.4;
-      setView(clamp({ k, x: c[0] - BW / k / 2, y: c[1] - BH / k / 2 }));
+  /** Frame a set of Regions: fit their centroids plus a margin, so the
+   *  result holds the whole cluster rather than cropping its edges. */
+  const frameRegions = useCallback(
+    (codes: string[], pad = 7) => {
+      const svg = svgRef.current;
+      if (!svg) return;
+
+      // Union the Regions' real drawn extents. Centroids are a poor proxy:
+      // West Uusimaa's shape reaches far further west than its centre, so
+      // fitting centroids leaves the cluster small and off to one side.
+      let x0 = Infinity;
+      let y0 = Infinity;
+      let x1 = -Infinity;
+      let y1 = -Infinity;
+      for (const code of codes) {
+        const el = svg.querySelector<SVGGraphicsElement>(`[data-code="${code}"]`);
+        if (!el) continue;
+        const bb = el.getBBox();
+        x0 = Math.min(x0, bb.x);
+        y0 = Math.min(y0, bb.y);
+        x1 = Math.max(x1, bb.x + bb.width);
+        y1 = Math.max(y1, bb.y + bb.height);
+      }
+      if (!Number.isFinite(x0)) return;
+
+      const w = x1 - x0 + pad * 2;
+      const h = y1 - y0 + pad * 2;
+
+      // The viewBox is portrait and the pane is usually landscape, so
+      // preserveAspectRatio letterboxes and the area actually on screen is
+      // wider than the viewBox. Fitting against BW/BH therefore zooms out
+      // far too much. Solve against what is really visible instead.
+      const rect = svg.getBoundingClientRect();
+      const paneAspect = rect.height > 0 ? rect.width / rect.height : BW / BH;
+      const fit =
+        paneAspect > BW / BH
+          ? Math.min(BH / h, (BH * paneAspect) / w) // height binds
+          : Math.min(BW / w, BW / (h * paneAspect)); // width binds
+
+      const k = Math.max(MIN_K, Math.min(MAX_K, fit));
+      setView(clamp({ k, x: (x0 + x1) / 2 - BW / k / 2, y: (y0 + y1) / 2 - BH / k / 2 }));
     },
     [clamp],
+  );
+
+  const frameRegion = useCallback(
+    (code: string) => {
+      // A city-sized Region needs breathing room around it to read as part
+      // of a country; a county already fills the frame.
+      const tight = code === "helsinki" || code === "vantaa-kerava" || code === "keski-uusimaa";
+      frameRegions([code], tight ? 26 : 10);
+    },
+    [frameRegions],
   );
 
   // Keyboard: the map is a real control, so it answers to arrows and +/-.
@@ -225,6 +276,7 @@ export function DecisionMap({
           return (
             <path
               key={region.code}
+              data-code={region.code}
               className="map-region"
               tabIndex={0}
               role="button"
@@ -326,6 +378,31 @@ export function DecisionMap({
       {hovered && !dragging && (
         <Tooltip x={hover!.x} y={hover!.y} text={label(hovered.code)} />
       )}
+
+      {/* The capital area is a knot at full-country zoom, so it gets a
+          shortcut rather than asking for three wheel gestures. It sits on
+          the map because that is what it acts on. */}
+      <button
+        onClick={() => frameRegions(CAPITAL_AREA)}
+        style={{
+          position: "absolute",
+          top: 14,
+          left: 14,
+          minHeight: 30,
+          padding: "6px 11px",
+          border: "1px solid var(--line)",
+          borderRadius: 8,
+          background: "color-mix(in srgb, var(--card) 92%, transparent)",
+          backdropFilter: "blur(6px)",
+          fontSize: 12.5,
+          fontWeight: 550,
+          color: "var(--ink)",
+          cursor: "pointer",
+          boxShadow: "var(--shadow-card)",
+        }}
+      >
+        Helsinki and region
+      </button>
 
       <div style={{ position: "absolute", top: 14, right: 14 }}>
         <ZoomControl

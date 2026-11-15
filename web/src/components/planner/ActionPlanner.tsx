@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { CandidateAction, Region, RegionProfile } from "@/lib/api";
-import { buildPlaybook, criticalPathDays, uniqueCounterparties, allSteps } from "@/lib/playbook";
-import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, addWorkingDays, type Priority } from "@/lib/program";
+import { buildPlaybook, criticalPathDays } from "@/lib/playbook";
+import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, type Priority } from "@/lib/program";
 import { SequenceView } from "@/components/sequence/SequenceView";
 import { ActionSearch } from "@/components/planner/ActionSearch";
 
@@ -45,19 +45,6 @@ export function ActionPlanner({
   const planIds = useMemo(() => new Set(plan.map((a) => a.id)), [plan]);
   const focus = plan.find((a) => a.id === focusId) ?? plan[0] ?? null;
   const focusPhases = useMemo(() => (focus ? buildPlaybook(focus, region.name) : []), [focus, region.name]);
-
-  const totals = useMemo(() => {
-    const parties = new Set<string>();
-    let steps = 0;
-    let days = 0;
-    for (const a of plan) {
-      const phases = buildPlaybook(a, region.name);
-      steps += allSteps(phases).length;
-      days = Math.max(days, criticalPathDays(phases));
-      for (const c of uniqueCounterparties(phases)) parties.add(c.name);
-    }
-    return { steps, days, parties: parties.size };
-  }, [plan, region.name]);
 
   const worstGap = profile.gaps.find((g) => g.gap.severity === "act") ?? profile.gaps[0];
   // Splicing the action's own title into a sentence reads badly — strategy
@@ -173,7 +160,6 @@ export function ActionPlanner({
               <IssuePanel
                 region={region}
                 plan={plan}
-                totals={totals}
                 priority={priority}
                 setPriority={setPriority}
                 mandate={mandate}
@@ -245,7 +231,6 @@ export function ActionPlanner({
 function IssuePanel({
   region,
   plan,
-  totals,
   priority,
   setPriority,
   mandate,
@@ -255,7 +240,6 @@ function IssuePanel({
 }: {
   region: Region;
   plan: CandidateAction[];
-  totals: { steps: number; days: number; parties: number };
   priority: Priority;
   setPriority: (p: Priority) => void;
   mandate: string;
@@ -319,19 +303,7 @@ function IssuePanel({
         ))}
       </div>
 
-      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 12, lineHeight: 1.5 }}>
-        The Region is notified at once and owns every step from there. {totals.steps} steps and {totals.parties}{" "}
-        bodies, with a response owed by{" "}
-        <strong style={{ color: "var(--ink-2)" }}>
-          {addWorkingDays(new Date(), RESPONSE_WINDOW_DAYS[priority]).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-          })}
-        </strong>
-        .
-      </p>
-
-      <button className="btn btn-primary" style={{ width: "100%", marginTop: 12 }} onClick={onIssue}>
+      <button className="btn btn-primary" style={{ width: "100%", marginTop: 14 }} onClick={onIssue}>
         Issue {plan.length} action{plan.length > 1 ? "s" : ""} to{" "}
         {region.name.replace(/ wellbeing services county$/, "")}
       </button>
