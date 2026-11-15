@@ -52,7 +52,16 @@ IMMIGRANT_BACKGROUND_COVARIATE = "foreign_background_pct"
 
 # The indicators a RegionProfile shows, in reading order: the three screening
 # programmes that have a Target, then the two capacity measures that do not.
-# An indicator outside this list still appears if it has a Gap, after these.
+#
+# `engine` scores twelve indicators, including survival and incidence. The
+# profile deliberately shows this five, for two reasons: /overview counts the
+# same list, so the map tile and the panel agree on "indicators tracked"; and
+# common/synthesis.py reads a cancer-specific indicator as a screening one,
+# which is true of these five and false of survival (3625-3627) and the
+# treatment measures (2475, 5395) that also carry a cancer_type.
+#
+# Adding an indicator here means checking that rule still holds: screening is
+# pathway_stage 'detection'.
 PROFILE_INDICATOR_ORDER = ("3621", "3620", "6103", "3336", "13")
 
 # Same text on every outreach list, whatever the indicator. Grounded in
@@ -324,13 +333,19 @@ class PostgresRepository:
             """
             SELECT i.indicator_id, i.name, i.name_fi, i.unit, i.higher_is_better, i.target_value,
                    i.cancer_type,
+                   -- Same meaning as _INDICATORS.years: every year that has a Gap for this
+                   -- indicator, in any Region. _indicator() requires it.
+                   coalesce((
+                       SELECT array_agg(DISTINCT y.year ORDER BY y.year)
+                       FROM fact_gap_score y WHERE y.indicator_id = i.indicator_id
+                   ), ARRAY[]::integer[]) AS years,
                    g.value, g.reference_kind, g.reference_value, g.deviation, g.direction,
                    g.severity, g.rank, g.n_regions, g.peer_values, g.trend_5y, g.data_quality_notes
             FROM fact_gap_score g
             JOIN dim_indicator i USING (indicator_id)
-            WHERE g.region_id = %s AND g.year = %s
+            WHERE g.region_id = %s AND g.year = %s AND g.indicator_id = ANY(%s)
             """,
-            (region_id, year),
+            (region_id, year, list(PROFILE_INDICATOR_ORDER)),
         ).fetchall()
         if not rows:
             return [], {}

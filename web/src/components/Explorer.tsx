@@ -131,12 +131,15 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
 
         <span style={{ width: 1, height: 22, background: "var(--line)" }} aria-hidden="true" />
 
-        <label className="row" style={{ gap: 8 }}>
-          <span style={{ fontSize: 12.5, color: "var(--ink-2)" }}>Shade by</span>
+        {/* The longest option is a full indicator name, which is wider than a
+            phone. Let the label shrink and the select truncate, or the whole
+            page gains a horizontal scrollbar. */}
+        <label className="row" style={{ gap: 8, minWidth: 0, flex: "1 1 auto" }}>
+          <span style={{ fontSize: 12.5, color: "var(--ink-2)", whiteSpace: "nowrap" }}>Shade by</span>
           <select
             value={metricId}
             onChange={(e) => setParam("by", e.target.value)}
-            style={{ padding: "7px 10px", fontSize: 13, minHeight: 34 }}
+            style={{ padding: "7px 10px", fontSize: 13, minHeight: 34, minWidth: 0, maxWidth: "100%", flex: "1 1 auto" }}
           >
             {metrics.map((m) => (
               <option key={m.id} value={m.id}>
