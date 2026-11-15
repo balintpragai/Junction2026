@@ -71,10 +71,15 @@ export function ActionPlanner({
     // year, so read both the value and its median defensively.
     const foreignBackground = profile.covariates[FOREIGN_BACKGROUND];
     const foreignBackgroundMedian = profile.covariate_meta[FOREIGN_BACKGROUND]?.median;
+    // When the evidence quotes a covariate, the caveat goes with it: the
+    // Region receiving this directive sees the number without the screen it
+    // came from.
+    const quotesCovariate = foreignBackground != null && foreignBackgroundMedian != null;
     const evidence = worstGap
       ? `${worstGap.narrative.text}${
-          foreignBackground != null && foreignBackgroundMedian != null
-            ? ` Foreign-background share ${foreignBackground}% against a ${foreignBackgroundMedian}% national median.`
+          quotesCovariate
+            ? ` Foreign-background share ${foreignBackground}% against a ${foreignBackgroundMedian}% national median.` +
+              ` ${profile.covariate_caveat.short}`
             : ""
         }`
       : "See the Region profile for the full evidence pack.";

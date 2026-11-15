@@ -93,9 +93,29 @@ export function RegionPanel({
 
       <section className="card-lg" style={{ padding: 20 }}>
         <h3 style={{ fontSize: 14, marginBottom: 4 }}>Structural context</h3>
-        <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 16, maxWidth: "70ch" }}>
+        <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10, maxWidth: "70ch" }}>
           Factors that might explain a Gap rather than measure one, shown against the national median because a
           number like 19.6% only means something next to what is normal.
+        </p>
+        {/* Required wherever a covariate appears, and deliberately not
+            collapsible: a Region-level pattern can reverse at the individual
+            level, so the caveat has to be as visible as the numbers. The
+            wording comes from the api, which is its single home. */}
+        <p
+          style={{
+            fontSize: 12,
+            lineHeight: 1.5,
+            color: "var(--ink-2)",
+            background: "var(--watch-soft)",
+            border: "1px solid var(--watch-line)",
+            borderRadius: 9,
+            padding: "9px 12px",
+            marginBottom: 16,
+            maxWidth: "70ch",
+          }}
+        >
+          <strong style={{ color: "var(--ink)" }}>Read these as a signal, not a cause.</strong>{" "}
+          {profile.covariate_caveat.short}
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))", gap: 12 }}>
           {Object.entries(covariates).map(([key, value]) => {

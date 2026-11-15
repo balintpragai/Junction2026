@@ -253,6 +253,19 @@ class CandidateAction(ContractModel):
     workflow: StakeholderWorkflow | PatientWorkflow
 
 
+class CovariateCaveat(ContractModel):
+    """The ecological-fallacy caveat, in two lengths.
+
+    Served rather than written into the frontend so the wording has one home.
+    A Region-level association can differ from, or reverse, the pattern among
+    the people living there, so anything that shows a covariate must show this
+    with it: see research/covariate_correlation_analysis.md.
+    """
+
+    short: str = Field(min_length=1, description="One line, to sit beside the numbers.")
+    full: str = Field(min_length=1, description="The complete caveat, with a worked example.")
+
+
 class ProfileSummary(ContractModel):
     indicators_tracked: int = Field(ge=0)
     indicators_act: int = Field(ge=0)
@@ -269,6 +282,9 @@ class RegionProfile(ContractModel):
         description="Covariate indicator id -> this Region's value in `year`. Region-level only; never a cause."
     )
     covariate_meta: dict[str, CovariateMeta] = Field(description="Keyed by the same ids as `covariates`.")
+    covariate_caveat: CovariateCaveat = Field(
+        description="Must be shown wherever `covariates` are. Not optional, not collapsible."
+    )
     missing_data_notes: list[str] = Field(
         description="Plain-language notes about indicators with no value this year. Never interpolated."
     )

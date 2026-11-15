@@ -7,9 +7,10 @@ from pathlib import Path
 import pytest
 
 from app.main import app, get_repository
-from app.repository import NotFound
+from app.repository import ECOLOGICAL_FALLACY_NOTE, ECOLOGICAL_FALLACY_SHORT, NotFound
 from common.models import (
     ActionLibrary,
+    CovariateCaveat,
     CovariateMeta,
     GapEntry,
     GapSummary,
@@ -111,6 +112,9 @@ class FakeRepository:
             gaps=entries,
             covariates=self.covariates,
             covariate_meta=self.covariate_meta,
+            covariate_caveat=CovariateCaveat(
+                short=ECOLOGICAL_FALLACY_SHORT, full=ECOLOGICAL_FALLACY_NOTE
+            ),
             missing_data_notes=notes,
             summary=ProfileSummary(
                 indicators_tracked=len(entries),

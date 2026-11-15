@@ -186,6 +186,27 @@ export interface components {
             workflow: components["schemas"]["StakeholderWorkflow"] | components["schemas"]["PatientWorkflow"];
         };
         /**
+         * CovariateCaveat
+         * @description The ecological-fallacy caveat, in two lengths.
+         *
+         *     Served rather than written into the frontend so the wording has one home.
+         *     A Region-level association can differ from, or reverse, the pattern among
+         *     the people living there, so anything that shows a covariate must show this
+         *     with it: see research/covariate_correlation_analysis.md.
+         */
+        CovariateCaveat: {
+            /**
+             * Short
+             * @description One line, to sit beside the numbers.
+             */
+            short: string;
+            /**
+             * Full
+             * @description The complete caveat, with a worked example.
+             */
+            full: string;
+        };
+        /**
          * CovariateMeta
          * @description How to read one covariate: its name, unit, and the national median it is compared against.
          */
@@ -555,6 +576,8 @@ export interface components {
             covariate_meta: {
                 [key: string]: components["schemas"]["CovariateMeta"];
             };
+            /** @description Must be shown wherever `covariates` are. Not optional, not collapsible. */
+            covariate_caveat: components["schemas"]["CovariateCaveat"];
             /**
              * Missing Data Notes
              * @description Plain-language notes about indicators with no value this year. Never interpolated.

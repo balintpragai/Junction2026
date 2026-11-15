@@ -437,6 +437,30 @@
         "title": "CandidateAction",
         "description": "Something a decision-maker could do about this Region's Gaps.\n\n`recommended` is True when the rules matched this action to a Gap in this\nRegion, and False for an action picked by hand out of the full strategy\nlibrary. Deterministic either way — no model decides this."
       },
+      "CovariateCaveat": {
+        "properties": {
+          "short": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Short",
+            "description": "One line, to sit beside the numbers."
+          },
+          "full": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Full",
+            "description": "The complete caveat, with a worked example."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "short",
+          "full"
+        ],
+        "title": "CovariateCaveat",
+        "description": "The ecological-fallacy caveat, in two lengths.\n\nServed rather than written into the frontend so the wording has one home.\nA Region-level association can differ from, or reverse, the pattern among\nthe people living there, so anything that shows a covariate must show this\nwith it: see research/covariate_correlation_analysis.md."
+      },
       "CovariateMeta": {
         "properties": {
           "name": {
@@ -1200,6 +1224,10 @@
             "title": "Covariate Meta",
             "description": "Keyed by the same ids as `covariates`."
           },
+          "covariate_caveat": {
+            "$ref": "#/components/schemas/CovariateCaveat",
+            "description": "Must be shown wherever `covariates` are. Not optional, not collapsible."
+          },
           "missing_data_notes": {
             "items": {
               "type": "string"
@@ -1235,6 +1263,7 @@
           "gaps",
           "covariates",
           "covariate_meta",
+          "covariate_caveat",
           "missing_data_notes",
           "summary",
           "synthesis",

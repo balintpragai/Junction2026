@@ -205,3 +205,20 @@ def test_action_library_is_the_whole_strategy_not_recommended():
 
 def test_unknown_region_action_library_is_404():
     assert client.get("/regions/not-a-region/action-library").status_code == 404
+
+
+def test_profile_carries_the_ecological_fallacy_caveat():
+    """A covariate without its caveat is the one thing BUILD.md says never to cut."""
+    body = client.get("/regions/helsinki/profile").json()
+    caveat = body["covariate_caveat"]
+    assert caveat["short"].strip()
+    assert caveat["full"].strip()
+    # The short form is what sits next to the numbers; it must say the thing.
+    assert "where to look" in caveat["short"]
+    assert "not who is affected" in caveat["short"]
+
+
+def test_the_caveat_is_served_even_when_no_covariate_has_a_value():
+    """The caveat is a property of showing covariates at all, not of any one value."""
+    body = client.get("/regions/helsinki/profile").json()
+    assert body["covariate_caveat"]["short"]

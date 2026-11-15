@@ -20,6 +20,7 @@ from common.actions import candidate_actions
 from common.covariates import PROFILE_COVARIATES
 from common.models import (
     ActionLibrary,
+    CovariateCaveat,
     CovariateMeta,
     CovariateValue,
     DataQualityNote,
@@ -67,6 +68,12 @@ PROFILE_INDICATOR_ORDER = ("3621", "3620", "6103", "3336", "13")
 # Same text on every outreach list, whatever the indicator. Grounded in
 # research/covariate_correlation_analysis.md: across Regions, income correlates
 # with screening in the opposite direction to the individual-level data.
+# BUILD.md, Workstream 3: the plain-words form that belongs next to a covariate,
+# where a paragraph would be skipped.
+ECOLOGICAL_FALLACY_SHORT = (
+    "These are area-level patterns. They tell you where to look, not who is affected."
+)
+
 ECOLOGICAL_FALLACY_NOTE = (
     "These figures describe Regions, not individuals. A pattern across Regions can differ from, "
     "or even reverse, the pattern among the people living in them (the ecological fallacy). For "
@@ -543,6 +550,9 @@ class PostgresRepository:
             gaps=entries,
             covariates=covariates,
             covariate_meta=covariate_meta,
+            covariate_caveat=CovariateCaveat(
+                short=ECOLOGICAL_FALLACY_SHORT, full=ECOLOGICAL_FALLACY_NOTE
+            ),
             missing_data_notes=notes,
             summary=summary,
             synthesis=synthesize(region_model.name, entries, covariates, covariate_meta, notes),
