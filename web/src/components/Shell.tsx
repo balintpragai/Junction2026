@@ -5,11 +5,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ACCOUNTS, ROLE_LABEL } from "@/lib/roles";
 import { useProgram } from "@/lib/program";
+import { useLang } from "@/lib/lang";
+import { LANGS, type Lang } from "@/lib/i18n";
 
 /** The app frame. Both roles get the same frame and a different accent, so
  *  "whose screen is this?" is answerable at a glance without reading a word. */
 export function Shell({ children }: { children: ReactNode }) {
   const { account, setAccountId, unreadCount, ready } = useProgram();
+  const { t } = useLang();
 
   // The role accent lives on <body> so every token below it re-resolves at
   // once. Set from the client because <body> is rendered on the server.
@@ -20,12 +23,12 @@ export function Shell({ children }: { children: ReactNode }) {
   const nav =
     account.role === "state"
       ? [
-          { href: "/", label: "Decision Map" },
-          { href: "/programmes", label: "Programmes" },
+          { href: "/", label: t("Decision Map") },
+          { href: "/programmes", label: t("Programmes") },
         ]
       : [
-          { href: "/regional", label: "My directives" },
-          { href: "/regional/team", label: "Team" },
+          { href: "/regional", label: t("My directives") },
+          { href: "/regional/team", label: t("Team") },
         ];
 
   return (
@@ -75,7 +78,7 @@ export function Shell({ children }: { children: ReactNode }) {
           {ready && account.role === "regional" && (
             <Link
               href="/regional"
-              aria-label={unreadCount > 0 ? `${unreadCount} unread directives` : "No unread directives"}
+              aria-label={unreadCount > 0 ? `${unreadCount} ${t("unread directives")}` : t("No unread directives")}
               style={{ position: "relative", display: "flex", padding: 7, borderRadius: 8, textDecoration: "none" }}
             >
               <BellIcon />
@@ -102,6 +105,8 @@ export function Shell({ children }: { children: ReactNode }) {
               )}
             </Link>
           )}
+
+          <LangToggle />
 
           {ready && <AccountMenu currentId={account.id} onPick={setAccountId} />}
         </div>
@@ -157,6 +162,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const current = ACCOUNTS.find((a) => a.id === currentId)!;
+  const { t } = useLang();
 
   useEffect(() => {
     if (!open) return;
@@ -186,7 +192,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
         <Avatar initials={current.initials} />
         <span className="account-id col" style={{ alignItems: "flex-start", lineHeight: 1.25 }}>
           <span style={{ fontSize: 12.5, fontWeight: 650 }}>{current.name}</span>
-          <span style={{ fontSize: 11.5, color: "var(--accent)", fontWeight: 600 }}>{ROLE_LABEL[current.role]}</span>
+          <span style={{ fontSize: 11.5, color: "var(--accent)", fontWeight: 600 }}>{t(ROLE_LABEL[current.role])}</span>
         </span>
         <span className="account-chevron"><Chevron open={open} /></span>
       </button>
@@ -205,7 +211,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
             zIndex: 60,
           }}
         >
-          <p style={{ padding: "8px 10px 6px", fontSize: 11.5, color: "var(--ink-3)" }}>Signed in as</p>
+          <p style={{ padding: "8px 10px 6px", fontSize: 11.5, color: "var(--ink-3)" }}>{t("Signed in as")}</p>
           {(["state", "regional"] as const).map((role) => (
             <div key={role}>
               <p
@@ -218,7 +224,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
                   marginTop: role === "regional" ? 5 : 0,
                 }}
               >
-                {ROLE_LABEL[role]}
+                {t(ROLE_LABEL[role])}
               </p>
               {ACCOUNTS.filter((a) => a.role === role).map((a) => {
                 const active = a.id === currentId;
@@ -247,7 +253,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
                     <span className="col" style={{ minWidth: 0, flex: 1 }}>
                       <span style={{ fontSize: 13, fontWeight: 650 }}>{a.name}</span>
                       <span className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-                        {a.title}, {a.org}
+                        {t(a.title)}, {t(a.org)}
                       </span>
                     </span>
                     {active && <span style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>✓</span>}
@@ -281,6 +287,55 @@ function Avatar({ initials, muted }: { initials: string; muted?: boolean }) {
     >
       {initials}
     </span>
+  );
+}
+
+
+/** Language switcher. Two fixed options rather than a dropdown: with exactly
+ *  two languages a menu costs a click and teaches nothing. The inactive
+ *  language is always legible, so you can see what you are switching to. */
+function LangToggle() {
+  const { lang, setLang, t } = useLang();
+  const label: Record<Lang, string> = { en: "EN", fi: "FI" };
+  const full: Record<Lang, string> = { en: "English", fi: "Suomi" };
+
+  return (
+    <div
+      role="group"
+      aria-label={t("Language")}
+      style={{
+        display: "flex",
+        flex: "none",
+        border: "1px solid var(--line-strong)",
+        borderRadius: 8,
+        overflow: "hidden",
+      }}
+    >
+      {LANGS.map((code) => {
+        const active = code === lang;
+        return (
+          <button
+            key={code}
+            onClick={() => setLang(code)}
+            aria-pressed={active}
+            aria-label={full[code]}
+            title={full[code]}
+            style={{
+              border: "none",
+              background: active ? "var(--accent)" : "transparent",
+              color: active ? "#fff" : "var(--ink-2)",
+              fontSize: 11.5,
+              fontWeight: 700,
+              letterSpacing: "0.02em",
+              padding: "5px 9px",
+              cursor: active ? "default" : "pointer",
+            }}
+          >
+            {label[code]}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

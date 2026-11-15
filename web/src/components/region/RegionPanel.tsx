@@ -7,6 +7,11 @@ import { RadarChart } from "@/components/viz/RadarChart";
 import { RankStrip } from "@/components/viz/RankStrip";
 import { buildAxes } from "@/lib/viz";
 import { useProgram, progressOf } from "@/lib/program";
+import { useLang } from "@/lib/lang";
+import { regionName, indicatorName } from "@/lib/fi-data";
+import { regionShort } from "@/lib/fi-short";
+import { unitLabel, fmtNumber } from "@/lib/i18n";
+import { synthesisFi, missingNoteFi } from "@/lib/synthesis-fi";
 
 /** Everything known about one Region, in the order a decision maker reads
  *  it: what the Narrative says, then the comparison, then the structural
@@ -29,20 +34,29 @@ export function RegionPanel({
   const axes = useMemo(() => buildAxes(profile, all), [profile, all]);
   const { visibleDirectives } = useProgram();
   const live = visibleDirectives.filter((d) => d.regionCode === region.code);
+  const { lang, t, tf } = useLang();
+  const name = regionName(region.code, region.name, lang);
+  // Re-derived from the same profile fields rather than translated from the
+  // api's English, see lib/synthesis-fi.ts.
+  const lines = (lang === "fi" ? synthesisFi(profile, name) : null) ?? synthesis;
 
   return (
     <div className="col" style={{ gap: 20 }}>
       <header>
-        <h2 style={{ fontSize: "1.5rem" }}>{region.name}</h2>
+        <h2 style={{ fontSize: "1.5rem" }}>{name}</h2>
         <p style={{ marginTop: 5, fontSize: 13, color: "var(--ink-2)" }}>
-          Of {summary.indicators_tracked} indicators tracked in {profile.year},{" "}
+          {tf("Of {n} indicators tracked in {year},", { n: summary.indicators_tracked, year: profile.year })}{" "}
           <strong style={{ color: summary.indicators_act > 0 ? "var(--act)" : "var(--good)" }}>
-            {summary.indicators_act} {summary.indicators_act === 1 ? "Gap needs" : "Gaps need"} action
+            {tf(summary.indicators_act === 1 ? "{n} Gap needs action" : "{n} Gaps need action", {
+              n: summary.indicators_act,
+            })}
           </strong>
           {summary.indicators_watch > 0 && (
             <>
               {" "}
-              and {summary.indicators_watch} {summary.indicators_watch === 1 ? "is" : "are"} worth watching
+              {tf(summary.indicators_watch === 1 ? "and {n} is worth watching" : "and {n} are worth watching", {
+                n: summary.indicators_watch,
+              })}
             </>
           )}
           .
@@ -57,9 +71,9 @@ export function RegionPanel({
           padding: "18px 20px",
         }}
       >
-        <h3 style={{ fontSize: 12.5, color: "var(--brand)", marginBottom: 9, letterSpacing: 0 }}>What the data says</h3>
+        <h3 style={{ fontSize: 12.5, color: "var(--brand)", marginBottom: 9, letterSpacing: 0 }}>{t("What the data says")}</h3>
         <div className="col" style={{ gap: 8 }}>
-          {synthesis.map((s, i) => (
+          {lines.map((s, i) => (
             <p key={i} style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink)" }}>
               {s}
             </p>
@@ -67,35 +81,41 @@ export function RegionPanel({
         </div>
         <div className="row" style={{ marginTop: 15, gap: 10, flexWrap: "wrap" }}>
           <Link href={`/region/${region.code}/actions`} className="btn btn-dark">
-            Explore actions
+            {t("Explore actions")}
           </Link>
           {live.length > 0 && (
             <span style={{ fontSize: 12.5, color: "var(--ink-2)" }}>
-              {live.length} directive{live.length > 1 ? "s are" : " is"} already running here, on average{" "}
-              {Math.round(live.reduce((s, d) => s + progressOf(d).pct, 0) / live.length)}% complete.
+              {tf(
+                live.length > 1
+                  ? "{n} directives are already running here, on average {pct}% complete."
+                  : "{n} directive is already running here, on average {pct}% complete.",
+                { n: live.length, pct: Math.round(live.reduce((s, d) => s + progressOf(d).pct, 0) / live.length) },
+              )}
             </span>
           )}
         </div>
       </section>
 
       <section className="card-lg" style={{ padding: 20 }}>
-        <RadarChart axes={axes} regionName={shortName(region.name)} />
+        <RadarChart axes={axes} regionName={regionShort(region.code, region.name, lang)} />
       </section>
 
       <section className="card-lg" style={{ padding: 20 }}>
-        <h3 style={{ fontSize: 14, marginBottom: 4 }}>Every Region, indicator by indicator</h3>
+        <h3 style={{ fontSize: 14, marginBottom: 4 }}>{t("Every Region, indicator by indicator")}</h3>
         <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 16, maxWidth: "70ch" }}>
-          The shape above compares this Region with the median. This compares it with all of them, which is what says
-          whether a Gap is local or national.
+          {t(
+            "The shape above compares this Region with the median. This compares it with all of them, which is what says whether a Gap is local or national.",
+          )}
         </p>
         <RankStrip profile={profile} all={all} onPick={onPick} />
       </section>
 
       <section className="card-lg" style={{ padding: 20 }}>
-        <h3 style={{ fontSize: 14, marginBottom: 4 }}>Structural context</h3>
+        <h3 style={{ fontSize: 14, marginBottom: 4 }}>{t("Structural context")}</h3>
         <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10, maxWidth: "70ch" }}>
-          Factors that might explain a Gap rather than measure one, shown against the national median because a
-          number like 19.6% only means something next to what is normal.
+          {t(
+            "Factors that might explain a Gap rather than measure one, shown against the national median because a number like 19.6% only means something next to what is normal.",
+          )}
         </p>
         {/* Required wherever a covariate appears, and deliberately not
             collapsible: a Region-level pattern can reverse at the individual
@@ -114,20 +134,20 @@ export function RegionPanel({
             maxWidth: "70ch",
           }}
         >
-          <strong style={{ color: "var(--ink)" }}>Read these as a signal, not a cause.</strong>{" "}
-          {profile.covariate_caveat.short}
+          <strong style={{ color: "var(--ink)" }}>{t("Read these as a signal, not a cause.")}</strong>{" "}
+          {t(profile.covariate_caveat.short)}
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))", gap: 12 }}>
           {Object.entries(covariates).map(([key, value]) => {
             const meta = covariate_meta[key];
             const above = value > meta.median;
-            const suffix = meta.unit.startsWith("%") ? "%" : ` ${meta.unit}`;
+            const suffix = meta.unit.startsWith("%") ? "%" : ` ${unitLabel(meta.unit, lang)}`;
             const ratio = meta.median === 0 ? 1 : value / meta.median;
             return (
               <div key={key} className="card" style={{ padding: "14px 15px" }}>
-                <p style={{ fontSize: 11.5, color: "var(--ink-3)", lineHeight: 1.35 }}>{meta.name}</p>
+                <p style={{ fontSize: 11.5, color: "var(--ink-3)", lineHeight: 1.35 }}>{indicatorName(key, meta.name, lang)}</p>
                 <p className="num" style={{ fontSize: 22, marginTop: 5 }}>
-                  {value}
+                  {fmtNumber(value, lang)}
                   {suffix}
                 </p>
                 <div
@@ -147,10 +167,9 @@ export function RegionPanel({
                 </div>
                 <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 7 }}>
                   <strong style={{ color: above ? "var(--accent)" : "var(--ink-2)" }}>
-                    {above ? "Above" : "At or below"}
+                    {above ? t("Above") : t("At or below")}
                   </strong>{" "}
-                  the {meta.median}
-                  {suffix} national median
+                  {tf("the {median}{suffix} national median", { median: fmtNumber(meta.median, lang), suffix })}
                 </p>
               </div>
             );
@@ -160,13 +179,9 @@ export function RegionPanel({
 
       {profile.missing_data_notes.length > 0 && (
         <p style={{ fontSize: 12, color: "var(--watch)", background: "var(--watch-soft)", border: "1px solid var(--watch-line)", borderRadius: "var(--radius-sm)", padding: "9px 12px" }}>
-          {profile.missing_data_notes.join(" ")}
+          {(lang === "fi" ? profile.missing_data_notes.map(missingNoteFi) : profile.missing_data_notes).join(" ")}
         </p>
       )}
     </div>
   );
-}
-
-function shortName(name: string): string {
-  return name.replace(/ wellbeing services county$/, "").replace(/^City of /, "");
 }

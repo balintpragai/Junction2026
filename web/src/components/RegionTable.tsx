@@ -2,6 +2,10 @@
 
 import { useMemo, useState } from "react";
 import type { Region, RegionProfile, Severity } from "@/lib/api";
+import { useLang } from "@/lib/lang";
+import { regionName, indicatorName } from "@/lib/fi-data";
+import { regionShort, indicatorShort } from "@/lib/fi-short";
+import { unitLabel, fmtNumber } from "@/lib/i18n";
 
 const SEVERITY_COLOR: Record<Severity, string> = {
   ok: "var(--good)",
@@ -37,6 +41,7 @@ export function RegionTable({
     return [...seen.values()];
   }, [profiles]);
 
+  const { lang, t, tf } = useLang();
   const [sortKey, setSortKey] = useState<string>("act");
   const [asc, setAsc] = useState(false);
 
@@ -46,7 +51,7 @@ export function RegionTable({
       .filter((p): p is RegionProfile => Boolean(p));
 
     const value = (p: RegionProfile) => {
-      if (sortKey === "name") return p.region.name;
+      if (sortKey === "name") return regionName(p.region.code, p.region.name, lang);
       if (sortKey === "act") return p.summary.indicators_act;
       const g = p.gaps.find((x) => x.indicator.code === sortKey);
       if (!g) return null;
@@ -60,10 +65,13 @@ export function RegionTable({
       const vb = value(b);
       if (va == null) return 1;
       if (vb == null) return -1;
-      const cmp = typeof va === "string" ? va.localeCompare(vb as string) : (va as number) - (vb as number);
+      // localeCompare with the active language so ä and ö sort where a
+      // Finnish reader expects them, at the end rather than beside a and o.
+      const cmp =
+        typeof va === "string" ? va.localeCompare(vb as string, lang) : (va as number) - (vb as number);
       return asc ? cmp : -cmp;
     });
-  }, [regions, profiles, sortKey, asc]);
+  }, [regions, profiles, sortKey, asc, lang]);
 
   function sortBy(key: string) {
     if (key === sortKey) setAsc((v) => !v);
@@ -77,17 +85,19 @@ export function RegionTable({
     <div className="panel-table" style={{ overflowX: "auto", border: "1px solid var(--line)", borderRadius: 14, background: "var(--card)" }}>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
         <caption style={{ captionSide: "top", textAlign: "left", padding: "13px 16px 11px", color: "var(--ink-2)", fontSize: 12.5 }}>
-          All {rows.length} Regions, sorted worst first. Click a column to re-rank, or a row to open that Region.
+          {tf("All {n} Regions, sorted worst first. Click a column to re-rank, or a row to open that Region.", {
+            n: rows.length,
+          })}
         </caption>
         <thead>
           <tr style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
-            <Th label="Region" onClick={() => sortBy("name")} active={sortKey === "name"} asc={asc} align="left" sticky />
-            <Th label="Need action" onClick={() => sortBy("act")} active={sortKey === "act"} asc={asc} />
+            <Th label={t("Region")} onClick={() => sortBy("name")} active={sortKey === "name"} asc={asc} align="left" sticky />
+            <Th label={t("Need action")} onClick={() => sortBy("act")} active={sortKey === "act"} asc={asc} />
             {indicators.map((ind) => (
               <Th
                 key={ind.code}
-                label={shortIndicator(ind.name)}
-                title={`${ind.name} (${ind.unit})`}
+                label={indicatorShort(ind.code, ind.name, lang)}
+                title={`${indicatorName(ind.code, ind.name, lang)} (${unitLabel(ind.unit, lang)})`}
                 onClick={() => sortBy(ind.code)}
                 active={sortKey === ind.code}
                 asc={asc}
@@ -117,7 +127,7 @@ export function RegionTable({
                 }}
               >
                 <td style={{ padding: "9px 16px", fontWeight: on ? 650 : 450, whiteSpace: "nowrap" }}>
-                  {shortRegion(p.region.name)}
+                  {regionShort(p.region.code, p.region.name, lang)}
                 </td>
                 <td style={{ padding: "9px 10px", textAlign: "center" }}>
                   <span
@@ -135,7 +145,7 @@ export function RegionTable({
                   const g = p.gaps.find((x) => x.indicator.code === ind.code);
                   if (!g) {
                     return (
-                      <td key={ind.code} style={{ padding: "9px 10px", textAlign: "center", color: "var(--ink-3)" }} title="No 2024 data">
+                      <td key={ind.code} style={{ padding: "9px 10px", textAlign: "center", color: "var(--ink-3)" }} title={t("No 2024 data")}>
                         –
                       </td>
                     );
@@ -147,10 +157,12 @@ export function RegionTable({
                         className="tnum"
                         style={{ fontWeight: sev === "act" ? 650 : 450, color: sev === "act" ? "var(--act)" : "var(--ink)" }}
                       >
-                        {g.gap.value}
+                        {fmtNumber(g.gap.value, lang)}
                       </span>
                       <abbr
-                        title={`${sev === "ok" ? "At or ahead of target" : sev === "watch" ? "Close to target" : "Needs action"} — rank ${g.gap.rank} of ${g.gap.n_regions}`}
+                        title={`${
+                          sev === "ok" ? t("At or ahead of target") : sev === "watch" ? t("Close to target") : t("Needs action")
+                        } — ${tf("rank {rank} of {n}", { rank: g.gap.rank, n: g.gap.n_regions })}`}
                         style={{
                           marginLeft: 5,
                           fontSize: 11.5,
@@ -160,7 +172,7 @@ export function RegionTable({
                           borderBottom: "none",
                         }}
                       >
-                        {sev === "ok" ? "OK" : sev === "watch" ? "W" : "A"}
+                        {sev === "ok" ? t("OK") : sev === "watch" ? t("W") : t("A")}
                       </abbr>
                     </td>
                   );
@@ -191,6 +203,7 @@ function Th({
   align?: "left" | "center";
   sticky?: boolean;
 }) {
+  const { tf } = useLang();
   return (
     <th
       scope="col"
@@ -205,7 +218,7 @@ function Th({
     >
       <button
         onClick={onClick}
-        title={title ?? `Sort by ${label}`}
+        title={title ?? tf("Sort by {label}", { label })}
         style={{
           width: "100%",
           minHeight: 34,
@@ -230,13 +243,3 @@ function Th({
   );
 }
 
-function shortRegion(name: string) {
-  return name.replace(/ wellbeing services county$/, "").replace(/^City of /, "");
-}
-
-function shortIndicator(name: string) {
-  return name
-    .replace(/ cancer screening attendance$/, "")
-    .replace(/^Patients waiting over 6 months for specialised care$/, "Long waits")
-    .replace(/^Referrals processed within 3 days$/, "Referrals ≤3d");
-}

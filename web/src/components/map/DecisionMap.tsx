@@ -12,6 +12,8 @@ import {
 } from "@/lib/region-codes";
 import { makeScale } from "@/lib/sequential";
 import { ZoomControl } from "@/components/map/ZoomControl";
+import { useLang } from "@/lib/lang";
+import { regionShort } from "@/lib/fi-short";
 import type { Region } from "@/lib/api";
 
 const [BX, BY, BW, BH] = FINLAND_VIEWBOX.split(" ").map(Number);
@@ -66,6 +68,7 @@ export function DecisionMap({
   onSelect: (code: string) => void;
   height?: number | string;
 }) {
+  const { lang, t } = useLang();
   const [view, setView] = useState<View>(FIT);
   const [hover, setHover] = useState<{ code: string; x: number; y: number } | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -278,7 +281,7 @@ export function DecisionMap({
         ref={svgRef}
         viewBox={`${view.x} ${view.y} ${vw} ${vh}`}
         role="application"
-        aria-label="Map of Finland's 23 Regions. Click a Region for its profile; drag to pan, scroll to zoom."
+        aria-label={t("Map of Finland's 23 Regions. Click a Region for its profile; drag to pan, scroll to zoom.")}
         tabIndex={0}
         onWheel={onWheel}
         onPointerDown={onPointerDown}
@@ -371,7 +374,7 @@ export function DecisionMap({
             const c = FINLAND_CENTROIDS[GEOMETRY_SLUG[region.code]];
             if (!c) return null;
             const v = value(region.code);
-            const short = shortName(region.name);
+            const short = regionShort(region.code, region.name, lang);
             return (
               <g key={`l-${region.code}`} pointerEvents="none" transform={`translate(${c[0]} ${c[1]})`}>
                 <text
@@ -437,7 +440,7 @@ export function DecisionMap({
           boxShadow: "var(--shadow-card)",
         }}
       >
-        Helsinki and region
+        {t("Helsinki and region")}
       </button>
 
       <div className="map-zoom" style={{ position: "absolute", top: 14, right: 14 }}>
@@ -493,14 +496,6 @@ export function DecisionMap({
     </div>
     </>
   );
-}
-
-/** "Southwest Finland wellbeing services county" won't fit on a Region at
- *  any zoom; the distinguishing part always comes first. */
-function shortName(name: string): string {
-  return name
-    .replace(/ wellbeing services county$/, "")
-    .replace(/^City of /, "");
 }
 
 function Tooltip({ x, y, text }: { x: number; y: number; text: string }) {

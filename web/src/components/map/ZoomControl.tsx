@@ -1,5 +1,7 @@
 "use client";
 
+import { useLang } from "@/lib/lang";
+
 /** The map's zoom instrument. A slider rather than only +/- buttons, because
  *  the useful range here is wide (all of Finland down to a single city) and
  *  stepping through it a click at a time is tedious. The track is vertical
@@ -19,6 +21,7 @@ export function ZoomControl({
   onFit: () => void;
   onFocus?: () => void;
 }) {
+  const { t: tr } = useLang();
   // The slider is linear in log(k) so each pixel is the same proportional
   // change — a linear k makes the low end useless and the high end twitchy.
   const t = (Math.log(k) - Math.log(min)) / (Math.log(max) - Math.log(min));
@@ -38,7 +41,7 @@ export function ZoomControl({
         boxShadow: "var(--shadow-card)",
       }}
     >
-      <IconButton label="Zoom in" onClick={() => onZoom(k * 1.45)} disabled={k >= max - 0.001}>
+      <IconButton label={tr("Zoom in")} onClick={() => onZoom(k * 1.45)} disabled={k >= max - 0.001}>
         <path d="M8 4.5v7M4.5 8h7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </IconButton>
 
@@ -93,7 +96,7 @@ export function ZoomControl({
         />
       </div>
 
-      <IconButton label="Zoom out" onClick={() => onZoom(k / 1.45)} disabled={k <= min + 0.001}>
+      <IconButton label={tr("Zoom out")} onClick={() => onZoom(k / 1.45)} disabled={k <= min + 0.001}>
         <path d="M4.5 8h7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </IconButton>
 
@@ -105,7 +108,7 @@ export function ZoomControl({
         {k.toFixed(1)}×
       </span>
 
-      <IconButton label="Fit all of Finland" onClick={onFit} disabled={k <= min + 0.001}>
+      <IconButton label={tr("Fit all of Finland")} onClick={onFit} disabled={k <= min + 0.001}>
         <path
           d="M4 6.2V4h2.2M9.8 4H12v2.2M12 9.8V12H9.8M6.2 12H4V9.8"
           stroke="currentColor"
@@ -117,7 +120,7 @@ export function ZoomControl({
       </IconButton>
 
       {onFocus && (
-        <IconButton label="Zoom to the selected Region" onClick={onFocus}>
+        <IconButton label={tr("Zoom to the selected Region")} onClick={onFocus}>
           <circle cx="8" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.6" fill="none" />
           <path d="M8 2v1.6M8 12.4V14M2 8h1.6M12.4 8H14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </IconButton>

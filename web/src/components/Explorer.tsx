@@ -7,6 +7,11 @@ import { RegionTable } from "@/components/RegionTable";
 import { RegionPanel } from "@/components/region/RegionPanel";
 import { RoleGate } from "@/components/RoleGate";
 import type { Region, RegionProfile } from "@/lib/api";
+import { useLang } from "@/lib/lang";
+import type { Lang } from "@/lib/i18n";
+import { tf as format, unitLabel, fmtNumber } from "@/lib/i18n";
+import { regionName, indicatorName } from "@/lib/fi-data";
+import { regionShort } from "@/lib/fi-short";
 
 /** How the map is shaded. "Indicators needing action" is the overview; the
  *  rest shade by one indicator, which is what you switch to once you want
@@ -20,14 +25,16 @@ interface Metric {
   describe: (p: RegionProfile, v: number) => string;
 }
 
-function metricsFor(sample: RegionProfile | undefined): Metric[] {
+function metricsFor(sample: RegionProfile | undefined, lang: Lang, t: (en: string) => string): Metric[] {
   const overview: Metric = {
     id: "act",
-    label: "Indicators needing action",
-    unit: "indicators needing action",
+    label: t("Indicators needing action"),
+    unit: t("indicators needing action"),
     value: (p) => p.summary.indicators_act,
     format: (v) => String(Math.round(v)),
-    describe: (p, v) => `${p.region.name} — ${v} of ${p.summary.indicators_tracked} indicators need action`,
+    describe: (p, v) =>
+      `${regionName(p.region.code, p.region.name, lang)} — ` +
+      format(lang, "{v} of {n} indicators need action", { v, n: p.summary.indicators_tracked }),
   };
   if (!sample) return [overview];
 
@@ -35,14 +42,15 @@ function metricsFor(sample: RegionProfile | undefined): Metric[] {
     overview,
     ...sample.gaps.map((g) => ({
       id: g.indicator.code,
-      label: g.indicator.name,
+      label: indicatorName(g.indicator.code, g.indicator.name, lang),
       unit: g.indicator.unit,
       value: (p: RegionProfile) => p.gaps.find((x) => x.indicator.code === g.indicator.code)?.gap.value ?? null,
       format: (v: number) => (g.indicator.unit.startsWith("%") ? `${v.toFixed(0)}%` : v.toFixed(1)),
       describe: (p: RegionProfile, v: number) => {
         const entry = p.gaps.find((x) => x.indicator.code === g.indicator.code);
-        const suffix = g.indicator.unit.startsWith("%") ? "%" : ` ${g.indicator.unit}`;
-        return `${p.region.name} — ${g.indicator.name} ${v}${suffix}${entry ? `, ranked ${entry.gap.rank} of ${entry.gap.n_regions}` : ""}`;
+        const suffix = g.indicator.unit.startsWith("%") ? "%" : ` ${unitLabel(g.indicator.unit, lang)}`;
+        const head = `${regionName(p.region.code, p.region.name, lang)} — ${indicatorName(g.indicator.code, g.indicator.name, lang)} ${fmtNumber(v, lang)}${suffix}`;
+        return entry ? head + format(lang, ", ranked {rank} of {n}", { rank: entry.gap.rank, n: entry.gap.n_regions }) : head;
       },
     })),
   ];
@@ -59,6 +67,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
   const router = useRouter();
   const params = useSearchParams();
   const [query, setQuery] = useState("");
+  const { lang, t, tf } = useLang();
 
   // Selection and shading live in the URL, so a view can be linked and
   // survives a reload. `replace`, not `push`: clicking twenty Regions
@@ -77,7 +86,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
   );
   const setSelected = useCallback((code: string) => setParam("region", code), [setParam]);
 
-  const metrics = useMemo(() => metricsFor(profiles.values().next().value), [profiles]);
+  const metrics = useMemo(() => metricsFor(profiles.values().next().value, lang, t), [profiles, lang, t]);
   const metric = metrics.find((m) => m.id === metricId) ?? metrics[0];
   const current = profiles.get(selected);
 
@@ -94,7 +103,14 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return regions.filter((r) => r.name.toLowerCase().includes(q)).slice(0, 6);
+    // Match either language's name, so searching "Pohjois-Savo" works while
+    // the interface is in English and "North Savo" while it is in Finnish.
+    return regions
+      .filter((r) => {
+        const names = [r.name, regionName(r.code, r.name, "fi"), regionShort(r.code, r.name, "fi")];
+        return names.some((n) => n.toLowerCase().includes(q));
+      })
+      .slice(0, 6);
   }, [query, regions]);
 
   return (
@@ -102,7 +118,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
       {/* No visible headline. A console opens on the work, not on a title
           card explaining it — the explanation sits at the foot of the page
           for whoever wants it. The h1 stays for the document outline. */}
-      <h1 className="sr-only">Decision map: where cancer care falls short of target</h1>
+      <h1 className="sr-only">{t("Decision map: where cancer care falls short of target")}</h1>
 
       <div
         style={{
@@ -135,7 +151,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
             phone. Let the label shrink and the select truncate, or the whole
             page gains a horizontal scrollbar. */}
         <label className="row" style={{ gap: 8, minWidth: 0, flex: "1 1 auto" }}>
-          <span style={{ fontSize: 12.5, color: "var(--ink-2)", whiteSpace: "nowrap" }}>Shade by</span>
+          <span style={{ fontSize: 12.5, color: "var(--ink-2)", whiteSpace: "nowrap" }}>{t("Shade by")}</span>
           <select
             value={metricId}
             onChange={(e) => setParam("by", e.target.value)}
@@ -154,8 +170,8 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Find a Region"
-            aria-label="Find a Region by name"
+            placeholder={t("Find a Region")}
+            aria-label={t("Find a Region by name")}
             style={{ width: "100%", padding: "7px 11px", fontSize: 13, minHeight: 34 }}
           />
           {matches.length > 0 && (
@@ -193,7 +209,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
                     cursor: "pointer",
                   }}
                 >
-                  {r.name}
+                  {regionName(r.code, r.name, lang)}
                 </button>
               ))}
             </div>
@@ -215,9 +231,11 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
               cursor: "pointer",
             }}
           >
-            Worst overall is{" "}
-            <strong style={{ color: "var(--act)" }}>{shortRegion(worst.region.name)}</strong>, with{" "}
-            {worst.summary.indicators_act}
+            {t("Worst overall is")}{" "}
+            <strong style={{ color: "var(--act)" }}>
+              {regionShort(worst.region.code, worst.region.name, lang)}
+            </strong>
+            , {tf("with {n}", { n: worst.summary.indicators_act })}
           </button>
         )}
       </div>
@@ -247,9 +265,11 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
                 }}
                 label={(code) => {
                   const p = profiles.get(code);
-                  if (!p) return "No data";
+                  if (!p) return t("No data");
                   const v = metric.value(p);
-                  return v == null ? `${p.region.name} has no reading` : metric.describe(p, v);
+                  return v == null
+                    ? tf("{region} has no reading", { region: regionName(p.region.code, p.region.name, lang) })
+                    : metric.describe(p, v);
                 }}
                 unit={metric.unit}
                 formatTick={metric.format}
@@ -264,7 +284,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
             {current ? (
               <RegionPanel profile={current} all={profiles} onPick={setSelected} />
             ) : (
-              <p style={{ color: "var(--ink-3)" }}>Pick a Region on the map.</p>
+              <p style={{ color: "var(--ink-3)" }}>{t("Pick a Region on the map.")}</p>
             )}
           </div>
         </div>
@@ -281,8 +301,10 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
           lineHeight: 1.55,
         }}
       >
-        {totalAct} indicator readings across {profiles.size} Regions need action this year. No Region is uniformly
-        the problem, which is why this shows each indicator separately rather than one combined score.
+        {tf(
+          "{total} indicator readings across {n} Regions need action this year. No Region is uniformly the problem, which is why this shows each indicator separately rather than one combined score.",
+          { total: totalAct, n: profiles.size },
+        )}
       </p>
 
       <style>{`
@@ -297,10 +319,11 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
 }
 
 function ViewToggle({ view, onChange }: { view: string; onChange: (v: string) => void }) {
+  const { t } = useLang();
   return (
     <div
       role="group"
-      aria-label="View"
+      aria-label={t("View")}
       style={{ display: "flex", gap: 2, padding: 2, background: "var(--bg)", border: "1px solid var(--line)", borderRadius: 9 }}
     >
       {(["map", "table"] as const).map((v) => {
@@ -321,17 +344,12 @@ function ViewToggle({ view, onChange }: { view: string; onChange: (v: string) =>
               fontWeight: on ? 650 : 450,
               fontSize: 12.5,
               cursor: "pointer",
-              textTransform: "capitalize",
             }}
           >
-            {v}
+            {v === "map" ? t("Map") : t("Table")}
           </button>
         );
       })}
     </div>
   );
-}
-
-function shortRegion(name: string) {
-  return name.replace(/ wellbeing services county$/, "").replace(/^City of /, "");
 }
