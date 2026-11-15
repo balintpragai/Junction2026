@@ -392,7 +392,7 @@ export function DecisionMap({
           padding: "6px 11px",
           border: "1px solid var(--line)",
           borderRadius: 8,
-          background: "color-mix(in srgb, var(--card) 92%, transparent)",
+          background: "rgba(255, 255, 255, 0.93)",
           backdropFilter: "blur(6px)",
           fontSize: 12.5,
           fontWeight: 550,
