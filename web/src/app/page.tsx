@@ -15,8 +15,10 @@ export default async function Home() {
       <div className="card-lg" style={{ padding: "48px 32px", maxWidth: 560, margin: "40px auto", textAlign: "center" }}>
         <h1 style={{ fontSize: "1.25rem" }}>Could not reach the API</h1>
         <p style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.6 }}>
-          Check that the backend is running and <code>API_URL</code> is set. For the demo, <code>mock/mock_api.py</code>{" "}
-          serves this contract on port 8000.
+          The stack is running but <code>web</code> could not read <code>api</code>. Check{" "}
+          <code>docker compose ps</code> (five services healthy, <code>seed</code> exited 0), that{" "}
+          <code>API_URL</code> points at <code>api</code>, and that the rescore job has scored Gaps —{" "}
+          <code>/overview</code> should return 23 rows.
         </p>
       </div>
     );

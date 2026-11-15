@@ -7,7 +7,16 @@ from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
 from app.main import app
-from common.models import GapSummary, Health, IndicatorList, OutreachList, RegionList
+from common.models import (
+    ActionLibrary,
+    GapSummary,
+    Health,
+    IndicatorList,
+    OutreachList,
+    Overview,
+    RegionList,
+    RegionProfile,
+)
 
 client = TestClient(app)
 
@@ -17,6 +26,9 @@ ROUTES = [
     ("/indicators", IndicatorList),
     ("/regions/helsinki/gap-summary?indicator=3621&year=2024", GapSummary),
     ("/outreach-list?indicator=3621&year=2024", OutreachList),
+    ("/overview", Overview),
+    ("/regions/helsinki/profile", RegionProfile),
+    ("/regions/helsinki/action-library", ActionLibrary),
 ]
 
 
@@ -110,3 +122,86 @@ def test_database_down_is_503_not_500():
 
 def test_cache_control_header():
     assert client.get("/regions").headers["cache-control"] == "max-age=300"
+
+
+# --- The Decision Map's routes ----------------------------------------------
+
+
+def test_overview_has_a_row_per_region():
+    body = client.get("/overview").json()
+    regions = client.get("/regions").json()["regions"]
+    assert body["year"] == 2024
+    assert len(body["rows"]) == len(regions)
+    assert {r["region"]["code"] for r in body["rows"]} == {r["code"] for r in regions}
+
+
+def test_overview_counts_never_exceed_what_is_tracked():
+    for row in client.get("/overview").json()["rows"]:
+        assert row["indicators_act"] + row["indicators_watch"] <= row["indicators_tracked"]
+
+
+def test_profile_carries_the_three_layer_card_for_every_gap():
+    body = client.get("/regions/helsinki/profile").json()
+    assert body["region"]["code"] == "helsinki"
+    assert body["year"] == 2024
+    assert body["gaps"], "a profile with no Gap should 404, not return an empty list"
+    entry = body["gaps"][0]
+    # Layer 1: the Narrative, with the source the UI discloses.
+    assert entry["narrative"]["text"]
+    assert entry["narrative"]["source"] in {"llm", "template"}
+    # Layer 2: the number, with direction and rank.
+    assert entry["gap"]["value"] is not None
+    assert entry["gap"]["direction"] in {"above", "below", "at"}
+    assert entry["gap"]["rank"] >= 1
+    # Layer 3's series. Present in the contract whether or not the UI draws it.
+    assert isinstance(entry["trend"], list)
+    assert isinstance(entry["data_quality_notes"], list)
+
+
+def test_profile_summary_matches_the_gaps_it_lists():
+    body = client.get("/regions/helsinki/profile").json()
+    severities = [g["gap"]["severity"] for g in body["gaps"]]
+    assert body["summary"]["indicators_tracked"] == len(body["gaps"])
+    assert body["summary"]["indicators_act"] == severities.count("act")
+    assert body["summary"]["indicators_watch"] == severities.count("watch")
+
+
+def test_profile_covariate_meta_is_keyed_like_covariates():
+    body = client.get("/regions/helsinki/profile").json()
+    assert set(body["covariate_meta"]) == set(body["covariates"])
+
+
+def test_profile_synthesis_is_plain_sentences():
+    body = client.get("/regions/helsinki/profile").json()
+    assert body["synthesis"]
+    assert all(isinstance(s, str) and s.strip() for s in body["synthesis"])
+
+
+def test_profile_candidate_actions_carry_a_workflow_and_a_reason():
+    body = client.get("/regions/helsinki/profile").json()
+    for action in body["candidate_actions"]:
+        assert action["kind"] in {"strategy", "covariate"}
+        assert action["why"].strip()
+        assert action["workflow"]["type"] in {"stakeholder_message", "patient_message"}
+
+
+def test_unknown_region_profile_is_404():
+    r = client.get("/regions/not-a-region/profile")
+    assert r.status_code == 404
+    assert "detail" in r.json()
+
+
+def test_year_without_gaps_is_404_not_an_empty_profile():
+    r = client.get("/regions/helsinki/profile", params={"year": 1999})
+    assert r.status_code == 404
+
+
+def test_action_library_is_the_whole_strategy_not_recommended():
+    body = client.get("/regions/helsinki/action-library").json()
+    assert body["region_code"] == "helsinki"
+    assert body["actions"]
+    assert all(a["recommended"] is False for a in body["actions"])
+
+
+def test_unknown_region_action_library_is_404():
+    assert client.get("/regions/not-a-region/action-library").status_code == 404

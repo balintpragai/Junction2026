@@ -70,12 +70,57 @@ code=$(http_code "http://$WEB_DOMAIN/")
 cors=$(curl -sS -D - -o /dev/null --connect-timeout 5 --max-time 10 -H "Origin: https://$WEB_DOMAIN" "https://$API_DOMAIN/regions" 2>&1 | tr -d '\r' | sed -n 's/^access-control-allow-origin: //Ip')
 [[ $cors == "https://$WEB_DOMAIN" ]] && pass "api allows CORS from https://$WEB_DOMAIN" || fail "api CORS allow-origin is '${cors}' (check WEB_ORIGIN)"
 
+echo "== The Decision Map has data to draw"
+# A 200 on / is not enough: the page renders an "API reachable?" card with a
+# 200 when the profile fetches come back empty, which looks fine to curl and
+# blank to a judge. Check the routes it actually reads, then the page itself.
+regions_json=$(curl -sS --connect-timeout 5 --max-time 20 "https://$API_DOMAIN/regions" 2>/dev/null)
+n_regions=$(printf '%s' "$regions_json" | grep -o '"code"' | wc -l | tr -d ' ')
+[[ ${n_regions:-0} -eq 23 ]] && pass "api serves 23 Regions" || fail "api serves ${n_regions:-0} Regions (expected 23)"
+# Prefer Helsinki (Sotkanet 90): it is the Region the demo opens on, and the
+# one every fixture and Narrative example uses. Fall back to the first Region
+# listed. Note the whole response is one line, so match per occurrence rather
+# than with a greedy sed, which would pick the last Region (Åland, which has
+# no peer group and may have no scored Gap).
+all_codes=$(printf '%s' "$regions_json" | grep -o '"code":"[^"]*"' | sed 's/^"code":"//; s/"$//')
+if printf '%s\n' "$all_codes" | grep -qx 90; then
+  first_code=90
+else
+  first_code=$(printf '%s\n' "$all_codes" | head -1)
+fi
+
+overview=$(curl -sS --connect-timeout 5 --max-time 20 "https://$API_DOMAIN/overview" 2>/dev/null)
+n_rows=$(printf '%s' "$overview" | grep -o '"indicators_tracked"' | wc -l | tr -d ' ')
+[[ ${n_rows:-0} -eq 23 ]] && pass "/overview has a row per Region" || fail "/overview has ${n_rows:-0} rows (expected 23)"
+printf '%s' "$overview" | grep -q '"indicators_tracked":0' \
+  && warn "some Regions have no scored indicator: check that the rescore job ran for every one" \
+  || pass "every Region has at least one scored indicator"
+
+if [[ -n $first_code ]]; then
+  profile=$(curl -sS --connect-timeout 5 --max-time 20 "https://$API_DOMAIN/regions/$first_code/profile" 2>/dev/null)
+  printf '%s' "$profile" | grep -q '"synthesis":\[' && pass "/regions/$first_code/profile returns a profile" \
+    || fail "/regions/$first_code/profile did not return a profile"
+  printf '%s' "$profile" | grep -q '"narrative"' && pass "the profile carries Narratives" || fail "the profile has no Narrative"
+  printf '%s' "$profile" | grep -q '"source":"llm"' \
+    && pass "at least one Narrative is checked LLM text" \
+    || warn "every Narrative is a Template sentence: correct but plainer (check LLM_* and that the rescore ran)"
+  lib_code=$(http_code "https://$API_DOMAIN/regions/$first_code/action-library")
+  [[ $lib_code == 200 ]] && pass "/regions/$first_code/action-library -> 200" || fail "action-library -> $lib_code"
+else
+  fail "could not read a Region code from /regions, so the profile routes were not checked"
+fi
+
+home=$(curl -sS --connect-timeout 5 --max-time 30 "https://$WEB_DOMAIN/" 2>/dev/null)
+printf '%s' "$home" | grep -q "Could not reach the API" \
+  && fail "the web home page is showing its 'Could not reach the API' card (api up, but web cannot read it: check API_URL)" \
+  || pass "the web home page is not showing the API-unreachable card"
+
 echo "== LLM (narrative, from inside the compose network)"
 result=$(docker compose exec -T narrative python - <<'PY' 2>&1
 import json, urllib.request
 req = {
-    "region_name": "Helsinki", "indicator_name": "Breast cancer screening attendance", "unit": "%",
-    "gap": {"region_code": "helsinki", "indicator_code": "3621", "year": 2024, "value": 74.3,
+    "region_name": "City of Helsinki", "indicator_name": "Breast cancer screening attendance", "unit": "%",
+    "gap": {"region_code": "90", "indicator_code": "3621", "year": 2024, "value": 74.3,
             "reference_kind": "target", "reference_value": 80.0, "deviation": -5.7, "direction": "below",
             "severity": "act", "rank": 21, "n_regions": 23, "peer_values": [], "trend_5y": None},
     "action_text": "Raise screening participation through targeted invitations.",

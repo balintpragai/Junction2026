@@ -193,10 +193,276 @@
           }
         }
       }
+    },
+    "/overview": {
+      "get": {
+        "tags": [
+          "gaps"
+        ],
+        "summary": "Overview",
+        "operationId": "overview_overview_get",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Year, e.g. 2024. Defaults to the latest scored year.",
+              "title": "Year"
+            },
+            "description": "Year, e.g. 2024. Defaults to the latest scored year."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Overview"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions/{code}/profile": {
+      "get": {
+        "tags": [
+          "gaps"
+        ],
+        "summary": "Region Profile",
+        "operationId": "region_profile_regions__code__profile_get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Year, e.g. 2024. Defaults to the latest scored year.",
+              "title": "Year"
+            },
+            "description": "Year, e.g. 2024. Defaults to the latest scored year."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionProfile"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown Region, or no Gap for this Region and year"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions/{code}/action-library": {
+      "get": {
+        "tags": [
+          "gaps"
+        ],
+        "summary": "Action Library",
+        "operationId": "action_library_regions__code__action_library_get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActionLibrary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown Region"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ActionLibrary": {
+        "properties": {
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateAction"
+            },
+            "type": "array",
+            "title": "Actions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region_code",
+          "actions"
+        ],
+        "title": "ActionLibrary",
+        "description": "Every curated National Cancer Strategy action, in CandidateAction shape, so a\ndecision-maker can search the whole strategy rather than only what the rules matched."
+      },
+      "CandidateAction": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "strategy",
+              "covariate"
+            ],
+            "title": "Kind"
+          },
+          "recommended": {
+            "type": "boolean",
+            "title": "Recommended"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Why",
+            "description": "The evidence for this action, with its figures filled in."
+          },
+          "workflow": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StakeholderWorkflow"
+              },
+              {
+                "$ref": "#/components/schemas/PatientWorkflow"
+              }
+            ],
+            "title": "Workflow"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "recommended",
+          "title",
+          "description",
+          "why",
+          "workflow"
+        ],
+        "title": "CandidateAction",
+        "description": "Something a decision-maker could do about this Region's Gaps.\n\n`recommended` is True when the rules matched this action to a Gap in this\nRegion, and False for an action picked by hand out of the full strategy\nlibrary. Deterministic either way — no model decides this."
+      },
+      "CovariateMeta": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "median": {
+            "type": "number",
+            "title": "Median",
+            "description": "Median across every Region with a value in this year."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "unit",
+          "median"
+        ],
+        "title": "CovariateMeta",
+        "description": "How to read one covariate: its name, unit, and the national median it is compared against."
+      },
       "CovariateValue": {
         "properties": {
           "code": {
@@ -359,6 +625,56 @@
         "title": "Gap",
         "description": "How far one Region's value on one indicator, in one year, sits from its\nTarget (or from the other Regions when there is no Target)."
       },
+      "GapEntry": {
+        "properties": {
+          "indicator": {
+            "$ref": "#/components/schemas/Indicator"
+          },
+          "gap": {
+            "$ref": "#/components/schemas/Gap"
+          },
+          "narrative": {
+            "$ref": "#/components/schemas/Narrative"
+          },
+          "data_quality_notes": {
+            "items": {
+              "$ref": "#/components/schemas/DataQualityNote"
+            },
+            "type": "array",
+            "title": "Data Quality Notes"
+          },
+          "action": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StrategyAction"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "trend": {
+            "items": {
+              "$ref": "#/components/schemas/TrendPoint"
+            },
+            "type": "array",
+            "title": "Trend",
+            "description": "Series for the sparkline, ascending by year."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "indicator",
+          "gap",
+          "narrative",
+          "data_quality_notes",
+          "action",
+          "trend"
+        ],
+        "title": "GapEntry",
+        "description": "One scored indicator inside a RegionProfile — the three-layer card's data.\n\nThe same content as a `GapSummary` minus its `region`, which the profile\ncarries once for every entry."
+      },
       "GapSummary": {
         "properties": {
           "region": {
@@ -472,6 +788,18 @@
             ],
             "title": "Target",
             "description": "National Cancer Strategy Target, or null when the indicator has none."
+          },
+          "cancer_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cancer Type",
+            "description": "Cancer site this indicator is specific to, e.g. 'breast'; 'all' for all sites. Null when the indicator is not cancer-specific, as the capacity and referral measures are."
           },
           "years": {
             "items": {
@@ -668,6 +996,83 @@
         ],
         "title": "OutreachRow"
       },
+      "Overview": {
+        "properties": {
+          "year": {
+            "type": "integer",
+            "title": "Year"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/OverviewRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "year",
+          "rows"
+        ],
+        "title": "Overview",
+        "description": "Every Region's Gap counts for one year.\n\nCounts, not a single ranking: see docs/adr/0001-gaps-not-bottlenecks.md."
+      },
+      "OverviewRow": {
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "indicators_tracked": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Tracked"
+          },
+          "indicators_act": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Act"
+          },
+          "indicators_watch": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Watch"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region",
+          "indicators_tracked",
+          "indicators_act",
+          "indicators_watch"
+        ],
+        "title": "OverviewRow",
+        "description": "One Region's Gap counts — the Decision Map's tile colour."
+      },
+      "PatientWorkflow": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "patient_message",
+            "title": "Type"
+          },
+          "profile": {
+            "type": "string",
+            "title": "Profile",
+            "description": "Which invitees, in plain words. Never an individual."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "profile"
+        ],
+        "title": "PatientWorkflow",
+        "description": "The action is carried out by messaging a group of invitees."
+      },
       "PeerValue": {
         "properties": {
           "region_code": {
@@ -686,6 +1091,33 @@
           "value"
         ],
         "title": "PeerValue"
+      },
+      "ProfileSummary": {
+        "properties": {
+          "indicators_tracked": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Tracked"
+          },
+          "indicators_act": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Act"
+          },
+          "indicators_watch": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Indicators Watch"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "indicators_tracked",
+          "indicators_act",
+          "indicators_watch"
+        ],
+        "title": "ProfileSummary"
       },
       "Region": {
         "properties": {
@@ -735,6 +1167,102 @@
           "regions"
         ],
         "title": "RegionList"
+      },
+      "RegionProfile": {
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "year": {
+            "type": "integer",
+            "title": "Year"
+          },
+          "gaps": {
+            "items": {
+              "$ref": "#/components/schemas/GapEntry"
+            },
+            "type": "array",
+            "title": "Gaps"
+          },
+          "covariates": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Covariates",
+            "description": "Covariate indicator id -> this Region's value in `year`. Region-level only; never a cause."
+          },
+          "covariate_meta": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CovariateMeta"
+            },
+            "type": "object",
+            "title": "Covariate Meta",
+            "description": "Keyed by the same ids as `covariates`."
+          },
+          "missing_data_notes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Data Notes",
+            "description": "Plain-language notes about indicators with no value this year. Never interpolated."
+          },
+          "summary": {
+            "$ref": "#/components/schemas/ProfileSummary"
+          },
+          "synthesis": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Synthesis",
+            "description": "Rule-based plain-language reading of the Gaps and covariates above. Not an LLM call."
+          },
+          "candidate_actions": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateAction"
+            },
+            "type": "array",
+            "title": "Candidate Actions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "region",
+          "year",
+          "gaps",
+          "covariates",
+          "covariate_meta",
+          "missing_data_notes",
+          "summary",
+          "synthesis",
+          "candidate_actions"
+        ],
+        "title": "RegionProfile",
+        "description": "Every Gap, covariate and candidate action for one Region in one year."
+      },
+      "StakeholderWorkflow": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "stakeholder_message",
+            "title": "Type"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "target"
+        ],
+        "title": "StakeholderWorkflow",
+        "description": "The action is carried out by writing to an organisation."
       },
       "StrategyAction": {
         "properties": {

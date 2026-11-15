@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { FOREIGN_BACKGROUND } from "@/lib/api";
 import type { CandidateAction, Region, RegionProfile } from "@/lib/api";
 import { buildPlaybook, criticalPathDays } from "@/lib/playbook";
 import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, type Priority } from "@/lib/program";
@@ -66,10 +67,14 @@ export function ActionPlanner({
 
   function issuePlan() {
     const text = mandate.trim() || defaultMandate;
+    // The api leaves a covariate out entirely when it has no value for the
+    // year, so read both the value and its median defensively.
+    const foreignBackground = profile.covariates[FOREIGN_BACKGROUND];
+    const foreignBackgroundMedian = profile.covariate_meta[FOREIGN_BACKGROUND]?.median;
     const evidence = worstGap
       ? `${worstGap.narrative.text}${
-          profile.covariates.immigrant_background_pct != null
-            ? ` Foreign-background share ${profile.covariates.immigrant_background_pct}% against a ${profile.covariate_meta.immigrant_background_pct.median}% national median.`
+          foreignBackground != null && foreignBackgroundMedian != null
+            ? ` Foreign-background share ${foreignBackground}% against a ${foreignBackgroundMedian}% national median.`
             : ""
         }`
       : "See the Region profile for the full evidence pack.";

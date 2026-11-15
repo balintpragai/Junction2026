@@ -14,6 +14,7 @@ import type { CandidateAction } from "@/lib/api";
 import { buildPlaybook, allSteps, type PlaybookPhase } from "@/lib/playbook";
 import { DEFAULT_ACCOUNT_ID, accountById, type Account } from "@/lib/roles";
 import { memberForFunction } from "@/lib/team";
+import { HELSINKI } from "@/lib/region-codes";
 
 /** What each priority actually commits the Region to. Without this the
  *  choice was cosmetic — the planner said a response window followed from
@@ -128,7 +129,7 @@ function seedDirectives(): Directive[] {
 
   const a = newDirective({
     action: multilingual,
-    regionCode: "helsinki",
+    regionCode: HELSINKI,
     regionName: "City of Helsinki",
     issuedByAccountId: "state-stm",
     priority: "high",
@@ -147,7 +148,7 @@ function seedDirectives(): Directive[] {
 
   const b = newDirective({
     action: capacity,
-    regionCode: "helsinki",
+    regionCode: HELSINKI,
     regionName: "City of Helsinki",
     issuedByAccountId: "state-stm",
     priority: "routine",

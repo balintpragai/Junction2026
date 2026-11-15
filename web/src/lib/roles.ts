@@ -1,3 +1,4 @@
+import { HELSINKI, LAPPI, VANTAA_KERAVA } from "@/lib/region-codes";
 /** Two kinds of account, because this product has two genuinely different
  *  jobs. The State Decision Maker reads the whole country and *issues*
  *  directives; the Regional Decision Maker receives one and *works it out*
@@ -35,7 +36,7 @@ export const ACCOUNTS: Account[] = [
     name: "Markus Laine",
     title: "Head of Screening Services",
     org: "City of Helsinki",
-    regionCode: "helsinki",
+    regionCode: HELSINKI,
     initials: "ML",
   },
   {
@@ -44,7 +45,7 @@ export const ACCOUNTS: Account[] = [
     name: "Sofia N. Koskinen",
     title: "Head of Screening Services",
     org: "Lapland wellbeing services county",
-    regionCode: "lappi",
+    regionCode: LAPPI,
     initials: "SK",
   },
   {
@@ -53,7 +54,7 @@ export const ACCOUNTS: Account[] = [
     name: "Elias Hakkarainen",
     title: "Head of Screening Services",
     org: "Vantaa and Kerava wellbeing services county",
-    regionCode: "vantaa-kerava",
+    regionCode: VANTAA_KERAVA,
     initials: "EH",
   },
 ];

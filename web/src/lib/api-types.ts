@@ -89,10 +89,117 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Overview */
+        get: operations["overview_overview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/regions/{code}/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Region Profile */
+        get: operations["region_profile_regions__code__profile_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/regions/{code}/action-library": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Action Library */
+        get: operations["action_library_regions__code__action_library_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /**
+         * ActionLibrary
+         * @description Every curated National Cancer Strategy action, in CandidateAction shape, so a
+         *     decision-maker can search the whole strategy rather than only what the rules matched.
+         */
+        ActionLibrary: {
+            /** Region Code */
+            region_code: string;
+            /** Actions */
+            actions: components["schemas"]["CandidateAction"][];
+        };
+        /**
+         * CandidateAction
+         * @description Something a decision-maker could do about this Region's Gaps.
+         *
+         *     `recommended` is True when the rules matched this action to a Gap in this
+         *     Region, and False for an action picked by hand out of the full strategy
+         *     library. Deterministic either way — no model decides this.
+         */
+        CandidateAction: {
+            /** Id */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "strategy" | "covariate";
+            /** Recommended */
+            recommended: boolean;
+            /** Title */
+            title: string;
+            /** Description */
+            description: string;
+            /**
+             * Why
+             * @description The evidence for this action, with its figures filled in.
+             */
+            why: string;
+            /** Workflow */
+            workflow: components["schemas"]["StakeholderWorkflow"] | components["schemas"]["PatientWorkflow"];
+        };
+        /**
+         * CovariateMeta
+         * @description How to read one covariate: its name, unit, and the national median it is compared against.
+         */
+        CovariateMeta: {
+            /** Name */
+            name: string;
+            /** Unit */
+            unit: string;
+            /**
+             * Median
+             * @description Median across every Region with a value in this year.
+             */
+            median: number;
+        };
         /**
          * CovariateValue
          * @description One structural covariate for one Region. Describes the Region, not individuals.
@@ -180,6 +287,26 @@ export interface components {
             trend_5y: number | null;
         };
         /**
+         * GapEntry
+         * @description One scored indicator inside a RegionProfile — the three-layer card's data.
+         *
+         *     The same content as a `GapSummary` minus its `region`, which the profile
+         *     carries once for every entry.
+         */
+        GapEntry: {
+            indicator: components["schemas"]["Indicator"];
+            gap: components["schemas"]["Gap"];
+            narrative: components["schemas"]["Narrative"];
+            /** Data Quality Notes */
+            data_quality_notes: components["schemas"]["DataQualityNote"][];
+            action: components["schemas"]["StrategyAction"] | null;
+            /**
+             * Trend
+             * @description Series for the sparkline, ascending by year.
+             */
+            trend: components["schemas"]["TrendPoint"][];
+        };
+        /**
          * GapSummary
          * @description Everything the three-layer card needs, in one round-trip.
          */
@@ -231,6 +358,11 @@ export interface components {
              * @description National Cancer Strategy Target, or null when the indicator has none.
              */
             target: number | null;
+            /**
+             * Cancer Type
+             * @description Cancer site this indicator is specific to, e.g. 'breast'; 'all' for all sites. Null when the indicator is not cancer-specific, as the capacity and referral measures are.
+             */
+            cancer_type?: string | null;
             /**
              * Years
              * @description Years with data, ascending.
@@ -316,12 +448,62 @@ export interface components {
             rank: number;
             covariates: components["schemas"]["OutreachCovariates"];
         };
+        /**
+         * Overview
+         * @description Every Region's Gap counts for one year.
+         *
+         *     Counts, not a single ranking: see docs/adr/0001-gaps-not-bottlenecks.md.
+         */
+        Overview: {
+            /** Year */
+            year: number;
+            /** Rows */
+            rows: components["schemas"]["OverviewRow"][];
+        };
+        /**
+         * OverviewRow
+         * @description One Region's Gap counts — the Decision Map's tile colour.
+         */
+        OverviewRow: {
+            region: components["schemas"]["Region"];
+            /** Indicators Tracked */
+            indicators_tracked: number;
+            /** Indicators Act */
+            indicators_act: number;
+            /** Indicators Watch */
+            indicators_watch: number;
+        };
+        /**
+         * PatientWorkflow
+         * @description The action is carried out by messaging a group of invitees.
+         */
+        PatientWorkflow: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "patient_message";
+            /**
+             * Profile
+             * @description Which invitees, in plain words. Never an individual.
+             */
+            profile: string;
+        };
         /** PeerValue */
         PeerValue: {
             /** Region Code */
             region_code: string;
             /** Value */
             value: number;
+        };
+        /** ProfileSummary */
+        ProfileSummary: {
+            /** Indicators Tracked */
+            indicators_tracked: number;
+            /** Indicators Act */
+            indicators_act: number;
+            /** Indicators Watch */
+            indicators_watch: number;
         };
         /**
          * Region
@@ -348,6 +530,57 @@ export interface components {
         RegionList: {
             /** Regions */
             regions: components["schemas"]["Region"][];
+        };
+        /**
+         * RegionProfile
+         * @description Every Gap, covariate and candidate action for one Region in one year.
+         */
+        RegionProfile: {
+            region: components["schemas"]["Region"];
+            /** Year */
+            year: number;
+            /** Gaps */
+            gaps: components["schemas"]["GapEntry"][];
+            /**
+             * Covariates
+             * @description Covariate indicator id -> this Region's value in `year`. Region-level only; never a cause.
+             */
+            covariates: {
+                [key: string]: number;
+            };
+            /**
+             * Covariate Meta
+             * @description Keyed by the same ids as `covariates`.
+             */
+            covariate_meta: {
+                [key: string]: components["schemas"]["CovariateMeta"];
+            };
+            /**
+             * Missing Data Notes
+             * @description Plain-language notes about indicators with no value this year. Never interpolated.
+             */
+            missing_data_notes: string[];
+            summary: components["schemas"]["ProfileSummary"];
+            /**
+             * Synthesis
+             * @description Rule-based plain-language reading of the Gaps and covariates above. Not an LLM call.
+             */
+            synthesis: string[];
+            /** Candidate Actions */
+            candidate_actions: components["schemas"]["CandidateAction"][];
+        };
+        /**
+         * StakeholderWorkflow
+         * @description The action is carried out by writing to an organisation.
+         */
+        StakeholderWorkflow: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "stakeholder_message";
+            /** Target */
+            target: string;
         };
         /**
          * StrategyAction
@@ -522,6 +755,117 @@ export interface operations {
                 };
             };
             /** @description No outreach list for this indicator and year */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    overview_overview_get: {
+        parameters: {
+            query?: {
+                /** @description Year, e.g. 2024. Defaults to the latest scored year. */
+                year?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Overview"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    region_profile_regions__code__profile_get: {
+        parameters: {
+            query?: {
+                /** @description Year, e.g. 2024. Defaults to the latest scored year. */
+                year?: number | null;
+            };
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionProfile"];
+                };
+            };
+            /** @description Unknown Region, or no Gap for this Region and year */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    action_library_regions__code__action_library_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ActionLibrary"];
+                };
+            };
+            /** @description Unknown Region */
             404: {
                 headers: {
                     [name: string]: unknown;

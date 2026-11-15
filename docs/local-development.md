@@ -13,13 +13,13 @@ docker compose up --build -d
 docker compose ps        # five services "healthy", seed "Exited (0)"
 ```
 
-Then open http://localhost:3000. It should say "API reachable: 23 Regions loaded." The API's interactive docs are at http://localhost:8000/docs. Stop with `docker compose down`.
+Then open http://localhost:3000. It should show the Decision Map with all 23 Regions coloured by how many Gaps need action — if you get a "Could not reach the API" card instead, the stack is up but `web` cannot read `api` (check `API_URL`). The API's interactive docs are at http://localhost:8000/docs. Stop with `docker compose down`.
 
 The Python setup below is only needed to run the tests, or to run a service outside Docker. Details on the stack: [Run the whole stack](#run-the-whole-stack-docker-compose).
 
 ## Current state
 
-All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads every data route from Postgres: Regions, indicators and Gaps (#14), and the outreach list (#16). `web` is a stub that later tickets fill in.
+All six services from BUILD.md run under `docker compose` (see [Run the whole stack](#run-the-whole-stack-docker-compose)). `seed` fills Postgres with the schema and every value in `data/processed/` (see [`seed`: schema and data](#seed-schema-and-data)), and `engine` scores every Gap into `fact_gap_score` after each load (see [`engine`: the rescore job](#engine-the-rescore-job)). `api` reads every data route from Postgres: Regions, indicators and Gaps (#14), the outreach list (#16), and the three routes the Decision Map reads (`/overview`, `/regions/{code}/profile`, `/regions/{code}/action-library`). `web` renders those: the Decision Map, the Region profile and the action planner, all from the generated TypeScript types.
 
 | Route | Response type | Source |
 |---|---|---|
@@ -28,6 +28,9 @@ All six services from BUILD.md run under `docker compose` (see [Run the whole st
 | `GET /indicators` | `IndicatorList` | `dim_indicator` without covariates; `years` = years that have Gaps |
 | `GET /regions/{code}/gap-summary?indicator=&year=` | `GapSummary` | `fact_gap_score` + trend from `fact_indicator_value` + the top-ranked strategy action |
 | `GET /outreach-list?indicator=&year=` | `OutreachList` | `fact_gap_score` Regions on the wrong side of the Target, ranked by Gap, + every covariate from `fact_indicator_value`. Only indicators with a Target (the three screening indicators: 3620, 3621, 6103) |
+| `GET /overview` | `Overview` | `fact_gap_score` counts per Region for one year; `year` defaults to the latest scored year |
+| `GET /regions/{code}/profile` | `RegionProfile` | Every Gap for one Region and year, plus covariates and their medians, the rule-based `synthesis` (`common/synthesis.py`) and `candidate_actions` (`common/actions.py`) |
+| `GET /regions/{code}/action-library` | `ActionLibrary` | Every row of `dim_strategy_action` with text, as not-recommended candidate actions |
 
 **Region codes are Sotkanet codes** from `dim_region.code` (not the `helsinki`-style slugs of the old fixtures). Get them from `/regions`. An unknown Region or indicator, a covariate, or a year without a Gap returns **404** with a JSON `detail` message. Both query parameters are required; leaving one out returns **422**. If Postgres is unreachable, data routes return **503**.
 

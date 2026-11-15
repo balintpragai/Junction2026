@@ -16,6 +16,9 @@ Related: [local-development.md](local-development.md) (running and testing), [de
 | [`GET /indicators`](#get-indicators) | api | Scoreable indicators, their Target and the years that have Gaps |
 | [`GET /regions/{code}/gap-summary?indicator=&year=`](#get-regionscodegap-summary) | api | Everything the three-layer card needs for one Region, indicator and year |
 | [`GET /outreach-list?indicator=&year=`](#get-outreach-list) | api | Regions short of a Target, ranked by Gap, with covariates |
+| [`GET /overview`](#get-overview) | api | Every Region's Gap counts — the Decision Map's tile colour |
+| [`GET /regions/{code}/profile`](#get-regionscodeprofile) | api | Every Gap, covariate, deduction and candidate action for one Region |
+| [`GET /regions/{code}/action-library`](#get-regionscodeaction-library) | api | Every curated strategy action, for picking one the rules did not match |
 | [`GET /docs`, `GET /openapi.json`](#interactive-docs-and-the-openapi-spec) | api | Swagger UI and the machine-readable contract |
 | [`POST /jobs/rescore`, `GET /jobs/{id}`](#engine-rescore-jobs) | engine (internal) | Score every Gap, then fill the Narrative cache |
 | [`GET /config`, `POST /narrative`](#narrative-narratives) | narrative (internal) | Turn one Gap into a checked Narrative |
@@ -273,6 +276,73 @@ curl -s 'localhost:8000/outreach-list?indicator=foreign_background_pct&year=2024
 Loading the Statistics Finland series for every year will fill the gaps for foreign background, income and poverty: [#50](https://github.com/balintpragai/Junction2026/issues/50).
 
 **How to read the covariates:** per `research/covariate_correlation_analysis.md`, the foreign-background share is the covariate that points the same way at Region and individual level. Income and poverty don't; don't present them as targeting variables.
+
+### `GET /overview`
+
+Every Region's Gap counts for one year — what the Decision Map colours its tiles by. Counts, not a single ranking ([ADR 0001](adr/0001-gaps-not-bottlenecks.md)).
+
+`year` is optional and defaults to the latest year that has scored Gaps, so the frontend never has to know which year was last loaded.
+
+```sh
+curl -s localhost:8000/overview | jq '.rows[0]'
+```
+
+```json
+{
+  "region": { "code": "90", "name": "City of Helsinki", "kind": "city_of_helsinki" },
+  "indicators_tracked": 3,
+  "indicators_act": 3,
+  "indicators_watch": 0
+}
+```
+
+A Region with no scored Gap that year is still listed, with `indicators_tracked: 0`.
+
+### `GET /regions/{code}/profile`
+
+Everything the Decision Map shows for one Region: every Gap it has that year, the covariates beside them, a plain-language reading of the two, and the actions the rules match. One round-trip per Region, because the map lets you click through all 23 and a per-click fetch would show a spinner every time.
+
+`year` is optional, as on `/overview`.
+
+```sh
+curl -s "localhost:8000/regions/90/profile" | jq '{region, summary, synthesis, actions: [.candidate_actions[].id]}'
+```
+
+```json
+{
+  "region": { "code": "90", "name": "City of Helsinki", "kind": "city_of_helsinki" },
+  "summary": { "indicators_tracked": 3, "indicators_act": 3, "indicators_watch": 0 },
+  "synthesis": [
+    "Screening attendance is below target for breast, cervical, colorectal cancers.",
+    "This Region's foreign-background share (20.8%) is above the national median (7.0%) — the one covariate that predicts lower attendance at both the Region and individual level, confirmed two independent ways (see methodology)."
+  ],
+  "actions": ["strategy-2.4.1", "multilingual-outreach"]
+}
+```
+
+Field by field:
+
+- `gaps` — one entry per scored indicator, in reading order: the three screening programmes that have a Target, then the capacity measures that do not. Each entry is a `GapSummary` without its `region`: the `gap`, the `narrative` with its `source` (`llm` or `template`), the matched strategy `action`, `data_quality_notes`, and the `trend` series.
+- `covariates` and `covariate_meta` — keyed by `dim_indicator` id (e.g. `foreign_background_pct`), each with the median across every Region that year. **A covariate with no value for the year is left out entirely**, as on the outreach list: never carried over from another year, never assumed to sit at the median.
+- `synthesis` — a deterministic, rule-based reading of the Gaps and covariates (`common/synthesis.py`). Not an LLM call: every figure is already in this response.
+- `candidate_actions` — the strategy actions curated against this Region's Gaps, plus the covariate rules that fire (`common/actions.py`). `recommended` is always `true` here; the action library returns the rest with `false`.
+- `missing_data_notes` — plain-language notes about indicators with no value this year. Never interpolated.
+
+**404** for an unknown Region, or for a year with no scored Gap. An empty profile is never returned in place of a 404.
+
+### `GET /regions/{code}/action-library`
+
+Every curated National Cancer Strategy action, in the same shape as a candidate action but with `recommended: false`, so a decision-maker can search the whole strategy and add one the rules did not match.
+
+```sh
+curl -s localhost:8000/regions/90/action-library | jq '{region_code, n: (.actions | length)}'
+```
+
+```json
+{ "region_code": "90", "n": 73 }
+```
+
+**404** for an unknown Region.
 
 ### Interactive docs and the OpenAPI spec
 

@@ -14,7 +14,16 @@ from fastapi import Depends, FastAPI, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from common.models import GapSummary, Health, IndicatorList, OutreachList, RegionList
+from common.models import (
+    ActionLibrary,
+    GapSummary,
+    Health,
+    IndicatorList,
+    OutreachList,
+    Overview,
+    RegionList,
+    RegionProfile,
+)
 from common.settings import Settings
 
 from .repository import NotFound, PostgresRepository, Repository
@@ -109,5 +118,50 @@ def outreach_list(
     year: int = Query(description="Year, e.g. 2024"),
 ) -> OutreachList:
     result = repo.outreach_list(indicator, year)  # NotFound -> 404
+    _cache(response)
+    return result
+
+
+# --- The Decision Map's routes ----------------------------------------------
+#
+# `year` is optional everywhere here and defaults to the latest year that has
+# scored Gaps, so the frontend never has to know which year was last loaded.
+
+@app.get("/overview", response_model=Overview, tags=["gaps"])
+def overview(
+    response: Response,
+    repo: Repo,
+    year: int | None = Query(default=None, description="Year, e.g. 2024. Defaults to the latest scored year."),
+) -> Overview:
+    result = repo.overview(year)
+    _cache(response)
+    return result
+
+
+@app.get(
+    "/regions/{code}/profile",
+    response_model=RegionProfile,
+    tags=["gaps"],
+    responses={404: {"description": "Unknown Region, or no Gap for this Region and year"}},
+)
+def region_profile(
+    code: str,
+    response: Response,
+    repo: Repo,
+    year: int | None = Query(default=None, description="Year, e.g. 2024. Defaults to the latest scored year."),
+) -> RegionProfile:
+    result = repo.region_profile(code, year)  # NotFound -> 404
+    _cache(response)
+    return result
+
+
+@app.get(
+    "/regions/{code}/action-library",
+    response_model=ActionLibrary,
+    tags=["gaps"],
+    responses={404: {"description": "Unknown Region"}},
+)
+def action_library(code: str, response: Response, repo: Repo) -> ActionLibrary:
+    result = repo.action_library(code)  # NotFound -> 404
     _cache(response)
     return result

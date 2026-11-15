@@ -56,6 +56,13 @@ class Indicator(ContractModel):
     target: float | None = Field(
         description="National Cancer Strategy Target, or null when the indicator has none."
     )
+    cancer_type: str | None = Field(
+        default=None,
+        description=(
+            "Cancer site this indicator is specific to, e.g. 'breast'; 'all' for all sites. "
+            "Null when the indicator is not cancer-specific, as the capacity and referral measures are."
+        ),
+    )
     years: list[int] = Field(description="Years with data, ascending.")
 
 
@@ -187,6 +194,116 @@ class OutreachList(ContractModel):
         description="Required caveat: Region-level associations do not describe individuals. The UI must show it.",
     )
     rows: list[OutreachRow]
+
+
+# --- Region profile (everything the Decision Map shows for one Region) -------
+
+
+class GapEntry(ContractModel):
+    """One scored indicator inside a RegionProfile — the three-layer card's data.
+
+    The same content as a `GapSummary` minus its `region`, which the profile
+    carries once for every entry.
+    """
+
+    indicator: Indicator
+    gap: Gap
+    narrative: Narrative
+    data_quality_notes: list[DataQualityNote]
+    action: StrategyAction | None
+    trend: list[TrendPoint] = Field(description="Series for the sparkline, ascending by year.")
+
+
+class CovariateMeta(ContractModel):
+    """How to read one covariate: its name, unit, and the national median it is compared against."""
+
+    name: str
+    unit: str
+    median: float = Field(description="Median across every Region with a value in this year.")
+
+
+class StakeholderWorkflow(ContractModel):
+    """The action is carried out by writing to an organisation."""
+
+    type: Literal["stakeholder_message"]
+    target: str
+
+
+class PatientWorkflow(ContractModel):
+    """The action is carried out by messaging a group of invitees."""
+
+    type: Literal["patient_message"]
+    profile: str = Field(description="Which invitees, in plain words. Never an individual.")
+
+
+class CandidateAction(ContractModel):
+    """Something a decision-maker could do about this Region's Gaps.
+
+    `recommended` is True when the rules matched this action to a Gap in this
+    Region, and False for an action picked by hand out of the full strategy
+    library. Deterministic either way — no model decides this.
+    """
+
+    id: str
+    kind: Literal["strategy", "covariate"]
+    recommended: bool
+    title: str
+    description: str
+    why: str = Field(min_length=1, description="The evidence for this action, with its figures filled in.")
+    workflow: StakeholderWorkflow | PatientWorkflow
+
+
+class ProfileSummary(ContractModel):
+    indicators_tracked: int = Field(ge=0)
+    indicators_act: int = Field(ge=0)
+    indicators_watch: int = Field(ge=0)
+
+
+class RegionProfile(ContractModel):
+    """Every Gap, covariate and candidate action for one Region in one year."""
+
+    region: Region
+    year: int
+    gaps: list[GapEntry]
+    covariates: dict[str, float] = Field(
+        description="Covariate indicator id -> this Region's value in `year`. Region-level only; never a cause."
+    )
+    covariate_meta: dict[str, CovariateMeta] = Field(description="Keyed by the same ids as `covariates`.")
+    missing_data_notes: list[str] = Field(
+        description="Plain-language notes about indicators with no value this year. Never interpolated."
+    )
+    summary: ProfileSummary
+    synthesis: list[str] = Field(
+        description="Rule-based plain-language reading of the Gaps and covariates above. Not an LLM call."
+    )
+    candidate_actions: list[CandidateAction]
+
+
+class OverviewRow(ContractModel):
+    """One Region's Gap counts — the Decision Map's tile colour."""
+
+    region: Region
+    indicators_tracked: int = Field(ge=0)
+    indicators_act: int = Field(ge=0)
+    indicators_watch: int = Field(ge=0)
+
+
+class Overview(ContractModel):
+    """Every Region's Gap counts for one year.
+
+    Counts, not a single ranking: see docs/adr/0001-gaps-not-bottlenecks.md.
+    """
+
+    year: int
+    rows: list[OverviewRow]
+
+
+class ActionLibrary(ContractModel):
+    """Every curated National Cancer Strategy action, in CandidateAction shape, so a
+    decision-maker can search the whole strategy rather than only what the rules matched."""
+
+    region_code: str
+    actions: list[CandidateAction]
 
 
 # --- narrative service (internal: engine -> narrative) -----------------------

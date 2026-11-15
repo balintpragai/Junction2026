@@ -2,6 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FINLAND_CENTROIDS, FINLAND_PATHS, FINLAND_VIEWBOX } from "@/lib/finland-paths";
+import {
+  CAPITAL_AREA,
+  GEOMETRY_SLUG,
+  HELSINKI,
+  KESKI_UUSIMAA,
+  SMALL_REGIONS,
+  VANTAA_KERAVA,
+} from "@/lib/region-codes";
 import { makeScale } from "@/lib/sequential";
 import { ZoomControl } from "@/components/map/ZoomControl";
 import type { Region } from "@/lib/api";
@@ -16,13 +24,11 @@ const LABEL_K = 2.1;
 /* Ordered back-to-front: Helsinki has the smallest real outline of the
    three and is the most often wanted, so it is drawn last and wins any
    overlap. */
-const SMALL_REGIONS = ["keski-uusimaa", "vantaa-kerava", "helsinki"];
 
 /** The capital area: five Regions inside a few map units of each other,
  *  holding about a third of the country's population. At the zoom that
  *  shows all of Finland they are an unreadable knot, which is the whole
  *  reason this shortcut exists. */
-const CAPITAL_AREA = ["helsinki", "vantaa-kerava", "keski-uusimaa", "lansi-uusimaa", "ita-uusimaa"];
 
 interface View {
   x: number;
@@ -211,7 +217,7 @@ export function DecisionMap({
     (code: string) => {
       // A city-sized Region needs breathing room around it to read as part
       // of a country; a county already fills the frame.
-      const tight = code === "helsinki" || code === "vantaa-kerava" || code === "keski-uusimaa";
+      const tight = code === HELSINKI || code === VANTAA_KERAVA || code === KESKI_UUSIMAA;
       frameRegions([code], tight ? 26 : 10);
     },
     [frameRegions],
@@ -268,7 +274,7 @@ export function DecisionMap({
         <rect x={BX} y={BY} width={BW} height={BH} fill="var(--bg-sunk)" />
 
         {regions.map((region) => {
-          const d = FINLAND_PATHS[region.code];
+          const d = FINLAND_PATHS[GEOMETRY_SLUG[region.code]];
           if (!d) return null;
           const v = value(region.code);
           const isSelected = selected === region.code;
@@ -311,7 +317,7 @@ export function DecisionMap({
             shrinks away once the shapes themselves are big enough to hit. */}
         {view.k < 4 &&
           SMALL_REGIONS.map((code) => {
-            const c = FINLAND_CENTROIDS[code];
+            const c = FINLAND_CENTROIDS[GEOMETRY_SLUG[code]];
             if (!c || !regions.some((r) => r.code === code)) return null;
             return (
               <circle
@@ -332,7 +338,7 @@ export function DecisionMap({
 
         {showLabels &&
           regions.map((region) => {
-            const c = FINLAND_CENTROIDS[region.code];
+            const c = FINLAND_CENTROIDS[GEOMETRY_SLUG[region.code]];
             if (!c) return null;
             const v = value(region.code);
             const short = shortName(region.name);
