@@ -70,6 +70,17 @@ export function DecisionMap({
   const [hover, setHover] = useState<{ code: string; x: number; y: number } | null>(null);
   const [dragging, setDragging] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
+  // The rendered width of the map, so sizes meant in pixels (a finger) can be
+  // converted into the viewBox units the SVG actually draws in.
+  const [frameW, setFrameW] = useState(0);
+  useEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => setFrameW(entry.contentRect.width));
+    ro.observe(el);
+    setFrameW(el.getBoundingClientRect().width);
+    return () => ro.disconnect();
+  }, []);
   const dragFrom = useRef<{ px: number; py: number; vx: number; vy: number } | null>(null);
 
   const { scale, min, max } = useMemo(() => {
@@ -241,15 +252,28 @@ export function DecisionMap({
     return () => window.removeEventListener("keydown", onKey);
   }, [vw, view.k, clamp, zoomTo]);
 
+  // 44px of finger, expressed in viewBox units for the frame's current size.
+  // Falls back to the old mouse-sized radius before the frame has measured.
+  const hitRadius = useMemo(() => {
+    if (!frameW) return 6;
+    return Math.max(6, (44 / 2) * (vw / frameW));
+  }, [vw, frameW]);
+
   const hovered = hover ? regions.find((r) => r.code === hover.code) : null;
   const showLabels = view.k >= LABEL_K;
 
   return (
+    <>
     <div
       className="map-frame"
       style={{ position: "relative", height, borderRadius: 12, overflow: "hidden", background: "var(--bg-sunk)" }}
     >
-      <style>{`@media (max-width: 1080px) { .map-frame { height: 380px !important; } }`}</style>
+      <style>{`
+        @media (max-width: 1080px) { .map-frame { height: 380px !important; } }
+        /* Finland is tall and narrow: on a phone the frame needs the height
+           more than the page needs the scroll. */
+        @media (max-width: 720px) { .map-frame { height: 460px !important; } }
+      `}</style>
       <svg
         ref={svgRef}
         viewBox={`${view.x} ${view.y} ${vw} ${vh}`}
@@ -313,8 +337,14 @@ export function DecisionMap({
 
         {/* The capital-area Regions are cities, not counties: their real
             outlines are correct but only a few pixels across when zoomed
-            out. An invisible circle keeps each reliably clickable, and
-            shrinks away once the shapes themselves are big enough to hit. */}
+            out -- Helsinki renders 7px wide on a phone. An invisible circle
+            keeps each reliably tappable, and shrinks away once the shapes
+            themselves are big enough to hit.
+
+            The radius is in viewBox units, so it has to be converted from the
+            44px a finger needs: one viewBox unit is (frame width / vw) pixels
+            at k = 1. On a phone that makes the circle several times the one a
+            mouse needs, which is the point. */}
         {view.k < 4 &&
           SMALL_REGIONS.map((code) => {
             const c = FINLAND_CENTROIDS[GEOMETRY_SLUG[code]];
@@ -324,7 +354,7 @@ export function DecisionMap({
                 key={`hit-${code}`}
                 cx={c[0]}
                 cy={c[1]}
-                r={6 / view.k}
+                r={hitRadius / view.k}
                 fill="transparent"
                 aria-hidden="true"
                 style={{ cursor: "pointer" }}
@@ -394,8 +424,8 @@ export function DecisionMap({
           position: "absolute",
           top: 14,
           left: 14,
-          minHeight: 30,
-          padding: "6px 11px",
+          minHeight: 44,
+          padding: "6px 13px",
           border: "1px solid var(--line)",
           borderRadius: 8,
           background: "rgba(255, 255, 255, 0.93)",
@@ -410,7 +440,7 @@ export function DecisionMap({
         Helsinki and region
       </button>
 
-      <div style={{ position: "absolute", top: 14, right: 14 }}>
+      <div className="map-zoom" style={{ position: "absolute", top: 14, right: 14 }}>
         <ZoomControl
           k={view.k}
           min={MIN_K}
@@ -421,7 +451,7 @@ export function DecisionMap({
         />
       </div>
 
-      <div style={{ position: "absolute", left: 14, bottom: 14 }}>
+      <div className="map-legend-float" style={{ position: "absolute", left: 14, bottom: 14 }}>
         <Legend min={min} max={max} unit={unit} format={formatTick ?? ((v) => v.toFixed(1))} />
       </div>
 
@@ -431,7 +461,7 @@ export function DecisionMap({
           position: "absolute",
           right: 14,
           bottom: 12,
-          fontSize: 11,
+          fontSize: 11.5,
           color: "var(--ink-3)",
           background: "rgba(255,255,255,0.82)",
           padding: "3px 9px",
@@ -445,9 +475,23 @@ export function DecisionMap({
       <style>{`
         @media (max-width: 720px) {
           .map-hint { display: none; }
+          /* Floated over a phone-sized map, this box hides the whole capital
+             area -- where the Gaps the demo talks about actually are. */
+          .map-legend-float { display: none; }
+          /* Touch has no hover and no wheel, so the buttons are the only way
+             to zoom -- keep them. The 96px slider is the part that eats the
+             map's right-hand side, and dragging a 4px track with a thumb was
+             never going to work anyway, so it goes. */
+          .map-zoom { top: auto !important; bottom: 12px; right: 10px; }
+          .zoom-slider { display: none !important; }
         }
+        @media (min-width: 721px) { .map-legend-bar { display: none; } }
       `}</style>
     </div>
+    <div className="map-legend-bar">
+      <LegendBar min={min} max={max} unit={unit} format={formatTick ?? ((v) => v.toFixed(1))} />
+    </div>
+    </>
   );
 }
 
@@ -484,6 +528,32 @@ function Tooltip({ x, y, text }: { x: number; y: number; text: string }) {
   );
 }
 
+/** The same scale laid out left-to-right, for under the map on a phone.
+ *  Vertically it would need 112px of a 460px frame; across the bottom it
+ *  needs one line. */
+function LegendBar({ min, max, unit, format }: { min: number; max: number; unit: string; format: (v: number) => string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "9px 2px 2px" }}>
+      <span style={{ fontSize: 12, color: "var(--ink-2)", flex: "none" }}>
+        {unit.charAt(0).toUpperCase() + unit.slice(1)}
+      </span>
+      <span className="tnum" style={{ fontSize: 12, color: "var(--ink-2)" }}>{format(min)}</span>
+      <div
+        aria-hidden="true"
+        style={{
+          flex: "1 1 auto",
+          height: 10,
+          minWidth: 0,
+          borderRadius: 999,
+          background: "linear-gradient(to right, #feebe2, #fbb4b9, #f768a1, #c51b8a, #7a0177)",
+          border: "1px solid var(--line)",
+        }}
+      />
+      <span className="tnum" style={{ fontSize: 12, color: "var(--ink-2)" }}>{format(max)}</span>
+    </div>
+  );
+}
+
 function Legend({ min, max, unit, format }: { min: number; max: number; unit: string; format: (v: number) => string }) {
   // A small integer range (e.g. "0..4 indicators") gets one tick per integer
   // instead of 5 evenly-spaced floats that can round to the same label twice.
@@ -509,7 +579,7 @@ function Legend({ min, max, unit, format }: { min: number; max: number; unit: st
         padding: "10px 12px",
       }}
     >
-      <p style={{ fontSize: 11, color: "var(--ink-2)", marginBottom: 7, maxWidth: 118, lineHeight: 1.3 }}>
+      <p style={{ fontSize: 11.5, color: "var(--ink-2)", marginBottom: 7, maxWidth: 118, lineHeight: 1.3 }}>
         {unit.charAt(0).toUpperCase() + unit.slice(1)}
       </p>
       <div style={{ display: "flex", gap: 10 }}>
@@ -526,7 +596,7 @@ function Legend({ min, max, unit, format }: { min: number; max: number; unit: st
       />
       <div className="col" style={{ justifyContent: "space-between", height: 112 }}>
         {values.map((v, i) => (
-          <span key={i} className="tnum" style={{ fontSize: 11, color: "var(--ink-2)", lineHeight: 1 }}>
+          <span key={i} className="tnum" style={{ fontSize: 11.5, color: "var(--ink-2)", lineHeight: 1 }}>
             {format(v)}
           </span>
         ))}

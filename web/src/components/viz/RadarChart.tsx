@@ -125,7 +125,7 @@ export function RadarChart({
                   x={lx}
                   y={ly}
                   textAnchor={anchor}
-                  style={{ fontSize: 10.5, fontWeight: 650, fill: "var(--ink)", fontFamily: "var(--font-body)" }}
+                  style={{ fontSize: 11.5, fontWeight: 650, fill: "var(--ink)", fontFamily: "var(--font-body)" }}
                 >
                   {a.shortName}
                 </text>
@@ -133,7 +133,7 @@ export function RadarChart({
                   x={lx}
                   y={ly + 11}
                   textAnchor={anchor}
-                  style={{ fontSize: 10, fill: hover === i ? "var(--ink)" : "var(--ink-3)" }}
+                  style={{ fontSize: 11.5, fill: hover === i ? "var(--ink)" : "var(--ink-3)" }}
                 >
                   {formatValue(a.raw, a.unit)} ({ordinal(a.rank)})
                 </text>
@@ -191,7 +191,7 @@ export function RadarChart({
                 <p style={{ fontSize: 15, fontWeight: 700, marginTop: 3 }}>
                   {formatValue(axes[hover].raw, axes[hover].unit)}
                 </p>
-                <p style={{ fontSize: 11, color: "var(--ink-2)", marginTop: 3, lineHeight: 1.45 }}>
+                <p style={{ fontSize: 11.5, color: "var(--ink-2)", marginTop: 3, lineHeight: 1.45 }}>
                   {ordinal(axes[hover].rank)} of {axes[hover].nRegions} Regions. National median{" "}
                   {formatValue(axes[hover].medianRaw, axes[hover].unit)}.
                 </p>

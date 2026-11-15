@@ -91,7 +91,7 @@ export function Shell({ children }: { children: ReactNode }) {
                     borderRadius: 999,
                     background: "var(--act)",
                     color: "#fff",
-                    fontSize: 10,
+                    fontSize: 11.5,
                     fontWeight: 700,
                     display: "grid",
                     placeItems: "center",
@@ -186,7 +186,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
         <Avatar initials={current.initials} />
         <span className="account-id col" style={{ alignItems: "flex-start", lineHeight: 1.25 }}>
           <span style={{ fontSize: 12.5, fontWeight: 650 }}>{current.name}</span>
-          <span style={{ fontSize: 10.5, color: "var(--accent)", fontWeight: 600 }}>{ROLE_LABEL[current.role]}</span>
+          <span style={{ fontSize: 11.5, color: "var(--accent)", fontWeight: 600 }}>{ROLE_LABEL[current.role]}</span>
         </span>
         <span className="account-chevron"><Chevron open={open} /></span>
       </button>
@@ -210,7 +210,7 @@ function AccountMenu({ currentId, onPick }: { currentId: string; onPick: (id: st
             <div key={role}>
               <p
                 style={{
-                  fontSize: 11,
+                  fontSize: 11.5,
                   fontWeight: 600,
                   color: "var(--ink-3)",
                   padding: "8px 10px 4px",
@@ -275,7 +275,7 @@ function Avatar({ initials, muted }: { initials: string; muted?: boolean }) {
         color: muted ? "var(--ink-2)" : "#fff",
         display: "grid",
         placeItems: "center",
-        fontSize: 11,
+        fontSize: 11.5,
         fontWeight: 700,
       }}
     >

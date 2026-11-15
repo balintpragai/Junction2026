@@ -83,7 +83,7 @@ export function TeamPage() {
                   {work.map((w, i) => (
                     <div key={i} className="sunk" style={{ padding: "8px 10px" }}>
                       <p style={{ fontSize: 12, fontWeight: 650, lineHeight: 1.35 }}>{w.title}</p>
-                      <p className="truncate" style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 2 }}>
+                      <p className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 2 }}>
                         {w.directive}, {w.days} {w.days === 1 ? "day" : "days"}
                         {w.status === "in_progress" && <strong style={{ color: "var(--watch)" }}>, in progress</strong>}
                         {w.status === "blocked" && <strong style={{ color: "var(--act)" }}>, blocked</strong>}

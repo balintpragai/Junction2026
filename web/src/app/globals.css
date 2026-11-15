@@ -260,7 +260,7 @@ select:focus {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   border-radius: 5px;
@@ -465,4 +465,79 @@ summary::-webkit-details-marker {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* --- Phone ----------------------------------------------------------------
+ *
+ * This app is read on a phone by a decision-maker who is not at a desk, so the
+ * rules below are about the hand, not the screen width: a finger needs a
+ * bigger target than a cursor, and a figure read at arm's length needs a
+ * bigger type size than one read at a monitor.
+ *
+ * Apple's HIG and the WCAG 2.2 "Target Size (Minimum)" criterion both put the
+ * floor at 44px; several controls here were 27-35px.
+ */
+@media (max-width: 720px) {
+  /* Anything tappable gets a finger-sized box. `inline-flex` so a link keeps
+     its own width while gaining height, and centred so the label does not
+     drift to the top of its new box. */
+  a[href],
+  button,
+  select,
+  summary,
+  [role="button"] {
+    min-height: 44px;
+  }
+  /* Deliberately NOT `display: inline-flex` here: a flex container drops the
+     whitespace text nodes between its children, which turned
+     "Worst overall is <strong>North Savo</strong>" into "isNorth Savo".
+     min-height alone gives the target size without touching layout. */
+  /* Links inside running text must stay inline: giving a sentence's link a
+     44px box would break the line. Only standalone links are targets. */
+  p a[href],
+  li a[href],
+  span a[href] {
+    min-height: 0;
+    display: inline;
+  }
+
+  /* A divider earns its place between two things on one line. Once the
+     toolbar wraps to one control per row it is just a mark hanging off the
+     end of the first row. */
+  .toolbar-rule {
+    display: none;
+  }
+
+  /* 16px keeps iOS Safari from zooming the page when a field takes focus. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* These controls set `minHeight` inline, which beats a plain CSS rule, so
+     the phone floor has to be stated louder. Desktop keeps the tighter sizes;
+     this block only applies under 720px. */
+  button,
+  select,
+  input:not([type="checkbox"]):not([type="radio"]),
+  .btn,
+  [role="button"] {
+    min-height: 44px !important;
+  }
+
+  /* A segmented control's own buttons sit inside a sized shell: let the shell
+     grow rather than each half overflowing it. */
+  .seg,
+  .segmented {
+    min-height: 44px;
+  }
+
+  /* Nothing below 12px: 9.5px and 10.5px labels were unreadable at arm's
+     length, and they carried real information (the account's role, the map's
+     zoom level). */
+  body {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
 }

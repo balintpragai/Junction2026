@@ -153,7 +153,7 @@ export function RegionTable({
                         title={`${sev === "ok" ? "At or ahead of target" : sev === "watch" ? "Close to target" : "Needs action"} — rank ${g.gap.rank} of ${g.gap.n_regions}`}
                         style={{
                           marginLeft: 5,
-                          fontSize: 10,
+                          fontSize: 11.5,
                           fontWeight: 700,
                           color: SEVERITY_COLOR[sev],
                           textDecoration: "none",

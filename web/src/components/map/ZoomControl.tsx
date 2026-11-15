@@ -42,7 +42,7 @@ export function ZoomControl({
         <path d="M8 4.5v7M4.5 8h7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       </IconButton>
 
-      <div style={{ position: "relative", height: 96, width: 22, display: "grid", placeItems: "center" }}>
+      <div className="zoom-slider" style={{ position: "relative", height: 96, width: 22, display: "grid", placeItems: "center" }}>
         {/* The visible track; the real <input> sits on top of it, rotated and
             transparent, so this stays a native, keyboard-operable slider. */}
         <div
@@ -100,7 +100,7 @@ export function ZoomControl({
       <span
         className="tnum"
         aria-hidden="true"
-        style={{ fontSize: 9.5, color: "var(--ink-3)", padding: "1px 0", borderTop: "1px solid var(--line)", width: "100%", textAlign: "center" }}
+        style={{ fontSize: 11.5, color: "var(--ink-3)", padding: "1px 0", borderTop: "1px solid var(--line)", width: "100%", textAlign: "center" }}
       >
         {k.toFixed(1)}×
       </span>

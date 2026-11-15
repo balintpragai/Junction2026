@@ -150,12 +150,12 @@ function DirectiveRow({ directive, active, onClick }: { directive: Directive; ac
         >
           <span style={{ display: "block", width: `${pct}%`, height: "100%", background: pct === 100 ? "var(--good)" : "var(--accent)" }} />
         </span>
-        <span style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 4, display: "block" }}>
+        <span style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 4, display: "block" }}>
           {done} of {total} steps, issued {relative(directive.issuedAt)}
         </span>
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11.5,
             marginTop: 2,
             display: "block",
             fontWeight: due.overdue ? 650 : 400,
@@ -312,7 +312,7 @@ function Stat({ value, label, tone }: { value: string; label: string; tone?: "br
       <p className="num" style={{ fontSize: 24, lineHeight: 1.1, color }}>
         {value}
       </p>
-      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>
     </div>
   );
 }

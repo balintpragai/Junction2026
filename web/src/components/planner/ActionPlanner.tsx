@@ -144,7 +144,7 @@ export function ActionPlanner({
                           style={{ flex: 1, textAlign: "left", border: "none", background: "transparent", cursor: "pointer", padding: 0, minWidth: 0 }}
                         >
                           <span style={{ fontSize: 12.5, fontWeight: 650, lineHeight: 1.35, display: "block" }}>{a.title}</span>
-                          <span style={{ fontSize: 10.5, color: "var(--ink-3)" }}>
+                          <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                             {buildPlaybook(a, region.name).reduce((n, p) => n + p.steps.length, 0)} steps over{" "}
                             {criticalPathDays(buildPlaybook(a, region.name))} working days
                           </span>
@@ -282,7 +282,7 @@ function IssuePanel({
           resize: "vertical",
         }}
       />
-      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 4, lineHeight: 1.45 }}>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 4, lineHeight: 1.45 }}>
         State the outcome and the deadline, not the method. The method is the Region&rsquo;s to choose.
       </p>
 
@@ -308,7 +308,7 @@ function IssuePanel({
             }}
           >
             <span style={{ fontWeight: 650, textTransform: "capitalize" }}>{p}</span>
-            <span style={{ fontSize: 11, opacity: 0.75 }}>{RESPONSE_WINDOW_DAYS[p]} working days</span>
+            <span style={{ fontSize: 11.5, opacity: 0.75 }}>{RESPONSE_WINDOW_DAYS[p]} working days</span>
           </button>
         ))}
       </div>
@@ -327,7 +327,7 @@ function Mini({ value, label }: { value: string; label: string }) {
       <p className="tnum" style={{ fontSize: 17, fontWeight: 800, lineHeight: 1.1 }}>
         {value}
       </p>
-      <p style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 2, lineHeight: 1.3 }}>{label}</p>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 2, lineHeight: 1.3 }}>{label}</p>
     </div>
   );
 }

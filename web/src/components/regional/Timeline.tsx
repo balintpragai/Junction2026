@@ -49,7 +49,7 @@ export function Timeline({
           {(["not_started", "in_progress", "complete", "blocked"] as StepStatus[]).map((s) => (
             <span key={s} className="row" style={{ gap: 5 }}>
               <span style={{ width: 10, height: 10, borderRadius: 3, background: BAR_TONE[s], flex: "none" }} />
-              <span style={{ fontSize: 11, color: "var(--ink-2)" }}>
+              <span style={{ fontSize: 11.5, color: "var(--ink-2)" }}>
                 {s === "not_started" ? "Not started" : s === "in_progress" ? "In progress" : s === "complete" ? "Done" : "Blocked"}
               </span>
             </span>
@@ -78,7 +78,7 @@ export function Timeline({
                       <p className="truncate" style={{ fontSize: 11.5, fontWeight: 600 }} title={step.title}>
                         {step.title}
                       </p>
-                      <p className="truncate" style={{ fontSize: 10, color: "var(--ink-3)" }}>
+                      <p className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                         {assignee ? assignee.name : step.level === "state" ? "State" : "Unassigned"}
                       </p>
                     </div>
@@ -115,7 +115,7 @@ export function Timeline({
                         {width > 5 && (
                           <span
                             className="tnum"
-                            style={{ fontSize: 9.5, color: status === "not_started" ? "var(--ink-2)" : "#fff", whiteSpace: "nowrap", fontWeight: 600 }}
+                            style={{ fontSize: 11.5, color: status === "not_started" ? "var(--ink-2)" : "#fff", whiteSpace: "nowrap", fontWeight: 600 }}
                           >
                             {step.durationDays}d
                           </span>
@@ -137,7 +137,7 @@ export function Timeline({
             <span
               key={d}
               className="num"
-              style={{ position: "absolute", left: `${(d / total) * 100}%`, fontSize: 10, color: "var(--ink-3)", transform: "translateX(-50%)", fontWeight: 400 }}
+              style={{ position: "absolute", left: `${(d / total) * 100}%`, fontSize: 11.5, color: "var(--ink-3)", transform: "translateX(-50%)", fontWeight: 400 }}
             >
               {d === 0 ? "start" : `day ${d}`}
             </span>
@@ -213,7 +213,7 @@ export function TeamLoad({
                   color: count > 0 ? "#fff" : "var(--ink-3)",
                   display: "grid",
                   placeItems: "center",
-                  fontSize: 11,
+                  fontSize: 11.5,
                   fontWeight: 700,
                   flex: "none",
                 }}
@@ -222,13 +222,13 @@ export function TeamLoad({
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 650 }}>{member.name}</p>
-                <p style={{ fontSize: 11, color: "var(--ink-3)" }}>{FUNCTION_LABEL[member.func]}</p>
+                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{FUNCTION_LABEL[member.func]}</p>
               </div>
               <div style={{ textAlign: "right", flex: "none" }}>
                 <p className="num" style={{ fontSize: 14 }}>
                   {count}
                 </p>
-                <p style={{ fontSize: 10, color: "var(--ink-3)" }}>step{count === 1 ? "" : "s"}</p>
+                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>step{count === 1 ? "" : "s"}</p>
               </div>
             </div>
 
@@ -239,7 +239,7 @@ export function TeamLoad({
               <span style={{ width: `${(member.baseLoad / maxDays) * 100}%`, background: "var(--line-strong)" }} />
               <span style={{ width: `${(days / maxDays) * 100}%`, background: blocked > 0 ? "var(--act)" : "var(--accent)" }} />
             </div>
-            <p style={{ fontSize: 10.5, color: "var(--ink-3)", marginTop: 5 }}>
+            <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 5 }}>
               {member.baseLoad} days of existing work, {days} from this directive
               {done > 0 && `, ${done} done`}
               {blocked > 0 && <strong style={{ color: "var(--act)" }}>, {blocked} blocked</strong>}

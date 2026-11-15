@@ -105,7 +105,7 @@ export function Programmes() {
 
                           <div style={{ marginTop: 12 }}>
                             <div className="row" style={{ justifyContent: "space-between", marginBottom: 5 }}>
-                              <span style={{ fontSize: 11, color: "var(--ink-3)" }}>
+                              <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                                 {done} of {total} steps reported
                               </span>
                               <span className="num" style={{ fontSize: 11.5 }}>
@@ -123,13 +123,13 @@ export function Programmes() {
                             </div>
                           </div>
 
-                          <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 9 }}>
+                          <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 9 }}>
                             {criticalPathDays(phasesFor(d))} working days of work end to end.{" "}
                             {d.status === "not_started" ? "The Region has not started." : "The Region has it in hand."}
                           </p>
                           <p
                             style={{
-                              fontSize: 11,
+                              fontSize: 11.5,
                               marginTop: 3,
                               fontWeight: due.overdue ? 650 : 400,
                               color: due.overdue ? "var(--act)" : "var(--ink-3)",
@@ -157,7 +157,7 @@ function Stat({ value, label, tone }: { value: string; label: string; tone?: "ac
       <p className="num" style={{ fontSize: 24, lineHeight: 1.1, color: tone === "act" ? "var(--act)" : "var(--ink)" }}>
         {value}
       </p>
-      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3 }}>{label}</p>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3 }}>{label}</p>
     </div>
   );
 }

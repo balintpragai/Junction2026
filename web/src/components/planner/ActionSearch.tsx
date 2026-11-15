@@ -107,7 +107,7 @@ function Row({
     >
       <div style={{ flex: 1, minWidth: 0 }}>
         <p style={{ fontSize: 12.5, fontWeight: 650, lineHeight: 1.35 }}>{action.title}</p>
-        <p className={compact ? "clamp-2" : "clamp-3"} style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.4 }}>
+        <p className={compact ? "clamp-2" : "clamp-3"} style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.4 }}>
           {action.description}
         </p>
         {action.recommended && (

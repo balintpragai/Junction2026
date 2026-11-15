@@ -129,7 +129,7 @@ export function Explorer({ regions, profiles }: { regions: Region[]; profiles: M
       >
         <ViewToggle view={view} onChange={(v) => setParam("view", v)} />
 
-        <span style={{ width: 1, height: 22, background: "var(--line)" }} aria-hidden="true" />
+        <span className="toolbar-rule" style={{ width: 1, height: 22, background: "var(--line)" }} aria-hidden="true" />
 
         {/* The longest option is a full indicator name, which is wider than a
             phone. Let the label shrink and the select truncate, or the whole

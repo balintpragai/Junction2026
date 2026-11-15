@@ -63,7 +63,7 @@ export function RankStrip({
                 <span className="tnum" style={{ fontSize: 12.5, fontWeight: 700, color: tone }}>
                   {formatValue(self, entry.indicator.unit)}
                 </span>
-                <span className="tnum" style={{ fontSize: 11, color: "var(--ink-3)" }}>
+                <span className="tnum" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                   #{entry.gap.rank}/{entry.gap.n_regions}
                 </span>
               </span>
@@ -170,15 +170,15 @@ export function RankStrip({
             ))}
 
             <div className="row" style={{ justifyContent: "space-between", marginTop: 6 }}>
-              <span className="tnum" style={{ fontSize: 10, color: "var(--ink-3)" }}>
+              <span className="tnum" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                 worst {formatValue(higher ? lo : hi, entry.indicator.unit)}
               </span>
               {hover?.indicator === code && (
-                <span style={{ fontSize: 10.5, color: "var(--ink-2)", fontWeight: 600 }}>
+                <span style={{ fontSize: 11.5, color: "var(--ink-2)", fontWeight: 600 }}>
                   {points.find((p) => p.code === hover.code)?.name}
                 </span>
               )}
-              <span className="tnum" style={{ fontSize: 10, color: "var(--ink-3)" }}>
+              <span className="tnum" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
                 best {formatValue(higher ? hi : lo, entry.indicator.unit)}
               </span>
             </div>
@@ -186,7 +186,7 @@ export function RankStrip({
         );
       })}
 
-      <p style={{ fontSize: 11, color: "var(--ink-3)", borderTop: "1px solid var(--line)", paddingTop: 9 }}>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", borderTop: "1px solid var(--line)", paddingTop: 9 }}>
         Each dot is one Region, always ordered worst to best left to right. The filled dot is{" "}
         {profile.region.name}; the vertical rule is the national target where the indicator has one. Click any dot to
         open that Region.

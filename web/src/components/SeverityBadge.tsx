@@ -17,7 +17,7 @@ export function SeverityBadge({ severity }: { severity: SeverityToken }) {
         gap: 6,
         padding: "4px 10px",
         borderRadius: 999,
-        fontSize: 11,
+        fontSize: 11.5,
         fontWeight: 600,
         background: tone.bg,
         color: tone.fg,

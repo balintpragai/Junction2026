@@ -216,7 +216,7 @@ function StepCard({
         <span className={`tag ${isState ? "tag-accent" : ""}`}>{isState ? "State" : FUNCTION_LABEL[step.func]}</span>
         <span className="tag">{dayLabel(step.durationDays)}</span>
         {win && (
-          <span style={{ fontSize: 10.5, color: "var(--ink-3)" }}>
+          <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
             day {win.start} to {win.end}
           </span>
         )}
@@ -249,21 +249,21 @@ function StepCard({
 
       {step.counterparties.length > 0 && (
         <div className="row" style={{ gap: 5, flexWrap: "wrap", marginTop: 9 }}>
-          <span style={{ fontSize: 11, color: "var(--ink-3)" }}>Notify</span>
+          <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>Notify</span>
           {step.counterparties.map((c) => (
             <PartyChip key={c.name} party={c} />
           ))}
         </div>
       )}
 
-      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 9, lineHeight: 1.45 }}>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 9, lineHeight: 1.45 }}>
         <strong style={{ color: "var(--ink-2)" }}>Output:</strong> {step.output}
       </p>
 
       {step.gate && (
         <p
           style={{
-            fontSize: 11,
+            fontSize: 11.5,
             color: "var(--watch)",
             background: "var(--watch-soft)",
             border: "1px solid var(--watch-line)",
@@ -307,7 +307,7 @@ function StepCard({
       )}
 
       {working && assignee && (
-        <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 6 }}>
+        <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 6 }}>
           Assigned to <strong style={{ color: "var(--ink-2)" }}>{assignee.name}</strong>
         </p>
       )}
@@ -327,7 +327,7 @@ export function PartyChip({ party }: { party: Counterparty }) {
       title={party.role}
       className="truncate"
       style={{
-        fontSize: 10.5,
+        fontSize: 11.5,
         fontWeight: 600,
         borderRadius: 6,
         padding: "2px 7px",
@@ -349,7 +349,7 @@ function Stat({ value, label }: { value: string; label: string }) {
       <p className="num" style={{ fontSize: 20, lineHeight: 1.1 }}>
         {value}
       </p>
-      <p style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>
+      <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 3, lineHeight: 1.3 }}>{label}</p>
     </div>
   );
 }
