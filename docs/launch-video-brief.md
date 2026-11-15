@@ -25,7 +25,7 @@ The two Claude artifact mockups in `README.md` are also named "Reach Loop" and "
 
 Frontiers Health shows, Region by Region, where Finnish cancer care falls short of national targets, says so in plain language, and turns that into an action a named decision-maker can issue and a Region can work.
 
-Built for the AstraZeneca challenge at Junction 2026. Live at `frontiershealth.xyz`.
+Built for the AstraZeneca challenge at Junction 2026. Its domain is `frontiershealth.xyz`. **As of 2026-11-15 that domain still serves the registrar's parking page and the demo host is not live (#12)** — capture from a local stack, and do not film a browser address bar showing the live domain until it actually serves the app.
 
 ## 2. Deliverable — assumed spec
 

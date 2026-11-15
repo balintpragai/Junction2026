@@ -47,8 +47,8 @@ The repo side is ready. The host, the VM, the router, the DNS, the LLM key and s
 | Host network | **Wired Ethernet** on a network whose router you can configure | The guest joins the LAN through a bridge, and Wi-Fi interfaces can't be bridged. Ports 80/443 must be forwarded to the guest. |
 | Public IP | The router's WAN address must be a public IPv4, not carrier-grade NAT | Check in [step 3](#3-public-ip-and-dns). Behind CGNAT, port forwarding can't work; you'd need a tunnel or a cloud VM instead. |
 | Guest | Ubuntu 24.04 LTS server cloud image, 2 vCPU, 4 GB RAM, 30 GB disk | Same guest steps as a cloud VM. |
-| Domain | Your own domain if the team has one. Otherwise **sslip.io**, which needs no DNS setup | sslip.io maps `anything.203-0-113-10.sslip.io` to `203.0.113.10`, and Let's Encrypt can issue for it. |
-| Hostnames | `WEB_DOMAIN=reachloop.<base>`, `API_DOMAIN=api.reachloop.<base>` | Two names, two certificates, one Caddyfile. |
+| Domain | **`frontiershealth.xyz`**, the product's own domain, registered at Spaceship. Fallback if DNS cannot be changed in time: **sslip.io**, which needs no DNS setup | sslip.io maps `anything.203-0-113-10.sslip.io` to `203.0.113.10`, and Let's Encrypt can issue for it. |
+| Hostnames | `WEB_DOMAIN=frontiershealth.xyz`, `API_DOMAIN=api.frontiershealth.xyz` | Two names, two certificates, one Caddyfile. The web app sits on the apex because that is the URL that gets shared and shown. |
 | LLM | Whichever OpenAI-compatible provider the team has credits for | `narrative` only needs `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY`. |
 
 Common `LLM_BASE_URL` values (check your provider's docs for the current model names):
@@ -137,8 +137,12 @@ Check: `docker compose version` prints a version, and `docker ps` works without 
 
 On the guest, find the public IP: `curl -s https://ifconfig.me`. It's written `<IP>` below. Compare it with the WAN address on the router's status page. **If they differ, the network is behind carrier-grade NAT** and port forwarding can't reach the guest. Stop here and use a different network, a tunnel or a cloud VM.
 
-- **Own domain:** create two `A` records, `reachloop.<domain>` and `api.reachloop.<domain>`, pointing at `<IP>`. Wait until `dig +short reachloop.<domain>` returns `<IP>`.
-- **sslip.io:** nothing to do. With IP `203.0.113.10` the names are `reachloop.203-0-113-10.sslip.io` and `api.reachloop.203-0-113-10.sslip.io`.
+- **`frontiershealth.xyz` (preferred).** DNS is at **Spaceship** (nameservers `launch1/launch2.spaceship.net`), and the domain currently points at Spaceship's parking page. In Spaceship → Domains → `frontiershealth.xyz` → Advanced DNS:
+  1. **Delete the existing parking `A` records on `@`.** Leaving them in place means half the requests go to the parking page and Let's Encrypt may validate against it.
+  2. Create `A` `@` → `<IP>` and `A` `api` → `<IP>`, TTL as low as the panel allows.
+  3. Optionally `A` `www` → `<IP>`, and set `WEB_DOMAIN="frontiershealth.xyz www.frontiershealth.xyz"` so one site block answers both.
+  4. Wait until `dig +short frontiershealth.xyz` and `dig +short api.frontiershealth.xyz` both return `<IP>` and nothing else. Until the old records expire, `dig` may return both; Caddy will fail the challenge while that is true.
+- **sslip.io:** nothing to do. With IP `203.0.113.10` the names are `frontiershealth.203-0-113-10.sslip.io` and `api.frontiershealth.203-0-113-10.sslip.io`.
 
 DNS must resolve, and the router must forward port 80, **before** the first start, or Caddy can't get certificates. It retries on its own, but slowly.
 
@@ -178,9 +182,9 @@ Set these values. Everything else can keep its default.
 ```sh
 COMPOSE_PROFILES=demo
 RESTART_POLICY=unless-stopped
-WEB_DOMAIN=reachloop.<base>
-API_DOMAIN=api.reachloop.<base>
-WEB_ORIGIN=https://reachloop.<base>
+WEB_DOMAIN=frontiershealth.xyz
+API_DOMAIN=api.frontiershealth.xyz
+WEB_ORIGIN=https://frontiershealth.xyz
 
 POSTGRES_PASSWORD=<long random string>          # e.g. from: openssl rand -hex 24
 DATABASE_URL=postgresql://reachloop:<same password>@db:5432/reachloop

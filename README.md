@@ -31,8 +31,10 @@ Both are mockups with real data wired into static JS — `BUILD.md` is the plan 
 
 The running system, served over HTTPS by Caddy on one Linux VM with the same `compose.yaml`:
 
-- **Web:** _not live yet (#12)_
-- **API:** _not live yet (#12)_ (interactive docs at `/docs`)
+- **Web:** `https://frontiershealth.xyz` — _not live yet (#12); the domain still shows the registrar's parking page_
+- **API:** `https://api.frontiershealth.xyz` — _not live yet (#12)_ (interactive docs at `/docs`)
+
+The names are settled and the repo side is ready; what is missing is a host to point them at. See [`docs/demo-host.md`](docs/demo-host.md) step 3 for the exact Spaceship DNS records.
 
 **Redeploy** (on the VM, from the repo checkout):
 
