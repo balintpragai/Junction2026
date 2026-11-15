@@ -17,3 +17,6 @@ node_modules/
 # Next.js
 web/next-env.d.ts
 *.tsbuildinfo
+
+# Local machine overrides (e.g. dropping the amd64 pin on Apple Silicon)
+compose.override.yaml
