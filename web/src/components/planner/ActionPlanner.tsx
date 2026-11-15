@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 import type { CandidateAction, Region, RegionProfile } from "@/lib/api";
 import { buildPlaybook, criticalPathDays, uniqueCounterparties, allSteps } from "@/lib/playbook";
 import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, addWorkingDays, type Priority } from "@/lib/program";
-import { regionalAccountFor } from "@/lib/roles";
 import { SequenceView } from "@/components/sequence/SequenceView";
 import { ActionSearch } from "@/components/planner/ActionSearch";
 
@@ -67,7 +66,6 @@ export function ActionPlanner({
   const defaultMandate =
     `Close the Gap addressed by ${plan.length === 1 ? "this action" : `these ${plan.length} actions`} in ${region.name}, ` +
     `and report measured movement against the national target within the current screening round.`;
-  const recipient = regionalAccountFor(region.code);
 
   function add(action: CandidateAction) {
     setPlan((prev) => (prev.some((a) => a.id === action.id) ? prev : [...prev, action]));
@@ -106,7 +104,7 @@ export function ActionPlanner({
   }
 
   if (stage === "issued") {
-    return <IssuedConfirmation region={region} count={plan.length} recipientName={recipient?.name} />;
+    return <IssuedConfirmation region={region} count={plan.length} />;
   }
 
   return (
@@ -181,7 +179,6 @@ export function ActionPlanner({
                 mandate={mandate}
                 setMandate={setMandate}
                 defaultMandate={defaultMandate}
-                recipientName={recipient?.name}
                 onIssue={issuePlan}
               />
             )}
@@ -254,7 +251,6 @@ function IssuePanel({
   mandate,
   setMandate,
   defaultMandate,
-  recipientName,
   onIssue,
 }: {
   region: Region;
@@ -265,7 +261,6 @@ function IssuePanel({
   mandate: string;
   setMandate: (s: string) => void;
   defaultMandate: string;
-  recipientName?: string;
   onIssue: () => void;
 }) {
   return (
@@ -280,7 +275,7 @@ function IssuePanel({
         value={mandate}
         onChange={(e) => setMandate(e.target.value)}
         placeholder={defaultMandate}
-        rows={3}
+        rows={4}
         style={{
           width: "100%",
           border: "1px solid var(--line-strong)",
@@ -325,9 +320,8 @@ function IssuePanel({
       </div>
 
       <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 12, lineHeight: 1.5 }}>
-        {recipientName ? <strong style={{ color: "var(--ink-2)" }}>{recipientName}</strong> : "The Region"} is
-        notified at once and owns every step from there. {totals.steps} steps and {totals.parties} bodies, with a
-        response owed by{" "}
+        The Region is notified at once and owns every step from there. {totals.steps} steps and {totals.parties}{" "}
+        bodies, with a response owed by{" "}
         <strong style={{ color: "var(--ink-2)" }}>
           {addWorkingDays(new Date(), RESPONSE_WINDOW_DAYS[priority]).toLocaleDateString("en-GB", {
             day: "numeric",
@@ -356,7 +350,7 @@ function Mini({ value, label }: { value: string; label: string }) {
   );
 }
 
-function IssuedConfirmation({ region, count, recipientName }: { region: Region; count: number; recipientName?: string }) {
+function IssuedConfirmation({ region, count }: { region: Region; count: number }) {
   return (
     <div className="card-lg" style={{ padding: "44px 36px", maxWidth: 620, margin: "24px auto", textAlign: "center" }}>
       <div
@@ -379,7 +373,7 @@ function IssuedConfirmation({ region, count, recipientName }: { region: Region; 
         {count} directive{count > 1 ? "s" : ""} issued to {region.name}
       </h2>
       <p style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 11, lineHeight: 1.65 }}>
-        {recipientName ? `${recipientName} has been notified.` : "The Region has been notified."} Nothing is in motion
+        {region.name} has been notified. Nothing is in motion
         yet, and that is correct: the Region now has to assign each step to its own team and work out the detail only
         it can. Progress will appear under Programmes as they report it.
       </p>
