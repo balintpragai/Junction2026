@@ -1,11 +1,13 @@
 # Frontiers Health
 
 ## Two women in Helsinki open the same letter. One of them dies in cancer. Help us prevent that.
-Breast Cancer that is detected at early stages has almost 100% survival rate, this is why screenings are important. Screenings are free in Finland, women are invited bi-yearly for these. So who goes? Mostly citizens in well developped and well connected regions. The problem is, that a lot regions are not well connected and there are a significant number immigrant women, who need the screening, but don't speak the language. The data shows these problems, but doesn't make it understandable for decision makers. And arranging the right invitation to the right people at the right time isn't just one person's one decision. It takes 10 decision making bodies 14 steps and has no name on it.
+Breast Cancer that is detected at early stages has almost 100% survival rate, this is why screenings are important. Screenings are free in Finland, women are invited bi-yearly for these. So who goes? Mostly citizens in well developed and well connected regions. The problem is, that a lot regions are not well connected and there are a significant number immigrant women, who need the screening, but don't speak the language. The data shows these problems, but doesn't make it understandable for decision makers. And arranging the right invitation to the right people at the right time isn't just one person's one decision. It takes 10 decision making bodies 14 steps and has no name on it.
 
 Frontiers Health solves these problems, by tracking and visualizing relevant data broken down to regions, so that involved authorities can see more problematic regions. Our solution allows them to file required documentation, reasoning, action plan and reach out to involved stakeholders to streamline the process from identifying vulnerable groups, through sending the invitation all the way to getting them to screening.
 
 This project was created for Junction 2026 Astra Zeneca challenge.
+
+# Quickstart
 
 **Start here → [`BUILD.md`](BUILD.md)** — the full build plan: architecture, schema, API contracts, the four workstreams, schedule, and what to do when time runs short.
 
@@ -23,12 +25,6 @@ This project was created for Junction 2026 Astra Zeneca challenge.
 | [`GLOSSARY.md`](GLOSSARY.md) | The words we use: Region, Gap, Target, Severity, Narrative, Template sentence. Use these in tickets, code and the UI. |
 | [`docs/adr/`](docs/adr/) | Decisions that would otherwise surprise a newcomer (e.g. why we measure Gaps, not bottlenecks). |
 
-## The two working demos
-
-- **Pathway Atlas** — the whole-picture explainer: Finnish cancer-care system, stakeholders, data inventory, architecture concept. `https://claude.ai/artifact/TU4EHV8eV2jcgEva3NTG3X`
-- **Reach Loop** — the clickable mock of the actual product (decision-maker gap-finder / outreach list / patient nudge). `https://claude.ai/artifact/3M444xDbCuB55BPASLbWwY`
-
-Both are mockups with real data wired into static JS — `BUILD.md` is the plan for turning Reach Loop into the real, running system.
 
 ## Demo host
 
