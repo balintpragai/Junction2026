@@ -1,5 +1,6 @@
 "use client";
 
+import { useLang } from "@/lib/lang";
 import { allSteps, criticalPathDays, schedule, type PlaybookPhase } from "@/lib/playbook";
 import { FUNCTION_LABEL, type TeamMember } from "@/lib/team";
 import type { StepState, StepStatus } from "@/lib/program";
@@ -27,6 +28,7 @@ export function Timeline({
   stepStates: StepState[];
   team: TeamMember[];
 }) {
+  const { t, tf } = useLang();
   const total = criticalPathDays(phases) || 1;
   const times = schedule(phases);
   const steps = allSteps(phases);
@@ -50,7 +52,13 @@ export function Timeline({
             <span key={s} className="row" style={{ gap: 5 }}>
               <span style={{ width: 10, height: 10, borderRadius: 3, background: BAR_TONE[s], flex: "none" }} />
               <span style={{ fontSize: 11.5, color: "var(--ink-2)" }}>
-                {s === "not_started" ? "Not started" : s === "in_progress" ? "In progress" : s === "complete" ? "Done" : "Blocked"}
+                {s === "not_started"
+                  ? t("Not started")
+                  : s === "in_progress"
+                    ? t("In progress")
+                    : s === "complete"
+                      ? t("Done")
+                      : t("Blocked")}
               </span>
             </span>
           ))}
@@ -79,7 +87,7 @@ export function Timeline({
                         {step.title}
                       </p>
                       <p className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-                        {assignee ? assignee.name : step.level === "state" ? "State" : "Unassigned"}
+                        {assignee ? assignee.name : step.level === "state" ? t("State") : t("Unassigned")}
                       </p>
                     </div>
                     <div style={{ position: "relative", height: 22, background: "var(--bg-sunk)", borderRadius: 5 }}>
@@ -91,7 +99,9 @@ export function Timeline({
                         />
                       ))}
                       <div
-                        title={`${step.title}, day ${win.start} to ${win.end}, ${assignee?.name ?? "unassigned"}`}
+                        title={`${step.title}, ${tf("day {start} to {end}", { start: win.start, end: win.end })}, ${
+                          assignee?.name ?? t("unassigned")
+                        }`}
                         style={{
                           position: "absolute",
                           left: `${left}%`,
@@ -139,7 +149,7 @@ export function Timeline({
               className="num"
               style={{ position: "absolute", left: `${(d / total) * 100}%`, fontSize: 11.5, color: "var(--ink-3)", transform: "translateX(-50%)", fontWeight: 400 }}
             >
-              {d === 0 ? "start" : `day ${d}`}
+              {d === 0 ? t("start") : tf("day {n}", { n: d })}
             </span>
           ))}
         </div>
@@ -160,6 +170,7 @@ export function TeamLoad({
   stepStates: StepState[];
   team: TeamMember[];
 }) {
+  const { t, tf } = useLang();
   const steps = allSteps(phases);
   const rows = team
     .map((m) => {
@@ -222,13 +233,13 @@ export function TeamLoad({
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 650 }}>{member.name}</p>
-                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{FUNCTION_LABEL[member.func]}</p>
+                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{t(FUNCTION_LABEL[member.func])}</p>
               </div>
               <div style={{ textAlign: "right", flex: "none" }}>
                 <p className="num" style={{ fontSize: 14 }}>
                   {count}
                 </p>
-                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>step{count === 1 ? "" : "s"}</p>
+                <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{t(count === 1 ? "step" : "steps")}</p>
               </div>
             </div>
 
@@ -240,9 +251,14 @@ export function TeamLoad({
               <span style={{ width: `${(days / maxDays) * 100}%`, background: blocked > 0 ? "var(--act)" : "var(--accent)" }} />
             </div>
             <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 5 }}>
-              {member.baseLoad} days of existing work, {days} from this directive
-              {done > 0 && `, ${done} done`}
-              {blocked > 0 && <strong style={{ color: "var(--act)" }}>, {blocked} blocked</strong>}
+              {tf("{base} days of existing work, {days} from this directive", {
+                base: member.baseLoad,
+                days,
+              })}
+              {done > 0 && tf(", {n} done", { n: done })}
+              {blocked > 0 && (
+                <strong style={{ color: "var(--act)" }}>{tf(", {n} blocked", { n: blocked })}</strong>
+              )}
             </p>
           </div>
         ))}

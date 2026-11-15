@@ -472,7 +472,7 @@ export function DecisionMap({
           pointerEvents: "none",
         }}
       >
-        Drag to pan, scroll to zoom, double-click to frame a Region
+        {t("Drag to pan, scroll to zoom, double-click to frame a Region")}
       </p>
 
       <style>{`

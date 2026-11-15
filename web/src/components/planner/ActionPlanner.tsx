@@ -8,6 +8,10 @@ import { buildPlaybook, criticalPathDays } from "@/lib/playbook";
 import { newDirective, useProgram, RESPONSE_WINDOW_DAYS, type Priority } from "@/lib/program";
 import { SequenceView } from "@/components/sequence/SequenceView";
 import { ActionSearch } from "@/components/planner/ActionSearch";
+import { useLang } from "@/lib/lang";
+import { regionName } from "@/lib/fi-data";
+import { regionShort } from "@/lib/fi-short";
+import { actionTitle, actionDescription, actionWhy } from "@/lib/actions-fi";
 
 type Stage = "planning" | "issued";
 
@@ -37,6 +41,8 @@ export function ActionPlanner({
   library: CandidateAction[];
 }) {
   const { account, issue } = useProgram();
+  const { lang, t, tf } = useLang();
+  const localRegion = regionName(region.code, region.name, lang);
   const [plan, setPlan] = useState<CandidateAction[]>([]);
   const [focusId, setFocusId] = useState<string | null>(null);
   const [stage, setStage] = useState<Stage>("planning");
@@ -45,15 +51,21 @@ export function ActionPlanner({
 
   const planIds = useMemo(() => new Set(plan.map((a) => a.id)), [plan]);
   const focus = plan.find((a) => a.id === focusId) ?? plan[0] ?? null;
-  const focusPhases = useMemo(() => (focus ? buildPlaybook(focus, region.name) : []), [focus, region.name]);
+  const focusPhases = useMemo(
+    () => (focus ? buildPlaybook(focus, localRegion, lang) : []),
+    [focus, localRegion, lang],
+  );
 
   const worstGap = profile.gaps.find((g) => g.gap.severity === "act") ?? profile.gaps[0];
   // Splicing the action's own title into a sentence reads badly — strategy
   // titles are themselves full sentences. The default states the outcome and
   // leaves the method to the actions attached to it.
-  const defaultMandate =
-    `Close the Gap addressed by ${plan.length === 1 ? "this action" : `these ${plan.length} actions`} in ${region.name}, ` +
-    `and report measured movement against the national target within the current screening round.`;
+  const defaultMandate = tf(
+    plan.length === 1
+      ? "Close the Gap addressed by this action in {region}, and report measured movement against the national target within the current screening round."
+      : "Close the Gap addressed by these {n} actions in {region}, and report measured movement against the national target within the current screening round.",
+    { n: plan.length, region: localRegion },
+  );
 
   function add(action: CandidateAction) {
     setPlan((prev) => (prev.some((a) => a.id === action.id) ? prev : [...prev, action]));
@@ -78,11 +90,15 @@ export function ActionPlanner({
     const evidence = worstGap
       ? `${worstGap.narrative.text}${
           quotesCovariate
-            ? ` Foreign-background share ${foreignBackground}% against a ${foreignBackgroundMedian}% national median.` +
-              ` ${profile.covariate_caveat.short}`
+            ? " " +
+              tf("Foreign-background share {v}% against a {m}% national median.", {
+                v: foreignBackground,
+                m: foreignBackgroundMedian,
+              }) +
+              ` ${t(profile.covariate_caveat.short)}`
             : ""
         }`
-      : "See the Region profile for the full evidence pack.";
+      : t("See the Region profile for the full evidence pack.");
 
     issue(
       plan.map((action) =>
@@ -116,11 +132,11 @@ export function ActionPlanner({
 
             <div className="card" style={{ padding: "13px 15px" }}>
               <h2 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>
-                In this plan ({plan.length})
+                {tf("In this plan ({n})", { n: plan.length })}
               </h2>
               {plan.length === 0 ? (
                 <p style={{ fontSize: 12.5, color: "var(--ink-3)", lineHeight: 1.5 }}>
-                  Nothing yet. Add a recommended action above, or search the full National Cancer Strategy.
+                  {t("Nothing yet. Add a recommended action above, or search the full National Cancer Strategy.")}
                 </p>
               ) : (
                 <div className="col" style={{ gap: 7 }}>
@@ -143,16 +159,18 @@ export function ActionPlanner({
                           onClick={() => setFocusId(a.id)}
                           style={{ flex: 1, textAlign: "left", border: "none", background: "transparent", cursor: "pointer", padding: 0, minWidth: 0 }}
                         >
-                          <span style={{ fontSize: 12.5, fontWeight: 650, lineHeight: 1.35, display: "block" }}>{a.title}</span>
+                          <span style={{ fontSize: 12.5, fontWeight: 650, lineHeight: 1.35, display: "block" }}>{actionTitle(a, lang)}</span>
                           <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-                            {buildPlaybook(a, region.name).reduce((n, p) => n + p.steps.length, 0)} steps over{" "}
-                            {criticalPathDays(buildPlaybook(a, region.name))} working days
+                            {tf("{steps} steps over {days} working days", {
+                              steps: buildPlaybook(a, localRegion, lang).reduce((n, p) => n + p.steps.length, 0),
+                              days: criticalPathDays(buildPlaybook(a, localRegion, lang)),
+                            })}
                           </span>
                         </button>
                         <button
                           onClick={() => remove(a.id)}
-                          aria-label={`Remove ${a.title} from the plan`}
-                          title="Remove from plan"
+                          aria-label={tf("Remove {title} from the plan", { title: actionTitle(a, lang) })}
+                          title={t("Remove from plan")}
                           className="hit"
                           style={{ border: "none", background: "transparent", color: "var(--ink-3)", cursor: "pointer", fontSize: 15, lineHeight: 1, padding: 0, flex: "none" }}
                         >
@@ -186,30 +204,31 @@ export function ActionPlanner({
                 <header style={{ marginBottom: 15 }}>
                   <div className="row" style={{ gap: 7, flexWrap: "wrap" }}>
                     <span className={`tag ${focus.recommended ? "tag-accent" : ""}`}>
-                      {focus.kind === "strategy" ? "Strategy action" : "Data-driven"}
+                      {focus.kind === "strategy" ? t("Strategy action") : t("Data-driven")}
                     </span>
-                    {focus.recommended && <span className="tag tag-accent">Recommended here</span>}
+                    {focus.recommended && <span className="tag tag-accent">{t("Recommended here")}</span>}
                     <span className="tag">
-                      {focus.workflow.type === "patient_message" ? "Reaches patients" : "Reaches institutions"}
+                      {focus.workflow.type === "patient_message" ? t("Reaches patients") : t("Reaches institutions")}
                     </span>
                   </div>
-                  <h2 style={{ fontSize: "1.25rem", marginTop: 10 }}>{focus.title}</h2>
+                  <h2 style={{ fontSize: "1.25rem", marginTop: 10 }}>{actionTitle(focus, lang)}</h2>
                   <p style={{ fontSize: 13.5, color: "var(--ink-2)", marginTop: 7, lineHeight: 1.6, maxWidth: "74ch" }}>
-                    {focus.description}
+                    {actionDescription(focus, lang)}
                   </p>
                   <details className="sunk" style={{ padding: "10px 13px", marginTop: 11 }}>
                     <summary style={{ fontSize: 12, fontWeight: 650, cursor: "pointer", color: "var(--ink-2)" }}>
-                      Why this action, for this Region
+                      {t("Why this action, for this Region")}
                     </summary>
-                    <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6 }}>{focus.why}</p>
+                    <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 8, lineHeight: 1.6 }}>{actionWhy(focus, lang)}</p>
                   </details>
                 </header>
 
                 <div style={{ borderTop: "1px solid var(--line)", paddingTop: 15 }}>
-                  <h3 style={{ fontSize: 13, marginBottom: 4 }}>What this sets in motion</h3>
+                  <h3 style={{ fontSize: 13, marginBottom: 4 }}>{t("What this sets in motion")}</h3>
                   <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 14, maxWidth: "74ch" }}>
-                    Choosing this action does not send a message. It starts the chain below — every step the Region
-                    has to complete, and every institution that has to be told, before anything reaches a patient.
+                    {t(
+                      "Choosing this action does not send a message. It starts the chain below — every step the Region has to complete, and every institution that has to be told, before anything reaches a patient.",
+                    )}
                   </p>
                   <SequenceView phases={focusPhases} mode="preview" />
                 </div>
@@ -217,8 +236,9 @@ export function ActionPlanner({
             ) : (
               <div className="card-lg" style={{ padding: "64px 32px", textAlign: "center" }}>
                 <p style={{ fontSize: 14, color: "var(--ink-2)", maxWidth: 420, margin: "0 auto", lineHeight: 1.6 }}>
-                  Add an action to see the chain of work it implies — the steps, the institutions that have to be
-                  notified, and how long it actually takes.
+                  {t(
+                    "Add an action to see the chain of work it implies — the steps, the institutions that have to be notified, and how long it actually takes.",
+                  )}
                 </p>
               </div>
             )}
@@ -257,12 +277,13 @@ function IssuePanel({
   defaultMandate: string;
   onIssue: () => void;
 }) {
+  const { lang, t, tf } = useLang();
   return (
     <div className="card" style={{ padding: "13px 15px" }}>
-      <h2 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>Issue to the Region</h2>
+      <h2 style={{ fontSize: 12.5, color: "var(--ink-2)", marginBottom: 10 }}>{t("Issue to the Region")}</h2>
 
       <label htmlFor="mandate" style={{ display: "block", fontSize: 12, fontWeight: 600, marginBottom: 5 }}>
-        The instruction
+        {t("The instruction")}
       </label>
       <textarea
         id="mandate"
@@ -283,10 +304,10 @@ function IssuePanel({
         }}
       />
       <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 4, lineHeight: 1.45 }}>
-        State the outcome and the deadline, not the method. The method is the Region&rsquo;s to choose.
+        {t("State the outcome and the deadline, not the method. The method is the Region’s to choose.")}
       </p>
 
-      <p style={{ fontSize: 12, fontWeight: 600, marginTop: 12, marginBottom: 6 }}>Priority</p>
+      <p style={{ fontSize: 12, fontWeight: 600, marginTop: 12, marginBottom: 6 }}>{t("Priority")}</p>
       <div className="col" style={{ gap: 5 }}>
         {(["urgent", "high", "routine"] as Priority[]).map((p) => (
           <button
@@ -307,15 +328,19 @@ function IssuePanel({
               border: `1px solid ${priority === p ? "var(--ink)" : "var(--line-strong)"}`,
             }}
           >
-            <span style={{ fontWeight: 650, textTransform: "capitalize" }}>{p}</span>
-            <span style={{ fontSize: 11.5, opacity: 0.75 }}>{RESPONSE_WINDOW_DAYS[p]} working days</span>
+            <span style={{ fontWeight: 650 }}>{t(PRIORITY_LABEL[p])}</span>
+            <span style={{ fontSize: 11.5, opacity: 0.75 }}>
+              {tf("{n} working days", { n: RESPONSE_WINDOW_DAYS[p] })}
+            </span>
           </button>
         ))}
       </div>
 
       <button className="btn btn-primary" style={{ width: "100%", marginTop: 14 }} onClick={onIssue}>
-        Issue {plan.length} action{plan.length > 1 ? "s" : ""} to{" "}
-        {region.name.replace(/ wellbeing services county$/, "")}
+        {tf(plan.length > 1 ? "Issue {n} actions to {region}" : "Issue {n} action to {region}", {
+          n: plan.length,
+          region: regionShort(region.code, region.name, lang),
+        })}
       </button>
     </div>
   );
@@ -333,6 +358,8 @@ function Mini({ value, label }: { value: string; label: string }) {
 }
 
 function IssuedConfirmation({ region, count }: { region: Region; count: number }) {
+  const { lang, t, tf } = useLang();
+  const name = regionName(region.code, region.name, lang);
   return (
     <div className="card-lg" style={{ padding: "44px 36px", maxWidth: 620, margin: "24px auto", textAlign: "center" }}>
       <div
@@ -352,24 +379,29 @@ function IssuedConfirmation({ region, count }: { region: Region; count: number }
         </svg>
       </div>
       <h2 style={{ fontSize: "1.35rem" }}>
-        {count} directive{count > 1 ? "s" : ""} issued to {region.name}
+        {tf(count > 1 ? "{n} directives issued to {region}" : "{n} directive issued to {region}", {
+          n: count,
+          region: name,
+        })}
       </h2>
       <p style={{ fontSize: 14, color: "var(--ink-2)", marginTop: 11, lineHeight: 1.65 }}>
-        {region.name} has been notified. Nothing is in motion
-        yet, and that is correct: the Region now has to assign each step to its own team and work out the detail only
-        it can. Progress will appear under Programmes as they report it.
+        {tf(
+          "{region} has been notified. Nothing is in motion yet, and that is correct: the Region now has to assign each step to its own team and work out the detail only it can. Progress will appear under Programmes as they report it.",
+          { region: name },
+        )}
       </p>
       <div className="row" style={{ gap: 10, justifyContent: "center", marginTop: 20, flexWrap: "wrap" }}>
         <Link href="/programmes" className="btn btn-primary">
-          Track it under Programmes
+          {t("Track it under Programmes")}
         </Link>
         <Link href="/" className="btn btn-ghost">
-          Back to the Decision Map
+          {t("Back to the Decision Map")}
         </Link>
       </div>
       <p style={{ fontSize: 12, color: "var(--ink-3)", marginTop: 18, lineHeight: 1.5 }}>
-        To see the other side of the handoff, switch to a Regional Decision Maker account in the menu at the top
-        right — the directive is waiting there.
+        {t(
+          "To see the other side of the handoff, switch to a Regional Decision Maker account in the menu at the top right — the directive is waiting there.",
+        )}
       </p>
     </div>
   );

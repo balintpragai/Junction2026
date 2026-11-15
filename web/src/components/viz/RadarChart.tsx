@@ -1,5 +1,9 @@
 "use client";
 
+import { useLang } from "@/lib/lang";
+import type { Lang } from "@/lib/i18n";
+import { indicatorName } from "@/lib/fi-data";
+import { indicatorShort } from "@/lib/fi-short";
 import { useId, useState } from "react";
 import { formatValue, type AxisPoint } from "@/lib/viz";
 
@@ -34,9 +38,10 @@ export function RadarChart({
   const [hover, setHover] = useState<number | null>(null);
   const [tableOpen, setTableOpen] = useState(false);
   const id = useId();
+  const { lang, t, tf } = useLang();
 
   if (axes.length < 3) {
-    return <p style={{ fontSize: 13, color: "var(--ink-3)" }}>Not enough tracked indicators to compare shapes.</p>;
+    return <p style={{ fontSize: 13, color: "var(--ink-3)" }}>{t("Not enough tracked indicators to compare shapes.")}</p>;
   }
 
   const n = axes.length;
@@ -127,7 +132,7 @@ export function RadarChart({
                   textAnchor={anchor}
                   style={{ fontSize: 11.5, fontWeight: 650, fill: "var(--ink)", fontFamily: "var(--font-body)" }}
                 >
-                  {a.shortName}
+                  {lang === "fi" ? indicatorShort(a.code, a.name, lang) : a.shortName}
                 </text>
                 <text
                   x={lx}
@@ -135,7 +140,7 @@ export function RadarChart({
                   textAnchor={anchor}
                   style={{ fontSize: 11.5, fill: hover === i ? "var(--ink)" : "var(--ink-3)" }}
                 >
-                  {formatValue(a.raw, a.unit)} ({ordinal(a.rank)})
+                  {formatValue(a.raw, a.unit)} ({ordinal(a.rank, lang)})
                 </text>
               </g>
             );
@@ -156,8 +161,9 @@ export function RadarChart({
                 style={{ cursor: "pointer" }}
               >
                 <title>
-                  {a.name}: {formatValue(a.raw, a.unit)}, {ordinal(a.rank)} of {a.nRegions} Regions. National median{" "}
-                  {formatValue(a.medianRaw, a.unit)}.
+                  {indicatorName(a.code, a.name, lang)}: {formatValue(a.raw, a.unit)},{" "}
+                  {tf("{rank} of {n} Regions.", { rank: ordinal(a.rank, lang), n: a.nRegions })}{" "}
+                  {tf("National median {v}.", { v: formatValue(a.medianRaw, a.unit) })}
                 </title>
               </circle>
             );
@@ -175,7 +181,7 @@ export function RadarChart({
             space makes the loop impossible rather than unlikely. */}
         <div className="col" style={{ gap: 10, flex: "0 0 176px", width: 176 }}>
           <LegendRow color="#8a1960" label={regionName} />
-          <LegendRow color="#245fb0" label="National median" />
+          <LegendRow color="#245fb0" label={t("National median")} />
           <div
             className="sunk"
             aria-live="polite"
@@ -183,17 +189,22 @@ export function RadarChart({
           >
             {hover == null ? (
               <p style={{ fontSize: 11.5, color: "var(--ink-3)", lineHeight: 1.45 }}>
-                Point at a spoke for the figure behind it.
+                {t("Point at a spoke for the figure behind it.")}
               </p>
             ) : (
               <>
-                <p style={{ fontSize: 11.5, fontWeight: 650 }}>{axes[hover].name}</p>
+                <p style={{ fontSize: 11.5, fontWeight: 650 }}>
+                  {indicatorName(axes[hover].code, axes[hover].name, lang)}
+                </p>
                 <p style={{ fontSize: 15, fontWeight: 700, marginTop: 3 }}>
                   {formatValue(axes[hover].raw, axes[hover].unit)}
                 </p>
                 <p style={{ fontSize: 11.5, color: "var(--ink-2)", marginTop: 3, lineHeight: 1.45 }}>
-                  {ordinal(axes[hover].rank)} of {axes[hover].nRegions} Regions. National median{" "}
-                  {formatValue(axes[hover].medianRaw, axes[hover].unit)}.
+                  {tf("{rank} of {n} Regions.", {
+                    rank: ordinal(axes[hover].rank, lang),
+                    n: axes[hover].nRegions,
+                  })}{" "}
+                  {tf("National median {v}.", { v: formatValue(axes[hover].medianRaw, axes[hover].unit) })}
                 </p>
               </>
             )}
@@ -204,22 +215,22 @@ export function RadarChart({
       {showTable && (
         <div style={{ marginTop: 10 }}>
           <button className="btn btn-quiet btn-sm" onClick={() => setTableOpen((v) => !v)} aria-expanded={tableOpen}>
-            {tableOpen ? "Hide" : "Show"} the numbers
+            {tableOpen ? t("Hide the numbers") : t("Show the numbers")}
           </button>
           {tableOpen && (
             <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 8, fontSize: 12.5 }}>
               <thead>
                 <tr style={{ textAlign: "left", color: "var(--ink-3)" }}>
-                  <th style={{ padding: "6px 8px", fontWeight: 600 }}>Indicator</th>
-                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>This Region</th>
-                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>Median</th>
-                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>Rank</th>
+                  <th style={{ padding: "6px 8px", fontWeight: 600 }}>{t("Indicator")}</th>
+                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>{t("This Region")}</th>
+                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>{t("Median")}</th>
+                  <th style={{ padding: "6px 8px", fontWeight: 600, textAlign: "right" }}>{t("Rank")}</th>
                 </tr>
               </thead>
               <tbody>
                 {axes.map((a) => (
                   <tr key={a.code} style={{ borderTop: "1px solid var(--line)" }}>
-                    <td style={{ padding: "6px 8px" }}>{a.name}</td>
+                    <td style={{ padding: "6px 8px" }}>{indicatorShort(a.code, a.name, lang)}</td>
                     <td className="tnum" style={{ padding: "6px 8px", textAlign: "right", fontWeight: 650 }}>
                       {formatValue(a.raw, a.unit)}
                     </td>
@@ -227,7 +238,7 @@ export function RadarChart({
                       {formatValue(a.medianRaw, a.unit)}
                     </td>
                     <td style={{ padding: "6px 8px", textAlign: "right", color: "var(--ink-2)" }}>
-                      {ordinal(a.rank)} of {a.nRegions}
+                      {tf("{rank} of {n}", { rank: ordinal(a.rank, lang), n: a.nRegions })}
                     </td>
                   </tr>
                 ))}
@@ -242,7 +253,9 @@ export function RadarChart({
 
 /** "3rd", "22nd" — the rank reads as a position, which is what the radial
  *  distance encodes, so the two agree. */
-function ordinal(n: number): string {
+function ordinal(n: number, lang: Lang): string {
+  // Finnish writes an ordinal as the numeral plus a full stop: "3." not "3rd".
+  if (lang === "fi") return `${n}.`;
   const rem100 = n % 100;
   if (rem100 >= 11 && rem100 <= 13) return `${n}th`;
   return `${n}${["th", "st", "nd", "rd"][n % 10] ?? "th"}`;

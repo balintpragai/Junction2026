@@ -12,10 +12,12 @@ import {
 } from "@/lib/playbook";
 import { FUNCTION_LABEL, type TeamMember } from "@/lib/team";
 import type { StepState, StepStatus } from "@/lib/program";
+import { useLang } from "@/lib/lang";
+import { tf as format, type Lang } from "@/lib/i18n";
 
-/** "1 day", not "1 days". */
-function dayLabel(n: number): string {
-  return `${n} ${n === 1 ? "day" : "days"}`;
+/** "1 day", not "1 days". Finnish takes the partitive for both. */
+function dayLabel(n: number, lang: Lang): string {
+  return format(lang, n === 1 ? "{n} day" : "{n} days", { n });
 }
 
 const STATUS_TONE: Record<StepStatus, { fg: string; bg: string; line: string; label: string }> = {
@@ -50,6 +52,7 @@ export function SequenceView({
   onAssign?: (stepId: string, memberId: string | null) => void;
   onStatus?: (stepId: string, status: StepStatus) => void;
 }) {
+  const { lang, t, tf } = useLang();
   const days = criticalPathDays(phases);
   const times = schedule(phases);
   const parties = uniqueCounterparties(phases);
@@ -59,15 +62,15 @@ export function SequenceView({
   return (
     <div className="col" style={{ gap: 14 }}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(128px, 1fr))", gap: 10 }}>
-        <Stat value={String(steps.length)} label="derived steps" />
-        <Stat value={`${days}`} label="working days, end to end" />
-        <Stat value={String(parties.length)} label="bodies to notify" />
-        <Stat value={`${regionalCount}/${steps.length}`} label="steps the Region owns" />
+        <Stat value={String(steps.length)} label={t("derived steps")} />
+        <Stat value={`${days}`} label={t("working days, end to end")} />
+        <Stat value={String(parties.length)} label={t("bodies to notify")} />
+        <Stat value={`${regionalCount}/${steps.length}`} label={t("steps the Region owns")} />
       </div>
 
       <details className="card" style={{ padding: "11px 14px" }}>
         <summary style={{ fontSize: 12.5, fontWeight: 650, cursor: "pointer", color: "var(--ink-2)" }}>
-          Who has to be involved ({parties.length})
+          {tf("Who has to be involved ({n})", { n: parties.length })}
         </summary>
         <div className="col" style={{ gap: 7, marginTop: 11 }}>
           {parties.map((c) => (
@@ -120,17 +123,17 @@ export function SequenceView({
                 <div className="row" style={{ gap: 9, flexWrap: "wrap" }}>
                   <h3 style={{ fontSize: 14.5 }}>{phase.name}</h3>
                   <span className="tag">
-                    {dayLabel(Math.max(0, ...phaseSteps.map((s) => s.durationDays)))}
-                    {phaseSteps.length > 1 ? `, ${phaseSteps.length} in parallel` : ""}
+                    {dayLabel(Math.max(0, ...phaseSteps.map((s) => s.durationDays)), lang)}
+                    {phaseSteps.length > 1 ? tf(", {n} in parallel", { n: phaseSteps.length }) : ""}
                   </span>
-                  {phaseSteps.every((s) => s.level === "state") && <span className="tag tag-accent">State</span>}
+                  {phaseSteps.every((s) => s.level === "state") && <span className="tag tag-accent">{t("State")}</span>}
                 </div>
                 <p style={{ fontSize: 12.5, color: "var(--ink-2)", marginTop: 4, maxWidth: "74ch" }}>{phase.summary}</p>
 
                 <details open={phaseLive} style={{ marginTop: 9 }}>
                   <summary style={{ fontSize: 12, fontWeight: 600, color: "var(--ink-2)", cursor: "pointer" }}>
-                    {phaseSteps.length} {phaseSteps.length === 1 ? "step" : "steps"}
-                    {mode === "work" && phaseDone ? ", all done" : ""}
+                    {tf(phaseSteps.length === 1 ? "{n} step" : "{n} steps", { n: phaseSteps.length })}
+                    {mode === "work" && phaseDone ? t(", all done") : ""}
                   </summary>
                   <div
                     style={{
@@ -188,6 +191,7 @@ function StepCard({
   const detailRef = useRef<HTMLParagraphElement>(null);
   const status = state?.status ?? "not_started";
   const tone = STATUS_TONE[status];
+  const { lang, t, tf } = useLang();
   const working = mode === "work";
   const assignee = team?.find((m) => m.id === state?.assigneeId);
   const isState = step.level === "state";
@@ -213,16 +217,18 @@ function StepCard({
       }}
     >
       <div className="row" style={{ gap: 7, flexWrap: "wrap", marginBottom: 7 }}>
-        <span className={`tag ${isState ? "tag-accent" : ""}`}>{isState ? "State" : FUNCTION_LABEL[step.func]}</span>
-        <span className="tag">{dayLabel(step.durationDays)}</span>
+        <span className={`tag ${isState ? "tag-accent" : ""}`}>
+          {isState ? t("State") : t(FUNCTION_LABEL[step.func])}
+        </span>
+        <span className="tag">{dayLabel(step.durationDays, lang)}</span>
         {win && (
           <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>
-            day {win.start} to {win.end}
+            {tf("day {start} to {end}", { start: win.start, end: win.end })}
           </span>
         )}
         {working && (
           <span className="tag" style={{ marginLeft: "auto", color: tone.fg, borderColor: tone.line, background: tone.bg }}>
-            {tone.label}
+            {t(tone.label)}
           </span>
         )}
       </div>
@@ -239,17 +245,17 @@ function StepCard({
         <button
           className="btn btn-quiet btn-sm hit"
           aria-expanded={open}
-          aria-label={open ? `Show less about ${step.title}` : `Show more about ${step.title}`}
+          aria-label={tf(open ? "Show less about {title}" : "Show more about {title}", { title: step.title })}
           style={{ padding: "2px 0", fontSize: 11.5, justifyContent: "flex-start", minWidth: 44 }}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "less" : "more"}
+          {open ? t("less") : t("more")}
         </button>
       )}
 
       {step.counterparties.length > 0 && (
         <div className="row" style={{ gap: 5, flexWrap: "wrap", marginTop: 9 }}>
-          <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>Notify</span>
+          <span style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{t("Notify")}</span>
           {step.counterparties.map((c) => (
             <PartyChip key={c.name} party={c} />
           ))}
@@ -257,7 +263,7 @@ function StepCard({
       )}
 
       <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 9, lineHeight: 1.45 }}>
-        <strong style={{ color: "var(--ink-2)" }}>Output:</strong> {step.output}
+        <strong style={{ color: "var(--ink-2)" }}>{t("Output:")}</strong> {step.output}
       </p>
 
       {step.gate && (
@@ -273,7 +279,7 @@ function StepCard({
             lineHeight: 1.45,
           }}
         >
-          <strong>Gate:</strong> {step.gate}
+          <strong>{t("Gate:")}</strong> {step.gate}
         </p>
       )}
 
@@ -282,33 +288,33 @@ function StepCard({
           <select
             value={state?.assigneeId ?? ""}
             onChange={(e) => onAssign?.(step.id, e.target.value || null)}
-            aria-label={`Assignee for ${step.title}`}
+            aria-label={tf("Assignee for {title}", { title: step.title })}
             style={{ fontSize: 12, padding: "5px 8px", flex: "1 1 130px", minWidth: 0 }}
           >
-            <option value="">Unassigned</option>
+            <option value="">{t("Unassigned")}</option>
             {team?.map((m) => (
               <option key={m.id} value={m.id}>
-                {m.name} — {FUNCTION_LABEL[m.func]}
+                {m.name} — {t(FUNCTION_LABEL[m.func])}
               </option>
             ))}
           </select>
           <select
             value={status}
             onChange={(e) => onStatus?.(step.id, e.target.value as StepStatus)}
-            aria-label={`Status of ${step.title}`}
+            aria-label={tf("Status of {title}", { title: step.title })}
             style={{ fontSize: 12, padding: "5px 8px", flex: "0 0 auto" }}
           >
-            <option value="not_started">Not started</option>
-            <option value="in_progress">In progress</option>
-            <option value="complete">Done</option>
-            <option value="blocked">Blocked</option>
+            <option value="not_started">{t("Not started")}</option>
+            <option value="in_progress">{t("In progress")}</option>
+            <option value="complete">{t("Done")}</option>
+            <option value="blocked">{t("Blocked")}</option>
           </select>
         </div>
       )}
 
       {working && assignee && (
         <p style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 6 }}>
-          Assigned to <strong style={{ color: "var(--ink-2)" }}>{assignee.name}</strong>
+          {t("Assigned to")} <strong style={{ color: "var(--ink-2)" }}>{assignee.name}</strong>
         </p>
       )}
     </div>

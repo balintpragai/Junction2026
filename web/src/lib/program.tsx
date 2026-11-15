@@ -15,6 +15,9 @@ import { buildPlaybook, allSteps, type PlaybookPhase } from "@/lib/playbook";
 import { DEFAULT_ACCOUNT_ID, accountById, type Account } from "@/lib/roles";
 import { memberForFunction } from "@/lib/team";
 import { HELSINKI, KNOWN_REGION_CODES } from "@/lib/region-codes";
+import { tf, type Lang } from "@/lib/i18n";
+import { useLang } from "@/lib/lang";
+import { regionName } from "@/lib/fi-data";
 
 /** What each priority actually commits the Region to. Without this the
  *  choice was cosmetic — the planner said a response window followed from
@@ -235,6 +238,7 @@ const Ctx = createContext<ProgramApi | null>(null);
 export function ProgramProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<ProgramState>({ accountId: DEFAULT_ACCOUNT_ID, directives: [], readIds: [] });
   const [ready, setReady] = useState(false);
+  const { lang } = useLang();
 
   // Hydrate after mount: localStorage doesn't exist during the server render,
   // and reading it in useState's initialiser would mismatch the markup.
@@ -331,7 +335,10 @@ export function ProgramProvider({ children }: { children: React.ReactNode }) {
               : d.status;
         return { ...d, steps, status: next };
       }),
-    phasesFor: (d) => buildPlaybook(d.action, d.regionName),
+    // Display only: the chain is rebuilt in the reader's language, with the
+    // Region named as they see it elsewhere. Step ids are unchanged, so the
+    // statuses and assignees stored against them still line up.
+    phasesFor: (d) => buildPlaybook(d.action, regionName(d.regionCode, d.regionName, lang), lang),
     reset: () => update(() => ({ accountId: DEFAULT_ACCOUNT_ID, directives: seedDirectives(), readIds: [] })),
   };
 
@@ -352,12 +359,15 @@ export function isOverdue(d: Directive): boolean {
 
 /** "in 12 working days" / "3 working days overdue" — the phrasing a
  *  deadline needs, rather than a bare date the reader has to do maths on. */
-export function dueLabel(d: Directive): { text: string; overdue: boolean } {
+export function dueLabel(d: Directive, lang: Lang = "en"): { text: string; overdue: boolean } {
   const n = workingDaysUntil(d.dueAt);
-  if (d.status === "complete") return { text: "closed", overdue: false };
-  if (n < 0) return { text: `${Math.abs(n)} working days overdue`, overdue: true };
-  if (n === 0) return { text: "response due today", overdue: true };
-  return { text: `response due in ${n} working day${n === 1 ? "" : "s"}`, overdue: false };
+  if (d.status === "complete") return { text: tf(lang, "closed", {}), overdue: false };
+  if (n < 0) return { text: tf(lang, "{n} working days overdue", { n: Math.abs(n) }), overdue: true };
+  if (n === 0) return { text: tf(lang, "response due today", {}), overdue: true };
+  return {
+    text: tf(lang, n === 1 ? "response due in {n} working day" : "response due in {n} working days", { n }),
+    overdue: false,
+  };
 }
 
 export function progressOf(d: Directive): { done: number; total: number; pct: number } {

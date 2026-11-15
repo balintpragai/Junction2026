@@ -122,6 +122,8 @@ add({
   "Map of Finland's 23 Regions. Click a Region for its profile; drag to pan, scroll to zoom.":
     "Suomen 23 aluetta kartalla. Napsauta aluetta nähdäksesi sen profiilin; raahaa siirtääksesi, vieritä zoomataksesi.",
   "Helsinki and region": "Helsinki ja pääkaupunkiseutu",
+  "Drag to pan, scroll to zoom, double-click to frame a Region":
+    "Raahaa siirtääksesi, vieritä zoomataksesi, kaksoisnapsauta rajataksesi alueen",
   "Zoom in": "Lähennä",
   "Zoom out": "Loitonna",
   "Fit all of Finland": "Sovita koko Suomi",
@@ -167,6 +169,246 @@ add({
   "Above": "Yli",
   "At or below": "Tasolla tai alle",
   "the {median}{suffix} national median": "valtakunnallisen mediaanin ({median}{suffix})",
+});
+
+// --- Pages, empty states, errors --------------------------------------------
+add({
+  "Back to the decision map": "Takaisin päätöskartalle",
+  "Back to the Decision Map": "Takaisin päätöskartalle",
+  "Go to the Decision Map": "Siirry päätöskartalle",
+  "What could help in {region}": "Mikä voisi auttaa: {region}",
+  "Each action expands into the chain of work it sets off, so you are issuing a programme rather than sending a message.":
+    "Jokainen toimi avautuu työketjuksi, jonka se käynnistää, joten annat ohjelman etkä lähetä viestiä.",
+  "No such Region": "Aluetta ei löydy",
+  "The code in that link does not match any of Finland’s 23 Regions. It may have been mistyped, or the link may predate a change to how Regions are named.":
+    "Linkin koodi ei vastaa mitään Suomen 23 alueesta. Se on voitu kirjoittaa väärin, tai linkki on vanhempi kuin alueiden nimeämiseen tehty muutos.",
+  "This screen could not load": "Näkymää ei voitu ladata",
+  "Usually this means the API is unreachable. Check that it is running and that API_URL points at it, then try again.":
+    "Yleensä tämä tarkoittaa, ettei rajapintaan saada yhteyttä. Tarkista, että se on käynnissä ja että API_URL osoittaa siihen, ja yritä uudelleen.",
+  "Reference {digest}": "Viite {digest}",
+  "Try again": "Yritä uudelleen",
+  "Loading the Decision Map": "Ladataan päätöskarttaa",
+  "Could not reach the API": "Rajapintaan ei saatu yhteyttä",
+  "The stack is running but web could not read api. Check docker compose ps (five services healthy, seed exited 0), that API_URL points at api, and that the rescore job has scored Gaps — /overview should return 23 rows.":
+    "Palvelut ovat käynnissä, mutta web ei saanut luettua api:a. Tarkista docker compose ps (viisi palvelua terveinä, seed päättyi koodilla 0), että API_URL osoittaa api:in ja että pisteytysajo on laskenut erot — /overview palauttaa 23 riviä.",
+});
+
+// --- Directives in flight (State) -------------------------------------------
+add({
+  "Directives in flight": "Käynnissä olevat määräykset",
+  "What each Region has reported back. You see progress, not their working detail — assigning and sequencing the work is theirs to do.":
+    "Mitä kukin alue on raportoinut takaisin. Näet edistymisen, et työn yksityiskohtia — työn jakaminen ja järjestys ovat alueen asia.",
+  "Nothing issued yet": "Mitään ei ole vielä annettu",
+  "Open a Region from the Decision Map and build an action plan.":
+    "Avaa alue päätöskartalta ja rakenna toimintasuunnitelma.",
+  "directives issued": "annettua määräystä",
+  "still open": "yhä auki",
+  "not started by the Region": "alue ei ole aloittanut",
+  "past the response window": "vastausaika ylittynyt",
+  "average progress": "keskimääräinen edistyminen",
+  "{n} directive": "{n} määräys",
+  "{n} directives": "{n} määräystä",
+  "held by {name}, {title}": "vastuussa {name}, {title}",
+  "{n} blocked": "{n} jumissa",
+  "{done} of {total} steps reported": "{done}/{total} vaihetta raportoitu",
+  "{n} working days of work end to end.": "{n} työpäivää työtä alusta loppuun.",
+  "The Region has not started.": "Alue ei ole aloittanut.",
+  "The Region has it in hand.": "Alue hoitaa asiaa.",
+  "Not started": "Ei aloitettu",
+  "In progress": "Käynnissä",
+  "Blocked": "Jumissa",
+  "Done": "Valmis",
+  "urgent": "kiireellinen",
+  "high": "korkea",
+  "routine": "tavanomainen",
+  "closed": "suljettu",
+  "{n} working days overdue": "{n} työpäivää myöhässä",
+  "response due today": "vastaus erääntyy tänään",
+  "response due in {n} working day": "vastaus erääntyy {n} työpäivän kuluttua",
+  "response due in {n} working days": "vastaus erääntyy {n} työpäivän kuluttua",
+  "On target": "Tavoitteessa",
+});
+
+// --- Action planner ---------------------------------------------------------
+add({
+  "Add an action": "Lisää toimi",
+  "Search {n} strategy actions": "Hae {n} strategiatoimesta",
+  "Search all {n} National Cancer Strategy actions": "Hae kaikista {n} syöpästrategian toimesta",
+  "No action matches “{query}”.": "Mikään toimi ei vastaa hakua ”{query}”.",
+  "Recommended here, matched to this Region’s own Gaps:":
+    "Suositellaan tänne, kohdistettuna tämän alueen omiin eroihin:",
+  "No Gap in this Region triggered a recommendation — search the strategy above to add one anyway.":
+    "Mikään tämän alueen ero ei laukaissut suositusta — hae strategiasta yllä ja lisää toimi silti.",
+  "recommended": "suositeltu",
+  "Add": "Lisää",
+  "{title} is in the plan": "{title} on suunnitelmassa",
+  "Add {title}": "Lisää {title}",
+  "In this plan ({n})": "Tässä suunnitelmassa ({n})",
+  "Nothing yet. Add a recommended action above, or search the full National Cancer Strategy.":
+    "Ei vielä mitään. Lisää suositeltu toimi yltä tai hae koko kansallisesta syöpästrategiasta.",
+  "{steps} steps over {days} working days": "{steps} vaihetta {days} työpäivän aikana",
+  "Remove {title} from the plan": "Poista {title} suunnitelmasta",
+  "Remove from plan": "Poista suunnitelmasta",
+  "Strategy action": "Strategiatoimi",
+  "Data-driven": "Dataan perustuva",
+  "Recommended here": "Suositellaan tänne",
+  "Reaches patients": "Tavoittaa potilaat",
+  "Reaches institutions": "Tavoittaa laitokset",
+  "Why this action, for this Region": "Miksi tämä toimi, tälle alueelle",
+  "What this sets in motion": "Mitä tämä panee liikkeelle",
+  "Choosing this action does not send a message. It starts the chain below — every step the Region has to complete, and every institution that has to be told, before anything reaches a patient.":
+    "Tämän toimen valitseminen ei lähetä viestiä. Se käynnistää alla olevan ketjun — jokaisen vaiheen, joka alueen on suoritettava, ja jokaisen laitoksen, jolle on ilmoitettava, ennen kuin mikään tavoittaa potilaan.",
+  "Add an action to see the chain of work it implies — the steps, the institutions that have to be notified, and how long it actually takes.":
+    "Lisää toimi nähdäksesi työketjun, jonka se edellyttää — vaiheet, ilmoitettavat laitokset ja sen, kauanko se tosiasiassa kestää.",
+  "Issue to the Region": "Anna alueelle",
+  "The instruction": "Ohje",
+  "State the outcome and the deadline, not the method. The method is the Region’s to choose.":
+    "Kerro lopputulos ja määräaika, älä menetelmää. Menetelmän valitsee alue.",
+  "Priority": "Kiireellisyys",
+  "Routine": "Tavanomainen",
+  "High": "Korkea",
+  "Urgent": "Kiireellinen",
+  "High priority": "Korkea kiireellisyys",
+  "{n} working days": "{n} työpäivää",
+  "Issue {n} action to {region}": "Anna {n} toimi alueelle {region}",
+  "Issue {n} actions to {region}": "Anna {n} toimea alueelle {region}",
+  "Close the Gap addressed by this action in {region}, and report measured movement against the national target within the current screening round.":
+    "Sulje tämän toimen kohteena oleva ero alueella {region} ja raportoi mitattu muutos valtakunnalliseen tavoitteeseen nähden kuluvan seulontakierroksen aikana.",
+  "Close the Gap addressed by these {n} actions in {region}, and report measured movement against the national target within the current screening round.":
+    "Sulje näiden {n} toimen kohteena oleva ero alueella {region} ja raportoi mitattu muutos valtakunnalliseen tavoitteeseen nähden kuluvan seulontakierroksen aikana.",
+  "Foreign-background share {v}% against a {m}% national median.":
+    "Ulkomaalaistaustaisten osuus {v} % suhteessa valtakunnalliseen {m} %:n mediaaniin.",
+  "See the Region profile for the full evidence pack.":
+    "Koko näyttöpaketti on alueen profiilissa.",
+  "{n} directive issued to {region}": "{n} määräys annettu alueelle {region}",
+  "{n} directives issued to {region}": "{n} määräystä annettu alueelle {region}",
+  "{region} has been notified. Nothing is in motion yet, and that is correct: the Region now has to assign each step to its own team and work out the detail only it can. Progress will appear under Programmes as they report it.":
+    "Alueelle {region} on ilmoitettu. Mikään ei ole vielä liikkeessä, ja se on oikein: alueen on nyt jaettava jokainen vaihe omalle tiimilleen ja ratkaistava ne yksityiskohdat, jotka vain se voi ratkaista. Edistyminen näkyy Ohjelmat-näkymässä sitä mukaa kun alue raportoi.",
+  "Track it under Programmes": "Seuraa sitä Ohjelmat-näkymässä",
+  "To see the other side of the handoff, switch to a Regional Decision Maker account in the menu at the top right — the directive is waiting there.":
+    "Nähdäksesi luovutuksen toisen puolen vaihda alueen päättäjän käyttäjään oikean yläkulman valikosta — määräys odottaa siellä.",
+});
+
+// --- The chain (sequence view) ----------------------------------------------
+add({
+  "{n} day": "{n} päivä",
+  "{n} days": "{n} päivää",
+  "derived steps": "johdettua vaihetta",
+  "working days, end to end": "työpäivää alusta loppuun",
+  "bodies to notify": "ilmoitettavaa tahoa",
+  "steps the Region owns": "vaihetta alueen vastuulla",
+  "Who has to be involved ({n})": "Keiden on oltava mukana ({n})",
+  ", {n} in parallel": ", {n} rinnakkain",
+  "State": "Valtio",
+  "{n} step": "{n} vaihe",
+  "{n} steps": "{n} vaihetta",
+  ", all done": ", kaikki valmiina",
+  "day {start} to {end}": "päivä {start}–{end}",
+  "day {n}": "päivä {n}",
+  "start": "alku",
+  "Show less about {title}": "Näytä vähemmän: {title}",
+  "Show more about {title}": "Näytä lisää: {title}",
+  "less": "vähemmän",
+  "more": "lisää",
+  "Notify": "Ilmoita",
+  "Output:": "Tuotos:",
+  "Gate:": "Portti:",
+  "Assignee for {title}": "Vastuuhenkilö: {title}",
+  "Unassigned": "Ei vastuuhenkilöä",
+  "unassigned": "ei vastuuhenkilöä",
+  "Status of {title}": "Tila: {title}",
+  "Assigned to": "Vastuussa",
+  "step": "vaihe",
+  "steps": "vaihetta",
+  "Screening programme lead": "Seulontaohjelman vastaava",
+  "Health data analyst": "Terveysdata-analyytikko",
+  "Data protection officer": "Tietosuojavastaava",
+  "Chief physician, screening": "Ylilääkäri, seulonta",
+  "Communications": "Viestintä",
+  "Transport & logistics": "Kuljetus ja logistiikka",
+  "Community liaison": "Yhteisöyhteyshenkilö",
+  "Finance & procurement": "Talous ja hankinnat",
+});
+
+// --- Regional dashboard and team --------------------------------------------
+add({
+  "The State sets the outcome. Who does what, in which order and with which institution is yours.":
+    "Valtio asettaa lopputuloksen. Kuka tekee mitä, missä järjestyksessä ja minkä laitoksen kanssa, on teidän.",
+  "open directive": "avoin määräys",
+  "open directives": "avointa määräystä",
+  "not started": "ei aloitettu",
+  "step in progress": "vaihe käynnissä",
+  "steps in progress": "vaihetta käynnissä",
+  "step unassigned": "vaihe ilman vastuuhenkilöä",
+  "steps unassigned": "vaihetta ilman vastuuhenkilöä",
+  "blocked": "jumissa",
+  "Nothing has been issued to this Region": "Tälle alueelle ei ole annettu mitään",
+  "When the national programme issues a directive for {org}, it arrives here with its evidence and its full chain of work. Switch to the State account to issue one.":
+    "Kun kansallinen ohjelma antaa määräyksen organisaatiolle {org}, se saapuu tänne näyttöineen ja koko työketjuineen. Vaihda valtion käyttäjään antaaksesi sellaisen.",
+  "Inbox": "Saapuneet",
+  "{done} of {total} steps, issued {when}": "{done}/{total} vaihetta, annettu {when}",
+  "today": "tänään",
+  "yesterday": "eilen",
+  "{n}d ago": "{n} pv sitten",
+  "{n}mo ago": "{n} kk sitten",
+  "From the national programme": "Kansalliselta ohjelmalta",
+  "Asked of this Region:": "Alueelta pyydetään:",
+  "by {date}": "määräaika {date}",
+  "The evidence behind it": "Taustalla oleva näyttö",
+  "{done} of {total} steps complete": "{done}/{total} vaihetta valmiina",
+  "{steps} steps over {days} working days, involving {bodies} bodies":
+    "{steps} vaihetta {days} työpäivän aikana, mukana {bodies} tahoa",
+  "Assign the whole chain to my team": "Jaa koko ketju tiimilleni",
+  "Directive views": "Määräyksen näkymät",
+  "The chain": "Ketju",
+  "Who and when": "Kuka ja milloin",
+  "What that puts on each person": "Mitä se tarkoittaa kullekin",
+  "Who is carrying what": "Kuka kantaa mitäkin",
+  "Open work across every directive issued to {org}. A national playbook names a function; this is the person who holds it here.":
+    "Avoin työ kaikista organisaatiolle {org} annetuista määräyksistä. Kansallinen toimintamalli nimeää tehtävän; tässä on henkilö, joka hoitaa sen täällä.",
+  "{n} open": "{n} avointa",
+  "{n} days assigned": "{n} päivää jaettuna",
+  "{n} days existing": "{n} päivää ennestään",
+  ", in progress": ", käynnissä",
+  ", blocked": ", jumissa",
+  "Nothing assigned from the current directives.": "Nykyisistä määräyksistä ei ole jaettu mitään.",
+  "{base} days of existing work, {days} from this directive":
+    "{base} päivää olemassa olevaa työtä, {days} tästä määräyksestä",
+  ", {n} done": ", {n} valmiina",
+});
+
+// --- Charts -----------------------------------------------------------------
+add({
+  "National median": "Valtakunnallinen mediaani",
+  "Point at a spoke for the figure behind it.": "Osoita sädettä nähdäksesi sen taustalla olevan luvun.",
+  "{rank} of {n} Regions.": "Sijoitus {rank}/{n} alueesta.",
+  "{rank} of {n}": "{rank}/{n}",
+  "National median {v}.": "Valtakunnallinen mediaani {v}.",
+  "Hide the numbers": "Piilota luvut",
+  "Show the numbers": "Näytä luvut",
+  "This Region": "Tämä alue",
+  "Median": "Mediaani",
+  "Not enough tracked indicators to compare shapes.":
+    "Seurattuja indikaattoreita ei ole tarpeeksi muotojen vertailuun.",
+  "{region} against every other Region, indicator by indicator":
+    "{region} verrattuna kaikkiin muihin alueisiin, indikaattori kerrallaan",
+  "Target: {v}": "Tavoite: {v}",
+  "Each dot is one Region, always ordered worst to best left to right. The filled dot is {region}; the vertical rule is the national target where the indicator has one. Click any dot to open that Region.":
+    "Jokainen piste on yksi alue, aina järjestyksessä heikoimmasta parhaaseen vasemmalta oikealle. Täytetty piste on {region}; pystyviiva on valtakunnallinen tavoite silloin kun indikaattorilla on sellainen. Napsauta pistettä avataksesi alueen.",
+});
+
+// --- Role gate --------------------------------------------------------------
+add({
+  "Loading…": "Ladataan…",
+  "This screen belongs to the {role}": "Tämä näkymä kuuluu roolille {role}",
+  "You are signed in as": "Olet kirjautuneena",
+  "The national map covers all 23 Regions; a Regional account works from the directives issued to its own Region.":
+    "Valtakunnallinen kartta kattaa kaikki 23 aluetta; alueen käyttäjä työskentelee omalle alueelleen annettujen määräysten pohjalta.",
+  "Regional workflow is run by the Region's own team — the State sees reported progress, not the working detail.":
+    "Alueen työnkulkua hoitaa alueen oma tiimi — valtio näkee raportoidun edistymisen, ei työn yksityiskohtia.",
+  "Go to your dashboard": "Siirry omaan näkymääsi",
+  "Switch accounts from the menu at the top right to see the other side.":
+    "Vaihda käyttäjää oikean yläkulman valikosta nähdäksesi toisen puolen.",
 });
 
 export { FI as TRANSLATIONS };

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLang } from "@/lib/lang";
 import { useMemo } from "react";
 import { RoleGate } from "@/components/RoleGate";
 import { useProgram } from "@/lib/program";
@@ -30,13 +31,17 @@ export function TeamPage() {
     return map;
   }, [visibleDirectives, phasesFor]);
 
+  const { t, tf } = useLang();
+
   return (
     <RoleGate allow="regional">
       <header style={{ marginBottom: 16 }}>
-        <h1 style={{ fontSize: "clamp(1.35rem, 2.4vw, 1.7rem)" }}>Who is carrying what</h1>
+        <h1 style={{ fontSize: "clamp(1.35rem, 2.4vw, 1.7rem)" }}>{t("Who is carrying what")}</h1>
         <p style={{ color: "var(--ink-2)", marginTop: 5, fontSize: 13.5, maxWidth: "78ch" }}>
-          Open work across every directive issued to {account.org}. A national playbook names a function; this is
-          the person who holds it here.
+          {tf(
+            "Open work across every directive issued to {org}. A national playbook names a function; this is the person who holds it here.",
+            { org: t(account.org) },
+          )}
         </p>
       </header>
 
@@ -67,15 +72,15 @@ export function TeamPage() {
                 </span>
                 <div style={{ minWidth: 0 }}>
                   <p style={{ fontSize: 14, fontWeight: 700 }}>{m.name}</p>
-                  <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{FUNCTION_LABEL[m.func]}</p>
+                  <p style={{ fontSize: 11.5, color: "var(--ink-3)" }}>{t(FUNCTION_LABEL[m.func])}</p>
                 </div>
               </div>
 
               <div className="row" style={{ gap: 7, marginTop: 12, flexWrap: "wrap" }}>
-                <span className="tag">{work.length} open</span>
-                <span className="tag">{days} {days === 1 ? "day" : "days"} assigned</span>
-                <span className="tag">{m.baseLoad} {m.baseLoad === 1 ? "day" : "days"} existing</span>
-                {blocked > 0 && <span className="tag tag-act">{blocked} blocked</span>}
+                <span className="tag">{tf("{n} open", { n: work.length })}</span>
+                <span className="tag">{tf("{n} days assigned", { n: days })}</span>
+                <span className="tag">{tf("{n} days existing", { n: m.baseLoad })}</span>
+                {blocked > 0 && <span className="tag tag-act">{tf("{n} blocked", { n: blocked })}</span>}
               </div>
 
               {work.length > 0 ? (
@@ -84,16 +89,18 @@ export function TeamPage() {
                     <div key={i} className="sunk" style={{ padding: "8px 10px" }}>
                       <p style={{ fontSize: 12, fontWeight: 650, lineHeight: 1.35 }}>{w.title}</p>
                       <p className="truncate" style={{ fontSize: 11.5, color: "var(--ink-3)", marginTop: 2 }}>
-                        {w.directive}, {w.days} {w.days === 1 ? "day" : "days"}
-                        {w.status === "in_progress" && <strong style={{ color: "var(--watch)" }}>, in progress</strong>}
-                        {w.status === "blocked" && <strong style={{ color: "var(--act)" }}>, blocked</strong>}
+                        {w.directive}, {tf("{n} days", { n: w.days })}
+                        {w.status === "in_progress" && (
+                          <strong style={{ color: "var(--watch)" }}>{t(", in progress")}</strong>
+                        )}
+                        {w.status === "blocked" && <strong style={{ color: "var(--act)" }}>{t(", blocked")}</strong>}
                       </p>
                     </div>
                   ))}
                 </div>
               ) : (
                 <p style={{ fontSize: 12, color: "var(--ink-3)", marginTop: 12 }}>
-                  Nothing assigned from the current directives.
+                  {t("Nothing assigned from the current directives.")}
                 </p>
               )}
             </div>

@@ -13,6 +13,8 @@
  *  actually governed (see docs/institutions.md for who each body is).
  */
 
+import type { Lang } from "@/lib/i18n";
+import { localizePhases, profileFi } from "@/lib/playbook-fi";
 import type { CandidateAction } from "@/lib/api";
 import type { StepFunction } from "@/lib/team";
 
@@ -513,12 +515,18 @@ function stakeholderChain(action: CandidateAction, regionName: string): Playbook
 }
 
 /** The full chain for an action in a Region, national mandate first. */
-export function buildPlaybook(action: CandidateAction, regionName: string): PlaybookPhase[] {
+export function buildPlaybook(
+  action: CandidateAction,
+  regionName: string,
+  lang: Lang = "en",
+): PlaybookPhase[] {
   const body =
     action.workflow.type === "patient_message"
       ? patientMessageChain(action, regionName)
       : stakeholderChain(action, regionName);
-  return [mandatePhase(regionName), ...body];
+  const phases = [mandatePhase(regionName), ...body];
+  const profile = action.workflow.type === "patient_message" ? action.workflow.profile : "the invited population";
+  return localizePhases(phases, lang, { region: regionName, profile: profileFi(profile, lang) });
 }
 
 export function allSteps(phases: PlaybookPhase[]): PlaybookStep[] {

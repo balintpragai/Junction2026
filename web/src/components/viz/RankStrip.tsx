@@ -1,5 +1,8 @@
 "use client";
 
+import { useLang } from "@/lib/lang";
+import { regionName, indicatorName } from "@/lib/fi-data";
+import { regionShort } from "@/lib/fi-short";
 import { useState } from "react";
 import type { RegionProfile } from "@/lib/api";
 import { formatValue } from "@/lib/viz";
@@ -22,9 +25,12 @@ export function RankStrip({
   onPick?: (code: string) => void;
 }) {
   const [hover, setHover] = useState<{ indicator: string; code: string } | null>(null);
+  const { lang, tf } = useLang();
 
   return (
-    <div className="col" style={{ gap: 20 }} role="group" aria-label={`${profile.region.name} against every other Region, indicator by indicator`}>
+    <div className="col" style={{ gap: 20 }} role="group" aria-label={tf("{region} against every other Region, indicator by indicator", {
+        region: regionName(profile.region.code, profile.region.name, lang),
+      })}>
       {profile.gaps.map((entry) => {
         const code = entry.indicator.code;
         const higher = entry.indicator.higher_is_better;
@@ -32,7 +38,7 @@ export function RankStrip({
         const points: { code: string; name: string; value: number }[] = [];
         for (const p of all.values()) {
           const g = p.gaps.find((x) => x.indicator.code === code);
-          if (g) points.push({ code: p.region.code, name: p.region.name, value: g.gap.value });
+          if (g) points.push({ code: p.region.code, name: regionShort(p.region.code, p.region.name, lang), value: g.gap.value });
         }
         if (points.length === 0) return null;
 
@@ -58,7 +64,9 @@ export function RankStrip({
             }}
           >
             <div className="row" style={{ justifyContent: "space-between", marginBottom: 5, gap: 10 }}>
-              <span style={{ fontSize: 12.5, fontWeight: 650 }}>{entry.indicator.name}</span>
+              <span style={{ fontSize: 12.5, fontWeight: 650 }}>
+                {indicatorName(entry.indicator.code, entry.indicator.name, lang)}
+              </span>
               <span className="row" style={{ gap: 8, flex: "none" }}>
                 <span className="tnum" style={{ fontSize: 12.5, fontWeight: 700, color: tone }}>
                   {formatValue(self, entry.indicator.unit)}
@@ -95,7 +103,7 @@ export function RankStrip({
                     background: "var(--ink)",
                     transform: "translateX(-1px)",
                   }}
-                  title={`Target: ${formatValue(target, entry.indicator.unit)}`}
+                  title={tf("Target: {v}", { v: formatValue(target, entry.indicator.unit) })}
                 />
               )}
 
@@ -146,7 +154,7 @@ export function RankStrip({
                   boxShadow: "0 1px 4px rgba(0,0,0,0.22)",
                   zIndex: 4,
                 }}
-                title={`${profile.region.name}: ${formatValue(self, entry.indicator.unit)}`}
+                title={`${regionName(profile.region.code, profile.region.name, lang)}: ${formatValue(self, entry.indicator.unit)}`}
               />
             </div>
 
@@ -187,9 +195,10 @@ export function RankStrip({
       })}
 
       <p style={{ fontSize: 11.5, color: "var(--ink-3)", borderTop: "1px solid var(--line)", paddingTop: 9 }}>
-        Each dot is one Region, always ordered worst to best left to right. The filled dot is{" "}
-        {profile.region.name}; the vertical rule is the national target where the indicator has one. Click any dot to
-        open that Region.
+        {tf(
+          "Each dot is one Region, always ordered worst to best left to right. The filled dot is {region}; the vertical rule is the national target where the indicator has one. Click any dot to open that Region.",
+          { region: regionName(profile.region.code, profile.region.name, lang) },
+        )}
       </p>
     </div>
   );
