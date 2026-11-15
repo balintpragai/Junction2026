@@ -15,6 +15,8 @@ Beyond the invitation itself, Frontiers Health gives decision makers:
 - **An outreach list** of regions below target, shown next to what may lie behind each gap: the share of immigrant residents, travel costs to appointments, broadband coverage and doctor shortages.
 - **A simple view for patients**, and every view in both Finnish and English.
 
+Demo video: https://youtu.be/vtFNqYXEjIE
+
 ### Screening attendance in 2024
 
 The same groups fall behind in every programme. Source: Finnish Cancer Registry.
