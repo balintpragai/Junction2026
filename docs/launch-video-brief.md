@@ -25,7 +25,7 @@ The two Claude artifact mockups in `README.md` are also named "Reach Loop" and "
 
 Frontiers Health shows, Region by Region, where Finnish cancer care falls short of national targets, says so in plain language, and turns that into an action a named decision-maker can issue and a Region can work.
 
-Built for the AstraZeneca challenge at Junction 2026. Its domain is `frontiershealth.xyz`. **As of 2026-11-15 that domain still serves the registrar's parking page and the demo host is not live (#12)** — capture from a local stack, and do not film a browser address bar showing the live domain until it actually serves the app.
+Built for the AstraZeneca challenge at Junction 2026. **Live at `frontiershealth.xyz` since 2026-11-15 08:26 EET**, so the address bar is safe to film. The api is at `api.frontiershealth.xyz`, its docs at `/docs`.
 
 ## 2. Deliverable — assumed spec
 
@@ -231,7 +231,9 @@ The UI already has a considered design language, documented in `web/src/app/glob
 
 **Does not exist — you must capture it.** The two screenshots above are both the Decision Map. There is **no** existing capture of the Helsinki cards, the synthesis panel, the action cards or the Regional step view — i.e. beats 3 through 6. Capture from the running product:
 
-- `frontiershealth.xyz`, or `http://localhost:3000` with the stack up (`docker compose up --build`; see `docs/local-development.md`)
+- `https://frontiershealth.xyz` — live, and the same build as a local stack. Its api docs at `https://api.frontiershealth.xyz/docs` are safe to film; the engine's and narrative's are not (see §0)
+- `http://localhost:3000` with the stack up (`docker compose up --build`; see `docs/local-development.md`) — the fallback, and what to use if the live site does not answer
+- **The live site is served from a laptop through a Cloudflare Tunnel.** It is up for the event, not indefinitely. If it is dark when you come to capture, run the stack locally rather than assuming the product broke
 - There is no wordmark lockup or motion asset of any kind yet. If the video needs one, that is new design work — say so rather than stretching `logo.png`.
 
 ## 12. Tone

@@ -36,12 +36,15 @@ The stack runs on a laptop and is published through a Cloudflare Tunnel, because
 the venue network has no inbound ports to forward. Setup and verification:
 [`docs/demo-host.md`](docs/demo-host.md) → **Cloudflare Tunnel from a laptop**.
 
-- **Web:** `https://frontiershealth.xyz` — _pending the named tunnel; the zone has to move to Cloudflare DNS first_
-- **API:** `https://api.frontiershealth.xyz` — _same_ (interactive docs at `/docs`)
+- **Web:** <https://frontiershealth.xyz> — live since 2026-11-15 08:26 EET
+- **API:** <https://api.frontiershealth.xyz> — live (interactive docs at [`/docs`](https://api.frontiershealth.xyz/docs))
 
-Until then the stack is reachable on whatever `*.trycloudflare.com` hostname the
-current quick tunnel was given. **That hostname changes every time `cloudflared`
-restarts, so it is not worth writing down or sharing.**
+`www.frontiershealth.xyz` serves the same app. TLS is Cloudflare's; there is no
+Let's Encrypt and no Caddy on this path.
+
+**The origin is a laptop.** If the domain stops answering, the tunnel or the
+machine is down, not DNS — check `cloudflared tunnel info frontiers-health` for
+live connections and `docker compose ps` for the stack, in that order.
 
 **Redeploy** (on the VM, from the repo checkout):
 
