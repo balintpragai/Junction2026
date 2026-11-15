@@ -1,4 +1,4 @@
-"""`api`: the public, read-only Reach Loop API.
+"""`api`: the public, read-only Frontiers Health API.
 
 Every data route reads Postgres (see `repository.py`). Response shapes are the Pydantic
 models in `common.models`; they are the contract with `web`. `api` never calls
@@ -33,7 +33,7 @@ log = logging.getLogger("api")
 CACHE_CONTROL = "max-age=300"
 
 app = FastAPI(
-    title="Reach Loop API",
+    title="Frontiers Health API",
     version="0.1.0",
     description="Read-only public API: Regions, indicators, Gap summaries and outreach lists.",
     separate_input_output_schemas=False,

@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Reach Loop API",
+    "title": "Frontiers Health API",
     "description": "Read-only public API: Regions, indicators, Gap summaries and outreach lists.",
     "version": "0.1.0"
   },

@@ -1,6 +1,8 @@
-# Reach Loop
+# Frontiers Health
 
 An AI-powered gap-finder for equitable cancer care in Finland — built for the AstraZeneca challenge at Junction 2026.
+
+> **Naming.** The product is **Frontiers Health** (frontiershealth.xyz) — that is what the app, the API and the demo say. **`reach-loop` / `reachloop` remains the internal codename**, and you will still see it as the compose project name, the Postgres user and database, and the image tags. Those are deliberate: renaming them would mean recreating the database volume for nothing a user can see.
 
 **Start here → [`BUILD.md`](BUILD.md)** — the full build plan: architecture, schema, API contracts, the four workstreams, schedule, and what to do when time runs short.
 

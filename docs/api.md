@@ -1,4 +1,4 @@
-# Reach Loop API reference
+# Frontiers Health API reference
 
 Every endpoint the stack serves: what it's for, what it reads, its inputs and outputs, its errors, and a real example. The examples are actual responses from the stack seeded with `data/processed/` (Helsinki breast screening 2024 is the running example), trimmed where marked.
 
