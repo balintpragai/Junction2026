@@ -29,12 +29,16 @@ Both are mockups with real data wired into static JS — `BUILD.md` is the plan 
 
 ## Demo host
 
-The running system, served over HTTPS by Caddy on one Linux VM with the same `compose.yaml`:
+The stack runs on a laptop and is published through a Cloudflare Tunnel, because
+the venue network has no inbound ports to forward. Setup and verification:
+[`docs/demo-host.md`](docs/demo-host.md) → **Cloudflare Tunnel from a laptop**.
 
-- **Web:** `https://frontiershealth.xyz` — _not live yet (#12); the domain still shows the registrar's parking page_
-- **API:** `https://api.frontiershealth.xyz` — _not live yet (#12)_ (interactive docs at `/docs`)
+- **Web:** `https://frontiershealth.xyz` — _pending the named tunnel; the zone has to move to Cloudflare DNS first_
+- **API:** `https://api.frontiershealth.xyz` — _same_ (interactive docs at `/docs`)
 
-The names are settled and the repo side is ready; what is missing is a host to point them at. See [`docs/demo-host.md`](docs/demo-host.md) step 3 for the exact Spaceship DNS records.
+Until then the stack is reachable on whatever `*.trycloudflare.com` hostname the
+current quick tunnel was given. **That hostname changes every time `cloudflared`
+restarts, so it is not worth writing down or sharing.**
 
 **Redeploy** (on the VM, from the repo checkout):
 

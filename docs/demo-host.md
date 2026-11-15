@@ -20,13 +20,18 @@ The demo is served from an **Arch Linux machine (the host)** that runs an **Ubun
 
 `api` and `web` also publish on `127.0.0.1` of the guest. They're never on its LAN or public IP; the only way in is through Caddy.
 
-There are two ways to run it:
+There are three ways to run it. **On the day we took the third**, because the
+venue network's gateway is not ours to configure and ports 80/443 cannot be
+forwarded:
 
-| | Main: Ubuntu guest on the Arch host, public HTTPS (steps 0–8) | Fallback: Docker directly on the Arch host, local only ([section below](#fallback-docker-directly-on-the-arch-host-local-only)) |
-|---|---|---|
-| Who can open it | Anyone, at `https://<WEB_DOMAIN>` | Only the host's screen, at `http://localhost:3000` |
-| VM, router, DNS, certificates | Yes | No |
-| Meets #12 | Yes | No (no HTTPS URL to share). Use it if the router, DNS or the network fails. |
+| | Ubuntu guest on the Arch host, public HTTPS (steps 0–8) | Docker on the Arch host, local only ([below](#fallback-docker-directly-on-the-arch-host-local-only)) | **Cloudflare Tunnel from a laptop** ([below](#cloudflare-tunnel-from-a-laptop-no-vm-no-router-access)) |
+|---|---|---|---|
+| Who can open it | Anyone, at `https://<WEB_DOMAIN>` | Only the host's screen, at `http://localhost:3000` | Anyone, at `https://frontiershealth.xyz` |
+| VM | Yes | No | No |
+| Router access / inbound ports | Yes | No | **No** — the tunnel dials out |
+| DNS | A records at the registrar | No | Zone moved to Cloudflare, records written by `cloudflared` |
+| Certificates | Let's Encrypt via Caddy | No | Cloudflare's edge |
+| Meets #12 | Yes | No (no HTTPS URL to share) | Yes |
 
 ## Acceptance checklist
 
@@ -332,6 +337,103 @@ Good things to point out while showing it:
 | Host: `virt-install` says the bridge `br0` doesn't exist | The bridge isn't up. Check `nmcli con show --active` and `ip -br addr show br0`. |
 | Host: the guest has no LAN IP, or the host loses its network | The bridge wasn't set up, or it was built on Wi-Fi (Wi-Fi can't be bridged). Use wired Ethernet. |
 | Host: the guest stops getting traffic after Docker is installed on the host | Docker on the host sets the `FORWARD` policy to `DROP`, which also drops bridged guest traffic. Stop Docker on the host while the guest serves the demo (`sudo systemctl stop docker`), or allow the bridge with `sudo iptables -I DOCKER-USER -i br0 -o br0 -j ACCEPT`. |
+
+## Cloudflare Tunnel from a laptop (no VM, no router access)
+
+The route taken on the day. The venue network hands out private addresses behind
+a gateway nobody on the team administers, so ports 80 and 443 cannot be
+forwarded to anything — which rules out steps 1–8 above and the Let's Encrypt
+challenge they depend on. A Cloudflare Tunnel makes an outbound connection
+instead, so no inbound port is needed at all.
+
+Caddy, `COMPOSE_PROFILES=demo`, `WEB_DOMAIN` and `API_DOMAIN` are **not used**
+on this path: Cloudflare terminates TLS at its edge and `cloudflared` reaches
+the stack on `127.0.0.1`. The stack runs exactly as it does for local
+development.
+
+### Quick tunnel vs named tunnel
+
+| | Quick (`cloudflared tunnel --url http://127.0.0.1:3000`) | Named (`cloudflared tunnel run <name>`) |
+|---|---|---|
+| Hostname | A random `*.trycloudflare.com`, **new one every restart** | `frontiershealth.xyz` |
+| Cloudflare account | None | Free account, and the zone on Cloudflare DNS |
+| Custom domain | **Impossible.** A CNAME to the quick hostname reaches Cloudflare's edge, but no ingress claims that name, so it answers error 1033 | Yes, that is the point |
+| Good for | Sharing a link in five seconds | Anything anyone else will open twice |
+
+A quick tunnel is the right tool for a first share and the wrong one for
+judging: the URL dies with the process.
+
+### Named tunnel setup
+
+Three steps need a person — a Cloudflare login and the registrar panel.
+
+**1. Put the zone on Cloudflare (free).** Create a Cloudflare account, *Add a
+site* → `frontiershealth.xyz` → Free plan. Cloudflare prints two nameservers.
+
+**2. Swap the nameservers at Spaceship.** Spaceship → Domains →
+`frontiershealth.xyz` → Nameservers: replace `launch1.spaceship.net` and
+`launch2.spaceship.net` with the two Cloudflare gave you. This also retires the
+parking page, so the existing `A` records on the apex need no separate cleanup.
+Activation is usually minutes for `.xyz`, but it is the one step with no upper
+bound — do it first. Check with:
+
+```sh
+dig +short NS frontiershealth.xyz          # expect the two Cloudflare names
+```
+
+**3. Authorise `cloudflared` and create the tunnel.**
+
+```sh
+brew install cloudflared                   # already present on the demo Mac
+cloudflared tunnel login                   # browser; pick the zone. Writes ~/.cloudflared/cert.pem
+cloudflared tunnel create frontiers-health # prints the tunnel UUID
+```
+
+**4. Write the config.** Copy `deploy/cloudflared/config.example.yml` to
+`~/.cloudflared/config.yml` and fill in the UUID in both places.
+
+```sh
+cp deploy/cloudflared/config.example.yml ~/.cloudflared/config.yml
+$EDITOR ~/.cloudflared/config.yml
+cloudflared tunnel ingress validate        # checks the rules before going live
+```
+
+**5. Create the DNS records and run it.** `route dns` writes proxied CNAMEs in
+the Cloudflare zone, so there is nothing to type into a DNS panel:
+
+```sh
+cloudflared tunnel route dns frontiers-health frontiershealth.xyz
+cloudflared tunnel route dns frontiers-health api.frontiershealth.xyz
+cloudflared tunnel run frontiers-health
+```
+
+### Verify
+
+`deploy/check.sh` tests the Caddy path and does not apply here. Check the
+hostname the public actually uses:
+
+```sh
+curl -sS -o /dev/null -w '%{http_code}\n' https://frontiershealth.xyz/
+curl -sS https://frontiershealth.xyz/ | grep -c 'North Savo'   # real data, not an empty shell
+curl -sS -o /dev/null -w '%{http_code}\n' https://api.frontiershealth.xyz/regions
+```
+
+A `200` on `/` alone is not proof: the page renders with a 200 when the profile
+fetches come back empty. Grep for a Region name, as above.
+
+### Keeping it up for the demo
+
+The laptop is now the server, which is the weakness of this path.
+
+- **Stop the machine sleeping** for the duration: `caffeinate -dimsu` in its own
+  terminal, or run the tunnel under it — `caffeinate -dimsu cloudflared tunnel run frontiers-health`.
+- **Survive a Docker restart**: set `RESTART_POLICY=unless-stopped` in `.env`
+  and `docker compose up -d` once to apply it.
+- **The tunnel does not need the network to be stable**, only present; it
+  reconnects on its own. Moving to a different Wi-Fi is fine, and the public
+  URL does not change — that is the main advantage over the quick tunnel.
+- **Do not close the terminal** running `cloudflared`. For something sturdier,
+  `brew services` or `cloudflared service install` runs it as a launch agent.
 
 ## Fallback: Docker directly on the Arch host (local only)
 
