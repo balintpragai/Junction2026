@@ -9,3 +9,6 @@
 # identical to what the script writes.
 web/openapi.json text eol=lf
 web/src/lib/api-types.ts text eol=lf
+
+# Screenshots are binary: never normalise line endings in them.
+*.png binary
